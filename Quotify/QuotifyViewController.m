@@ -255,6 +255,20 @@
 /***************************************** Add Person View *******************************************************/
 
 
+- (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker{
+    [peoplePicker dismissModalViewControllerAnimated:YES];
+}
+
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person{
+    speaker.text = [speaker.text stringByAppendingString:(NSString*)ABRecordCopyCompositeName(person)];
+    [peoplePicker dismissModalViewControllerAnimated:YES];
+    return NO;
+}
+
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier{
+    return NO;
+}
+
 - (IBAction)addPersonPressed:(id)sender {
 
     ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
@@ -359,17 +373,7 @@
 }
 
 
-- (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker{
-    
-}
 
-- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person{
-    return NO;
-}
-
-- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier{
-    return NO;
-}
 
 
 - (void)showPeopleAdderView {
