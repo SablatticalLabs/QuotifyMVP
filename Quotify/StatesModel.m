@@ -68,6 +68,36 @@
             @"Wyoming",          
             nil];
 }
+//
+////NSMutableArray *thePeoples = (NSMutableArray*)ABAddressBookCopyArrayOfAllPeople(addressBook);
+//
+//ABAddressBookRef addressBook = ABAddressBookCreate();
+//
+//
+//+ (NSMutableArray *)theNames {
+//    return [NSMutableArray arrayWithObjects:
+//            ABAddressBookCopyArrayOfAllPeople(addressBook)
+//           ] 
+//}
+//
+
+
+////NSLog(@"=====Make People Array with Numbers. Start.");
+//+ (NSMutableDictionary *peopleWithNumber = [[NSMutableDictionary alloc] init];
+//for (int i=0; i < [people count]; i++) {
+//    NSInteger phoneCount = [self phoneCountAtIndex:i];
+//    if (phoneCount != 0) {
+//        NSMutableArray *phoneNumbers = [[NSMutableArray alloc] init];
+//        for (int j=0 ; j < phoneCount ; j++) {
+//            [phoneNumbers addObject:[self phoneNumberAtIndex:i phoneIndex:j]];
+//        }
+//        [peopleWithNumber addEntriesFromDictionary:
+//         [NSDictionary dictionaryWithObjectsAndKeys:
+//          [NSArray arrayWithArray:phoneNumbers],    [self fullNameAtIndex:i], nil]];
+//    }
+//}
+//
+////NSLog(@"=====Make People Array with Numbers. End.\n");
 
 - (id)initWithNames:(NSArray *)names {
     if (self = [super init]) {

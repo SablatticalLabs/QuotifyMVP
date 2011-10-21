@@ -9,6 +9,8 @@
 @property (nonatomic, retain) NSMutableArray *names;
 
 + (NSMutableArray *)theNames;
+//+ (NSMutableArray *)thePeoples;
+//+ (NSMutableDictionary *) peopleWithNumber;
 - (id)initWithNames:(NSArray *)names;
 - (void)loadNames;
 - (void)search:(NSString *)text;

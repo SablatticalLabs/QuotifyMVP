@@ -250,21 +250,37 @@
     
 }
 
+
+#pragma mark Add Person View
 /***************************************** Add Person View *******************************************************/
 
 
 - (IBAction)addPersonPressed:(id)sender {
+
+    ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
+    picker.peoplePickerDelegate = self;
+    // Display only a person's phone, email, and birthdate
+    NSArray *displayedItems = [NSArray arrayWithObjects:[NSNumber numberWithInt:kABPersonPhoneProperty], 
+                               [NSNumber numberWithInt:kABPersonEmailProperty],
+                               [NSNumber numberWithInt:kABPersonBirthdayProperty], nil];
+    
+    
+    picker.displayedProperties = displayedItems;
+    // Show the picker 
+    [self presentModalViewController:picker animated:YES];
+    [picker release];	
+    
     
    // [self showPeopleAdderView];
     
-    if (!self.peopleAdderViewController) {
-        self.peopleAdderViewController = [[PeopleAdderViewController alloc] initWithQuote:currentQuote];
-    }
-    
-    peopleAdderViewController.delegate = self;
-    
-    [self presentModalViewController:self.peopleAdderViewController animated:YES];
-    
+//    if (!self.peopleAdderViewController) {
+//        self.peopleAdderViewController = [[PeopleAdderViewController alloc] initWithQuote:currentQuote];
+//    }
+//    
+//    peopleAdderViewController.delegate = self;
+//    
+//    [self presentModalViewController:self.peopleAdderViewController animated:YES];
+//    
 }
 
 - (void) peopleAdded:(Quote*)quote {
@@ -342,63 +358,78 @@
     [self presentModalViewController:self.successViewController animated:YES];
 }
 
+
+- (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker{
+    
+}
+
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person{
+    return NO;
+}
+
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier{
+    return NO;
+}
+
+
 - (void)showPeopleAdderView {
     //call this when little plus button in text field is pressed
-
+     
+    
     
     // Copied Stuff
-    self.addPersonView.backgroundColor = TTSTYLEVAR(backgroundColor);
-    
-    
-    UIScrollView *scrollView = [[[UIScrollView alloc] initWithFrame:CGRectMake(0, 44, 320, 270)] autorelease];
-    scrollView.backgroundColor = TTSTYLEVAR(backgroundColor);
-    scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-    scrollView.canCancelContentTouches = NO;
-    scrollView.showsVerticalScrollIndicator = NO;
-    scrollView.showsHorizontalScrollIndicator = NO;
-    scrollView.contentSize = CGSizeMake(240, 270);
-    [self.addPersonView addSubview:scrollView];
-    
-    TTPickerTextField *textField = [[[TTPickerTextField alloc] init] autorelease];
-    textField.dataSource = [[[PickerDataSource alloc] init] autorelease];;
-    textField.autocorrectionType = UITextAutocorrectionTypeNo;
-    textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    textField.rightViewMode = UITextFieldViewModeAlways;
-    textField.delegate = self;
-    textField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    [textField sizeToFit];
-
-    
-    UILabel *label = [[[UILabel alloc] init] autorelease];
-    label.text = @"Speaker:";
-    label.font = TTSTYLEVAR(messageFont);
-    label.textColor = TTSTYLEVAR(messageFieldTextColor);
-    [label sizeToFit];
-    label.frame = CGRectInset(label.frame, -2, 0);
-    textField.leftView = label;
-    textField.leftViewMode = UITextFieldViewModeAlways;
-    [textField becomeFirstResponder];
-    
-    [scrollView addSubview:textField];
-    
-    if (UITextFieldTextDidChangeNotification) {
-        speaker.text = textField.text;
-        NSLog(@"TextField.text is: %@", textField.text);
-        NSLog(@"speaker.text is: %@", speaker.text);
-    }
-     
-    for (UIView *view in scrollView.subviews) {
-        view.frame = CGRectMake(0, 0, 320, 480);
-        //speaker.text = @"poop";
-    }
-    
-    [self presentModalViewController:self.addPersonViewController animated:YES];
-    
-    
-    
-    //speaker.text = textField.text;
-
-
+//    self.addPersonView.backgroundColor = TTSTYLEVAR(backgroundColor);
+//    
+//    
+//    UIScrollView *scrollView = [[[UIScrollView alloc] initWithFrame:CGRectMake(0, 44, 320, 270)] autorelease];
+//    scrollView.backgroundColor = TTSTYLEVAR(backgroundColor);
+//    scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+//    scrollView.canCancelContentTouches = NO;
+//    scrollView.showsVerticalScrollIndicator = NO;
+//    scrollView.showsHorizontalScrollIndicator = NO;
+//    scrollView.contentSize = CGSizeMake(240, 270);
+//    [self.addPersonView addSubview:scrollView];
+//    
+//    TTPickerTextField *textField = [[[TTPickerTextField alloc] init] autorelease];
+//    textField.dataSource = [[[PickerDataSource alloc] init] autorelease];;
+//    textField.autocorrectionType = UITextAutocorrectionTypeNo;
+//    textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+//    textField.rightViewMode = UITextFieldViewModeAlways;
+//    textField.delegate = self;
+//    textField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+//    [textField sizeToFit];
+//
+//    
+//    UILabel *label = [[[UILabel alloc] init] autorelease];
+//    label.text = @"Speaker:";
+//    label.font = TTSTYLEVAR(messageFont);
+//    label.textColor = TTSTYLEVAR(messageFieldTextColor);
+//    [label sizeToFit];
+//    label.frame = CGRectInset(label.frame, -2, 0);
+//    textField.leftView = label;
+//    textField.leftViewMode = UITextFieldViewModeAlways;
+//    [textField becomeFirstResponder];
+//    
+//    [scrollView addSubview:textField];
+//    
+//    if (UITextFieldTextDidChangeNotification) {
+//        speaker.text = textField.text;
+//        NSLog(@"TextField.text is: %@", textField.text);
+//        NSLog(@"speaker.text is: %@", speaker.text);
+//    }
+//     
+//    for (UIView *view in scrollView.subviews) {
+//        view.frame = CGRectMake(0, 0, 320, 480);
+//        //speaker.text = @"poop";
+//    }
+//    
+//    [self presentModalViewController:self.addPersonViewController animated:YES];
+//    
+//    
+//    
+//    //speaker.text = textField.text;
+//
+//
 
 }
 

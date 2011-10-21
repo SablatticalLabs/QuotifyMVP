@@ -17,9 +17,12 @@
 #import "FBLoginButton.h"
 #import "three20/Three20.h"
 #import "PickerDataSource.h"
+#import <AddressBook/AddressBook.h>
+#import <AddressBookUI/AddressBookUI.h>
 
 
-@interface QuotifyViewController : UIViewController <UIActionSheetDelegate, CommDelegate, PeopleAdderDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIScrollViewDelegate, CoreLocationControllerDelegate,FBSessionDelegate, FBRequestDelegate> {
+
+@interface QuotifyViewController : UIViewController <UIActionSheetDelegate, CommDelegate, PeopleAdderDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIScrollViewDelegate, CoreLocationControllerDelegate,FBSessionDelegate, FBRequestDelegate, ABPeoplePickerNavigationControllerDelegate> {
     
     Quote *currentQuote;
     Comm *myComm;
@@ -57,6 +60,7 @@
     UIActivityIndicatorView *quotifyingActivityIndicator;
     BOOL quoteTextWasEdited;
    
+    
 
  
 //    TTPickerTextField *textField;
@@ -113,6 +117,10 @@
 - (void)showFirstTimeSettings;
 - (void)fbLogin;
 - (void)fbLogout;
+- (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker;
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person;
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier;
+
 
 
 
