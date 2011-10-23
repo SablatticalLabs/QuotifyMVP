@@ -10,6 +10,13 @@
 
 @implementation QuotifyViewController
 
+
+//////////////////////////////
+//////////
+#pragma mark Synthesizing elements of QuotifyViewController
+//////////
+//////////////////////////////
+
 //@synthesize TTwitnesses;
 @synthesize fbButton;
 @synthesize settingsView;
@@ -33,6 +40,14 @@
 @synthesize locationController;
 @synthesize addPersonButton;
 @synthesize facebook;
+
+
+//////////////////////////////
+//////////
+# pragma mark View Did Load
+//////////
+//////////////////////////////
+
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad{
@@ -58,18 +73,20 @@
 //    [self.view addSubview:TTwitnesses];
 //    [TTwitnesses release];
     
-    /////////////
     
+    /////// Set up a new quote and comm class ///////
     currentQuote = [[Quote alloc] init];
     myComm = [[Comm alloc] init];
     myComm.delegate = self;
     
-    //get location and tag
+    
+    /////// Request location info from location controller ///////
     locationController = [[CoreLocationController alloc] init];
 	locationController.delegate = self;
 	[locationController.locMgr startUpdatingLocation];
     
     
+    /////// Set up a new imagePicker ///////
     self.imgPicker = [[UIImagePickerController alloc] init];
 	self.imgPicker.allowsEditing = YES;
 	self.imgPicker.delegate = self;
@@ -85,8 +102,8 @@
     [self registerForKeyboardNotifications];
     quoteTextWasEdited = NO;
     
-    ////// Facebook Setup //////
     
+    /////// Set up Facebook Connect ///////
     facebook = [[Facebook alloc] initWithAppId:@"232642113419626"];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -190,22 +207,32 @@
 }
 
 
-/******************************************** Location ********************************************************/
+//////////////////////////////
+//////////
+#pragma mark Location
+//////////
+//////////////////////////////
 
-
+/////// Begin updating location info ///////
 - (void)locationUpdate:(MKPlacemark *)location {
 	//NSLog(@"coordinate: %@", location.coordinate);
     currentQuote.location = location;
     locLabel.text = [NSString stringWithFormat:@"%@, %@",location.thoroughfare, location.locality];
 }
 
+
+/////// Display error if location cannot be retrieved ///////
 - (void)locationError:(NSError *)error {
 	locLabel.text = @"Could Not Determine Location";//[error description];
 }
 
-/******************************************** No Name Yet ********************************************************/
+//////////////////////////////
+//////////
+# pragma mark Picture
+//////////
+//////////////////////////////
 
-
+/////// Called when the image box is pressed ///////
 - (IBAction)imageBoxPressed:(id)sender {
     if ( ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]))
 	{	
@@ -219,6 +246,7 @@
     }
 }
 
+/////// Allows the user to select a new picture from the camera or an existing one from their library ///////
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Take Picture"]) {
         imgPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
@@ -230,13 +258,16 @@
     }
 }
 
-// Triggered once the user has chosen a picture
+/////// Triggered once the user has chosen a picture ///////
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)pickedImage editingInfo:(NSDictionary *)editInfo {
+    
+    /////// Add the selected image to current quote ///////
     if(pickedImage != nil)
         currentQuote.image = pickedImage;	
 	[[picker parentViewController] dismissModalViewControllerAnimated:YES];
-    //release imgPicker if necessary
+    // release imgPicker if necessary 
     
+    /////// Insert the selected image into box in main view ///////
     imageBox.image = currentQuote.image;
     
     // Hide the keyboard after the user has chosen a picture
@@ -245,36 +276,50 @@
 }
 
 
+//////////////////////////////
+//////////
 #pragma mark Add Person View
-/***************************************** Add Person View *******************************************************/
+//////////
+//////////////////////////////
 
 
+/////// Dismisses the people picker when cancel is pressed ///////
 - (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker{
     [peoplePicker dismissModalViewControllerAnimated:YES];
 }
 
+
+///////  Called after a person's name is selected in the people picker ///////
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person{
+    
+    /////// Adds selected person to the speaker object of the quote class ///////
     speaker.text = [speaker.text stringByAppendingString:(NSString*)ABRecordCopyCompositeName(person)];
     [peoplePicker dismissModalViewControllerAnimated:YES];
     return NO;
 }
 
+
+/////// Called after a property of a selected person is selected ///////
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier{
     return NO;
 }
 
+
+
+/////// Called when the add person button is pressed ///////
 - (IBAction)addPersonPressed:(id)sender {
 
     ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
     picker.peoplePickerDelegate = self;
+    
     // Display only a person's phone, email, and birthdate
     NSArray *displayedItems = [NSArray arrayWithObjects:[NSNumber numberWithInt:kABPersonPhoneProperty], 
                                [NSNumber numberWithInt:kABPersonEmailProperty],
                                [NSNumber numberWithInt:kABPersonBirthdayProperty], nil];
     
-    
     picker.displayedProperties = displayedItems;
-    // Show the picker 
+    
+    // Show the people picker 
     [self presentModalViewController:picker animated:YES];
     [picker release];	
     
@@ -306,13 +351,83 @@
 
 }
 
-/************************************** After Quotify is Pressed *************************************************/
+- (void)showPeopleAdderView {
+    //call this when little plus button in text field is pressed
+    
+    
+    
+    // Copied Stuff
+    //    self.addPersonView.backgroundColor = TTSTYLEVAR(backgroundColor);
+    //    
+    //    
+    //    UIScrollView *scrollView = [[[UIScrollView alloc] initWithFrame:CGRectMake(0, 44, 320, 270)] autorelease];
+    //    scrollView.backgroundColor = TTSTYLEVAR(backgroundColor);
+    //    scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
+    //    scrollView.canCancelContentTouches = NO;
+    //    scrollView.showsVerticalScrollIndicator = NO;
+    //    scrollView.showsHorizontalScrollIndicator = NO;
+    //    scrollView.contentSize = CGSizeMake(240, 270);
+    //    [self.addPersonView addSubview:scrollView];
+    //    
+    //    TTPickerTextField *textField = [[[TTPickerTextField alloc] init] autorelease];
+    //    textField.dataSource = [[[PickerDataSource alloc] init] autorelease];;
+    //    textField.autocorrectionType = UITextAutocorrectionTypeNo;
+    //    textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    //    textField.rightViewMode = UITextFieldViewModeAlways;
+    //    textField.delegate = self;
+    //    textField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    //    [textField sizeToFit];
+    //
+    //    
+    //    UILabel *label = [[[UILabel alloc] init] autorelease];
+    //    label.text = @"Speaker:";
+    //    label.font = TTSTYLEVAR(messageFont);
+    //    label.textColor = TTSTYLEVAR(messageFieldTextColor);
+    //    [label sizeToFit];
+    //    label.frame = CGRectInset(label.frame, -2, 0);
+    //    textField.leftView = label;
+    //    textField.leftViewMode = UITextFieldViewModeAlways;
+    //    [textField becomeFirstResponder];
+    //    
+    //    [scrollView addSubview:textField];
+    //    
+    //    if (UITextFieldTextDidChangeNotification) {
+    //        speaker.text = textField.text;
+    //        NSLog(@"TextField.text is: %@", textField.text);
+    //        NSLog(@"speaker.text is: %@", speaker.text);
+    //    }
+    //     
+    //    for (UIView *view in scrollView.subviews) {
+    //        view.frame = CGRectMake(0, 0, 320, 480);
+    //        //speaker.text = @"poop";
+    //    }
+    //    
+    //    [self presentModalViewController:self.addPersonViewController animated:YES];
+    //    
+    //    
+    //    
+    //    //speaker.text = textField.text;
+    //
+    //
+    
+}
 
+//////////////////////////////
+//////////
+#pragma mark After Quotify is Pressed
+//////////
+//////////////////////////////
+
+/////// Called when Quotify button is pressed ///////
 - (IBAction)quotifyPressed:(id)sender {
     //[locationController.locMgr stopUpdatingLocation];
     
-    if(([quoteText.text rangeOfString:@"What was said?"].location == NSNotFound)//quoteText was edited 
-       && !([quoteText.text isEqualToString:@""]) && !([speaker.text isEqualToString:@""]))//quoteText and speaker are not blank
+  /////// Check if quoteText was edited ///////
+    if(([quoteText.text rangeOfString:@"What was said?"].location == NSNotFound)
+       /////// Check that quoteText and speaker are not blank ///////
+       && !([quoteText.text isEqualToString:@""]) && !([speaker.text isEqualToString:@""]))
+        
+        /////// Assign information to the current quote ///////
     {
         currentQuote.text = quoteText.text;
         currentQuote.speaker = (NSString *)speaker.text;
@@ -366,71 +481,6 @@
     [self presentModalViewController:self.successViewController animated:YES];
 }
 
-
-
-
-
-- (void)showPeopleAdderView {
-    //call this when little plus button in text field is pressed
-     
-    
-    
-    // Copied Stuff
-//    self.addPersonView.backgroundColor = TTSTYLEVAR(backgroundColor);
-//    
-//    
-//    UIScrollView *scrollView = [[[UIScrollView alloc] initWithFrame:CGRectMake(0, 44, 320, 270)] autorelease];
-//    scrollView.backgroundColor = TTSTYLEVAR(backgroundColor);
-//    scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-//    scrollView.canCancelContentTouches = NO;
-//    scrollView.showsVerticalScrollIndicator = NO;
-//    scrollView.showsHorizontalScrollIndicator = NO;
-//    scrollView.contentSize = CGSizeMake(240, 270);
-//    [self.addPersonView addSubview:scrollView];
-//    
-//    TTPickerTextField *textField = [[[TTPickerTextField alloc] init] autorelease];
-//    textField.dataSource = [[[PickerDataSource alloc] init] autorelease];;
-//    textField.autocorrectionType = UITextAutocorrectionTypeNo;
-//    textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-//    textField.rightViewMode = UITextFieldViewModeAlways;
-//    textField.delegate = self;
-//    textField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-//    [textField sizeToFit];
-//
-//    
-//    UILabel *label = [[[UILabel alloc] init] autorelease];
-//    label.text = @"Speaker:";
-//    label.font = TTSTYLEVAR(messageFont);
-//    label.textColor = TTSTYLEVAR(messageFieldTextColor);
-//    [label sizeToFit];
-//    label.frame = CGRectInset(label.frame, -2, 0);
-//    textField.leftView = label;
-//    textField.leftViewMode = UITextFieldViewModeAlways;
-//    [textField becomeFirstResponder];
-//    
-//    [scrollView addSubview:textField];
-//    
-//    if (UITextFieldTextDidChangeNotification) {
-//        speaker.text = textField.text;
-//        NSLog(@"TextField.text is: %@", textField.text);
-//        NSLog(@"speaker.text is: %@", speaker.text);
-//    }
-//     
-//    for (UIView *view in scrollView.subviews) {
-//        view.frame = CGRectMake(0, 0, 320, 480);
-//        //speaker.text = @"poop";
-//    }
-//    
-//    [self presentModalViewController:self.addPersonViewController animated:YES];
-//    
-//    
-//    
-//    //speaker.text = textField.text;
-//
-//
-
-}
-
 - (IBAction)settingsPressed:(id)sender {
     [self presentModalViewController:self.settingsViewController animated:YES];
 }
@@ -465,9 +515,15 @@
     [failureAlert release];
 }
 
-/******************************************** Facebook ********************************************************/
+
+//////////////////////////////
+//////////
+#pragma mark Facebook Connect
+//////////
+//////////////////////////////
 
 
+/////// These are all of the default, required Facebook Connect methods ///////
 - (IBAction)fbButtonClicked:(id)sender {
     if (fbButton.isLoggedIn) {
         [self fbLogout];
@@ -517,7 +573,11 @@
     fbButton.isLoggedIn = NO;
 }
 
-/******************************************** Keyboard/Textbox Navigation ********************************************************/
+//////////////////////////////
+//////////
+#pragma mark Keyboard and Textbox Methods
+//////////
+//////////////////////////////
 
 - (IBAction)hideKeyboard:(id)sender {
     [quoteText resignFirstResponder];
