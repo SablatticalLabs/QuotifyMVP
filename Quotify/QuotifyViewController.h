@@ -84,7 +84,8 @@
 @property (nonatomic, retain) IBOutlet UILabel *timestampLabel;
 @property (nonatomic, retain) IBOutlet UIButton *settingsButton;
 @property (nonatomic, retain) IBOutlet UITextField *quotifier;
-@property (nonatomic, retain) IBOutlet SuccessViewController *successViewController;@property (nonatomic, retain) IBOutlet UIButton *addPersonButton;
+@property (nonatomic, retain) IBOutlet SuccessViewController *successViewController;
+@property (nonatomic, retain) IBOutlet UIButton *addPersonButton;
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *quotifyingActivityIndicator;
 @property (nonatomic, retain) CoreLocationController *locationController;
 

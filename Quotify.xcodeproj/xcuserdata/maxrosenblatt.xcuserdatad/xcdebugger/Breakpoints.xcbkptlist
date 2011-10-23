@@ -23,12 +23,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Quotify/QuotifyViewController.m"
-         timestampString = "341092556.026756"
+         timestampString = "341094577.077663"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "444"
-         endingLineNumber = "444"
-         landmarkName = "-backToMainView:"
+         startingLineNumber = "448"
+         endingLineNumber = "448"
+         landmarkName = "-doneAddingPeople:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
