@@ -19,7 +19,7 @@
 
 
 
-@interface QuotifyViewController : UIViewController <UIActionSheetDelegate, CommDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIScrollViewDelegate, CoreLocationControllerDelegate,FBSessionDelegate, FBRequestDelegate, ABPeoplePickerNavigationControllerDelegate> {
+@interface QuotifyViewController : UIViewController <UIActionSheetDelegate, CommDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIScrollViewDelegate, CoreLocationControllerDelegate,FBSessionDelegate, FBRequestDelegate, ABPeoplePickerNavigationControllerDelegate, ABNewPersonViewControllerDelegate, ABPersonViewControllerDelegate> {
     
     Quote *currentQuote;
     Comm *myComm;
@@ -36,7 +36,9 @@
     
     UIImagePickerController *imgPicker;
     
-   
+    ABPeoplePickerNavigationController *_picker;
+
+    
     UIButton *settingsButton;  
     UIButton *quotifyButton; 
     UIButton *hideKeyboardButton;
@@ -86,6 +88,9 @@
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *quotifyingActivityIndicator;
 @property (nonatomic, retain) CoreLocationController *locationController;
 
+@property(nonatomic, retain) ABPeoplePickerNavigationController *picker;
+
+
 - (IBAction)addPersonPressed:(id)sender;
 - (IBAction)backToMainView:(id)sender;
 - (IBAction)doneAddingPeople:(id)sender;
@@ -97,6 +102,9 @@
 - (IBAction)backToQuoteEntry:(id)sender;
 - (IBAction)emailEditingEnded:(id)sender;
 - (IBAction)fbButtonClicked:(id)sender;
+
+-(IBAction)showContacts:(id)sender;
+
 
 - (void)registerForKeyboardNotifications;
 - (void)showSuccessView;

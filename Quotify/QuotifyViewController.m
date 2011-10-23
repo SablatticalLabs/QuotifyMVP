@@ -41,6 +41,8 @@
 @synthesize addPersonButton;
 @synthesize facebook;
 
+@synthesize picker = _picker;
+
 
 //////////////////////////////
 //////////
@@ -283,46 +285,142 @@
 //////////////////////////////
 
 
-/////// Dismisses the people picker when cancel is pressed ///////
-- (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker{
-    [peoplePicker dismissModalViewControllerAnimated:YES];
-}
-
-
-///////  Called after a person's name is selected in the people picker ///////
-- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person{
-    
-    /////// Adds selected person to the speaker object of the quote class ///////
-    speaker.text = [speaker.text stringByAppendingString:(NSString*)ABRecordCopyCompositeName(person)];
-    [peoplePicker dismissModalViewControllerAnimated:YES];
-    return NO;
-}
-
-
-/////// Called after a property of a selected person is selected ///////
-- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier{
-    return NO;
-}
-
+///////// Dismisses the people picker when cancel is pressed ///////
+//- (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker{
+//    [peoplePicker dismissModalViewControllerAnimated:YES];
+//}
+//
+//
+/////////  Called after a person's name is selected in the people picker ///////
+//- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person{
+//    
+//    /////// Adds selected person to the speaker object of the quote class ///////
+//    speaker.text = [speaker.text stringByAppendingString:(NSString*)ABRecordCopyCompositeName(person)];
+//    [peoplePicker dismissModalViewControllerAnimated:YES];
+//    return NO;
+//}
+//
+//
+///////// Called after a property of a selected person is selected ///////
+//- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier{
+//    return NO;
+//}
+//
 
 
 /////// Called when the add person button is pressed ///////
-- (IBAction)addPersonPressed:(id)sender {
+//- (IBAction)addPersonPressed:(id)sender {
+//
+//    ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
+//    picker.peoplePickerDelegate = self;
+//}
+    
+    -(IBAction)showContacts:(id)sender{
+        self.picker = [[ABPeoplePickerNavigationController alloc] init];
+        [self.picker setDelegate:self];
+        [self presentModalViewController:self.picker animated:YES];
+    }
+    
+    -(IBAction)addPerson:(id)sender{
+        ABNewPersonViewController *view = [[ABNewPersonViewController alloc] init];
+        view.newPersonViewDelegate = self;
+        
+        
+        UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:view];
+        [self.picker presentModalViewController:nc animated:YES];
+    }
+    
+    -(IBAction)done:(id)sender{
+        [self.picker.topViewController setEditing:NO animated:YES];
+        self.picker.topViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editPerson:)];
+    }
+    
+    -(IBAction)editPerson:(id)sender{
+        [self.picker.topViewController setEditing:YES animated:YES];
+        
+        self.picker.topViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done:)];
+    }
+    
+    -(IBAction)cancel:(id)sender{
+        [self dismissModalViewControllerAnimated:YES];
+    }
+    
+#pragma mark - UINavigationControllerDelegate
+    
+    // Called when the navigation controller shows a new top view controller via a push, pop or setting of the view controller stack.
+    - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
+        
+        //set up the ABPeoplePicker controls here to get rid of he forced cacnel button on the right hand side but you also then have to 
+        // the other views it pcuhes on to ensure they have to correct buttons shown at the correct time.
+        
+        if([navigationController isKindOfClass:[ABPeoplePickerNavigationController class]] 
+           && [viewController isKindOfClass:[ABPersonViewController class]]){
+            navigationController.topViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editPerson:)];
+            
+            navigationController.topViewController.navigationItem.leftBarButtonItem = nil; 
+        }
+        else if([navigationController isKindOfClass:[ABPeoplePickerNavigationController class]]){
+            navigationController.topViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addPerson:)];
+            
+            navigationController.topViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];  
+        }
+    }
+    
+#pragma mark - ABPersonViewControllerDelegate
+    
+    // Called when the user selects an individual value in the Person view, identifier will be kABMultiValueInvalidIdentifier if a single value property was selected.
+    // Return NO if you do not want anything to be done or if you are handling the actions yourself.
+    // Return YES if you want the ABPersonViewController to perform its default action.
+    - (BOOL)personViewController:(ABPersonViewController *)personViewController shouldPerformDefaultActionForPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier{
+        return YES;
+    }
+    
+#pragma mark - ABNewPersonViewControllerDelegate
+    
+    // Called when the user selects Save or Cancel. If the new person was saved, person will be
+    // a valid person that was saved into the Address Book. Otherwise, person will be NULL.
+    // It is up to the delegate to dismiss the view controller.
+    - (void)newPersonViewController:(ABNewPersonViewController *)newPersonView didCompleteWithNewPerson:(ABRecordRef)person{
+        [newPersonView dismissModalViewControllerAnimated:YES];    
+    }
+    
+#pragma mark - ABPeoplePickerNavigationControllerDelegate
+    
+    
+    - (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker{
+    }
+    
+    // Called after a person has been selected by the user.
+    // Return YES if you want the person to be displayed.
+    // Return NO  to do nothing (the delegate is responsible for dismissing the peoplePicker).
+    - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person{
+        /////// Adds selected person to the speaker object of the quote class ///////
+            speaker.text = [speaker.text stringByAppendingString:(NSString*)ABRecordCopyCompositeName(person)];
+            [peoplePicker dismissModalViewControllerAnimated:YES];
+            return NO;
+    }
 
-    ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
-    picker.peoplePickerDelegate = self;
-    
-    // Display only a person's phone, email, and birthdate
-    NSArray *displayedItems = [NSArray arrayWithObjects:[NSNumber numberWithInt:kABPersonPhoneProperty], 
-                               [NSNumber numberWithInt:kABPersonEmailProperty],
-                               [NSNumber numberWithInt:kABPersonBirthdayProperty], nil];
-    
-    picker.displayedProperties = displayedItems;
-    
-    // Show the people picker 
-    [self presentModalViewController:picker animated:YES];
-    [picker release];	
-    
+
+    // Called after a value has been selected by the user.
+    // Return YES if you want default action to be performed.
+    // Return NO to do nothing (the delegate is responsible for dismissing the peoplePicker).
+    - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier{
+        
+        return NO;
+    }
+
+
+//    // Display only a person's phone, email, and birthdate
+//    NSArray *displayedItems = [NSArray arrayWithObjects:[NSNumber numberWithInt:kABPersonPhoneProperty], 
+//                               [NSNumber numberWithInt:kABPersonEmailProperty],
+//                               [NSNumber numberWithInt:kABPersonBirthdayProperty], nil];
+//    
+//    picker.displayedProperties = displayedItems;
+//    
+//    // Show the people picker 
+//    [self presentModalViewController:picker animated:YES];
+//    [picker release];	
+//    
     
    // [self showPeopleAdderView];
     
@@ -334,7 +432,7 @@
 //    
 //    [self presentModalViewController:self.peopleAdderViewController animated:YES];
 //    
-}
+
 
 - (void) peopleAdded:(Quote*)quote {
     currentQuote = quote;
