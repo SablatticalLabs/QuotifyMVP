@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "FBConnect.h"
-#import "Three20/Three20.h"
 
 @class QuotifyViewController;
 

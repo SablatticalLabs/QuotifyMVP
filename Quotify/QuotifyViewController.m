@@ -7,7 +7,6 @@
 //
 
 #import "QuotifyViewController.h"
-#import "three20/Three20.h"
 
 @implementation QuotifyViewController
 
@@ -30,13 +29,10 @@
 @synthesize settingsButton;
 @synthesize quotifier;
 @synthesize successViewController;
-@synthesize peopleAdderViewController;
 @synthesize quotifyingActivityIndicator;
 @synthesize locationController;
 @synthesize addPersonButton;
 @synthesize facebook;
-@synthesize TTwitnesses;
-
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad{
@@ -142,7 +138,6 @@
     [self setSettingsViewController:nil];
     [self setQuotifier:nil];
     [self setSuccessViewController:nil];
-    [self setPeopleAdderViewController:nil];
     [self setAddPersonView:nil];
     [self setAddPersonViewController:nil];
     [self setQuotifyingActivityIndicator:nil];
@@ -177,7 +172,6 @@
     [settingsViewController release];
     [quotifier release];
     [successViewController release];
-    [peopleAdderViewController release];
     [addPersonView release];
     [addPersonViewController release];
     [quotifyingActivityIndicator release];

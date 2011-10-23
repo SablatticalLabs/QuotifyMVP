@@ -11,24 +11,20 @@
 #import "Quote.h"
 #import "Comm.h"
 #import "SuccessViewController.h"
-#import "PeopleAdderViewController.h"
 #import "CoreLocationController.h"
 #import "FBConnect.h"
 #import "FBLoginButton.h"
-#import "three20/Three20.h"
-#import "PickerDataSource.h"
 #import <AddressBook/AddressBook.h>
 #import <AddressBookUI/AddressBookUI.h>
 
 
 
-@interface QuotifyViewController : UIViewController <UIActionSheetDelegate, CommDelegate, PeopleAdderDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIScrollViewDelegate, CoreLocationControllerDelegate,FBSessionDelegate, FBRequestDelegate, ABPeoplePickerNavigationControllerDelegate> {
+@interface QuotifyViewController : UIViewController <UIActionSheetDelegate, CommDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIScrollViewDelegate, CoreLocationControllerDelegate,FBSessionDelegate, FBRequestDelegate, ABPeoplePickerNavigationControllerDelegate> {
     
     Quote *currentQuote;
     Comm *myComm;
     CoreLocationController *locationController;
     SuccessViewController *successViewController;
-    PeopleAdderViewController *peopleAdderViewController;
     FBLoginButton *fbButton;
     Facebook *facebook;
     
@@ -86,15 +82,9 @@
 @property (nonatomic, retain) IBOutlet UILabel *timestampLabel;
 @property (nonatomic, retain) IBOutlet UIButton *settingsButton;
 @property (nonatomic, retain) IBOutlet UITextField *quotifier;
-@property (nonatomic, retain) IBOutlet SuccessViewController *successViewController;
-@property (nonatomic, retain) IBOutlet PeopleAdderViewController *peopleAdderViewController;
-@property (nonatomic, retain) IBOutlet UIButton *addPersonButton;
+@property (nonatomic, retain) IBOutlet SuccessViewController *successViewController;@property (nonatomic, retain) IBOutlet UIButton *addPersonButton;
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *quotifyingActivityIndicator;
 @property (nonatomic, retain) CoreLocationController *locationController;
-
-@property (nonatomic, retain) IBOutlet TTPickerTextField *TTwitnesses;
-
-
 
 - (IBAction)addPersonPressed:(id)sender;
 - (IBAction)backToMainView:(id)sender;
