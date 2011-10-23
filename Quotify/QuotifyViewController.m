@@ -17,7 +17,7 @@
 //////////
 //////////////////////////////
 
-//@synthesize TTwitnesses;
+
 @synthesize fbButton;
 @synthesize settingsView;
 @synthesize addPersonView;
@@ -60,20 +60,6 @@
     
     quoteText.clipsToBounds = YES;
     quoteText.layer.cornerRadius = 10.0f;
-    
-    
-//    TTwitnesses = [[TTPickerTextField alloc] initWithFrame:CGRectMake(15, 200, 290, 30)];
-//    TTwitnesses.borderStyle = UITextBorderStyleRoundedRect;
-//    TTwitnesses.font = [UIFont systemFontOfSize:15];
-//    TTwitnesses.placeholder = @"enter text";
-//    TTwitnesses.autocorrectionType = UITextAutocorrectionTypeNo;
-//    TTwitnesses.keyboardType = UIKeyboardTypeDefault;
-//    TTwitnesses.returnKeyType = UIReturnKeyDone;
-//    TTwitnesses.clearButtonMode = UITextFieldViewModeWhileEditing;
-//    TTwitnesses.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;    
-//    TTwitnesses.delegate = self;
-//    [self.view addSubview:TTwitnesses];
-//    [TTwitnesses release];
     
     
     /////// Set up a new quote and comm class ///////
@@ -267,7 +253,9 @@
     if(pickedImage != nil)
         currentQuote.image = pickedImage;	
 	[[picker parentViewController] dismissModalViewControllerAnimated:YES];
-    // release imgPicker if necessary 
+    
+    /////// release imgPicker if necessary ///////
+    [picker release];
     
     /////// Insert the selected image into box in main view ///////
     imageBox.image = currentQuote.image;
@@ -285,13 +273,62 @@
 //////////////////////////////
 
 
+/////// Called when the add person button is pressed ///////    
+-(IBAction)showContacts:(id)sender{
+    self.picker = [[ABPeoplePickerNavigationController alloc] init];
+    
+    //If I set the delegate like this, then everything works, but it wont return to the main
+    [self.picker setDelegate:self];
+    
+    //If i set the delegate like this, it returns to the main, but there is no addnewperson
+    self.picker.peoplePickerDelegate = self;
+    
+    
+    //If I use both, then everything works
+    
+    // Display only a person's phone, email, and birthdate
+    NSArray *displayedItems = [NSArray arrayWithObjects:[NSNumber numberWithInt:kABPersonPhoneProperty], 
+                               [NSNumber numberWithInt:kABPersonEmailProperty],
+                               [NSNumber numberWithInt:kABPersonBirthdayProperty], nil];
+    
+    self.picker.displayedProperties = displayedItems;
+    [self presentModalViewController:self.picker animated:YES];
+    
+    [self release];
+}
+
+//- (IBAction)addPersonPressed:(id)sender {
+//
+//    ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
+//    picker.peoplePickerDelegate = self;
+//}
+
+
 ///////// Dismisses the people picker when cancel is pressed ///////
+
+- (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker{
+}
+
 //- (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker{
 //    [peoplePicker dismissModalViewControllerAnimated:YES];
 //}
-//
-//
+
+
+
 /////////  Called after a person's name is selected in the people picker ///////
+
+// Called after a person has been selected by the user.
+// Return YES if you want the person to be displayed.
+// Return NO  to do nothing (the delegate is responsible for dismissing the peoplePicker).
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person{
+    
+    /////// Adds selected person to the speaker object of the quote class ///////
+    speaker.text = [speaker.text stringByAppendingString:(NSString*)ABRecordCopyCompositeName(person)];
+    
+    [peoplePicker dismissModalViewControllerAnimated:YES];
+    return NO;
+}
+
 //- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person{
 //    
 //    /////// Adds selected person to the speaker object of the quote class ///////
@@ -301,25 +338,27 @@
 //}
 //
 //
+
+
 ///////// Called after a property of a selected person is selected ///////
+
+// Called after a value has been selected by the user.
+// Return YES if you want default action to be performed.
+// Return NO to do nothing (the delegate is responsible for dismissing the peoplePicker).
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier{
+    
+    return NO;
+}
+
 //- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier{
 //    return NO;
 //}
 //
 
 
-/////// Called when the add person button is pressed ///////
-//- (IBAction)addPersonPressed:(id)sender {
-//
-//    ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
-//    picker.peoplePickerDelegate = self;
-//}
-    
-    -(IBAction)showContacts:(id)sender{
-        self.picker = [[ABPeoplePickerNavigationController alloc] init];
-        [self.picker setDelegate:self];
-        [self presentModalViewController:self.picker animated:YES];
-    }
+
+
+
     
     -(IBAction)addPerson:(id)sender{
         ABNewPersonViewController *view = [[ABNewPersonViewController alloc] init];
@@ -351,7 +390,7 @@
     - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
         
         //set up the ABPeoplePicker controls here to get rid of he forced cacnel button on the right hand side but you also then have to 
-        // the other views it pcuhes on to ensure they have to correct buttons shown at the correct time.
+        // the other views it pushes on to ensure they have to correct buttons shown at the correct time.
         
         if([navigationController isKindOfClass:[ABPeoplePickerNavigationController class]] 
            && [viewController isKindOfClass:[ABPersonViewController class]]){
@@ -384,30 +423,6 @@
         [newPersonView dismissModalViewControllerAnimated:YES];    
     }
     
-#pragma mark - ABPeoplePickerNavigationControllerDelegate
-    
-    
-    - (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker{
-    }
-    
-    // Called after a person has been selected by the user.
-    // Return YES if you want the person to be displayed.
-    // Return NO  to do nothing (the delegate is responsible for dismissing the peoplePicker).
-    - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person{
-        /////// Adds selected person to the speaker object of the quote class ///////
-            speaker.text = [speaker.text stringByAppendingString:(NSString*)ABRecordCopyCompositeName(person)];
-            [peoplePicker dismissModalViewControllerAnimated:YES];
-            return NO;
-    }
-
-
-    // Called after a value has been selected by the user.
-    // Return YES if you want default action to be performed.
-    // Return NO to do nothing (the delegate is responsible for dismissing the peoplePicker).
-    - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier{
-        
-        return NO;
-    }
 
 
 //    // Display only a person's phone, email, and birthdate
@@ -449,66 +464,7 @@
 
 }
 
-- (void)showPeopleAdderView {
-    //call this when little plus button in text field is pressed
-    
-    
-    
-    // Copied Stuff
-    //    self.addPersonView.backgroundColor = TTSTYLEVAR(backgroundColor);
-    //    
-    //    
-    //    UIScrollView *scrollView = [[[UIScrollView alloc] initWithFrame:CGRectMake(0, 44, 320, 270)] autorelease];
-    //    scrollView.backgroundColor = TTSTYLEVAR(backgroundColor);
-    //    scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
-    //    scrollView.canCancelContentTouches = NO;
-    //    scrollView.showsVerticalScrollIndicator = NO;
-    //    scrollView.showsHorizontalScrollIndicator = NO;
-    //    scrollView.contentSize = CGSizeMake(240, 270);
-    //    [self.addPersonView addSubview:scrollView];
-    //    
-    //    TTPickerTextField *textField = [[[TTPickerTextField alloc] init] autorelease];
-    //    textField.dataSource = [[[PickerDataSource alloc] init] autorelease];;
-    //    textField.autocorrectionType = UITextAutocorrectionTypeNo;
-    //    textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    //    textField.rightViewMode = UITextFieldViewModeAlways;
-    //    textField.delegate = self;
-    //    textField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    //    [textField sizeToFit];
-    //
-    //    
-    //    UILabel *label = [[[UILabel alloc] init] autorelease];
-    //    label.text = @"Speaker:";
-    //    label.font = TTSTYLEVAR(messageFont);
-    //    label.textColor = TTSTYLEVAR(messageFieldTextColor);
-    //    [label sizeToFit];
-    //    label.frame = CGRectInset(label.frame, -2, 0);
-    //    textField.leftView = label;
-    //    textField.leftViewMode = UITextFieldViewModeAlways;
-    //    [textField becomeFirstResponder];
-    //    
-    //    [scrollView addSubview:textField];
-    //    
-    //    if (UITextFieldTextDidChangeNotification) {
-    //        speaker.text = textField.text;
-    //        NSLog(@"TextField.text is: %@", textField.text);
-    //        NSLog(@"speaker.text is: %@", speaker.text);
-    //    }
-    //     
-    //    for (UIView *view in scrollView.subviews) {
-    //        view.frame = CGRectMake(0, 0, 320, 480);
-    //        //speaker.text = @"poop";
-    //    }
-    //    
-    //    [self presentModalViewController:self.addPersonViewController animated:YES];
-    //    
-    //    
-    //    
-    //    //speaker.text = textField.text;
-    //
-    //
-    
-}
+
 
 //////////////////////////////
 //////////

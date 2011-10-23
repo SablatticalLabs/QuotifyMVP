@@ -92,10 +92,8 @@
 @property(nonatomic, retain) ABPeoplePickerNavigationController *picker;
 
 
-- (IBAction)addPersonPressed:(id)sender;
 - (IBAction)backToMainView:(id)sender;
 - (IBAction)doneAddingPeople:(id)sender;
-
 - (IBAction)quotifyPressed:(id)sender;
 - (IBAction)imageBoxPressed:(id)sender;
 - (IBAction)hideKeyboard:(id)sender;
@@ -109,7 +107,6 @@
 
 - (void)registerForKeyboardNotifications;
 - (void)showSuccessView;
-- (void)showPeopleAdderView;
 - (void)peopleAdded:(Quote*)quote;
 - (void)raiseFailurePopupWithTitle:(NSString *) alertTitle andMessage:(NSString *) alertMessage;
 - (void)setupNewQuote;
