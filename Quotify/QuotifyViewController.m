@@ -150,7 +150,7 @@
     [self setFbButton:nil];
     [self setAddPersonButton:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
+    // Release any retained subview of the main view.
     // e.g. self.myOutlet = nil;
 }
 
@@ -278,7 +278,7 @@
     self.picker = [[ABPeoplePickerNavigationController alloc] init];
     
     //If I set the delegate like this, then everything works, but it wont return to the main
-    [self.picker setDelegate:self];
+    self.picker.delegate = self;
     
     //If i set the delegate like this, it returns to the main, but there is no addnewperson
     self.picker.peoplePickerDelegate = self;
@@ -323,7 +323,15 @@
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person{
     
     /////// Adds selected person to the speaker object of the quote class ///////
-    speaker.text = [speaker.text stringByAppendingString:(NSString*)ABRecordCopyCompositeName(person)];
+    if (![speaker.text isEqualToString:@""]) {
+        speaker.text = [speaker.text stringByAppendingFormat:@", %@", ABRecordCopyCompositeName(person)];
+    }
+    
+    else {
+        speaker.text = [speaker.text stringByAppendingFormat:@"%@", ABRecordCopyCompositeName(person)];
+
+    }
+    
     
     [peoplePicker dismissModalViewControllerAnimated:YES];
     return NO;
