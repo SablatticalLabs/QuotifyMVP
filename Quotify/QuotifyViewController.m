@@ -294,7 +294,7 @@
     self.picker.displayedProperties = displayedItems;
     [self presentModalViewController:self.picker animated:YES];
     
-    [self release];
+    //[self release];
 }
 
 //- (IBAction)addPersonPressed:(id)sender {
