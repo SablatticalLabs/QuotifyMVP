@@ -315,12 +315,12 @@
     
     [currentQuote addWitness:person];
     /////// Adds selected person to the speaker object of the quote class ///////
-    if (![speaker.text isEqualToString:@""]) {
-        speaker.text = [speaker.text stringByAppendingFormat:@", %@", ABRecordCopyCompositeName(person)];
+    if (![witnesses.text isEqualToString:@""]) {
+        witnesses.text = [witnesses.text stringByAppendingFormat:@", %@", ABRecordCopyCompositeName(person)];
     }
     
     else {
-        speaker.text = [speaker.text stringByAppendingFormat:@"%@", ABRecordCopyCompositeName(person)];
+        witnesses.text = [witnesses.text stringByAppendingFormat:@"%@", ABRecordCopyCompositeName(person)];
 
     }
     
@@ -402,11 +402,11 @@
     // It is up to the delegate to dismiss the view controller.
 -(void)newPersonViewController:(ABNewPersonViewController *)newPersonView didCompleteWithNewPerson:(ABRecordRef)person{
     //called when a person is added to the address book
-    if (![speaker.text isEqualToString:@""]) {
-        speaker.text = [speaker.text stringByAppendingFormat:@", %@", ABRecordCopyCompositeName(person)];
+    if (![witnesses.text isEqualToString:@""]) {
+        witnesses.text = [witnesses.text stringByAppendingFormat:@", %@", ABRecordCopyCompositeName(person)];
     }
     else {
-        speaker.text = [speaker.text stringByAppendingFormat:@"%@", ABRecordCopyCompositeName(person)];        
+        witnesses.text = [witnesses.text stringByAppendingFormat:@"%@", ABRecordCopyCompositeName(person)];        
     }
 
     [self dismissModalViewControllerAnimated:YES]; 
