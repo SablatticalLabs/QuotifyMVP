@@ -255,7 +255,7 @@
 	[[picker parentViewController] dismissModalViewControllerAnimated:YES];
     
     /////// release imgPicker if necessary ///////
-    [picker release];
+    //[picker release];
     
     /////// Insert the selected image into box in main view ///////
     imageBox.image = currentQuote.image;
@@ -292,27 +292,18 @@
                                [NSNumber numberWithInt:kABPersonBirthdayProperty], nil];
     
     self.picker.displayedProperties = displayedItems;
+    // Show the people picker 
     [self presentModalViewController:self.picker animated:YES];
+    [self.picker release];	
     
-    //[self release];
-}
-
-//- (IBAction)addPersonPressed:(id)sender {
-//
-//    ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
-//    picker.peoplePickerDelegate = self;
-//}
-
+    //[self release]; -terrible idea
+}  
 
 ///////// Dismisses the people picker when cancel is pressed ///////
 
 - (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker{
+    //    [peoplePicker dismissModalViewControllerAnimated:YES];
 }
-
-//- (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker{
-//    [peoplePicker dismissModalViewControllerAnimated:YES];
-//}
-
 
 
 /////////  Called after a person's name is selected in the people picker ///////
@@ -322,6 +313,7 @@
 // Return NO  to do nothing (the delegate is responsible for dismissing the peoplePicker).
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person{
     
+    [currentQuote addWitness:person];
     /////// Adds selected person to the speaker object of the quote class ///////
     if (![speaker.text isEqualToString:@""]) {
         speaker.text = [speaker.text stringByAppendingFormat:@", %@", ABRecordCopyCompositeName(person)];
@@ -413,43 +405,16 @@
     if (![speaker.text isEqualToString:@""]) {
         speaker.text = [speaker.text stringByAppendingFormat:@", %@", ABRecordCopyCompositeName(person)];
     }
-    
     else {
-        speaker.text = [speaker.text stringByAppendingFormat:@"%@", ABRecordCopyCompositeName(person)];
-        
+        speaker.text = [speaker.text stringByAppendingFormat:@"%@", ABRecordCopyCompositeName(person)];        
     }
-    
-    
-    [newPersonView dismissModalViewControllerAnimated:YES];
-    [newPersonView.parentViewController dismissModalViewControllerAnimated:NO];
-    
+
+    [self dismissModalViewControllerAnimated:YES]; 
 }
 
     
 
 
-//    // Display only a person's phone, email, and birthdate
-//    NSArray *displayedItems = [NSArray arrayWithObjects:[NSNumber numberWithInt:kABPersonPhoneProperty], 
-//                               [NSNumber numberWithInt:kABPersonEmailProperty],
-//                               [NSNumber numberWithInt:kABPersonBirthdayProperty], nil];
-//    
-//    picker.displayedProperties = displayedItems;
-//    
-//    // Show the people picker 
-//    [self presentModalViewController:picker animated:YES];
-//    [picker release];	
-//    
-    
-   // [self showPeopleAdderView];
-    
-//    if (!self.peopleAdderViewController) {
-//        self.peopleAdderViewController = [[PeopleAdderViewController alloc] initWithQuote:currentQuote];
-//    }
-//    
-//    peopleAdderViewController.delegate = self;
-//    
-//    [self presentModalViewController:self.peopleAdderViewController animated:YES];
-//    
 
 
 - (void) peopleAdded:(Quote*)quote {

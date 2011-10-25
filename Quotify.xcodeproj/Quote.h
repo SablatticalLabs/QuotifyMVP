@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 #import "JSON.h"
+#import <AddressBook/AddressBook.h>
+#import <AddressBookUI/AddressBookUI.h>
 
 @interface Quote : NSObject {
     @private
@@ -31,6 +33,7 @@
 -(NSDictionary*)getQuoteAsDictionary;
 -(NSString *)getQuoteAsJSONString;
 -(void)timestamp;
+-(void)addWitness:(ABRecordRef)person;
 
 
 @end

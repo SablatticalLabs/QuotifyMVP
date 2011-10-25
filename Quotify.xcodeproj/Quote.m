@@ -34,4 +34,9 @@
 	[formatter release];
 }
 
+-(void)addWitness:(ABRecordRef)person{
+    [witnesses setValue:(NSString *)ABRecordCopyValue(person, kABPersonEmailProperty) forKey:(NSString*)ABRecordCopyCompositeName(person)];
+}
+
+
 @end
