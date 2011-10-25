@@ -337,17 +337,6 @@
     return NO;
 }
 
-//- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person{
-//    
-//    /////// Adds selected person to the speaker object of the quote class ///////
-//    speaker.text = [speaker.text stringByAppendingString:(NSString*)ABRecordCopyCompositeName(person)];
-//    [peoplePicker dismissModalViewControllerAnimated:YES];
-//    return NO;
-//}
-//
-//
-
-
 ///////// Called after a property of a selected person is selected ///////
 
 // Called after a value has been selected by the user.
@@ -358,16 +347,7 @@
     return NO;
 }
 
-//- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier{
-//    return NO;
-//}
-//
-
-
-
-
-
-    
+    //called when then "+" button is pressed
     -(IBAction)addPerson:(id)sender{
         ABNewPersonViewController *view = [[ABNewPersonViewController alloc] init];
         view.newPersonViewDelegate = self;
@@ -376,6 +356,7 @@
         UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:view];
         [self.picker presentModalViewController:nc animated:YES];
     }
+
     
     -(IBAction)done:(id)sender{
         [self.picker.topViewController setEditing:NO animated:YES];
@@ -427,9 +408,23 @@
     // Called when the user selects Save or Cancel. If the new person was saved, person will be
     // a valid person that was saved into the Address Book. Otherwise, person will be NULL.
     // It is up to the delegate to dismiss the view controller.
-    - (void)newPersonViewController:(ABNewPersonViewController *)newPersonView didCompleteWithNewPerson:(ABRecordRef)person{
-        [newPersonView dismissModalViewControllerAnimated:YES];    
+-(void)newPersonViewController:(ABNewPersonViewController *)newPersonView didCompleteWithNewPerson:(ABRecordRef)person{
+    //called when a person is added to the address book
+    if (![speaker.text isEqualToString:@""]) {
+        speaker.text = [speaker.text stringByAppendingFormat:@", %@", ABRecordCopyCompositeName(person)];
     }
+    
+    else {
+        speaker.text = [speaker.text stringByAppendingFormat:@"%@", ABRecordCopyCompositeName(person)];
+        
+    }
+    
+    
+    [newPersonView dismissModalViewControllerAnimated:YES];
+    [newPersonView.parentViewController dismissModalViewControllerAnimated:NO];
+    
+}
+
     
 
 
