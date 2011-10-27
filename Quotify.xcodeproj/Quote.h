@@ -20,7 +20,7 @@
     NSString *time;
     NSString *postID;
     NSString *UrlWhereQuoteIsPosted;
-    NSDictionary *witnesses;
+    NSMutableDictionary *witnesses;
     UIImage *image; 
     MKPlacemark *location;
 }

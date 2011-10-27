@@ -14,8 +14,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "353"
          endingLineNumber = "353"
-         landmarkName = "-done:"
-         landmarkType = "5">
+         landmarkName = "@implementation QuotifyViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -28,8 +28,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "343"
          endingLineNumber = "343"
-         landmarkName = "-addPerson:"
-         landmarkType = "5">
+         landmarkName = "@implementation QuotifyViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
@@ -42,8 +42,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "358"
          endingLineNumber = "358"
-         landmarkName = "-editPerson:"
-         landmarkType = "5">
+         landmarkName = "@implementation QuotifyViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -56,8 +56,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "364"
          endingLineNumber = "364"
-         landmarkName = "-cancel:"
-         landmarkType = "5">
+         landmarkName = "@implementation QuotifyViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
@@ -79,11 +79,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Quotify.xcodeproj/Quote.m"
-         timestampString = "341200805.106103"
+         timestampString = "341344821.735804"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "38"
-         endingLineNumber = "38"
+         startingLineNumber = "42"
+         endingLineNumber = "42"
          landmarkName = "-addWitness:"
          landmarkType = "5">
       </FileBreakpoint>

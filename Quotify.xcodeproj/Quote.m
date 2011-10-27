@@ -35,6 +35,10 @@
 }
 
 -(void)addWitness:(ABRecordRef)person{
+    NSLog(@"Email property: %@, Composite Name: %@", ABRecordCopyValue(person, kABPersonEmailProperty), ABRecordCopyCompositeName(person));
+    if (!self.witnesses) {
+        self.witnesses = [[NSMutableDictionary alloc] init];
+    }
     [witnesses setValue:(NSString *)ABRecordCopyValue(person, kABPersonEmailProperty) forKey:(NSString*)ABRecordCopyCompositeName(person)];
 }
 
