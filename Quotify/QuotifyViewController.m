@@ -38,7 +38,8 @@
 @synthesize successViewController;
 @synthesize quotifyingActivityIndicator;
 @synthesize locationController;
-@synthesize addPersonButton;
+@synthesize addSpeakerButton;
+@synthesize addWitnessButton;
 @synthesize facebook;
 
 @synthesize picker = _picker;
@@ -84,7 +85,7 @@
         self.imgPicker.showsCameraControls = YES;
     }
     else{
-        self.imgPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        self.imgPicker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
     }
     
     [self registerForKeyboardNotifications];
@@ -148,7 +149,8 @@
     [self setQuotifyingActivityIndicator:nil];
     [self setLocLabel:nil];
     [self setFbButton:nil];
-    [self setAddPersonButton:nil];
+    [self setAddSpeakerButton:nil];
+    [self setAddWitnessButton:nil];
     [super viewDidUnload];
     // Release any retained subview of the main view.
     // e.g. self.myOutlet = nil;
@@ -182,7 +184,8 @@
     [quotifyingActivityIndicator release];
     [locLabel release];
     [fbButton release];
-    [addPersonButton release];
+    [addSpeakerButton release];
+    [addWitnessButton release];
     [addPersonViewController release];
     [super dealloc];
 }
@@ -247,7 +250,8 @@
 }
 
 /////// Triggered once the user has chosen a picture ///////
--(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)pickedImage editingInfo:(NSDictionary *)editInfo {
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)pickedImage editingInfo:(NSDictionary *)editInfo {
+    
     
     /////// Add the selected image to current quote ///////
     if(pickedImage != nil)
@@ -275,16 +279,16 @@
 
 /////// Called when the add person button is pressed ///////    
 -(IBAction)showContacts:(id)sender{
+    
+    // Check to see if sender was clicked. Sender has tag 0
+    lastButtonClickedWasWitnesses = (((UIButton *)sender).tag == 1);
+
+    
     self.picker = [[ABPeoplePickerNavigationController alloc] init];
     
-    //If I set the delegate like this, then everything works, but it wont return to the main
+    // Set the delegates
     self.picker.delegate = self;
-    
-    //If i set the delegate like this, it returns to the main, but there is no addnewperson
     self.picker.peoplePickerDelegate = self;
-    
-    
-    //If I use both, then everything works
     
     // Display only a person's phone, email, and birthdate
     NSArray *displayedItems = [NSArray arrayWithObjects:[NSNumber numberWithInt:kABPersonPhoneProperty], 
@@ -292,11 +296,11 @@
                                [NSNumber numberWithInt:kABPersonBirthdayProperty], nil];
     
     self.picker.displayedProperties = displayedItems;
+    
     // Show the people picker 
     [self presentModalViewController:self.picker animated:YES];
     [self.picker release];	
     
-    //[self release]; -terrible idea
 }  
 
 ///////// Dismisses the people picker when cancel is pressed ///////
@@ -313,8 +317,18 @@
 // Return NO  to do nothing (the delegate is responsible for dismissing the peoplePicker).
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person{
     
+    if (!lastButtonClickedWasWitnesses){
+        [currentQuote addSpeaker:person];
+        speaker.text = (NSString *)ABRecordCopyCompositeName(person);
+
+        // Disable the addSpeaker button
+    }
+    
+    else {
     [currentQuote addWitness:person];
     /////// Adds selected person to the speaker object of the quote class ///////
+        
+    // Checks if a comma needs to be added
     if (![witnesses.text isEqualToString:@""]) {
         witnesses.text = [witnesses.text stringByAppendingFormat:@", %@", ABRecordCopyCompositeName(person)];
     }
@@ -324,9 +338,10 @@
 
     }
     
-    
+    }
     [peoplePicker dismissModalViewControllerAnimated:YES];
     return NO;
+        
 }
 
 ///////// Called after a property of a selected person is selected ///////
@@ -339,8 +354,9 @@
     return NO;
 }
 
-    //called when then "+" button is pressed
-    -(IBAction)addPerson:(id)sender{
+//called when then "+" button is pressed to create new contact
+-(IBAction)addPerson:(id)sender{
+
         ABNewPersonViewController *view = [[ABNewPersonViewController alloc] init];
         view.newPersonViewDelegate = self;
         
@@ -348,27 +364,26 @@
         UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:view];
         [self.picker presentModalViewController:nc animated:YES];
     }
-
     
-    -(IBAction)done:(id)sender{
+-(IBAction)done:(id)sender{
         [self.picker.topViewController setEditing:NO animated:YES];
         self.picker.topViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editPerson:)];
     }
     
-    -(IBAction)editPerson:(id)sender{
+-(IBAction)editPerson:(id)sender{
         [self.picker.topViewController setEditing:YES animated:YES];
         
         self.picker.topViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done:)];
     }
     
-    -(IBAction)cancel:(id)sender{
+-(IBAction)cancel:(id)sender{
         [self dismissModalViewControllerAnimated:YES];
     }
     
 #pragma mark - UINavigationControllerDelegate
     
-    // Called when the navigation controller shows a new top view controller via a push, pop or setting of the view controller stack.
-    - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
+// Called when the navigation controller shows a new top view controller via a push, pop or setting of the view controller stack.
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
         
         //set up the ABPeoplePicker controls here to get rid of he forced cacnel button on the right hand side but you also then have to 
         // the other views it pushes on to ensure they have to correct buttons shown at the correct time.
@@ -388,19 +403,19 @@
     
 #pragma mark - ABPersonViewControllerDelegate
     
-    // Called when the user selects an individual value in the Person view, identifier will be kABMultiValueInvalidIdentifier if a single value property was selected.
-    // Return NO if you do not want anything to be done or if you are handling the actions yourself.
-    // Return YES if you want the ABPersonViewController to perform its default action.
-    - (BOOL)personViewController:(ABPersonViewController *)personViewController shouldPerformDefaultActionForPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier{
+// Called when the user selects an individual value in the Person view, identifier will be kABMultiValueInvalidIdentifier if a single value property was selected.
+// Return NO if you do not want anything to be done or if you are handling the actions yourself.
+// Return YES if you want the ABPersonViewController to perform its default action.
+- (BOOL)personViewController:(ABPersonViewController *)personViewController shouldPerformDefaultActionForPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier{
         return YES;
     }
     
 #pragma mark - ABNewPersonViewControllerDelegate
     
-    // Called when the user selects Save or Cancel. If the new person was saved, person will be
-    // a valid person that was saved into the Address Book. Otherwise, person will be NULL.
-    // It is up to the delegate to dismiss the view controller.
--(void)newPersonViewController:(ABNewPersonViewController *)newPersonView didCompleteWithNewPerson:(ABRecordRef)person{
+// Called when the user selects Save or Cancel. If the new person was saved, person will be
+// a valid person that was saved into the Address Book. Otherwise, person will be NULL.
+// It is up to the delegate to dismiss the view controller.
+- (void)newPersonViewController:(ABNewPersonViewController *)newPersonView didCompleteWithNewPerson:(ABRecordRef)person{
     //called when a person is added to the address book
     if (![witnesses.text isEqualToString:@""]) {
         witnesses.text = [witnesses.text stringByAppendingFormat:@", %@", ABRecordCopyCompositeName(person)];
@@ -411,11 +426,6 @@
 
     [self dismissModalViewControllerAnimated:YES]; 
 }
-
-    
-
-
-
 
 - (void) peopleAdded:(Quote*)quote {
     currentQuote = quote;
@@ -451,10 +461,10 @@
         
         /////// Assign information to the current quote ///////
     {
-        currentQuote.text = quoteText.text;
-        currentQuote.speaker = (NSString *)speaker.text;
-        currentQuote.witnesses = [NSDictionary dictionaryWithObjects:[witnesses.text componentsSeparatedByString:@","] 
-                                                             forKeys:[witnesses.text componentsSeparatedByString:@","]];
+        //currentQuote.text = quoteText.text;
+        //currentQuote.speaker = (NSString *)speaker.text;
+        //currentQuote.witnesses = [NSDictionary dictionaryWithObjects:[witnesses.text componentsSeparatedByString:@","] 
+        //                                                     forKeys:[witnesses.text componentsSeparatedByString:@","]];
                               
         [quotifyingActivityIndicator startAnimating];
         [myComm sendQuote:currentQuote];//result will be delegated to quoteTextSent method

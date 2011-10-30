@@ -57,6 +57,7 @@
   
     UIActivityIndicatorView *quotifyingActivityIndicator;
     BOOL quoteTextWasEdited;
+    BOOL lastButtonClickedWasWitnesses;
    
     
 
@@ -85,7 +86,8 @@
 @property (nonatomic, retain) IBOutlet UIButton *settingsButton;
 @property (nonatomic, retain) IBOutlet UITextField *quotifier;
 @property (nonatomic, retain) IBOutlet SuccessViewController *successViewController;
-@property (nonatomic, retain) IBOutlet UIButton *addPersonButton;
+@property (nonatomic, retain) IBOutlet UIButton *addSpeakerButton;
+@property (nonatomic, retain) IBOutlet UIButton *addWitnessButton;
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *quotifyingActivityIndicator;
 @property (nonatomic, retain) CoreLocationController *locationController;
 
@@ -101,8 +103,7 @@
 - (IBAction)backToQuoteEntry:(id)sender;
 - (IBAction)emailEditingEnded:(id)sender;
 - (IBAction)fbButtonClicked:(id)sender;
-
--(IBAction)showContacts:(id)sender;
+- (IBAction)showContacts:(id)sender;
 
 
 - (void)registerForKeyboardNotifications;

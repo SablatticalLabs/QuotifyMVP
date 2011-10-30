@@ -15,24 +15,25 @@
 @interface Quote : NSObject {
     @private
     NSString *quotifier;
-    NSString *speaker;
     NSString *text;
     NSString *time;
     NSString *postID;
     NSString *UrlWhereQuoteIsPosted;
     NSMutableDictionary *witnesses;
+    NSMutableDictionary *speaker;
     UIImage *image; 
     MKPlacemark *location;
 }
 
-@property (retain) NSString *quotifier, *speaker, *text, *time, *postID, *UrlWhereQuoteIsPosted;
-@property (retain) NSDictionary *witnesses;
+@property (retain) NSString *quotifier, *text, *time, *postID, *UrlWhereQuoteIsPosted;
+@property (retain) NSMutableDictionary *witnesses, *speaker;
 @property (retain) UIImage *image;
 @property (retain) MKPlacemark *location;
 
 -(NSDictionary*)getQuoteAsDictionary;
 -(NSString *)getQuoteAsJSONString;
 -(void)timestamp;
+-(void)addSpeaker:(ABRecordRef)person;
 -(void)addWitness:(ABRecordRef)person;
 
 

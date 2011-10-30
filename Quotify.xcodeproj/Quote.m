@@ -34,6 +34,16 @@
 	[formatter release];
 }
 
+-(void)addSpeaker:(ABRecordRef)person{
+    NSLog(@"Email property: %@, Composite Name: %@", ABRecordCopyValue(person, kABPersonEmailProperty), ABRecordCopyCompositeName(person));
+    if (!self.speaker) {
+        self.speaker = [[NSMutableDictionary alloc] init];
+    }
+    
+    [speaker removeAllObjects];
+    [speaker setValue:(NSString *)ABRecordCopyValue(person, kABPersonEmailProperty) forKey:(NSString*)ABRecordCopyCompositeName(person)];
+}
+
 -(void)addWitness:(ABRecordRef)person{
     NSLog(@"Email property: %@, Composite Name: %@", ABRecordCopyValue(person, kABPersonEmailProperty), ABRecordCopyCompositeName(person));
     if (!self.witnesses) {
