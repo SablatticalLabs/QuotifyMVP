@@ -233,6 +233,7 @@
     }
     else
     {
+        imgPicker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
         [self presentModalViewController:self.imgPicker animated:YES];
     }
 }
@@ -244,22 +245,23 @@
         [self presentModalViewController:self.imgPicker animated:YES];
     }
     else if([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Choose from Library"]){
-        imgPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        imgPicker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
         [self presentModalViewController:self.imgPicker animated:YES];
     }
 }
 
 /////// Triggered once the user has chosen a picture ///////
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)pickedImage editingInfo:(NSDictionary *)editInfo {
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
+    
+    //[[picker parentViewController] dismissModalViewControllerAnimated:YES];
+    [picker dismissModalViewControllerAnimated:YES];
+    
+    [picker release];
     
     /////// Add the selected image to current quote ///////
-    if(pickedImage != nil)
-        currentQuote.image = pickedImage;	
-	[[picker parentViewController] dismissModalViewControllerAnimated:YES];
-    
-    /////// release imgPicker if necessary ///////
-    //[picker release];
+    if([info objectForKey:UIImagePickerControllerEditedImage] != nil)
+        currentQuote.image = [info objectForKey:UIImagePickerControllerEditedImage];
     
     /////// Insert the selected image into box in main view ///////
     imageBox.image = currentQuote.image;
