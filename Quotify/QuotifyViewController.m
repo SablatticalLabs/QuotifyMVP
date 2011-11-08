@@ -282,9 +282,8 @@
 /////// Called when the add person button is pressed ///////    
 -(IBAction)showContacts:(id)sender{
     
-    // Check to see if sender was clicked. Sender has tag 0
+    // Check to see if which button was clicked. Add witnesses has tag 1
     lastButtonClickedWasWitnesses = (((UIButton *)sender).tag == 1);
-
     
     self.picker = [[ABPeoplePickerNavigationController alloc] init];
     
@@ -301,7 +300,7 @@
     
     // Show the people picker 
     [self presentModalViewController:self.picker animated:YES];
-    [self.picker release];	
+    //[self.picker release];	
     
 }  
 
@@ -318,32 +317,41 @@
 // Return YES if you want the person to be displayed.
 // Return NO  to do nothing (the delegate is responsible for dismissing the peoplePicker).
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person{
+    //If the record has only one email or no emails and one phone number no need to show details
+    int numOfEmails = ABMultiValueGetCount(ABRecordCopyValue(person, kABPersonEmailProperty));
+    ABPropertyID phoneOrEmail = kABPersonPhoneProperty;
     
-    if (!lastButtonClickedWasWitnesses){
-        [currentQuote addSpeaker:person];
-        speaker.text = (NSString *)ABRecordCopyCompositeName(person);
-
-        // Disable the addSpeaker button
-    }
-    
-    else {
-    [currentQuote addWitness:person];
-    /////// Adds selected person to the speaker object of the quote class ///////
+    if ( numOfEmails == 1 || (numOfEmails == 0 && ABMultiValueGetCount(ABRecordCopyValue(person, kABPersonPhoneProperty)) == 1)){
+        if (numOfEmails == 1) {
+            phoneOrEmail = kABPersonEmailProperty;
+        }//otherwise no email addresses so it must be a phone number
         
-    // Checks if a comma needs to be added
-    if (![witnesses.text isEqualToString:@""]) {
-        witnesses.text = [witnesses.text stringByAppendingFormat:@", %@", ABRecordCopyCompositeName(person)];
-    }
-    
-    else {
-        witnesses.text = [witnesses.text stringByAppendingFormat:@"%@", ABRecordCopyCompositeName(person)];
+        if (!lastButtonClickedWasWitnesses){
+            [currentQuote addSpeaker:person withProperty:phoneOrEmail andIdentifier:kABPersonLastNamePhoneticProperty];
+            speaker.text = (NSString *)ABRecordCopyCompositeName(person);
 
-    }
-    
-    }
-    [peoplePicker dismissModalViewControllerAnimated:YES];
-    return NO;
+            // Disable the addSpeaker button
+        }
+        else {
+            [currentQuote addWitness:person withProperty:phoneOrEmail andIdentifier:kABPersonLastNamePhoneticProperty];
+            // Adds selected person to the speaker object of the quote class ///////
         
+            // Checks if a comma needs to be added
+            if (![witnesses.text isEqualToString:@""]) {
+                witnesses.text = [witnesses.text stringByAppendingFormat:@", %@", ABRecordCopyCompositeName(person)];
+            }
+            else {
+                witnesses.text = [witnesses.text stringByAppendingFormat:@"%@", ABRecordCopyCompositeName(person)];
+            }
+        }
+        [peoplePicker dismissModalViewControllerAnimated:YES];
+        
+        return NO;
+    }
+    else{
+        //present details
+        return YES;
+    }
 }
 
 ///////// Called after a property of a selected person is selected ///////
@@ -353,6 +361,27 @@
 // Return NO to do nothing (the delegate is responsible for dismissing the peoplePicker).
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier{
     
+    if (!lastButtonClickedWasWitnesses){
+        [currentQuote addSpeaker:person withProperty:property andIdentifier:identifier];
+        speaker.text = (NSString *)ABRecordCopyCompositeName(person);
+        
+        // Disable the addSpeaker button
+    }
+    else {
+        [currentQuote addWitness:person withProperty:property andIdentifier:identifier];
+        // Adds selected person to the speaker object of the quote class ///////
+        
+        // Checks if a comma needs to be added
+        if (![witnesses.text isEqualToString:@""]) {
+            witnesses.text = [witnesses.text stringByAppendingFormat:@", %@", ABRecordCopyCompositeName(person)];
+        }
+        else {
+            witnesses.text = [witnesses.text stringByAppendingFormat:@"%@", ABRecordCopyCompositeName(person)];
+        }
+    }
+
+    
+    [peoplePicker dismissModalViewControllerAnimated:YES];
     return NO;
 }
 

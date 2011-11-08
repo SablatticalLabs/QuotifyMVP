@@ -18,8 +18,8 @@
 @synthesize witnesses;
 @synthesize time;
 @synthesize locationLabel;
-@synthesize newQuoteButton;
 @synthesize quote;
+@synthesize newQuoteButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

@@ -34,23 +34,84 @@
 	[formatter release];
 }
 
--(void)addSpeaker:(ABRecordRef)person{
-    NSLog(@"Email property: %@, Composite Name: %@", ABRecordCopyValue(person, kABPersonEmailProperty), ABRecordCopyCompositeName(person));
+//-(void)addSpeaker:(ABRecordRef)person{
+//    NSLog(@"Email property: %@, Composite Name: %@", ABRecordCopyValue(person, kABPersonEmailProperty), ABRecordCopyCompositeName(person));
+//    if (!self.speaker) {
+//        self.speaker = [[NSMutableDictionary alloc] init];
+//    }
+//    
+//    [self.speaker removeAllObjects];
+//    [self.speaker setValue:(NSString *)ABRecordCopyValue(person, kABPersonEmailProperty) forKey:(NSString*)ABRecordCopyCompositeName(person)];
+//    
+// 
+//    // This is if we decide to send all the info...(not complete)     
+//    ABMutableMultiValueRef multi = ABMultiValueCreateMutable(kABMultiStringPropertyType);
+//    //ABRecordRef aRecord = ABPersonCreate();
+//    CFStringRef phoneNumber, phoneNumberLabel;
+//    multi = ABRecordCopyValue(person, kABPersonPhoneProperty);
+//    for (CFIndex i = 0; i < ABMultiValueGetCount(multi); i++) {
+//        phoneNumberLabel = ABMultiValueCopyLabelAtIndex(multi, i);
+//        phoneNumber      = ABMultiValueCopyValueAtIndex(multi, i);
+//        
+//        [speaker setValue:(NSString*)phoneNumber forKey:(NSString*)phoneNumberLabel];
+//        
+//        CFRelease(phoneNumberLabel);
+//        CFRelease(phoneNumber);
+//    }
+//    //CFRelease(person);
+//    CFRelease(multi);
+//
+//}
+
+-(void)addSpeaker:(ABRecordRef)person withProperty:(ABPropertyID)property andIdentifier:(ABMultiValueIdentifier)identifier{
     if (!self.speaker) {
         self.speaker = [[NSMutableDictionary alloc] init];
     }
     
-    [speaker removeAllObjects];
-    [speaker setValue:(NSString *)ABRecordCopyValue(person, kABPersonEmailProperty) forKey:(NSString*)ABRecordCopyCompositeName(person)];
+    ABMutableMultiValueRef multi = ABMultiValueCreateMutable(kABMultiStringPropertyType);
+    multi = ABRecordCopyValue(person, property);
+    int index;
+    if(identifier == kABPersonLastNamePhoneticProperty){
+        index = 0;
+    }
+    else {
+        index = ABMultiValueGetIndexForIdentifier(multi, identifier);
+    }
+    
+    [self.speaker removeAllObjects];
+    [self.speaker setValue:ABMultiValueCopyValueAtIndex(multi, index) 
+                    forKey:(NSString*)ABRecordCopyCompositeName(person)];
+    CFRelease(multi);
 }
 
--(void)addWitness:(ABRecordRef)person{
-    NSLog(@"Email property: %@, Composite Name: %@", ABRecordCopyValue(person, kABPersonEmailProperty), ABRecordCopyCompositeName(person));
+//-(void)addWitness:(ABRecordRef)person{
+//    //NSLog(@"Email property: %@, Composite Name: %@", ABRecordCopyValue(person, kABPersonEmailProperty), ABRecordCopyCompositeName(person));
+//    if (!self.witnesses) {
+//        self.witnesses = [[NSMutableDictionary alloc] init];
+//    }
+//    [witnesses setValue:(NSString *)ABRecordCopyValue(person, kABPersonEmailProperty) forKey:(NSString*)ABRecordCopyCompositeName(person)];
+//}
+
+-(void)addWitness:(ABRecordRef)person withProperty:(ABPropertyID)property andIdentifier:(ABMultiValueIdentifier)identifier{
     if (!self.witnesses) {
         self.witnesses = [[NSMutableDictionary alloc] init];
     }
-    [witnesses setValue:(NSString *)ABRecordCopyValue(person, kABPersonEmailProperty) forKey:(NSString*)ABRecordCopyCompositeName(person)];
+    
+    ABMutableMultiValueRef multi = ABMultiValueCreateMutable(kABMultiStringPropertyType);
+    multi = ABRecordCopyValue(person, property);
+    int index;
+    if(identifier == kABPersonLastNamePhoneticProperty){
+        index = 0;
+    }
+    else {
+        index = ABMultiValueGetIndexForIdentifier(multi, identifier);
+    }
+    
+    [self.witnesses setValue:ABMultiValueCopyValueAtIndex(multi, index) 
+                    forKey:(NSString*)ABRecordCopyCompositeName(person)];
+    CFRelease(multi);
 }
+
 
 
 @end

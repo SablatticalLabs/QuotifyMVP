@@ -225,7 +225,7 @@ BOOL FBIsDeviceIPad() {
       NSString* value = [params objectForKey:key];
       NSString* escaped_value = (NSString *)CFURLCreateStringByAddingPercentEscapes(
                                   NULL, /* allocator */
-                                  (CFStringRef)value,
+                                  (__bridge CFStringRef)value,
                                   NULL, /* charactersToLeaveUnescaped */
                                   (CFStringRef)@"!*'();:@&=+$,/?%#[]",
                                   kCFStringEncodingUTF8);
