@@ -14,8 +14,8 @@
 @interface QuotifyAppDelegate : NSObject <UIApplicationDelegate, FBSessionDelegate> {
 }
 
-@property (nonatomic, retain) IBOutlet UIWindow *window;
+@property (nonatomic, strong) IBOutlet UIWindow *window;
 
-@property (nonatomic, retain) IBOutlet QuotifyViewController *viewController;
+@property (nonatomic, strong) IBOutlet QuotifyViewController *viewController;
 
 @end

@@ -19,7 +19,7 @@
 @synthesize time;
 @synthesize locationLabel;
 @synthesize quote;
-@synthesize newQuoteButton;
+@synthesize theNewQuoteButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -58,18 +58,6 @@
     
 }
 
-- (void)dealloc
-{
-    [quoteView release];
-    [imageBox release];
-    [speaker release];
-    [witnesses release];
-    [time release];
-    [locationLabel release];
-    [newQuoteButton release];
-    [quote release];
-    [super dealloc];
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -97,7 +85,7 @@
     [self setWitnesses:nil];
     [self setTime:nil];
     [self setLocationLabel:nil];
-    [self setNewQuoteButton:nil];
+    [self setTheNewQuoteButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

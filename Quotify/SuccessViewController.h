@@ -20,17 +20,17 @@
     UILabel *witnesses;
     UILabel *time;
     UILabel *locationLabel;
-    UIButton *newQuoteButton;
+    UIButton *theNewQuoteButton;
     Quote *quote;
 }
-@property (nonatomic, retain) IBOutlet UITextView *quoteView;
-@property (nonatomic, retain) IBOutlet UIImageView *imageBox;
-@property (nonatomic, retain) IBOutlet UILabel *speaker;
-@property (nonatomic, retain) IBOutlet UILabel *witnesses;
-@property (nonatomic, retain) IBOutlet UILabel *time;
-@property (nonatomic, retain) IBOutlet UILabel *locationLabel;
-@property (nonatomic, retain) IBOutlet UIButton *newQuoteButton;
-@property (nonatomic, retain) Quote *quote;
+@property (nonatomic, strong) IBOutlet UITextView *quoteView;
+@property (nonatomic, strong) IBOutlet UIImageView *imageBox;
+@property (nonatomic, strong) IBOutlet UILabel *speaker;
+@property (nonatomic, strong) IBOutlet UILabel *witnesses;
+@property (nonatomic, strong) IBOutlet UILabel *time;
+@property (nonatomic, strong) IBOutlet UILabel *locationLabel;
+@property (nonatomic, strong) IBOutlet UIButton *theNewQuoteButton;
+@property (nonatomic, strong) Quote *quote;
 
 - (id)initWithQuote:(Quote *)theQuote;
 - (void)displayQuote:(Quote *)theQuote;

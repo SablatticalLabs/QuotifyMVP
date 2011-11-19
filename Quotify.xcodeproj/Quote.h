@@ -25,10 +25,10 @@
     MKPlacemark *location;
 }
 
-@property (retain) NSString *quotifier, *text, *time, *postID, *UrlWhereQuoteIsPosted;
-@property (retain) NSMutableDictionary *witnesses, *speaker;
-@property (retain) UIImage *image;
-@property (retain) MKPlacemark *location;
+@property (strong) NSString *quotifier, *text, *time, *postID, *UrlWhereQuoteIsPosted;
+@property (strong) NSMutableDictionary *witnesses, *speaker;
+@property (strong) UIImage *image;
+@property (strong) MKPlacemark *location;
 
 -(NSDictionary*)getQuoteAsDictionary;
 -(NSString *)getQuoteAsJSONString;

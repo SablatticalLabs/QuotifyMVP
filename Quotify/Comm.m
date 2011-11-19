@@ -13,7 +13,7 @@
 
 @synthesize quoteToSend, quoteTextSentSuccessfully, delegate;
 
-NSString * const sendQuoteToURL = @"http://www.quotify.it/api/addquote";
+NSString * const sendQuoteToURL = @"http://www.quotify.it/quotes.json";
 NSString * const sendImageToURLwithPrefix = @"http://quotify.it/api/postphoto/";
 
 
@@ -50,7 +50,6 @@ NSString * const sendImageToURLwithPrefix = @"http://quotify.it/api/postphoto/";
     NSString* dataAsString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     NSLog(@"urlData: %@",dataAsString);
     NSDictionary* result = [dataAsString JSONValue];
-    [dataAsString release];
     
     NSNumber *n_Success = [result objectForKey:@"success"];
     if (n_Success != nil)//quoteText Sent... 
@@ -86,7 +85,7 @@ NSString * const sendImageToURLwithPrefix = @"http://quotify.it/api/postphoto/";
     NSString *urlString = [sendImageToURLwithPrefix stringByAppendingString:postID]; 
 	
 	// setting up the request object now
-	NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
+	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
 	[request setURL:[NSURL URLWithString:urlString]];
 	[request setHTTPMethod:@"POST"];
 	

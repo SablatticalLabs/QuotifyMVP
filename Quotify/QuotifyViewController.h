@@ -65,33 +65,33 @@
 //    TTPickerTextField *textField;
 }
 
-@property (nonatomic, retain) IBOutlet FBLoginButton *fbButton;
-@property (nonatomic, retain) Facebook *facebook;
+@property (nonatomic, strong) IBOutlet FBLoginButton *fbButton;
+@property (nonatomic, strong) Facebook *facebook;
 //@property (nonatomic, retain) IBOutlet TTPickerTextField *TTwitnesses;
 
-@property (nonatomic, retain) IBOutlet UIView *settingsView;
-@property (nonatomic, retain) IBOutlet UIView *addPersonView;
-@property (nonatomic, retain) IBOutlet UILabel *locLabel;
-@property (nonatomic, retain) IBOutlet UITextView *quoteText;
-@property (nonatomic, retain) IBOutlet UITextField *speaker;
-@property (nonatomic, retain) IBOutlet UITextField *witnesses;
-@property (nonatomic, retain) IBOutlet UIImageView *imageBox;
-@property (nonatomic, retain) IBOutlet UIButton *quotifyButton;
-@property (nonatomic, retain) UIImagePickerController *imgPicker;
-@property (nonatomic, retain) IBOutlet UIViewController *settingsViewController;
-@property (nonatomic, retain) IBOutlet UIViewController *addPersonViewController;
-@property (nonatomic, retain) IBOutlet UIView *firstView;
-@property (nonatomic, retain) IBOutlet UIButton *hideKeyboardButton;
-@property (nonatomic, retain) IBOutlet UILabel *timestampLabel;
-@property (nonatomic, retain) IBOutlet UIButton *settingsButton;
-@property (nonatomic, retain) IBOutlet UITextField *quotifier;
-@property (nonatomic, retain) IBOutlet SuccessViewController *successViewController;
-@property (nonatomic, retain) IBOutlet UIButton *addSpeakerButton;
-@property (nonatomic, retain) IBOutlet UIButton *addWitnessButton;
-@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *quotifyingActivityIndicator;
-@property (nonatomic, retain) CoreLocationController *locationController;
+@property (nonatomic, strong) IBOutlet UIView *settingsView;
+@property (nonatomic, strong) IBOutlet UIView *addPersonView;
+@property (nonatomic, strong) IBOutlet UILabel *locLabel;
+@property (nonatomic, strong) IBOutlet UITextView *quoteText;
+@property (nonatomic, strong) IBOutlet UITextField *speaker;
+@property (nonatomic, strong) IBOutlet UITextField *witnesses;
+@property (nonatomic, strong) IBOutlet UIImageView *imageBox;
+@property (nonatomic, strong) IBOutlet UIButton *quotifyButton;
+@property (nonatomic, strong) UIImagePickerController *imgPicker;
+@property (nonatomic, strong) IBOutlet UIViewController *settingsViewController;
+@property (nonatomic, strong) IBOutlet UIViewController *addPersonViewController;
+@property (nonatomic, strong) IBOutlet UIView *firstView;
+@property (nonatomic, strong) IBOutlet UIButton *hideKeyboardButton;
+@property (nonatomic, strong) IBOutlet UILabel *timestampLabel;
+@property (nonatomic, strong) IBOutlet UIButton *settingsButton;
+@property (nonatomic, strong) IBOutlet UITextField *quotifier;
+@property (nonatomic, strong) IBOutlet SuccessViewController *successViewController;
+@property (nonatomic, strong) IBOutlet UIButton *addSpeakerButton;
+@property (nonatomic, strong) IBOutlet UIButton *addWitnessButton;
+@property (nonatomic, strong) IBOutlet UIActivityIndicatorView *quotifyingActivityIndicator;
+@property (nonatomic, strong) CoreLocationController *locationController;
 
-@property(nonatomic, retain) ABPeoplePickerNavigationController *picker;
+@property(nonatomic, strong) ABPeoplePickerNavigationController *picker;
 
 
 - (IBAction)backToMainView:(id)sender;

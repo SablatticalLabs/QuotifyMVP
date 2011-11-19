@@ -25,8 +25,8 @@ extern NSString * const sendQuoteToURL;
 extern NSString * const sendImageToURLwithPrefix;
 
 @property BOOL quoteTextSentSuccessfully;
-@property (retain) Quote* quoteToSend;
-@property (retain) id <CommDelegate> delegate;
+@property (strong) Quote* quoteToSend;
+@property (strong) id <CommDelegate> delegate;
 
 -(void)sendQuote:(Quote*)theQuote;
 -(void)addImage:(UIImage*)theImage toQuoteWithID:(NSString*)postID;

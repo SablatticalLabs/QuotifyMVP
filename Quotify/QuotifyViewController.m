@@ -121,11 +121,6 @@
 }
 
 - (void)viewDidUnload{
-    [currentQuote release];
-    [myComm release];
-    [quoteText release];
-    [imgPicker release];
-    [facebook release];
     quoteText = nil;
     [self setSpeaker:nil];
     [self setQuoteText:nil];
@@ -133,10 +128,8 @@
     [self setImageBox:nil];
     [self setQuotifyButton:nil];
     [self setFirstView:nil];
-    [hideKeyboardButton release];
     hideKeyboardButton = nil;
     [self setHideKeyboardButton:nil];
-    [timestampLabel release];
     timestampLabel = nil;
     [self setTimestampLabel:nil];
     [self setSettingsButton:nil];
@@ -161,34 +154,6 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)dealloc{
-    [quoteText release];
-    [speaker release];
-    [witnesses release];
-    [imageBox release];
-    [quotifyButton release];
-    [locationController release];
-    //save (if necessary) and release currentQuote
-    [myComm release];
-    [imageBoxPressed release];
-    [firstView release];
-    [hideKeyboardButton release];
-    [timestampLabel release];
-    [settingsButton release];
-    [settingsView release];
-    [settingsViewController release];
-    [quotifier release];
-    [successViewController release];
-    [addPersonView release];
-    [addPersonViewController release];
-    [quotifyingActivityIndicator release];
-    [locLabel release];
-    [fbButton release];
-    [addSpeakerButton release];
-    [addWitnessButton release];
-    [addPersonViewController release];
-    [super dealloc];
-}
 
 - (void)didReceiveMemoryWarning{
     // Releases the view if it doesn't have a superview.
@@ -227,7 +192,7 @@
 - (IBAction)imageBoxPressed:(id)sender {
     if ( ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]))
 	{	
-        UIActionSheet *pictureSourceActionSheet = [[[UIActionSheet alloc] initWithTitle:@"Image Source" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Picture", @"Choose from Library", nil] autorelease];
+        UIActionSheet *pictureSourceActionSheet = [[UIActionSheet alloc] initWithTitle:@"Image Source" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Picture", @"Choose from Library", nil];
         pictureSourceActionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
         [pictureSourceActionSheet showFromRect:imageBox.frame inView:self.view animated:YES];
     }
@@ -257,7 +222,6 @@
     //[[picker parentViewController] dismissModalViewControllerAnimated:YES];
     [picker dismissModalViewControllerAnimated:YES];
     
-    [picker release];
     
     /////// Add the selected image to current quote ///////
     if([info objectForKey:UIImagePickerControllerEditedImage] != nil)
@@ -279,7 +243,7 @@
 //////////////////////////////
 
 
-/////// Called when the add person button is pressed ///////    
+/////// Called when the add speaker/witness button is pressed ///////    
 -(IBAction)showContacts:(id)sender{
     
     // Check to see if which button was clicked. Add witnesses has tag 1
@@ -293,8 +257,7 @@
     
     // Display only a person's phone, email, and birthdate
     NSArray *displayedItems = [NSArray arrayWithObjects:[NSNumber numberWithInt:kABPersonPhoneProperty], 
-                               [NSNumber numberWithInt:kABPersonEmailProperty],
-                               [NSNumber numberWithInt:kABPersonBirthdayProperty], nil];
+                               [NSNumber numberWithInt:kABPersonEmailProperty], nil];
     
     self.picker.displayedProperties = displayedItems;
     
@@ -328,7 +291,7 @@
         
         if (!lastButtonClickedWasWitnesses){
             [currentQuote addSpeaker:person withProperty:phoneOrEmail andIdentifier:kABPersonLastNamePhoneticProperty];
-            speaker.text = (NSString *)ABRecordCopyCompositeName(person);
+            speaker.text = (__bridge_transfer NSString *)ABRecordCopyCompositeName(person);
 
             // Disable the addSpeaker button
         }
@@ -363,7 +326,7 @@
     
     if (!lastButtonClickedWasWitnesses){
         [currentQuote addSpeaker:person withProperty:property andIdentifier:identifier];
-        speaker.text = (NSString *)ABRecordCopyCompositeName(person);
+        speaker.text = (__bridge_transfer NSString *)ABRecordCopyCompositeName(person);
         
         // Disable the addSpeaker button
     }
@@ -448,14 +411,17 @@
 // It is up to the delegate to dismiss the view controller.
 - (void)newPersonViewController:(ABNewPersonViewController *)newPersonView didCompleteWithNewPerson:(ABRecordRef)person{
     //called when a person is added to the address book
-    if (![witnesses.text isEqualToString:@""]) {
-        witnesses.text = [witnesses.text stringByAppendingFormat:@", %@", ABRecordCopyCompositeName(person)];
+    if(person){
+        //[self.picker ];
+        //[self peoplePickerNavigationController:self.picker shouldContinueAfterSelectingPerson:person];
+        if (![witnesses.text isEqualToString:@""]) {
+            witnesses.text = [witnesses.text stringByAppendingFormat:@", %@", ABRecordCopyCompositeName(person)];
+        }
+        else {
+            witnesses.text = [witnesses.text stringByAppendingFormat:@"%@", ABRecordCopyCompositeName(person)];        
+        }
     }
-    else {
-        witnesses.text = [witnesses.text stringByAppendingFormat:@"%@", ABRecordCopyCompositeName(person)];        
-    }
-
-    [self dismissModalViewControllerAnimated:YES]; 
+    [newPersonView dismissModalViewControllerAnimated:YES]; 
 }
 
 - (void) peopleAdded:(Quote*)quote {
@@ -492,7 +458,7 @@
         
         /////// Assign information to the current quote ///////
     {
-        //currentQuote.text = quoteText.text;
+        currentQuote.text = quoteText.text;
         //currentQuote.speaker = (NSString *)speaker.text;
         //currentQuote.witnesses = [NSDictionary dictionaryWithObjects:[witnesses.text componentsSeparatedByString:@","] 
         //                                                     forKeys:[witnesses.text componentsSeparatedByString:@","]];
@@ -561,7 +527,6 @@
 }
 
 - (void)setupNewQuote{
-    [currentQuote release];
     currentQuote = [[Quote alloc] init];
     quoteText.text = @"What was said?";
     quoteText.textColor = [UIColor lightGrayColor];
@@ -575,7 +540,6 @@
 - (void)raiseFailurePopupWithTitle:(NSString *) alertTitle andMessage:(NSString *) alertMessage{
     UIAlertView *failureAlert = [[UIAlertView alloc] initWithTitle:alertTitle message:alertMessage delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
     [failureAlert show];
-    [failureAlert release];
 }
 
 

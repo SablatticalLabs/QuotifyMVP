@@ -16,14 +16,16 @@
 @synthesize quotifier, speaker, text, witnesses, image, time, postID, UrlWhereQuoteIsPosted, location;
 
 // This crashes if the user doesn't input anything. We should check that field aren't blank before calling this method.
--(NSDictionary *)getQuoteAsDictionary{
-    NSArray *keys = [NSArray arrayWithObjects:@"quotifier", @"speaker", @"text", @"witnesses", @"time", nil];
-    NSArray *objects = [NSArray arrayWithObjects: @"quotifier", self.speaker, self.text, @"witness1, witness2", self.time, nil];
+-(NSDictionary *)getQuoteAsDictionary{//Get Location happening
+    NSArray *keys = [NSArray arrayWithObjects:@"quotifier", @"text", @"speaker", @"witnesses", @"time", @"location", nil];
+    NSArray *objects = [NSArray arrayWithObjects: self.quotifier, self.text, self.speaker, self.witnesses, self.time, @"location", nil];
     return [NSDictionary dictionaryWithObjects:objects forKeys:keys];
 }
 
 -(NSString *)getQuoteAsJSONString{
-    return [[self getQuoteAsDictionary] JSONRepresentation];
+    NSString * jSonSon = [NSString stringWithString:[[self getQuoteAsDictionary] JSONRepresentation]];
+    NSLog(@"%@", jSonSon);
+    return jSonSon;
 }
 
 // Timestamps quote object with a formatted string 
@@ -31,7 +33,6 @@
 	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
 	[formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
 	self.time = [formatter stringFromDate:[NSDate date]];
-	[formatter release];
 }
 
 //-(void)addSpeaker:(ABRecordRef)person{
@@ -79,8 +80,9 @@
     }
     
     [self.speaker removeAllObjects];
-    [self.speaker setValue:ABMultiValueCopyValueAtIndex(multi, index) 
-                    forKey:(NSString*)ABRecordCopyCompositeName(person)];
+    [self.speaker setValue:(__bridge_transfer NSString*)(ABMultiValueCopyValueAtIndex(multi, index)) 
+                    forKey:(__bridge_transfer NSString*)ABRecordCopyCompositeName(person)];
+    NSLog(@"%@", speaker);
     CFRelease(multi);
 }
 
@@ -107,8 +109,9 @@
         index = ABMultiValueGetIndexForIdentifier(multi, identifier);
     }
     
-    [self.witnesses setValue:ABMultiValueCopyValueAtIndex(multi, index) 
-                    forKey:(NSString*)ABRecordCopyCompositeName(person)];
+    [self.witnesses setValue:(__bridge_transfer NSString*)(ABMultiValueCopyValueAtIndex(multi, index)) 
+                    forKey:(__bridge_transfer NSString*)ABRecordCopyCompositeName(person)];
+    NSLog(@"%@", witnesses);
     CFRelease(multi);
 }
 

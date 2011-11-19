@@ -40,19 +40,19 @@
 		ADD5BC63145100CD009D475C /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADD5BC62145100CD009D475C /* AddressBook.framework */; };
 		ADD5BC65145100D3009D475C /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADD5BC64145100D3009D475C /* AddressBookUI.framework */; };
 		ADE1C3401396F10C00D28669 /* Quotify_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = ADE1C33F1396F10C00D28669 /* Quotify_logo.png */; };
-		ADF0F9E913A15C63000AC8FC /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF0F9CE13A15C63000AC8FC /* Facebook.m */; };
+		ADF0F9E913A15C63000AC8FC /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF0F9CE13A15C63000AC8FC /* Facebook.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		ADF0F9EA13A15C63000AC8FC /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ADF0F9D113A15C63000AC8FC /* FBDialog.bundle */; };
-		ADF0F9EB13A15C63000AC8FC /* FBDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF0F9D313A15C63000AC8FC /* FBDialog.m */; };
-		ADF0F9EC13A15C63000AC8FC /* FBLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF0F9D513A15C63000AC8FC /* FBLoginDialog.m */; };
-		ADF0F9ED13A15C63000AC8FC /* FBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF0F9D713A15C63000AC8FC /* FBRequest.m */; };
-		ADF0F9EE13A15C63000AC8FC /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF0F9DB13A15C63000AC8FC /* NSObject+SBJSON.m */; };
-		ADF0F9EF13A15C63000AC8FC /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF0F9DD13A15C63000AC8FC /* NSString+SBJSON.m */; };
-		ADF0F9F013A15C63000AC8FC /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF0F9DF13A15C63000AC8FC /* SBJSON.m */; };
-		ADF0F9F113A15C63000AC8FC /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF0F9E113A15C63000AC8FC /* SBJsonBase.m */; };
-		ADF0F9F213A15C63000AC8FC /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF0F9E313A15C63000AC8FC /* SBJsonParser.m */; };
-		ADF0F9F313A15C63000AC8FC /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF0F9E513A15C63000AC8FC /* SBJsonWriter.m */; };
+		ADF0F9EB13A15C63000AC8FC /* FBDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF0F9D313A15C63000AC8FC /* FBDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		ADF0F9EC13A15C63000AC8FC /* FBLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF0F9D513A15C63000AC8FC /* FBLoginDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		ADF0F9ED13A15C63000AC8FC /* FBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF0F9D713A15C63000AC8FC /* FBRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		ADF0F9EE13A15C63000AC8FC /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF0F9DB13A15C63000AC8FC /* NSObject+SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		ADF0F9EF13A15C63000AC8FC /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF0F9DD13A15C63000AC8FC /* NSString+SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		ADF0F9F013A15C63000AC8FC /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF0F9DF13A15C63000AC8FC /* SBJSON.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		ADF0F9F113A15C63000AC8FC /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF0F9E113A15C63000AC8FC /* SBJsonBase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		ADF0F9F213A15C63000AC8FC /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF0F9E313A15C63000AC8FC /* SBJsonParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		ADF0F9F313A15C63000AC8FC /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF0F9E513A15C63000AC8FC /* SBJsonWriter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DD09DCA013A2980C007A0786 /* FBConnect.bundle in Resources */ = {isa = PBXBuildFile; fileRef = DD09DC9D13A2980B007A0786 /* FBConnect.bundle */; };
-		DD09DCA113A2980C007A0786 /* FBLoginButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DD09DC9F13A2980B007A0786 /* FBLoginButton.m */; };
+		DD09DCA113A2980C007A0786 /* FBLoginButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DD09DC9F13A2980B007A0786 /* FBLoginButton.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		DD560CEE139AC8640047A926 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD560CED139AC8640047A926 /* MapKit.framework */; };
 		DDA57D69139827EA00498283 /* Quotify_logo_small.png in Resources */ = {isa = PBXBuildFile; fileRef = DDA57D68139827EA00498283 /* Quotify_logo_small.png */; };
 		DDBD101A13944B7400A40AF4 /* SuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBD101813944B7300A40AF4 /* SuccessViewController.m */; };
@@ -565,6 +565,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				"CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*]" = Entitlements.plist;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
@@ -591,12 +592,14 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Quotify.app/Quotify";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QuotifyTests/QuotifyTests-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "QuotifyTests/QuotifyTests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -652,6 +655,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -678,6 +682,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
@@ -704,12 +709,14 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Quotify.app/Quotify";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QuotifyTests/QuotifyTests-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "QuotifyTests/QuotifyTests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -726,12 +733,14 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Quotify.app/Quotify";
+				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QuotifyTests/QuotifyTests-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "QuotifyTests/QuotifyTests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-framework",

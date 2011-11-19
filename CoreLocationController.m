@@ -17,7 +17,7 @@
 	self = [super init];
     
 	if(self != nil) {
-		self.locMgr = [[[CLLocationManager alloc] init] autorelease]; // Create new instance of locMgr
+		self.locMgr = [[CLLocationManager alloc] init]; // Create new instance of locMgr
 		self.locMgr.delegate = self; // Set the delegate as self.
         self.locMgr.purpose = @"We wanna geotag your quotes!";
         self.locMgr.desiredAccuracy = kCLLocationAccuracyBest;
@@ -28,9 +28,6 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
 	if([self.delegate conformsToProtocol:@protocol(CoreLocationControllerDelegate)]) {  // Check if the class assigning itself as the delegate conforms to our protocol.  If not, the message will go nowhere.  Not good.
-        if (revGeoc != nil) {
-            [revGeoc release];
-        }
         revGeoc = [[MKReverseGeocoder alloc] initWithCoordinate:newLocation.coordinate];
         revGeoc.delegate = self;
         [revGeoc start];
@@ -54,9 +51,8 @@
 
 // Clean up locMgr
 - (void)dealloc {
-	[self.locMgr release];
+	self.locMgr;
     //[self.revGeoc release];
-	[super dealloc];
 }
 
 @end
