@@ -62,13 +62,10 @@
     
 
  
-//    TTPickerTextField *textField;
 }
 
 @property (nonatomic, strong) IBOutlet FBLoginButton *fbButton;
 @property (nonatomic, strong) Facebook *facebook;
-//@property (nonatomic, retain) IBOutlet TTPickerTextField *TTwitnesses;
-
 @property (nonatomic, strong) IBOutlet UIView *settingsView;
 @property (nonatomic, strong) IBOutlet UIView *addPersonView;
 @property (nonatomic, strong) IBOutlet UILabel *locLabel;

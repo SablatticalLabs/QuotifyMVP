@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
-//#import <MapKit/MapKit.h>
 #import "JSON.h"
 #import <AddressBook/AddressBook.h>
 #import <AddressBookUI/AddressBookUI.h>
@@ -34,9 +33,7 @@
 -(NSDictionary*)getQuoteAsDictionary;
 -(NSString *)getQuoteAsJSONString;
 -(void)timestamp;
-//-(void)addSpeaker:(ABRecordRef)person;
 -(void)addSpeaker:(ABRecordRef)person withProperty:(ABPropertyID)property andIdentifier:(ABMultiValueIdentifier)identifier;
-//-(void)addWitness:(ABRecordRef)person;
 -(void)addWitness:(ABRecordRef)person withProperty:(ABPropertyID)property andIdentifier:(ABMultiValueIdentifier)identifier;
 
 
