@@ -10,49 +10,41 @@
 
 @implementation CoreLocationController
 
-@synthesize locMgr, delegate, revGeoc;
+@synthesize locationManager = _locationManager;
+@synthesize delegate; 
 
 // Create a new instance of CLLocationManager and set delegate as self
 - (id)init {
 	self = [super init];
     
 	if(self != nil) {
-		self.locMgr = [[CLLocationManager alloc] init]; // Create new instance of locMgr
-		self.locMgr.delegate = self; // Set the delegate as self.
-        self.locMgr.purpose = @"We wanna geotag your quotes!";
-        self.locMgr.desiredAccuracy = kCLLocationAccuracyBest;
+		self.locationManager = [[CLLocationManager alloc] init]; // Create new instance of locMgr
+		self.locationManager.delegate = self; // Set the delegate as self.
+        self.locationManager.purpose = @"We wanna geotag your quotes!";
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
 	}
     
 	return self;
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-	if([self.delegate conformsToProtocol:@protocol(CoreLocationControllerDelegate)]) {  // Check if the class assigning itself as the delegate conforms to our protocol.  If not, the message will go nowhere.  Not good.
-        revGeoc = [[MKReverseGeocoder alloc] initWithCoordinate:newLocation.coordinate];
-        revGeoc.delegate = self;
-        [revGeoc start];
-        //[self.delegate locationUpdate:revGeoc];
-	}
+	//if([self.delegate conformsToProtocol:@protocol(CoreLocationControllerDelegate)]) {  // Check if the class assigning itself as the delegate conforms to our protocol.  If not, the message will go nowhere.  Not good.
+	//}
+    CLLocation *currentLocation = [self.locationManager location];
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    
+    [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        if ([placemarks count] > 0) {
+            // Pick the best out of the possible placemarks
+            
+            //CLPlacemark *placemark is comparable to MKPlacemark *location
+            CLPlacemark *placemark = [placemarks objectAtIndex:0];
+            [self.delegate locationUpdate:placemark];
+
+        }
+
+}];
 }
 
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-	if([self.delegate conformsToProtocol:@protocol(CoreLocationControllerDelegate)]) {  // Check if the class assigning itself as the delegate conforms to our protocol.  If not, the message will go nowhere.  Not good.
-		[self.delegate locationError:error];
-	}
-}
-
-- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark{
-    [self.delegate locationUpdate:placemark];
-}
-
--(void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error{
-    [self.delegate locationError:error];
-}
-
-// Clean up locMgr
-- (void)dealloc {
-	self.locMgr;
-    //[self.revGeoc release];
-}
 
 @end

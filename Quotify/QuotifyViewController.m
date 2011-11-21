@@ -72,7 +72,7 @@
     /////// Request location info from location controller ///////
     locationController = [[CoreLocationController alloc] init];
 	locationController.delegate = self;
-	[locationController.locMgr startUpdatingLocation];
+	[locationController.locationManager startUpdatingLocation];
     
     
     /////// Set up a new imagePicker ///////
@@ -170,7 +170,7 @@
 //////////////////////////////
 
 /////// Begin updating location info ///////
-- (void)locationUpdate:(MKPlacemark *)location {
+- (void)locationUpdate:(CLPlacemark *)location {
 	//NSLog(@"coordinate: %@", location.coordinate);
     currentQuote.location = location;
     locLabel.text = [NSString stringWithFormat:@"%@, %@",location.thoroughfare, location.locality];

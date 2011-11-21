@@ -46,7 +46,7 @@
      If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
      */
     
-    [self.viewController.locationController.locMgr stopUpdatingLocation];
+    [self.viewController.locationController.locationManager stopUpdatingLocation];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -54,7 +54,7 @@
     /*
      Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
      */
-    [self.viewController.locationController.locMgr startUpdatingLocation];
+    [self.viewController.locationController.locationManager startUpdatingLocation];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

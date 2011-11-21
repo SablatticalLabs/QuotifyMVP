@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
+//#import <MapKit/MapKit.h>
 #import "JSON.h"
 #import <AddressBook/AddressBook.h>
 #import <AddressBookUI/AddressBookUI.h>
@@ -22,13 +23,13 @@
     NSMutableDictionary *witnesses;
     NSMutableDictionary *speaker;
     UIImage *image; 
-    MKPlacemark *location;
+    CLPlacemark *location;
 }
 
 @property (strong) NSString *quotifier, *text, *time, *postID, *UrlWhereQuoteIsPosted;
 @property (strong) NSMutableDictionary *witnesses, *speaker;
 @property (strong) UIImage *image;
-@property (strong) MKPlacemark *location;
+@property (strong) CLPlacemark *location;
 
 -(NSDictionary*)getQuoteAsDictionary;
 -(NSString *)getQuoteAsJSONString;
