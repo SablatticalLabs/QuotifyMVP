@@ -13,13 +13,59 @@
 
 @implementation Quote
 
-@synthesize quotifier, speaker, text, witnesses, image, time, postID, UrlWhereQuoteIsPosted, location;
+@synthesize quotifier, speaker, text, witnesses, image, time, postID, UrlWhereQuoteIsPosted, location, currentLocation;
+
+
+
+-(NSString *)getLocationAsText{
+    NSString *locationAsText = [NSString stringWithFormat:@"%@, %@", self.location.thoroughfare, self.location.locality];
+    return locationAsText;                        
+}
+
+-(NSString *)getLocationAsCoordinate{ //:(CLLocation *)currentLocation
+    NSString *lat = nil;
+    NSString *lng = nil;
+    
+    // Latititude
+    {
+        float deg = self.currentLocation.coordinate.latitude;
+        
+        NSString *direction = deg >= 0 ? @"N" : @"S";
+        
+        float d = floorf(abs(deg));
+        float m = (deg - d)*60;
+        float s = (m - floor(m)) * 60;
+        
+        lat = [NSString stringWithFormat:@"%i°%i'%i''%@", (int)d, (int)m, (int)s, direction];
+    }
+    
+    // Longitude
+    {
+        float deg = currentLocation.coordinate.longitude;
+        
+        NSString *direction = deg >= 0 ? @"E" : @"W";
+        
+        float d = floorf(abs(deg));
+        float m = (deg - d)*60;
+        float s = (m - floor(m)) * 60;
+        
+        lng = [NSString stringWithFormat:@"%i°%i'%i''%@", (int)d, (int)m, (int)s, direction];
+    }
+    
+    return [NSString stringWithFormat:@"%@ %@", lat, lng];
+}
+    
+//    NSString *locationAsCoordinate = [NSString stringWithFormat:@"%g, %g", self.currentLocation.coordinate.latitude, self.currentLocation.coordinate.longitude];
+//    NSLog(@"Coordinate: %@", locationAsCoordinate);
+//    return locationAsCoordinate;
+//}
 
 // This crashes if the user doesn't input anything. We should check that field aren't blank before calling this method.
 -(NSDictionary *)getQuoteAsDictionary{//Get Location happening
-    NSArray *keys = [NSArray arrayWithObjects:@"quotifier", @"text", @"speaker", @"witnesses", @"time", @"location", nil];
-    NSArray *objects = [NSArray arrayWithObjects: self.quotifier, self.text, self.speaker, self.witnesses, self.time, @"location", nil];
+    NSArray *keys = [NSArray arrayWithObjects:@"quotifier", @"text", @"speaker", @"witnesses", @"time", @"location", @"coordinate", nil];
+    NSArray *objects = [NSArray arrayWithObjects: self.quotifier, self.text, self.speaker, self.witnesses, self.time, self.getLocationAsText, self.getLocationAsCoordinate, nil];
     return [NSDictionary dictionaryWithObjects:objects forKeys:keys];
+   
 }
 
 -(NSString *)getQuoteAsJSONString{

@@ -14,7 +14,8 @@
 
 @protocol CoreLocationControllerDelegate 
 @required
-- (void)locationUpdate:(CLPlacemark *)location; // Our location updates are sent here
+- (void)locationUpdate:(CLPlacemark *)location 
+       withCoordinates:(CLLocation *)currentLocation; // Our location updates are sent here
 - (void)locationError:(NSError *)error; // Any errors are sent here
 @end
 

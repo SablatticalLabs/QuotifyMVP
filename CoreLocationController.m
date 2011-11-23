@@ -37,9 +37,9 @@
         if ([placemarks count] > 0) {
             // Pick the best out of the possible placemarks
             
-            //CLPlacemark *placemark is comparable to MKPlacemark *location
+            //CLPlacemark *placemark is replacing MKPlacemark *location
             CLPlacemark *placemark = [placemarks objectAtIndex:0];
-            [self.delegate locationUpdate:placemark];
+            [self.delegate locationUpdate:placemark withCoordinates:currentLocation];
 
         }
 

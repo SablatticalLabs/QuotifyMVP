@@ -170,10 +170,13 @@
 //////////////////////////////
 
 /////// Begin updating location info ///////
-- (void)locationUpdate:(CLPlacemark *)location {
-	//NSLog(@"coordinate: %@", location.coordinate);
+- (void)locationUpdate:(CLPlacemark *)location
+       withCoordinates:(CLLocation *)currentLocation {
     currentQuote.location = location;
-    locLabel.text = [NSString stringWithFormat:@"%@, %@",location.thoroughfare, location.locality];
+    currentQuote.currentLocation = currentLocation;    
+    locLabel.text = [NSString stringWithFormat:@"%@, %@", location.thoroughfare, location.locality];
+    NSLog(@"Location Updated To: %@ \n Coordinates also updated.", locLabel.text);
+
 }
 
 

@@ -23,11 +23,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Quotify/QuotifyViewController.m"
-         timestampString = "341695752.917402"
+         timestampString = "343777953.630166"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "483"
-         endingLineNumber = "483"
+         startingLineNumber = "486"
+         endingLineNumber = "486"
          landmarkName = "-quoteTextSent:"
          landmarkType = "5">
       </FileBreakpoint>

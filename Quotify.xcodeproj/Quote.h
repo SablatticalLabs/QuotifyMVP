@@ -23,15 +23,19 @@
     NSMutableDictionary *speaker;
     UIImage *image; 
     CLPlacemark *location;
+    CLLocation *currentLocation;
 }
 
 @property (strong) NSString *quotifier, *text, *time, *postID, *UrlWhereQuoteIsPosted;
 @property (strong) NSMutableDictionary *witnesses, *speaker;
 @property (strong) UIImage *image;
 @property (strong) CLPlacemark *location;
+@property (strong) CLLocation *currentLocation;
 
 -(NSDictionary*)getQuoteAsDictionary;
 -(NSString *)getQuoteAsJSONString;
+-(NSString *)getLocationAsText;
+-(NSString *)getLocationAsCoordinate; //:(CLLocation *)currentLocation;
 -(void)timestamp;
 -(void)addSpeaker:(ABRecordRef)person withProperty:(ABPropertyID)property andIdentifier:(ABMultiValueIdentifier)identifier;
 -(void)addWitness:(ABRecordRef)person withProperty:(ABPropertyID)property andIdentifier:(ABMultiValueIdentifier)identifier;
