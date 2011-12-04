@@ -267,6 +267,8 @@
 /////// Called when the add speaker/witness button is pressed ///////    
 -(IBAction)showContacts:(id)sender{
     
+    [self hideKeyboard:nil];
+    
     // Check to see if which button was clicked. Add witnesses has tag 1
     lastButtonClickedWasWitnesses = (((UIButton *)sender).tag == 1);
     
