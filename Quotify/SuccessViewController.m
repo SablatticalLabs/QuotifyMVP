@@ -52,7 +52,7 @@
     self.speaker.text = [NSString stringWithFormat:@"- %@",theQuote.speaker];
     self.witnesses.text = @"work, in, progress"; //theQuote.witnesses;
     self.imageBox.image = theQuote.image;
-    self.time.text = theQuote.time;
+    self.time.text = theQuote.timeString;
     self.locationLabel.text = [NSString stringWithFormat:@"%@, %@",theQuote.location.thoroughfare, theQuote.location.locality];
     //self.location = theQuote.location;
     

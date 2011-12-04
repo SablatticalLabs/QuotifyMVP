@@ -14,20 +14,21 @@
 
 @interface Quote : NSObject {
     @private
-    NSString *quotifier;
+    NSMutableDictionary *quotifier;//doesnt really need to be mutable...
     NSString *text;
-    NSString *time;
+    NSString *timeString;
     NSString *postID;
     NSString *UrlWhereQuoteIsPosted;
-    NSMutableDictionary *witnesses;
+    NSMutableArray *witnesses;//an array of dictionaries.
     NSMutableDictionary *speaker;
     UIImage *image; 
     CLPlacemark *location;
     CLLocation *currentLocation;
 }
 
-@property (strong) NSString *quotifier, *text, *time, *postID, *UrlWhereQuoteIsPosted;
-@property (strong) NSMutableDictionary *witnesses, *speaker;
+@property (strong) NSString *text, *timeString, *postID, *UrlWhereQuoteIsPosted;
+@property (strong) NSMutableDictionary *speaker, *quotifier;
+@property (strong) NSMutableArray *witnesses;
 @property (strong) UIImage *image;
 @property (strong) CLPlacemark *location;
 @property (strong) CLLocation *currentLocation;

@@ -34,7 +34,7 @@
 @synthesize hideKeyboardButton;
 @synthesize timestampLabel;
 @synthesize settingsButton;
-@synthesize quotifier;
+@synthesize quotifierTF;
 @synthesize successViewController;
 @synthesize quotifyingActivityIndicator;
 @synthesize locationController;
@@ -72,7 +72,7 @@
     /////// Request location info from location controller ///////
     locationController = [[CoreLocationController alloc] init];
 	locationController.delegate = self;
-	[locationController.locationManager startUpdatingLocation];
+	//[locationController.locationManager startUpdatingLocation];
     
     
     /////// Set up a new imagePicker ///////
@@ -105,15 +105,31 @@
         [facebook requestWithGraphPath:@"me" andDelegate:self];
         fbButton.isLoggedIn = YES;
     }
+    NSLog(@"Finished Loading QVC");
 }
 
 - (void)viewDidAppear:(BOOL)animated{
-    currentQuote.quotifier = [[NSUserDefaults standardUserDefaults]objectForKey:@"quotifier"];
-    self.quotifier.text = currentQuote.quotifier;
-    if (currentQuote.quotifier == nil || [currentQuote.quotifier rangeOfString:@"@"].location == NSNotFound) {
+    //get the email from the user defaults dictionary
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if([[defaults objectForKey:@"quotifier"] objectForKey:@"email"]){
+        currentQuote.quotifier = [defaults objectForKey:@"quotifier"];
+        self.quotifierTF.text = [currentQuote.quotifier objectForKey:@"email"];
+    }
+    NSLog(@"vDA: %@", [currentQuote.quotifier objectForKey:@"email"]);
+    if ([self.quotifierTF.text rangeOfString:@"@"].location == NSNotFound) {
         [self showFirstTimeSettings];
     }
+
+//    [currentQuote.quotifier setValue:[[NSUserDefaults standardUserDefaults]objectForKey:@"quotifier"] forKey:@"email"];
+//    NSLog(@"NSUserDefaults: %@", [[NSUserDefaults standardUserDefaults]objectForKey:@"quotifier"] );
+//    self.quotifierTF.text = [currentQuote.quotifier objectForKey:@"email"];
+//    NSLog(@"currentQuote.quotifier: %@", self.quotifierTF.text);
+//
+//    if (self.quotifierTF.text == nil || [self.quotifierTF.text rangeOfString:@"@"].location == NSNotFound) {
+//        [self showFirstTimeSettings];
+//    }
 }
+
 
 - (void)showFirstTimeSettings{
     [self presentModalViewController:self.settingsViewController animated:YES];
@@ -121,6 +137,8 @@
 }
 
 - (void)viewDidUnload{
+    [locationController.locationManager stopUpdatingLocation];
+    NSLog(@"Stopped updating location");
     quoteText = nil;
     [self setSpeaker:nil];
     [self setQuoteText:nil];
@@ -135,7 +153,7 @@
     [self setSettingsButton:nil];
     [self setSettingsView:nil];
     [self setSettingsViewController:nil];
-    [self setQuotifier:nil];
+    [self setQuotifierTF:nil];
     [self setSuccessViewController:nil];
     [self setAddPersonView:nil];
     [self setAddPersonViewController:nil];
@@ -452,7 +470,8 @@
 
 /////// Called when Quotify button is pressed ///////
 - (IBAction)quotifyPressed:(id)sender {
-    //[locationController.locMgr stopUpdatingLocation];
+    [locationController.locationManager stopUpdatingLocation];
+    NSLog(@"Stopped updating location");
     
   /////// Check if quoteText was edited ///////
     if(([quoteText.text rangeOfString:@"What was said?"].location == NSNotFound)
@@ -519,7 +538,8 @@
 
 - (IBAction)emailEditingEnded:(id)sender {
     //save this forever (settings file)
-    currentQuote.quotifier = quotifier.text;
+    [currentQuote.quotifier setValue:quotifierTF.text forKey:@"email"];
+    NSLog(@"emEE: %@", currentQuote.quotifier);
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     [prefs setObject:currentQuote.quotifier forKey:@"quotifier"];
     [prefs synchronize];
@@ -577,7 +597,7 @@
     //This should be changed to handle all fb requests i.e. get friends list etc...
     NSLog(@"fb_email: %@", [result description]);
     NSDictionary * fbUserInfoDict = result;
-    self.quotifier.text = [fbUserInfoDict objectForKey:@"email"];
+    self.quotifierTF.text = [fbUserInfoDict objectForKey:@"email"];
     [self emailEditingEnded:nil];
 }
 
@@ -651,6 +671,9 @@
 
 // Called when the UIKeyboardDidShowNotification is sent.
 - (void)keyboardWasShown:(NSNotification*)aNotification{
+    [locationController.locationManager startUpdatingLocation];
+    NSLog(@"Started updating location");
+    
     if(((UIView*)self.quoteText).isFirstResponder){
         if (!quoteTextWasEdited) {
             quoteText.text = @"";
@@ -682,7 +705,7 @@
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification{
     if (quoteTextWasEdited) {
         [currentQuote timestamp];
-        self.timestampLabel.text = currentQuote.time;
+        self.timestampLabel.text = currentQuote.timeString;
     }
     UIEdgeInsets contentInsets = UIEdgeInsetsZero;
     ((UIScrollView *)self.view).contentInset = contentInsets;

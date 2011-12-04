@@ -1,9 +1,9 @@
 //
 //  Quote.m
-//  Quotify
+//  Quotify.it
 //
-//  Created by Max Rosenblatt on 4/26/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Created by Max Rosenblatt and Lior Sabag on 4/26/11.
+//  Copyright 2011 Sablattical Labs. All rights reserved.
 //
 
 #import "Quote.h"
@@ -13,8 +13,7 @@
 
 @implementation Quote
 
-@synthesize quotifier, speaker, text, witnesses, image, time, postID, UrlWhereQuoteIsPosted, location, currentLocation;
-
+@synthesize quotifier, speaker, text, witnesses, image, timeString, postID, UrlWhereQuoteIsPosted, location, currentLocation;
 
 
 -(NSString *)getLocationAsText{
@@ -62,14 +61,17 @@
 
 // This crashes if the user doesn't input anything. We should check that field aren't blank before calling this method.
 -(NSDictionary *)getQuoteAsDictionary{//Get Location happening
-    NSArray *keys = [NSArray arrayWithObjects:@"quotifier", @"text", @"speaker", @"witnesses", @"time", @"location", @"coordinate", nil];
-    NSArray *objects = [NSArray arrayWithObjects: self.quotifier, self.text, self.speaker, self.witnesses, self.time, self.getLocationAsText, self.getLocationAsCoordinate, nil];
+    NSArray *keys = [NSArray arrayWithObjects:@"quotifier", @"quote_text", @"speaker", @"witnesses", @"time", @"location", @"coordinate", nil];
+    NSArray *objects = [NSArray arrayWithObjects: self.quotifier, self.text, self.speaker, self.witnesses, self.timeString, self.getLocationAsText, self.getLocationAsCoordinate, nil];
     return [NSDictionary dictionaryWithObjects:objects forKeys:keys];
    
 }
 
 -(NSString *)getQuoteAsJSONString{
-    NSString * jSonSon = [NSString stringWithString:[[self getQuoteAsDictionary] JSONRepresentation]];
+    
+    NSString * jSonSon = [NSString stringWithString:[[NSDictionary dictionaryWithObjects:
+                                                      [NSArray arrayWithObject:[self getQuoteAsDictionary]] 
+                                                                                 forKeys:[NSArray arrayWithObject:@"quote"]] JSONRepresentation]];
     NSLog(@"%@", jSonSon);
     return jSonSon;
 }
@@ -78,7 +80,7 @@
 -(void)timestamp{
 	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
 	[formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
-	self.time = [formatter stringFromDate:[NSDate date]];
+	self.timeString = [formatter stringFromDate:[NSDate date]];
 }
 
 //-(void)addSpeaker:(ABRecordRef)person{
@@ -125,9 +127,19 @@
         index = ABMultiValueGetIndexForIdentifier(multi, identifier);
     }
     
+    NSString * propertyString = (__bridge_transfer NSString*)ABAddressBookCopyLocalizedLabel(ABMultiValueCopyLabelAtIndex(multi, index));
+    if (property == kABPersonEmailProperty) {
+        propertyString = [propertyString stringByAppendingString:@" email"];
+    }
+    else if(property == kABPersonPhoneProperty){
+        propertyString = [propertyString stringByAppendingString:@" phone"];
+    }
+
+    
     [self.speaker removeAllObjects];
-    [self.speaker setValue:(__bridge_transfer NSString*)(ABMultiValueCopyValueAtIndex(multi, index)) 
-                    forKey:(__bridge_transfer NSString*)ABRecordCopyCompositeName(person)];
+    [self.speaker setValue:(__bridge_transfer NSString*)ABRecordCopyCompositeName(person) forKey:@"name"];
+    [self.speaker setValue:(__bridge_transfer NSString*)(ABMultiValueCopyValueAtIndex(multi, index)) forKey:propertyString];
+
     NSLog(@"%@", speaker);
     CFRelease(multi);
 }
@@ -142,23 +154,45 @@
 
 -(void)addWitness:(ABRecordRef)person withProperty:(ABPropertyID)property andIdentifier:(ABMultiValueIdentifier)identifier{
     if (!self.witnesses) {
-        self.witnesses = [[NSMutableDictionary alloc] init];
+        self.witnesses = [[NSMutableArray alloc] init];
     }
     
     ABMutableMultiValueRef multi = ABMultiValueCreateMutable(kABMultiStringPropertyType);
     multi = ABRecordCopyValue(person, property);
     int index;
-    if(identifier == kABPersonLastNamePhoneticProperty){
+    if(identifier == kABPersonLastNamePhoneticProperty){//why?? there was areason for this...
         index = 0;
     }
     else {
         index = ABMultiValueGetIndexForIdentifier(multi, identifier);
     }
     
-    [self.witnesses setValue:(__bridge_transfer NSString*)(ABMultiValueCopyValueAtIndex(multi, index)) 
-                    forKey:(__bridge_transfer NSString*)ABRecordCopyCompositeName(person)];
-    NSLog(@"%@", witnesses);
+    NSString * propertyString = (__bridge_transfer NSString*)ABAddressBookCopyLocalizedLabel(ABMultiValueCopyLabelAtIndex(multi, index));
+    if (property == kABPersonEmailProperty) {
+        propertyString = [propertyString stringByAppendingString:@" email"];
+    }
+    else if(property == kABPersonPhoneProperty){
+        propertyString = [propertyString stringByAppendingString:@" phone"];
+    }
+    NSLog(@"%@", propertyString);
+    
+    //create dictionary to represent the person, and add them to the witnesses array
+    NSDictionary * newPerson = [NSDictionary dictionaryWithObjects: [NSArray arrayWithObjects:(__bridge_transfer NSString*)ABRecordCopyCompositeName(person),                                                                                                     (__bridge_transfer NSString*)(ABMultiValueCopyValueAtIndex(multi, index)),nil]
+                                                           forKeys:[NSArray arrayWithObjects: @"name", propertyString, nil]];
+    
+    [self.witnesses addObject:newPerson];
+    
+    NSLog(@"%@", [witnesses objectAtIndex:0]);
     CFRelease(multi);
+}
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.quotifier = [[NSMutableDictionary alloc] init];
+        [self.quotifier setValue:@"empty" forKey:@"email"];
+    }
+    return self;
 }
 
 

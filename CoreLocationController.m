@@ -22,6 +22,7 @@
 		self.locationManager.delegate = self; // Set the delegate as self.
         self.locationManager.purpose = @"We wanna geotag your quotes!";
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        self.locationManager.distanceFilter = 30;
 	}
     
 	return self;

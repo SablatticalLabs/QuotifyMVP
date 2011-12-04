@@ -30,7 +30,7 @@
     
     UITextField *speaker;
     UITextField *witnesses;
-    UITextField *quotifier;
+    UITextField *quotifierTF;
     UITextView *quoteText;
     UIImageView *imageBox;
     
@@ -81,7 +81,7 @@
 @property (nonatomic, strong) IBOutlet UIButton *hideKeyboardButton;
 @property (nonatomic, strong) IBOutlet UILabel *timestampLabel;
 @property (nonatomic, strong) IBOutlet UIButton *settingsButton;
-@property (nonatomic, strong) IBOutlet UITextField *quotifier;
+@property (nonatomic, strong) IBOutlet UITextField *quotifierTF;
 @property (nonatomic, strong) IBOutlet SuccessViewController *successViewController;
 @property (nonatomic, strong) IBOutlet UIButton *addSpeakerButton;
 @property (nonatomic, strong) IBOutlet UIButton *addWitnessButton;
