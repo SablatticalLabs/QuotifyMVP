@@ -117,8 +117,8 @@
         self.speaker = [[NSMutableDictionary alloc] init];
     }
     
-    ABMutableMultiValueRef multi = ABMultiValueCreateMutable(kABMultiStringPropertyType);
-    multi = ABRecordCopyValue(person, property);
+    ABMutableMultiValueRef multi = ABRecordCopyValue(person, property);//ABMultiValueCreateMutable(kABMultiStringPropertyType);
+    //multi = ABRecordCopyValue(person, property);
     int index;
     if(identifier == kABPersonLastNamePhoneticProperty){
         index = 0;
@@ -127,7 +127,7 @@
         index = ABMultiValueGetIndexForIdentifier(multi, identifier);
     }
     
-    NSString * propertyString = (__bridge_transfer NSString*)ABAddressBookCopyLocalizedLabel(ABMultiValueCopyLabelAtIndex(multi, index));
+    NSString * propertyString = (__bridge_transfer NSString*)(ABAddressBookCopyLocalizedLabel(ABMultiValueCopyLabelAtIndex(multi, index)));
     if (property == kABPersonEmailProperty) {
         propertyString = [propertyString stringByAppendingString:@" email"];
     }
@@ -184,6 +184,17 @@
     
     NSLog(@"%@", [witnesses objectAtIndex:0]);
     CFRelease(multi);
+}
+
+- (NSString*) getWitnessesAsString{
+    NSMutableString* witnessesString = [[NSMutableString alloc] init];
+    for (NSDictionary* d in self.witnesses){
+        if(![witnessesString isEqualToString:@""]){
+            [witnessesString appendString:@", "];
+        }
+            [witnessesString appendString:[d objectForKey:@"name"]];
+    }
+    return [NSString stringWithString:witnessesString];
 }
 
 - (id)init {

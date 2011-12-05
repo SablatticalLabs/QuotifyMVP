@@ -49,13 +49,11 @@
 -(void)displayQuote:(Quote *)theQuote
 {
     self.quoteView.text = theQuote.text;
-    self.speaker.text = [NSString stringWithFormat:@"- %@",theQuote.speaker];
-    self.witnesses.text = @"work, in, progress"; //theQuote.witnesses;
+    self.speaker.text = [NSString stringWithFormat:@"- %@",[theQuote.speaker objectForKey:@"name"]];
+    self.witnesses.text = [theQuote getWitnessesAsString];
     self.imageBox.image = theQuote.image;
     self.time.text = theQuote.timeString;
-    self.locationLabel.text = [NSString stringWithFormat:@"%@, %@",theQuote.location.thoroughfare, theQuote.location.locality];
-    //self.location = theQuote.location;
-    
+    self.locationLabel.text = [NSString stringWithFormat:@"%@, %@",theQuote.location.thoroughfare, theQuote.location.locality];    
 }
 
 

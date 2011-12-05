@@ -62,6 +62,7 @@
     quoteText.clipsToBounds = YES;
     quoteText.layer.cornerRadius = 10.0f;
     
+    [quotifierTF setDelegate:self];
     
     /////// Set up a new quote and comm class ///////
     currentQuote = [[Quote alloc] init];
@@ -454,12 +455,10 @@
 
 - (IBAction)backToMainView:(id)sender {
     [self dismissModalViewControllerAnimated:YES];
-
 }
 
 - (IBAction)doneAddingPeople:(id)sender {
     [self dismissModalViewControllerAnimated:YES];
-
 }
 
 
@@ -523,7 +522,7 @@
     }
 }
 
-- (void)showSuccessView{
+- (void) showSuccessView{
     if (!self.successViewController) {
         self.successViewController = [[SuccessViewController alloc] initWithQuote:currentQuote];
     }
@@ -540,15 +539,27 @@
 
 - (IBAction)emailEditingEnded:(id)sender {
     //save this forever (settings file)
-    [currentQuote.quotifier setValue:quotifierTF.text forKey:@"email"];
-    NSLog(@"emEE: %@", currentQuote.quotifier);
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    [prefs setObject:currentQuote.quotifier forKey:@"quotifier"];
-    [prefs synchronize];
-}
+//    if([quotifierTF.text rangeOfString:@"@"].location != NSNotFound){
+//        [currentQuote.quotifier setValue:quotifierTF.text forKey:@"email"];
+//        NSLog(@"emEE: %@", currentQuote.quotifier);
+//        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+//        [prefs setObject:currentQuote.quotifier forKey:@"quotifier"];
+//        [prefs synchronize];
+    }
 
+//Runs when the done button on the settings view is touched.
 - (IBAction)backToQuoteEntry:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
+    
+    if([quotifierTF.text rangeOfString:@"@"].location != NSNotFound){
+        [currentQuote.quotifier setValue:quotifierTF.text forKey:@"email"];
+        NSLog(@"emEE: %@", currentQuote.quotifier);
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        [prefs setObject:currentQuote.quotifier forKey:@"quotifier"];
+        [prefs synchronize];
+        [self dismissModalViewControllerAnimated:YES];
+    }else{
+        [self raiseFailurePopupWithTitle:@"Oops!" andMessage:@"Please enter your email address. No Spam - we promise."];
+    }
 }
 
 - (void)setupNewQuote{
@@ -639,7 +650,11 @@
 
 // Allow user to move between text fields via "Next" button
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-	NSInteger nextTag = textField.tag + 1;
+	if (textField == quotifierTF) {
+        [self backToQuoteEntry:nil];
+    }
+    
+    NSInteger nextTag = textField.tag + 1;
 	// Try to find next responder
 	UIResponder* nextResponder = [textField.superview viewWithTag:nextTag];
 	if (nextResponder) {

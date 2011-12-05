@@ -498,7 +498,7 @@
 			</object>
 			<object class="IBUIViewController" id="19867892">
 				<object class="IBUIView" key="IBUIView" id="795017958">
-					<nil key="NSNextResponder"/>
+					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">292</int>
 					<object class="NSMutableArray" key="NSSubviews">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -507,6 +507,7 @@
 							<int key="NSvFlags">290</int>
 							<string key="NSFrame">{{-1, 0}, {322, 40}}</string>
 							<reference key="NSSuperview" ref="795017958"/>
+							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="773230582"/>
 							<bool key="IBUIUserInteractionEnabled">NO</bool>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -520,6 +521,7 @@
 							<int key="NSvFlags">292</int>
 							<string key="NSFrame">{{0, 37}, {320, 423}}</string>
 							<reference key="NSSuperview" ref="795017958"/>
+							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="38093726"/>
 							<bool key="IBUIUserInteractionEnabled">NO</bool>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -530,6 +532,7 @@
 							<int key="NSvFlags">292</int>
 							<string key="NSFrame">{{6, 10}, {46, 19}}</string>
 							<reference key="NSSuperview" ref="795017958"/>
+							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="262119074"/>
 							<object class="NSColor" key="IBUIBackgroundColor">
 								<int key="NSColorSpace">10</int>
@@ -4949,6 +4952,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 							<int key="NSvFlags">292</int>
 							<string key="NSFrame">{{20, 97}, {280, 31}}</string>
 							<reference key="NSSuperview" ref="795017958"/>
+							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="330462889"/>
 							<bool key="IBUIOpaque">NO</bool>
 							<bool key="IBUIClipsSubviews">YES</bool>
@@ -4965,6 +4969,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 							<float key="IBUIMinimumFontSize">17</float>
 							<object class="IBUITextInputTraits" key="IBUITextInputTraits">
 								<int key="IBUIKeyboardType">7</int>
+								<int key="IBUIReturnKeyType">9</int>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
 							<reference key="IBUIFontDescription" ref="244182641"/>
@@ -4975,6 +4980,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 							<int key="NSvFlags">292</int>
 							<string key="NSFrame">{{20, 68}, {111, 21}}</string>
 							<reference key="NSSuperview" ref="795017958"/>
+							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="809406309"/>
 							<bool key="IBUIOpaque">NO</bool>
 							<bool key="IBUIClipsSubviews">YES</bool>
@@ -4994,6 +5000,8 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 							<int key="NSvFlags">292</int>
 							<string key="NSFrame">{{124, 154}, {72, 37}}</string>
 							<reference key="NSSuperview" ref="795017958"/>
+							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<bool key="IBUIOpaque">NO</bool>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							<int key="IBUIContentHorizontalAlignment">0</int>
@@ -5010,6 +5018,8 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 						</object>
 					</object>
 					<string key="NSFrame">{{0, 20}, {320, 460}}</string>
+					<reference key="NSSuperview"/>
+					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="476434604"/>
 					<object class="NSColor" key="IBUIBackgroundColor">
 						<int key="NSColorSpace">3</int>
@@ -5879,7 +5889,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 							<string>imageBox</string>
 							<string>locLabel</string>
 							<string>quoteText</string>
-							<string>quotifier</string>
+							<string>quotifierTF</string>
 							<string>quotifyButton</string>
 							<string>quotifyingActivityIndicator</string>
 							<string>settingsButton</string>
@@ -5928,7 +5938,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 							<string>imageBox</string>
 							<string>locLabel</string>
 							<string>quoteText</string>
-							<string>quotifier</string>
+							<string>quotifierTF</string>
 							<string>quotifyButton</string>
 							<string>quotifyingActivityIndicator</string>
 							<string>settingsButton</string>
@@ -5982,7 +5992,7 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 								<string key="candidateClassName">UITextView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">quotifier</string>
+								<string key="name">quotifierTF</string>
 								<string key="candidateClassName">UITextField</string>
 							</object>
 							<object class="IBToOneOutletInfo">
@@ -6048,9 +6058,9 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>imageBox</string>
 							<string>locationLabel</string>
-							<string>newQuoteButton</string>
 							<string>quoteView</string>
 							<string>speaker</string>
+							<string>theNewQuoteButton</string>
 							<string>time</string>
 							<string>witnesses</string>
 						</object>
@@ -6058,9 +6068,9 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UIImageView</string>
 							<string>UILabel</string>
-							<string>UIButton</string>
 							<string>UITextView</string>
 							<string>UILabel</string>
+							<string>UIButton</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
 						</object>
@@ -6071,9 +6081,9 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>imageBox</string>
 							<string>locationLabel</string>
-							<string>newQuoteButton</string>
 							<string>quoteView</string>
 							<string>speaker</string>
+							<string>theNewQuoteButton</string>
 							<string>time</string>
 							<string>witnesses</string>
 						</object>
@@ -6088,16 +6098,16 @@ AAgAAAAIAAIACAACAAAAAgAAAAEAAQABAAE</bytes>
 								<string key="candidateClassName">UILabel</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">newQuoteButton</string>
-								<string key="candidateClassName">UIButton</string>
-							</object>
-							<object class="IBToOneOutletInfo">
 								<string key="name">quoteView</string>
 								<string key="candidateClassName">UITextView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">speaker</string>
 								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">theNewQuoteButton</string>
+								<string key="candidateClassName">UIButton</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">time</string>
