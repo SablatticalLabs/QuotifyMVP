@@ -41,6 +41,7 @@
 -(void)addSpeaker:(ABRecordRef)person withProperty:(ABPropertyID)property andIdentifier:(ABMultiValueIdentifier)identifier;
 -(void)addWitness:(ABRecordRef)person withProperty:(ABPropertyID)property andIdentifier:(ABMultiValueIdentifier)identifier;
 - (NSString*) getWitnessesAsString;
+- (void)clearWitnesses;
 
 
 @end

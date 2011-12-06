@@ -42,8 +42,9 @@
 
 - (IBAction)newQuotePressed:(id)sender 
 {
-    [(QuotifyViewController *)self.parentViewController setupNewQuote];
-    [self.parentViewController dismissModalViewControllerAnimated:YES];
+    //[(QuotifyViewController *)self.parentViewController setupNewQuote];
+    //[self.parentViewController dismissModalViewControllerAnimated:YES];
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 -(void)displayQuote:(Quote *)theQuote

@@ -51,12 +51,12 @@ NSString * const sendImageToURLwithPrefix = @"http://quotify.it/api/postphoto/";
     NSLog(@"urlData: %@",dataAsString);
     NSDictionary* result = [dataAsString JSONValue];
     
-    NSNumber *n_Success = [result objectForKey:@"success"];
-    if (n_Success != nil)//quoteText Sent... 
+    //NSNumber *n_Success = [result objectForKey:@"id"];
+    if ([result objectForKey:@"created_at"])//quoteText Sent... 
     {
-        self.quoteToSend.UrlWhereQuoteIsPosted = [result valueForKey:@"url"];
-        self.quoteToSend.postID = [result valueForKey:@"guid"];
-        self.quoteTextSentSuccessfully = ([n_Success intValue]== 1);
+        self.quoteToSend.UrlWhereQuoteIsPosted = nil;//not using this for now
+        self.quoteToSend.postID = [result objectForKey:@"id"];
+        self.quoteTextSentSuccessfully = YES;
         [[self delegate] quoteTextSent:self.quoteTextSentSuccessfully];
     }
     else if([result objectForKey:@"Success"])//quoteImage Sent...

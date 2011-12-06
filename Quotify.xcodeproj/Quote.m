@@ -61,8 +61,8 @@
 
 // This crashes if the user doesn't input anything. We should check that field aren't blank before calling this method.
 -(NSDictionary *)getQuoteAsDictionary{//Get Location happening
-    NSArray *keys = [NSArray arrayWithObjects:@"quotifier", @"quote_text", @"speaker", @"witnesses", @"time", @"location", @"coordinate", nil];
-    NSArray *objects = [NSArray arrayWithObjects: self.quotifier, self.text, self.speaker, self.witnesses, self.timeString, self.getLocationAsText, self.getLocationAsCoordinate, nil];
+    NSArray *keys = [NSArray arrayWithObjects:@"quotifier", @"quote_text", @"speaker", @"witnesses", @"time", @"location", /*@"coordinate",*/ nil];
+    NSArray *objects = [NSArray arrayWithObjects: self.quotifier, self.text, self.speaker, self.witnesses, self.timeString, self.getLocationAsText, /*self.getLocationAsCoordinate,*/ nil];
     return [NSDictionary dictionaryWithObjects:objects forKeys:keys];
    
 }
@@ -129,10 +129,10 @@
     
     NSString * propertyString = (__bridge_transfer NSString*)(ABAddressBookCopyLocalizedLabel(ABMultiValueCopyLabelAtIndex(multi, index)));
     if (property == kABPersonEmailProperty) {
-        propertyString = [propertyString stringByAppendingString:@" email"];
+        propertyString = @"email";//[propertyString stringByAppendingString:@" email"];
     }
     else if(property == kABPersonPhoneProperty){
-        propertyString = [propertyString stringByAppendingString:@" phone"];
+        propertyString = @"phone";//[propertyString stringByAppendingString:@" phone"];
     }
 
     
@@ -160,7 +160,7 @@
     ABMutableMultiValueRef multi = ABMultiValueCreateMutable(kABMultiStringPropertyType);
     multi = ABRecordCopyValue(person, property);
     int index;
-    if(identifier == kABPersonLastNamePhoneticProperty){//why?? there was areason for this...
+    if(identifier == kABPersonLastNamePhoneticProperty){//why?? there was a reason for this...
         index = 0;
     }
     else {
@@ -169,10 +169,10 @@
     
     NSString * propertyString = (__bridge_transfer NSString*)ABAddressBookCopyLocalizedLabel(ABMultiValueCopyLabelAtIndex(multi, index));
     if (property == kABPersonEmailProperty) {
-        propertyString = [propertyString stringByAppendingString:@" email"];
+        propertyString = @"email";//[propertyString stringByAppendingString:@" email"];
     }
     else if(property == kABPersonPhoneProperty){
-        propertyString = [propertyString stringByAppendingString:@" phone"];
+        propertyString = @"phone";//[propertyString stringByAppendingString:@" phone"];
     }
     NSLog(@"%@", propertyString);
     
@@ -197,11 +197,17 @@
     return [NSString stringWithString:witnessesString];
 }
 
+- (void)clearWitnesses{
+    [witnesses removeAllObjects];
+}
+
 - (id)init {
     self = [super init];
     if (self) {
         self.quotifier = [[NSMutableDictionary alloc] init];
         [self.quotifier setValue:@"empty" forKey:@"email"];
+        
+        self.witnesses = [[NSMutableArray alloc] init];
     }
     return self;
 }

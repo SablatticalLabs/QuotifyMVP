@@ -98,9 +98,10 @@
 - (IBAction)hideKeyboard:(id)sender;
 - (IBAction)settingsPressed:(id)sender;
 - (IBAction)backToQuoteEntry:(id)sender;
-- (IBAction)emailEditingEnded:(id)sender;
+- (IBAction)witnessesSwiped:(id)sender;
 - (IBAction)fbButtonClicked:(id)sender;
 - (IBAction)showContacts:(id)sender;
+- (IBAction)witnessesTouchedUp:(id)sender;
 
 
 - (void)registerForKeyboardNotifications;

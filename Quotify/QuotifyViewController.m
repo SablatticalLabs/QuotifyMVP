@@ -266,6 +266,7 @@
 
 
 /////// Called when the add speaker/witness button is pressed ///////    
+
 -(IBAction)showContacts:(id)sender{
     
     [self hideKeyboard:nil];
@@ -331,7 +332,7 @@
                 witnesses.text = [witnesses.text stringByAppendingFormat:@"%@", ABRecordCopyCompositeName(person)];
             }
         }
-        [peoplePicker dismissModalViewControllerAnimated:YES];
+//        [peoplePicker dismissModalViewControllerAnimated:YES];
         
         return NO;
     }
@@ -437,15 +438,16 @@
     //called when a person is added to the address book
     if(person){
         //[self.picker ];
-        //[self peoplePickerNavigationController:self.picker shouldContinueAfterSelectingPerson:person];
-        if (![witnesses.text isEqualToString:@""]) {
-            witnesses.text = [witnesses.text stringByAppendingFormat:@", %@", ABRecordCopyCompositeName(person)];
-        }
-        else {
-            witnesses.text = [witnesses.text stringByAppendingFormat:@"%@", ABRecordCopyCompositeName(person)];        
-        }
+        [self peoplePickerNavigationController:self.picker shouldContinueAfterSelectingPerson:person];
+//        if (![witnesses.text isEqualToString:@""]) {
+//            witnesses.text = [witnesses.text stringByAppendingFormat:@", %@", ABRecordCopyCompositeName(person)];
+//        }
+//        else {
+//            witnesses.text = [witnesses.text stringByAppendingFormat:@"%@", ABRecordCopyCompositeName(person)];        
+//        }
     }
-    [newPersonView dismissModalViewControllerAnimated:YES]; 
+    //[newPersonView dismissModalViewControllerAnimated:YES]; 
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (void) peopleAdded:(Quote*)quote {
@@ -522,7 +524,7 @@
     }
 }
 
-- (void) showSuccessView{
+- (void) showSuccessView{//and setup new quote...
     if (!self.successViewController) {
         self.successViewController = [[SuccessViewController alloc] initWithQuote:currentQuote];
     }
@@ -531,21 +533,28 @@
     }
     
     [self presentModalViewController:self.successViewController animated:YES];
+    [self setupNewQuote];
 }
 
 - (IBAction)settingsPressed:(id)sender {
     [self presentModalViewController:self.settingsViewController animated:YES];
 }
 
-- (IBAction)emailEditingEnded:(id)sender {
-    //save this forever (settings file)
-//    if([quotifierTF.text rangeOfString:@"@"].location != NSNotFound){
-//        [currentQuote.quotifier setValue:quotifierTF.text forKey:@"email"];
-//        NSLog(@"emEE: %@", currentQuote.quotifier);
-//        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-//        [prefs setObject:currentQuote.quotifier forKey:@"quotifier"];
-//        [prefs synchronize];
+int countSwipe = 0;
+- (IBAction)witnessesSwiped:(id)sender {
+    NSLog(@"%d", countSwipe);
+    countSwipe++;
+    if (countSwipe>60) {
+        [currentQuote clearWitnesses];
+        self.witnesses.text = @"";
+        countSwipe = 0;
     }
+}
+
+- (IBAction)witnessesTouchedUp:(id)sender {
+    countSwipe = 0;
+    NSLog(@"%@", countSwipe);
+}
 
 //Runs when the done button on the settings view is touched.
 - (IBAction)backToQuoteEntry:(id)sender {
@@ -611,7 +620,6 @@
     NSLog(@"fb_email: %@", [result description]);
     NSDictionary * fbUserInfoDict = result;
     self.quotifierTF.text = [fbUserInfoDict objectForKey:@"email"];
-    [self emailEditingEnded:nil];
 }
 
 - (void)request:(FBRequest *)request didFailWithError:(NSError *)error{
