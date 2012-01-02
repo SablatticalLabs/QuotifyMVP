@@ -332,7 +332,7 @@
                 witnesses.text = [witnesses.text stringByAppendingFormat:@"%@", ABRecordCopyCompositeName(person)];
             }
         }
-//        [peoplePicker dismissModalViewControllerAnimated:YES];
+        [peoplePicker dismissModalViewControllerAnimated:YES];
         
         return NO;
     }
@@ -376,12 +376,15 @@
 //called when then "+" button is pressed to create new contact
 -(IBAction)addPerson:(id)sender{
 
-        ABNewPersonViewController *view = [[ABNewPersonViewController alloc] init];
-        view.newPersonViewDelegate = self;
+        //ABNewPersonViewController *view = [[ABNewPersonViewController alloc] init];
+        //view.newPersonViewDelegate = self;
         
         
-        UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:view];
-        [self.picker presentModalViewController:nc animated:YES];
+        //UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:view];
+        //[self.picker presentModalViewController:nc animated:YES];
+    
+    SuccessViewController *test = [[SuccessViewController alloc] initWithQuote:currentQuote];
+    [self.picker presentModalViewController:test animated:YES];
     }
     
 -(IBAction)done:(id)sender{
