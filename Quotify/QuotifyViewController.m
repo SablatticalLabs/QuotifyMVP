@@ -43,6 +43,8 @@
 @synthesize facebook;
 
 @synthesize picker = _picker;
+@synthesize addedPersonName;
+@synthesize addedPersonEmail;
 
 
 //////////////////////////////
@@ -163,6 +165,8 @@
     [self setFbButton:nil];
     [self setAddSpeakerButton:nil];
     [self setAddWitnessButton:nil];
+    [self setAddedPersonName:nil];
+    [self setAddedPersonEmail:nil];
     [super viewDidUnload];
     // Release any retained subview of the main view.
     // e.g. self.myOutlet = nil;
@@ -266,7 +270,6 @@
 
 
 /////// Called when the add speaker/witness button is pressed ///////    
-
 -(IBAction)showContacts:(id)sender{
     
     [self hideKeyboard:nil];
@@ -280,7 +283,7 @@
     self.picker.delegate = self;
     self.picker.peoplePickerDelegate = self;
     
-    // Display only a person's phone, email, and birthdate
+    // Display only a person's phone, email
     NSArray *displayedItems = [NSArray arrayWithObjects:[NSNumber numberWithInt:kABPersonPhoneProperty], 
                                [NSNumber numberWithInt:kABPersonEmailProperty], nil];
     
@@ -305,6 +308,7 @@
 // Return YES if you want the person to be displayed.
 // Return NO  to do nothing (the delegate is responsible for dismissing the peoplePicker).
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person{
+    
     //If the record has only one email or no emails and one phone number no need to show details
     int numOfEmails = ABMultiValueGetCount(ABRecordCopyValue(person, kABPersonEmailProperty));
     ABPropertyID phoneOrEmail = kABPersonPhoneProperty;
@@ -318,7 +322,7 @@
             [currentQuote addSpeaker:person withProperty:phoneOrEmail andIdentifier:kABPersonLastNamePhoneticProperty];
             speaker.text = (__bridge_transfer NSString *)ABRecordCopyCompositeName(person);
 
-            // Disable the addSpeaker button
+            // Disable the addSpeaker button?
         }
         else {
             [currentQuote addWitness:person withProperty:phoneOrEmail andIdentifier:kABPersonLastNamePhoneticProperty];
@@ -332,6 +336,7 @@
                 witnesses.text = [witnesses.text stringByAppendingFormat:@"%@", ABRecordCopyCompositeName(person)];
             }
         }
+        
         [peoplePicker dismissModalViewControllerAnimated:YES];
         
         return NO;
@@ -347,7 +352,8 @@
 // Called after a value has been selected by the user.
 // Return YES if you want default action to be performed.
 // Return NO to do nothing (the delegate is responsible for dismissing the peoplePicker).
-- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier{
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person 
+                                property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier{
     
     if (!lastButtonClickedWasWitnesses){
         [currentQuote addSpeaker:person withProperty:property andIdentifier:identifier];
@@ -359,13 +365,7 @@
         [currentQuote addWitness:person withProperty:property andIdentifier:identifier];
         // Adds selected person to the speaker object of the quote class ///////
         
-        // Checks if a comma needs to be added
-        if (![witnesses.text isEqualToString:@""]) {
-            witnesses.text = [witnesses.text stringByAppendingFormat:@", %@", ABRecordCopyCompositeName(person)];
-        }
-        else {
-            witnesses.text = [witnesses.text stringByAppendingFormat:@"%@", ABRecordCopyCompositeName(person)];
-        }
+        [self addWitnessToBox:(__bridge_transfer NSString*)ABRecordCopyCompositeName(person)];
     }
 
     
@@ -373,19 +373,33 @@
     return NO;
 }
 
+-(void)addWitnessToBox:(NSString*)name{
+    // Checks if a comma needs to be added
+    if (![witnesses.text isEqualToString:@""]) {
+        witnesses.text = [witnesses.text stringByAppendingFormat:@", %@", name];
+    }
+    else {
+        witnesses.text = [witnesses.text stringByAppendingFormat:@"%@", name];
+    }
+}
+
 //called when then "+" button is pressed to create new contact
 -(IBAction)addPerson:(id)sender{
 
-        //ABNewPersonViewController *view = [[ABNewPersonViewController alloc] init];
-        //view.newPersonViewDelegate = self;
-        
-        
-        //UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:view];
-        //[self.picker presentModalViewController:nc animated:YES];
+    NSLog(@"sender: %@", NSStringFromClass([sender class]));
     
-    SuccessViewController *test = [[SuccessViewController alloc] initWithQuote:currentQuote];
-    [self.picker presentModalViewController:test animated:YES];
-    }
+    //This is the old implementation - bring up a "new contact" address book form.
+    
+    //ABNewPersonViewController *view = [[ABNewPersonViewController alloc] init];
+    //view.newPersonViewDelegate = self;
+    //UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:view];
+    //[self.picker presentModalViewController:nc animated:YES];
+
+    //Test - we can push any view up here.
+    //addPersonViewController * addPerson = [[addPersonViewController alloc] init];
+    [self.picker presentModalViewController:addPersonViewController animated:YES];
+    
+}
     
 -(IBAction)done:(id)sender{
         [self.picker.topViewController setEditing:NO animated:YES];
@@ -407,7 +421,7 @@
 // Called when the navigation controller shows a new top view controller via a push, pop or setting of the view controller stack.
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
         
-        //set up the ABPeoplePicker controls here to get rid of he forced cacnel button on the right hand side but you also then have to 
+        //set up the ABPeoplePicker controls here to get rid of he forced cancel button on the right hand side but you also then have to 
         // the other views it pushes on to ensure they have to correct buttons shown at the correct time.
         
         if([navigationController isKindOfClass:[ABPeoplePickerNavigationController class]] 
@@ -440,14 +454,7 @@
 - (void)newPersonViewController:(ABNewPersonViewController *)newPersonView didCompleteWithNewPerson:(ABRecordRef)person{
     //called when a person is added to the address book
     if(person){
-        //[self.picker ];
         [self peoplePickerNavigationController:self.picker shouldContinueAfterSelectingPerson:person];
-//        if (![witnesses.text isEqualToString:@""]) {
-//            witnesses.text = [witnesses.text stringByAppendingFormat:@", %@", ABRecordCopyCompositeName(person)];
-//        }
-//        else {
-//            witnesses.text = [witnesses.text stringByAppendingFormat:@"%@", ABRecordCopyCompositeName(person)];        
-//        }
     }
     //[newPersonView dismissModalViewControllerAnimated:YES]; 
     [self dismissModalViewControllerAnimated:YES];
@@ -463,6 +470,19 @@
 }
 
 - (IBAction)doneAddingPeople:(id)sender {
+    if(lastButtonClickedWasWitnesses){
+        NSDictionary * newPerson = [NSDictionary dictionaryWithObjects: [NSArray arrayWithObjects:addedPersonName.text,                                                                                                     addedPersonEmail.text,nil] forKeys:[NSArray arrayWithObjects: @"name", @"email", nil]];
+        [currentQuote.witnesses addObject:newPerson];
+        
+        [self addWitnessToBox:addedPersonName.text];
+    }
+    else{
+        [currentQuote.speaker setValue:addedPersonName.text forKey:@"name"];
+        [currentQuote.speaker setValue:addedPersonEmail.text forKey:@"email"];
+        
+        speaker.text = addedPersonName.text;
+    }
+    
     [self dismissModalViewControllerAnimated:YES];
 }
 

@@ -89,6 +89,8 @@
 @property (nonatomic, strong) CoreLocationController *locationController;
 
 @property(nonatomic, strong) ABPeoplePickerNavigationController *picker;
+@property (weak, nonatomic) IBOutlet UITextField *addedPersonName;
+@property (weak, nonatomic) IBOutlet UITextField *addedPersonEmail;
 
 
 - (IBAction)backToMainView:(id)sender;
@@ -115,6 +117,7 @@
 - (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker;
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person;
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier;
+- (void)addWitnessToBox:(NSString*)name;
 
 
 
