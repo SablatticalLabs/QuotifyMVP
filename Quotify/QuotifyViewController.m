@@ -114,15 +114,22 @@
 - (void)viewDidAppear:(BOOL)animated{
     //get the email from the user defaults dictionary
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if([[defaults objectForKey:@"quotifier"] objectForKey:@"email"]){
-        currentQuote.quotifier = [defaults objectForKey:@"quotifier"];
-        self.quotifierTF.text = [currentQuote.quotifier objectForKey:@"email"];
-    }
-    NSLog(@"vDA: %@", [currentQuote.quotifier objectForKey:@"email"]);
-    if ([self.quotifierTF.text rangeOfString:@"@"].location == NSNotFound) {
+    //if defaults are empty or the email string is empty, prompt
+    if([defaults isEqual:nil] || [[defaults objectForKey:@"quotifier"] isEqual:nil] || 
+       ([[[defaults objectForKey:@"quotifier"] objectForKey:@"email"]rangeOfString:@"@"].location == NSNotFound)){
         [self showFirstTimeSettings];
     }
-
+//    //Theoretically, you cant leave the "firsttimesettings" without having entered an email
+//    [self.quotifierTF.text rangeOfString:@"@"].location == NSNotFound
+//    
+//    
+//        if([[defaults objectForKey:@"quotifier"] objectForKey:@"email"]){
+//            currentQuote.quotifier = [defaults objectForKey:@"quotifier"];
+//            self.quotifierTF.text = [currentQuote.quotifier objectForKey:@"email"];
+//        }
+//    
+//
+//
 //    [currentQuote.quotifier setValue:[[NSUserDefaults standardUserDefaults]objectForKey:@"quotifier"] forKey:@"email"];
 //    NSLog(@"NSUserDefaults: %@", [[NSUserDefaults standardUserDefaults]objectForKey:@"quotifier"] );
 //    self.quotifierTF.text = [currentQuote.quotifier objectForKey:@"email"];
