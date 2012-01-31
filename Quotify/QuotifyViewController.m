@@ -115,6 +115,8 @@
     //get the email from the user defaults dictionary
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     //if defaults are empty or the email string is empty, prompt
+    NSLog(@"defaults: %@", defaults);
+    NSLog(@"defaults-quotifier: %@", [defaults objectForKey:@"quotifier"]);
     if([defaults isEqual:nil] || [[defaults objectForKey:@"quotifier"] isEqual:nil] || 
        ([[[defaults objectForKey:@"quotifier"] objectForKey:@"email"]rangeOfString:@"@"].location == NSNotFound)){
         [self showFirstTimeSettings];

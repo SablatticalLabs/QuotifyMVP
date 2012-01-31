@@ -14,7 +14,7 @@
 @synthesize quoteToSend, quoteTextSentSuccessfully, delegate;
 
 NSString * const sendQuoteToURL = @"http://www.quotify.it/quotes.json";
-NSString * const sendImageToURLwithPrefix = @"http://quotify.it/api/postphoto/";
+NSString * const sendImageToURLwithPrefix = @"http://quotify.it/quotes/";
 
 
 -(void)sendQuote:(Quote*)theQuote{
@@ -71,7 +71,7 @@ NSString * const sendImageToURLwithPrefix = @"http://quotify.it/api/postphoto/";
 }
 
 
--(void)addImage:(UIImage*)theImage toQuoteWithID:(NSString*)postID{
+-(void)addImage:(UIImage*)theImage toQuoteWithID:(NSDecimalNumber*)postID{
     //Send data
     //Return bool valued success
     //Handle failure in controller
@@ -82,22 +82,46 @@ NSString * const sendImageToURLwithPrefix = @"http://quotify.it/api/postphoto/";
 	 */
 	NSData *imageData = UIImageJPEGRepresentation(theImage, 0.9);
 	// setting up the URL to post to
-    NSString *urlString = [sendImageToURLwithPrefix stringByAppendingString:postID]; 
-	
+    NSString *urlString = [[sendImageToURLwithPrefix stringByAppendingString:[postID stringValue]] stringByAppendingString:@"/quote_images.json"]; 
+	NSLog(@"%@", urlString);
 	// setting up the request object now
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
 	[request setURL:[NSURL URLWithString:urlString]];
 	[request setHTTPMethod:@"POST"];
+    [request setValue:@"multipart/form-data" forHTTPHeaderField:@"Content-Type"];
 	
 	/*
 	 now lets create the body of the post
 	 */
-	NSMutableData *body = [NSMutableData data];
-	[body appendData:[NSData dataWithData:imageData]];
+	//NSMutableData *body = [NSMutableData data];
+	//[body appendData:[NSData dataWithData:imageData]];
     
 	// setting the body of the post to the reqeust
-	[request setHTTPBody:body];
-	
+	//[request setHTTPBody:body];
+	//NSLog(@"%@", request);
+    
+    
+    
+   
+    //NSString *filename = @"filename";
+
+    NSString *boundary = @"---------------------------265001916915724";
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
+    [request addValue:contentType forHTTPHeaderField: @"Content-Type"];
+    NSMutableData *postbody = [NSMutableData data];
+    [postbody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    //[postbody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"userfile\"; filename=\"%@.jpg\"\r\n", filename] dataUsingEncoding:NSUTF8StringEncoding]];
+    //[postbody appendData:[[NSString stringWithString:@"Content-Type: application/octet-stream\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postbody appendData:[NSData dataWithData:imageData]];
+    [postbody appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setHTTPBody:postbody];
+    
+    //NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    //returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+    //NSLog(returnString);
+    
+    
+    
 	// now lets make the connection to the web
 	/*NSURLConnection *urlConnection = */[NSURLConnection connectionWithRequest:request delegate:self];
 }
