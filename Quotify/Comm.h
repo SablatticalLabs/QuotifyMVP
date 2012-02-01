@@ -22,7 +22,7 @@
     
 }
 extern NSString * const sendQuoteToURL;
-extern NSString * const sendImageToURLwithPrefix;
+extern NSString * const sendImageToURL;
 
 @property BOOL quoteTextSentSuccessfully;
 @property (strong) Quote* quoteToSend;

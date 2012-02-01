@@ -117,18 +117,14 @@
     //if defaults are empty or the email string is empty, prompt
     NSLog(@"defaults: %@", defaults);
     NSLog(@"defaults-quotifier: %@", [defaults objectForKey:@"quotifier"]);
-    if([defaults isEqual:nil] || [[defaults objectForKey:@"quotifier"] isEqual:nil] || 
+    if(![defaults objectForKey:@"quotifier"] || 
        ([[[defaults objectForKey:@"quotifier"] objectForKey:@"email"]rangeOfString:@"@"].location == NSNotFound)){
         [self showFirstTimeSettings];
     }
-//    //Theoretically, you cant leave the "firsttimesettings" without having entered an email
-//    [self.quotifierTF.text rangeOfString:@"@"].location == NSNotFound
-//    
-//    
-//        if([[defaults objectForKey:@"quotifier"] objectForKey:@"email"]){
-//            currentQuote.quotifier = [defaults objectForKey:@"quotifier"];
-//            self.quotifierTF.text = [currentQuote.quotifier objectForKey:@"email"];
-//        }
+    else if([[defaults objectForKey:@"quotifier"] objectForKey:@"email"]){
+        currentQuote.quotifier = [NSMutableDictionary dictionaryWithDictionary:[defaults objectForKey:@"quotifier"]];
+        self.quotifierTF.text = [currentQuote.quotifier objectForKey:@"email"];
+    }
 //    
 //
 //
@@ -144,6 +140,7 @@
 
 
 - (void)showFirstTimeSettings{
+    quotifierTF.text = [currentQuote.quotifier objectForKey:@"email"];
     [self presentModalViewController:self.settingsViewController animated:YES];
     [self raiseFailurePopupWithTitle:@"Welcome to Quotify!" andMessage:@"Enter your email address to get started."];
 }
@@ -406,6 +403,10 @@
 
     //Test - we can push any view up here.
     //addPersonViewController * addPerson = [[addPersonViewController alloc] init];
+    
+    //clear the textboxes first
+    addedPersonName.text = @"";
+    addedPersonEmail.text = @"";
     [self.picker presentModalViewController:addPersonViewController animated:YES];
     
 }
@@ -430,7 +431,7 @@
 // Called when the navigation controller shows a new top view controller via a push, pop or setting of the view controller stack.
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
         
-        //set up the ABPeoplePicker controls here to get rid of he forced cancel button on the right hand side but you also then have to 
+        //set up the ABPeoplePicker controls here to get rid of the forced cancel button on the right hand side but you also then have to 
         // the other views it pushes on to ensure they have to correct buttons shown at the correct time.
         
         if([navigationController isKindOfClass:[ABPeoplePickerNavigationController class]] 
@@ -479,16 +480,18 @@
 }
 
 - (IBAction)doneAddingPeople:(id)sender {
+    NSMutableDictionary * newPerson = [NSMutableDictionary dictionaryWithObjects: 
+                                [NSArray arrayWithObjects:addedPersonName.text, addedPersonEmail.text,nil] 
+                                                           forKeys:[NSArray arrayWithObjects: @"name", @"email", nil]];
     if(lastButtonClickedWasWitnesses){
-        NSDictionary * newPerson = [NSDictionary dictionaryWithObjects: [NSArray arrayWithObjects:addedPersonName.text,                                                                                                     addedPersonEmail.text,nil] forKeys:[NSArray arrayWithObjects: @"name", @"email", nil]];
-        [currentQuote.witnesses addObject:newPerson];
-        
+                [currentQuote.witnesses addObject:newPerson];
+        NSLog(@"witnesses: %@", currentQuote.witnesses);
         [self addWitnessToBox:addedPersonName.text];
     }
     else{
-        [currentQuote.speaker setValue:addedPersonName.text forKey:@"name"];
-        [currentQuote.speaker setValue:addedPersonEmail.text forKey:@"email"];
-        
+        //[currentQuote.speaker setValue:addedPersonName.text forKey:@"name"];
+        //[currentQuote.speaker setValue:addedPersonEmail.text forKey:@"email"];
+        currentQuote.speaker = newPerson;
         speaker.text = addedPersonName.text;
     }
     
@@ -569,6 +572,7 @@
 }
 
 - (IBAction)settingsPressed:(id)sender {
+    //quotifierTF.text = [currentQuote.quotifier objectForKey:@"email"];
     [self presentModalViewController:self.settingsViewController animated:YES];
 }
 
@@ -599,7 +603,7 @@ int countSwipe = 0;
         [prefs synchronize];
         [self dismissModalViewControllerAnimated:YES];
     }else{
-        [self raiseFailurePopupWithTitle:@"Oops!" andMessage:@"Please enter your email address. No Spam - we promise."];
+        [self raiseFailurePopupWithTitle:@"Oops!" andMessage:@"Quotify.it needs a valid email address to function. No Spam - we promise."];
     }
 }
 

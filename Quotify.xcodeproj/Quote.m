@@ -16,6 +16,14 @@
 @synthesize quotifier, speaker, text, witnesses, image, timeString, postID, UrlWhereQuoteIsPosted, location, currentLocation;
 
 
+//-(void)setSpeaker:(NSMutableDictionary *)_speaker{
+//    speaker = [NSMutableDictionary dictionaryWithDictionary:_speaker];
+//}
+
+//-(NSMutableDictionary *)speaker{
+//    return speaker;
+//}
+
 -(NSString *)getLocationAsText{
     NSString *locationAsText = [NSString stringWithFormat:@"%@, %@", self.location.thoroughfare, self.location.locality];
     return locationAsText;                        
@@ -205,7 +213,7 @@
     self = [super init];
     if (self) {
         self.quotifier = [[NSMutableDictionary alloc] init];
-        [self.quotifier setValue:@"empty" forKey:@"email"];
+        [self.quotifier setValue:@"" forKey:@"email"];
         
         self.witnesses = [[NSMutableArray alloc] init];
     }

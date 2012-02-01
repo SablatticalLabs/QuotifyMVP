@@ -14,7 +14,7 @@
 @synthesize quoteToSend, quoteTextSentSuccessfully, delegate;
 
 NSString * const sendQuoteToURL = @"http://www.quotify.it/quotes.json";
-NSString * const sendImageToURLwithPrefix = @"http://quotify.it/quotes/";
+NSString * const sendImageToURL = @"http://quotify.it/quotes/<ID>/quote_images.json";
 
 
 -(void)sendQuote:(Quote*)theQuote{
@@ -52,14 +52,14 @@ NSString * const sendImageToURLwithPrefix = @"http://quotify.it/quotes/";
     NSDictionary* result = [dataAsString JSONValue];
     
     //NSNumber *n_Success = [result objectForKey:@"id"];
-    if ([result objectForKey:@"created_at"])//quoteText Sent... 
+    if ([result objectForKey:@"created_at"] && [result objectForKey:@"quote_text"])//quoteText Sent... 
     {
         self.quoteToSend.UrlWhereQuoteIsPosted = nil;//not using this for now
         self.quoteToSend.postID = [result objectForKey:@"id"];
         self.quoteTextSentSuccessfully = YES;
         [[self delegate] quoteTextSent:self.quoteTextSentSuccessfully];
     }
-    else if([result objectForKey:@"Success"])//quoteImage Sent...
+    else if([result objectForKey:@"created_at"] && [result objectForKey:@"file_name"])//quoteImage Sent...
     {
         [[self delegate] quoteImageSent:1];
     }
@@ -67,63 +67,55 @@ NSString * const sendImageToURLwithPrefix = @"http://quotify.it/quotes/";
     {
         [[self delegate] quoteTextSent:0];
     }
-    //[connection release]; probably caused a crash because not ours to release
 }
 
 
 -(void)addImage:(UIImage*)theImage toQuoteWithID:(NSDecimalNumber*)postID{
-    //Send data
-    //Return bool valued success
-    //Handle failure in controller
-    /*
-	 turning the image into a NSData object
-	 getting the image back out of the UIImageView
-	 setting the quality to 0.9
-	 */
+    
+    NSString *s_postID = [[postID stringValue] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 	NSData *imageData = UIImageJPEGRepresentation(theImage, 0.9);
 	// setting up the URL to post to
-    NSString *urlString = [[sendImageToURLwithPrefix stringByAppendingString:[postID stringValue]] stringByAppendingString:@"/quote_images.json"]; 
+    NSString *urlString = [sendImageToURL stringByReplacingOccurrencesOfString:@"<ID>" withString:s_postID];
 	NSLog(@"%@", urlString);
-	// setting up the request object now
-	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-	[request setURL:[NSURL URLWithString:urlString]];
-	[request setHTTPMethod:@"POST"];
-    [request setValue:@"multipart/form-data" forHTTPHeaderField:@"Content-Type"];
+    //creating the url request:
+	NSURL *url = [NSURL URLWithString:urlString];
+	NSMutableURLRequest *postRequest = [NSMutableURLRequest requestWithURL:url];
 	
-	/*
-	 now lets create the body of the post
-	 */
-	//NSMutableData *body = [NSMutableData data];
-	//[body appendData:[NSData dataWithData:imageData]];
-    
-	// setting the body of the post to the reqeust
-	//[request setHTTPBody:body];
-	//NSLog(@"%@", request);
-    
-    
-    
-   
-    //NSString *filename = @"filename";
-
-    NSString *boundary = @"---------------------------265001916915724";
-    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",boundary];
-    [request addValue:contentType forHTTPHeaderField: @"Content-Type"];
-    NSMutableData *postbody = [NSMutableData data];
-    [postbody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    //[postbody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"userfile\"; filename=\"%@.jpg\"\r\n", filename] dataUsingEncoding:NSUTF8StringEncoding]];
-    //[postbody appendData:[[NSString stringWithString:@"Content-Type: application/octet-stream\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
-    [postbody appendData:[NSData dataWithData:imageData]];
-    [postbody appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [request setHTTPBody:postbody];
-    
-    //NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    //returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
-    //NSLog(returnString);
+	//adding header information:
+	[postRequest setHTTPMethod:@"POST"];
+	
+	NSString *stringBoundary = [NSString stringWithString:@"0xKhTmLbOuNdArY"];
+	NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",stringBoundary];
+	[postRequest addValue:contentType forHTTPHeaderField: @"Content-Type"];
+	
+	//setting up the body:
+	NSMutableData *postBody = [NSMutableData data];
+	[postBody appendData:[[NSString stringWithFormat:@"--%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+	//Image name (not really releveant)
+    [postBody appendData:[[NSString stringWithString:@"Content-Disposition: form-data; name=\"quote_image[name]\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+	[postBody appendData:[[NSString stringWithString:s_postID] dataUsingEncoding:NSUTF8StringEncoding]];
+	[postBody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    //image data and dummy filename (only extension is important)
+    [postBody appendData:[[NSString stringWithString:@"Content-Disposition: form-data; name=\"quote_image[image_data]\"; filename=\"dummy.jpg\"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[[NSString stringWithString:@"Content-Type: image/jpeg\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+	[postBody appendData:imageData];	
+    [postBody appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    //Quote (post) ID
+//    [postBody appendData:[[NSString stringWithString:@"Content-Disposition: form-data; name=\"quote_image[quote_id]\" "] dataUsingEncoding:NSUTF8StringEncoding]];//\r\n\r\n
+//	[postBody appendData:[[NSString stringWithString:s_postID] dataUsingEncoding:NSUTF8StringEncoding]];
+//	[postBody appendData:[[NSString stringWithFormat:@" --%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];//\r\n
+    //method call??
+    [postBody appendData:[[NSString stringWithString:@"Content-Disposition: form-data; name=\"commit\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+	[postBody appendData:[[NSString stringWithString:@"Create Quote image"] dataUsingEncoding:NSUTF8StringEncoding]];
+	[postBody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
     
     
+	[postRequest setHTTPBody:postBody];
     
-	// now lets make the connection to the web
-	/*NSURLConnection *urlConnection = */[NSURLConnection connectionWithRequest:request delegate:self];
+    //NSLog(@"%@", postBody);
+    
+    //send the request
+	[NSURLConnection connectionWithRequest:postRequest delegate:self];
 }
 
 @end
