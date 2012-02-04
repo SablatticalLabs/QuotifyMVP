@@ -14,10 +14,24 @@
 	<string></string>
 	<key>CFBundleIconFiles</key>
 	<array>
-		<string>Quotify_logo.png</string>
+		<string>icon.png</string>
 		<string>Quotify_logo_small.png</string>
 		<string>Quotify_logo_small.png</string>
 	</array>
+	<key>CFBundleIcons</key>
+	<dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>icon.png</string>
+				<string>Quotify_logo_small.png</string>
+				<string>Quotify_logo_small.png</string>
+			</array>
+			<key>UIPrerenderedIcon</key>
+			<false/>
+		</dict>
+	</dict>
 	<key>CFBundleIdentifier</key>
 	<string>Quotify</string>
 	<key>CFBundleInfoDictionaryVersion</key>
