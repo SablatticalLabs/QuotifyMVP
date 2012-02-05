@@ -73,6 +73,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self.quoteView setBackgroundColor:[UIColor clearColor]];
+    CALayer *l = [imageBox layer];
+    [l setMasksToBounds:YES];
+    [l setCornerRadius:5.0];
     [self displayQuote:self.quote];
 }
 
