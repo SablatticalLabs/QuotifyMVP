@@ -12,11 +12,9 @@
 
 @implementation SuccessViewController
 
-@synthesize quoteView;
+@synthesize quoteLabel;
 @synthesize imageBox;
 @synthesize speaker;
-//@synthesize witnesses;
-//@synthesize time;
 @synthesize locationLabel;
 @synthesize quote;
 @synthesize theNewQuoteButton;
@@ -49,7 +47,7 @@
 
 -(void)displayQuote:(Quote *)theQuote
 {
-    self.quoteView.text = theQuote.text;
+    self.quoteLabel.text = theQuote.text;
     self.speaker.text = [NSString stringWithFormat:@"%@",[theQuote.speaker objectForKey:@"name"]];
     //self.witnesses.text = [theQuote getWitnessesAsString];
     self.imageBox.image = theQuote.image;
@@ -72,7 +70,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self.quoteView setBackgroundColor:[UIColor clearColor]];
     CALayer *l = [imageBox layer];
     [l setMasksToBounds:YES];
     [l setCornerRadius:5.0];
@@ -81,16 +78,12 @@
 
 - (void)viewDidUnload
 {
-    [self setQuoteView:nil];
     [self setImageBox:nil];
     [self setSpeaker:nil];
-//    [self setWitnesses:nil];
-//    [self setTime:nil];
     [self setLocationLabel:nil];
     [self setTheNewQuoteButton:nil];
+    [self setQuoteLabel:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
