@@ -85,6 +85,7 @@
 @property (nonatomic, strong) IBOutlet SuccessViewController *successViewController;
 @property (nonatomic, strong) IBOutlet UIButton *addSpeakerButton;
 @property (nonatomic, strong) IBOutlet UIButton *addWitnessButton;
+@property (strong, nonatomic) IBOutlet UIButton *deleteWitnessButton;
 @property (nonatomic, strong) IBOutlet UIActivityIndicatorView *quotifyingActivityIndicator;
 @property (nonatomic, strong) CoreLocationController *locationController;
 

@@ -40,6 +40,7 @@
 @synthesize locationController;
 @synthesize addSpeakerButton;
 @synthesize addWitnessButton;
+@synthesize deleteWitnessButton;
 @synthesize facebook;
 
 @synthesize picker = _picker;
@@ -170,6 +171,7 @@
     [self setAddWitnessButton:nil];
     [self setAddedPersonName:nil];
     [self setAddedPersonEmail:nil];
+    [self setDeleteWitnessButton:nil];
     [super viewDidUnload];
     // Release any retained subview of the main view.
     // e.g. self.myOutlet = nil;
@@ -575,13 +577,17 @@
 
 int countSwipe = 0;
 - (IBAction)witnessesSwiped:(id)sender {
-    NSLog(@"%d", countSwipe);
-    countSwipe++;
-    if (countSwipe>60) {
-        [currentQuote clearWitnesses];
-        self.witnesses.text = @"";
-        countSwipe = 0;
-    }
+    
+    [currentQuote clearWitnesses];
+    self.witnesses.text = @"";
+    
+//    NSLog(@"%d", countSwipe);
+//    countSwipe++;
+//    if (countSwipe>60) {
+//        [currentQuote clearWitnesses];
+//        self.witnesses.text = @"";
+//        countSwipe = 0;
+//    }
 }
 
 - (IBAction)witnessesTouchedUp:(id)sender {

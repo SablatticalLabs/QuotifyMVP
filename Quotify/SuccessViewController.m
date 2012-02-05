@@ -15,8 +15,8 @@
 @synthesize quoteView;
 @synthesize imageBox;
 @synthesize speaker;
-@synthesize witnesses;
-@synthesize time;
+//@synthesize witnesses;
+//@synthesize time;
 @synthesize locationLabel;
 @synthesize quote;
 @synthesize theNewQuoteButton;
@@ -51,10 +51,10 @@
 {
     self.quoteView.text = theQuote.text;
     self.speaker.text = [NSString stringWithFormat:@"%@",[theQuote.speaker objectForKey:@"name"]];
-    self.witnesses.text = [theQuote getWitnessesAsString];
+    //self.witnesses.text = [theQuote getWitnessesAsString];
     self.imageBox.image = theQuote.image;
-    self.time.text = theQuote.timeString;
-    self.locationLabel.text = [NSString stringWithFormat:@"%@, %@",theQuote.location.thoroughfare, theQuote.location.locality];    
+    //self.time.text = theQuote.timeString;
+    self.locationLabel.text = [NSString stringWithFormat:@"%@ were there at %@, %@, and will all receive email notifications.",[theQuote getWitnessesAsString], theQuote.location.thoroughfare, theQuote.location.locality];    
 }
 
 
@@ -81,8 +81,8 @@
     [self setQuoteView:nil];
     [self setImageBox:nil];
     [self setSpeaker:nil];
-    [self setWitnesses:nil];
-    [self setTime:nil];
+//    [self setWitnesses:nil];
+//    [self setTime:nil];
     [self setLocationLabel:nil];
     [self setTheNewQuoteButton:nil];
     [super viewDidUnload];

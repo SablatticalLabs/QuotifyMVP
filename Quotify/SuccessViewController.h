@@ -17,8 +17,8 @@
     UITextView *quoteView;
     UIImageView *imageBox;
     UILabel *speaker;
-    UILabel *witnesses;
-    UILabel *time;
+    //UILabel *witnesses;
+    //UILabel *time;
     UILabel *locationLabel;
     UIButton *theNewQuoteButton;
     Quote *quote;
@@ -26,8 +26,8 @@
 @property (nonatomic, strong) IBOutlet UITextView *quoteView;
 @property (nonatomic, strong) IBOutlet UIImageView *imageBox;
 @property (nonatomic, strong) IBOutlet UILabel *speaker;
-@property (nonatomic, strong) IBOutlet UILabel *witnesses;
-@property (nonatomic, strong) IBOutlet UILabel *time;
+//@property (nonatomic, strong) IBOutlet UILabel *witnesses;
+//@property (nonatomic, strong) IBOutlet UILabel *time;
 @property (nonatomic, strong) IBOutlet UILabel *locationLabel;
 @property (nonatomic, strong) IBOutlet UIButton *theNewQuoteButton;
 @property (nonatomic, strong) Quote *quote;
