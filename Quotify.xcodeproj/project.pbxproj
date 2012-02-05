@@ -41,12 +41,14 @@
 		ADDCB98614DDA34100CE9019 /* photo.png in Resources */ = {isa = PBXBuildFile; fileRef = ADDCB98014DDA34100CE9019 /* photo.png */; };
 		ADDCB98714DDA34100CE9019 /* quotebubble.png in Resources */ = {isa = PBXBuildFile; fileRef = ADDCB98114DDA34100CE9019 /* quotebubble.png */; };
 		ADDCB98914DDA37B00CE9019 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = ADDCB98814DDA37B00CE9019 /* icon.png */; };
-		ADDCB98F14DDAE3C00CE9019 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = ADDCB98E14DDAE3C00CE9019 /* icon.png */; };
 		ADDCB99614DDAF8C00CE9019 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = ADDCB99014DDAE7700CE9019 /* Default.png */; };
 		ADDCB99714DDAF9600CE9019 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ADDCB99414DDAE9100CE9019 /* Default@2x.png */; };
 		ADE4271914DEF37500FE6A5B /* quote1.png in Resources */ = {isa = PBXBuildFile; fileRef = ADE4271814DEF37500FE6A5B /* quote1.png */; };
 		ADE4271C14DEF37C00FE6A5B /* quote2.png in Resources */ = {isa = PBXBuildFile; fileRef = ADE4271B14DEF37C00FE6A5B /* quote2.png */; };
 		ADE4271E14DF012600FE6A5B /* settingsbackground1.png in Resources */ = {isa = PBXBuildFile; fileRef = ADE4271D14DF012600FE6A5B /* settingsbackground1.png */; };
+		ADE4272214DF2A7F00FE6A5B /* donedown.png in Resources */ = {isa = PBXBuildFile; fileRef = ADE4271F14DF2A7E00FE6A5B /* donedown.png */; };
+		ADE4272314DF2A7F00FE6A5B /* doneup.png in Resources */ = {isa = PBXBuildFile; fileRef = ADE4272014DF2A7E00FE6A5B /* doneup.png */; };
+		ADE4272414DF2A7F00FE6A5B /* quotebubble_flippedSpout.png in Resources */ = {isa = PBXBuildFile; fileRef = ADE4272114DF2A7E00FE6A5B /* quotebubble_flippedSpout.png */; };
 		ADF0F9E913A15C63000AC8FC /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF0F9CE13A15C63000AC8FC /* Facebook.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		ADF0F9EA13A15C63000AC8FC /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = ADF0F9D113A15C63000AC8FC /* FBDialog.bundle */; };
 		ADF0F9EB13A15C63000AC8FC /* FBDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF0F9D313A15C63000AC8FC /* FBDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -126,12 +128,14 @@
 		ADDCB98014DDA34100CE9019 /* photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo.png; sourceTree = "<group>"; };
 		ADDCB98114DDA34100CE9019 /* quotebubble.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quotebubble.png; sourceTree = "<group>"; };
 		ADDCB98814DDA37B00CE9019 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
-		ADDCB98E14DDAE3C00CE9019 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		ADDCB99014DDAE7700CE9019 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		ADDCB99414DDAE9100CE9019 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		ADE4271814DEF37500FE6A5B /* quote1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quote1.png; sourceTree = "<group>"; };
 		ADE4271B14DEF37C00FE6A5B /* quote2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quote2.png; sourceTree = "<group>"; };
 		ADE4271D14DF012600FE6A5B /* settingsbackground1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingsbackground1.png; sourceTree = "<group>"; };
+		ADE4271F14DF2A7E00FE6A5B /* donedown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = donedown.png; sourceTree = "<group>"; };
+		ADE4272014DF2A7E00FE6A5B /* doneup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doneup.png; sourceTree = "<group>"; };
+		ADE4272114DF2A7E00FE6A5B /* quotebubble_flippedSpout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quotebubble_flippedSpout.png; sourceTree = "<group>"; };
 		ADF0F9CD13A15C63000AC8FC /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
 		ADF0F9CE13A15C63000AC8FC /* Facebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Facebook.m; sourceTree = "<group>"; };
 		ADF0F9CF13A15C63000AC8FC /* facebook_ios_sdk_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = facebook_ios_sdk_Prefix.pch; sourceTree = "<group>"; };
@@ -209,7 +213,6 @@
 				ADF1604214DE5630000B5343 /* icon57.png */,
 				ADDCB99414DDAE9100CE9019 /* Default@2x.png */,
 				ADDCB99014DDAE7700CE9019 /* Default.png */,
-				ADDCB98E14DDAE3C00CE9019 /* icon.png */,
 				ADA2650F1396ACAD00F9155C /* Entitlements.plist */,
 				ADF0F9C913A15C63000AC8FC /* src */,
 				ADAEF38A1361E9A4002F94A1 /* Quotify */,
@@ -305,6 +308,9 @@
 				ADC5A99B14DE592200AEE72E /* confirmationbubble.png */,
 				ADC5A99D14DE594300AEE72E /* confirmationphotobox.png */,
 				DDBD101D1394697700A40AF4 /* endQuoteMark.png */,
+				ADE4271F14DF2A7E00FE6A5B /* donedown.png */,
+				ADE4272014DF2A7E00FE6A5B /* doneup.png */,
+				ADE4272114DF2A7E00FE6A5B /* quotebubble_flippedSpout.png */,
 				ADDCB98814DDA37B00CE9019 /* icon.png */,
 				ADDCB97E14DDA34100CE9019 /* people.png */,
 				ADDCB97F14DDA34100CE9019 /* person.png */,
@@ -462,7 +468,6 @@
 				ADDCB98614DDA34100CE9019 /* photo.png in Resources */,
 				ADDCB98714DDA34100CE9019 /* quotebubble.png in Resources */,
 				ADDCB98914DDA37B00CE9019 /* icon.png in Resources */,
-				ADDCB98F14DDAE3C00CE9019 /* icon.png in Resources */,
 				ADDCB99614DDAF8C00CE9019 /* Default.png in Resources */,
 				ADDCB99714DDAF9600CE9019 /* Default@2x.png in Resources */,
 				ADF1604014DE55AF000B5343 /* addphotodown.png in Resources */,
@@ -479,6 +484,9 @@
 				ADE4271914DEF37500FE6A5B /* quote1.png in Resources */,
 				ADE4271C14DEF37C00FE6A5B /* quote2.png in Resources */,
 				ADE4271E14DF012600FE6A5B /* settingsbackground1.png in Resources */,
+				ADE4272214DF2A7F00FE6A5B /* donedown.png in Resources */,
+				ADE4272314DF2A7F00FE6A5B /* doneup.png in Resources */,
+				ADE4272414DF2A7F00FE6A5B /* quotebubble_flippedSpout.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
