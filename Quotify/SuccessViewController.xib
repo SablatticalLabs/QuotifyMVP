@@ -148,7 +148,7 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<string key="IBUIText">Speaker</string>
-						<object class="NSColor" key="IBUITextColor" id="456705428">
+						<object class="NSColor" key="IBUITextColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MCAwIDAAA</bytes>
 						</object>
@@ -179,7 +179,7 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<string key="IBUIText">Coming Soon</string>
-						<object class="NSColor" key="IBUITextColor" id="527985118">
+						<object class="NSColor" key="IBUITextColor" id="73911917">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
 						</object>
@@ -213,7 +213,7 @@
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<int key="IBUIButtonType">1</int>
 						<string key="IBUINormalTitle">New Quote</string>
-						<reference key="IBUIHighlightedTitleColor" ref="527985118"/>
+						<reference key="IBUIHighlightedTitleColor" ref="73911917"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MC4xOTYwNzg0MzE0IDAuMzA5ODAzOTIxNiAwLjUyMTU2ODYyNzUAA</bytes>
@@ -232,7 +232,7 @@
 							<int key="NSfFlags">16</int>
 						</object>
 					</object>
-					<object class="IBUILabel" id="912016032">
+					<object class="IBUILabel" id="165153051">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{52, 69}, {216, 72}}</string>
@@ -245,7 +245,10 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<string key="IBUIText">Label</string>
-						<reference key="IBUITextColor" ref="456705428"/>
+						<object class="NSColor" key="IBUITextColor">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MC42NjY2NjY2NjY3AA</bytes>
+						</object>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
 						<float key="IBUIMinimumFontSize">9</float>
@@ -324,7 +327,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">quoteLabel</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="912016032"/>
+						<reference key="destination" ref="165153051"/>
 					</object>
 					<int key="connectionID">53</int>
 				</object>
@@ -363,7 +366,7 @@
 							<reference ref="152687691"/>
 							<reference ref="944861428"/>
 							<reference ref="898100325"/>
-							<reference ref="912016032"/>
+							<reference ref="165153051"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -438,7 +441,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">51</int>
-						<reference key="object" ref="912016032"/>
+						<reference key="object" ref="165153051"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</object>
