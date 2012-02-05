@@ -65,6 +65,11 @@
     quoteText.clipsToBounds = YES;
     quoteText.layer.cornerRadius = 10.0f;
     
+    //Round the corners of the image box
+    CALayer *l = [imageBox layer];
+    [l setMasksToBounds:YES];
+    [l setCornerRadius:5.0];
+    
     [quotifierTF setDelegate:self];
     
     /////// Set up a new quote and comm class ///////

@@ -312,7 +312,7 @@
 							<object class="IBUIImageView" id="806558314">
 								<reference key="NSNextResponder" ref="89788679"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{134, 305}, {52, 52}}</string>
+								<string key="NSFrame">{{135, 306}, {50, 50}}</string>
 								<reference key="NSSuperview" ref="89788679"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="997499922"/>
@@ -568,7 +568,7 @@
 							<string key="NSFrame">{{1, 0}, {320, 44}}</string>
 							<reference key="NSSuperview" ref="795017958"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
+							<reference key="NSNextKeyView" ref="38093726"/>
 							<string key="NSReuseIdentifierKey">_NS:260</string>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							<object class="NSArray" key="IBUIItems">
@@ -576,7 +576,7 @@
 								<object class="IBUINavigationItem" id="295311509">
 									<reference key="IBUINavigationBar" ref="377435320"/>
 									<string key="IBUITitle">Settings</string>
-									<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="599563046">
+									<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="11305363">
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 										<int key="IBUIStyle">2</int>
 										<reference key="IBUINavigationItem" ref="295311509"/>
@@ -1152,7 +1152,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">backToQuoteEntry:</string>
-						<reference key="source" ref="599563046"/>
+						<reference key="source" ref="11305363"/>
 						<reference key="destination" ref="372490531"/>
 					</object>
 					<int key="connectionID">240</int>
@@ -1204,7 +1204,6 @@
 							<reference ref="997499922"/>
 							<reference ref="767594282"/>
 							<reference ref="991126898"/>
-							<reference ref="806558314"/>
 							<reference ref="904665774"/>
 							<reference ref="189937787"/>
 							<reference ref="756011141"/>
@@ -1213,6 +1212,7 @@
 							<reference ref="886184659"/>
 							<reference ref="73331945"/>
 							<reference ref="879634299"/>
+							<reference ref="806558314"/>
 						</object>
 						<reference key="parent" ref="774585933"/>
 						<string key="objectName">View</string>
@@ -1447,7 +1447,7 @@
 						<reference key="object" ref="295311509"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="599563046"/>
+							<reference ref="11305363"/>
 						</object>
 						<reference key="parent" ref="377435320"/>
 					</object>
@@ -1458,7 +1458,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">239</int>
-						<reference key="object" ref="599563046"/>
+						<reference key="object" ref="11305363"/>
 						<reference key="parent" ref="295311509"/>
 					</object>
 				</object>
