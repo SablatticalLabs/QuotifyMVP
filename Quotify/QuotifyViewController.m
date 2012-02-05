@@ -148,16 +148,13 @@
 - (void)viewDidUnload{
     [locationController.locationManager stopUpdatingLocation];
     NSLog(@"Stopped updating location");
-    quoteText = nil;
     [self setSpeaker:nil];
     [self setQuoteText:nil];
     [self setWitnesses:nil];
     [self setImageBox:nil];
     [self setQuotifyButton:nil];
     [self setFirstView:nil];
-    hideKeyboardButton = nil;
     [self setHideKeyboardButton:nil];
-    timestampLabel = nil;
     [self setTimestampLabel:nil];
     [self setSettingsButton:nil];
     [self setSettingsView:nil];

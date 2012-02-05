@@ -50,7 +50,7 @@
 -(void)displayQuote:(Quote *)theQuote
 {
     self.quoteView.text = theQuote.text;
-    self.speaker.text = [NSString stringWithFormat:@"- %@",[theQuote.speaker objectForKey:@"name"]];
+    self.speaker.text = [NSString stringWithFormat:@"%@",[theQuote.speaker objectForKey:@"name"]];
     self.witnesses.text = [theQuote getWitnessesAsString];
     self.imageBox.image = theQuote.image;
     self.time.text = theQuote.timeString;
