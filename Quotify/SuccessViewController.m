@@ -55,7 +55,7 @@
     
     NSLog(@"The string is: %@", theQuote.getWitnessesAsString);
     
-    if(!theQuote.getWitnessesAsString){
+    if([theQuote.getWitnessesAsString isEqualToString:@""]){
          self.locationLabel.text = [NSString stringWithFormat:@"at %@, %@, and will receive an email notification.", theQuote.location.thoroughfare, theQuote.location.locality];
     }
     
