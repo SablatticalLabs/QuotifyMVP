@@ -6,8 +6,6 @@
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
 	<string>${PRODUCT_NAME}</string>
-	<key>CFBundleDocumentTypes</key>
-	<array/>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
@@ -16,7 +14,6 @@
 	<array>
 		<string>icon114.png</string>
 		<string>icon57.png</string>
-		<string>Quotify_logo_small.png</string>
 	</array>
 	<key>CFBundleIcons</key>
 	<dict>
@@ -26,10 +23,9 @@
 			<array>
 				<string>icon114.png</string>
 				<string>icon57.png</string>
-				<string>Quotify_logo_small.png</string>
 			</array>
 			<key>UIPrerenderedIcon</key>
-			<false/>
+			<true/>
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
@@ -63,9 +59,5 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>UTExportedTypeDeclarations</key>
-	<array/>
-	<key>UTImportedTypeDeclarations</key>
-	<array/>
 </dict>
 </plist>

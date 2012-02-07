@@ -52,7 +52,16 @@
     //self.witnesses.text = [theQuote getWitnessesAsString];
     self.imageBox.image = theQuote.image;
     //self.time.text = theQuote.timeString;
-    self.locationLabel.text = [NSString stringWithFormat:@"%@ were there at %@, %@, and will all receive email notifications.",[theQuote getWitnessesAsString], theQuote.location.thoroughfare, theQuote.location.locality];    
+    
+    NSLog(@"The string is: %@", theQuote.getWitnessesAsString);
+    
+    if(!theQuote.getWitnessesAsString){
+         self.locationLabel.text = [NSString stringWithFormat:@"at %@, %@, and will receive an email notification.", theQuote.location.thoroughfare, theQuote.location.locality];
+    }
+    
+    else{
+       self.locationLabel.text = [NSString stringWithFormat:@"%@ were there at %@, %@, and will all receive email notifications.",[theQuote getWitnessesAsString], theQuote.location.thoroughfare, theQuote.location.locality];
+    }
 }
 
 

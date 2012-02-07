@@ -56,7 +56,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">blankbackground2.png</string>
+							<string key="NSResourceName">backgroundconfirmation.png</string>
 						</object>
 					</object>
 					<object class="IBUINavigationBar" id="733052470">
@@ -100,7 +100,7 @@
 					<object class="IBUIImageView" id="152687691">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{27, 66}, {27, 24}}</string>
+						<string key="NSFrame">{{30, 68}, {27, 24}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="425492932"/>
@@ -114,7 +114,7 @@
 					<object class="IBUIImageView" id="943807340">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{266, 66}, {27, 24}}</string>
+						<string key="NSFrame">{{263, 68}, {27, 24}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="944861428"/>
@@ -128,7 +128,7 @@
 					<object class="IBUIImageView" id="711120201">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">256</int>
-						<string key="NSFrame">{{102, 181}, {115, 115}}</string>
+						<string key="NSFrame">{{102, 187}, {115, 115}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="898100325"/>
@@ -144,7 +144,7 @@
 					<object class="IBUIImageView" id="898100325">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{105, 184}, {110, 110}}</string>
+						<string key="NSFrame">{{105, 190}, {110, 110}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="603406074"/>
@@ -186,7 +186,7 @@
 					<object class="IBUILabel" id="603406074">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 299}, {280, 83}}</string>
+						<string key="NSFrame">{{20, 308}, {280, 74}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="698615468"/>
@@ -219,10 +219,9 @@
 					<object class="IBUIButton" id="698615468">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 403}, {280, 46}}</string>
+						<string key="NSFrame">{{20, 401}, {280, 46}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -506,7 +505,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<real value="0.0"/>
+					<real value="1"/>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -620,7 +619,7 @@
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>blankbackground2.png</string>
+				<string>backgroundconfirmation.png</string>
 				<string>confirmationbubble.png</string>
 				<string>confirmationphotobox.png</string>
 				<string>doneup.png</string>
@@ -629,8 +628,8 @@
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>{642, 918}</string>
-				<string>{562, 166}</string>
+				<string>{640, 855}</string>
+				<string>{570, 235}</string>
 				<string>{252, 252}</string>
 				<string>{556, 91}</string>
 				<string>{45, 39}</string>
