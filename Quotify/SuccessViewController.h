@@ -26,6 +26,7 @@
 @property (nonatomic, strong) IBOutlet UILabel *locationLabel;
 @property (nonatomic, strong) IBOutlet UIButton *theNewQuoteButton;
 @property (nonatomic, strong) Quote *quote;
+@property (weak, nonatomic) IBOutlet UIImageView *imageBoxFrame;
 
 - (id)initWithQuote:(Quote *)theQuote;
 - (void)displayQuote:(Quote *)theQuote;

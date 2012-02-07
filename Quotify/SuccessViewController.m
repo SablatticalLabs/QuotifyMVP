@@ -17,6 +17,7 @@
 @synthesize speaker;
 @synthesize locationLabel;
 @synthesize quote;
+@synthesize imageBoxFrame;
 @synthesize theNewQuoteButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -51,6 +52,14 @@
     self.speaker.text = [NSString stringWithFormat:@"%@",[theQuote.speaker objectForKey:@"name"]];
     //self.witnesses.text = [theQuote getWitnessesAsString];
     self.imageBox.image = theQuote.image;
+    if(theQuote.image){
+        [self.imageBoxFrame setHidden:NO];
+        [self.imageBox setHidden:NO];
+    }
+    else{
+        [self.imageBoxFrame setHidden:YES];
+        [self.imageBox setHidden:YES];
+    }
     //self.time.text = theQuote.timeString;
     
     NSLog(@"The string is: %@", theQuote.getWitnessesAsString);
@@ -92,6 +101,7 @@
     [self setLocationLabel:nil];
     [self setTheNewQuoteButton:nil];
     [self setQuoteLabel:nil];
+    [self setImageBoxFrame:nil];
     [super viewDidUnload];
 }
 
