@@ -47,8 +47,26 @@
 }
 
 
+
 -(void)displayQuote:(Quote *)theQuote
 {
+    
+    //Make the witnesses string pretty
+    NSArray *witnessPieces = [theQuote.getWitnessesAsString componentsSeparatedByString: @","];
+    
+    NSString *lastWitness = [witnessPieces objectAtIndex:[witnessPieces count]-1];
+    
+    NSLog(@"Last witness: %@", lastWitness);
+    
+    lastWitness = [lastWitness stringByAppendingFormat:@" and %@", lastWitness];
+    
+    NSLog(@"Last witness with 'and': %@", lastWitness);
+    
+    NSString *prettyWitnesses = [witnessPieces componentsJoinedByString:@", "];
+    
+    NSLog(@"%@", prettyWitnesses);
+    
+    
     self.quoteLabel.text = theQuote.text;
     [Utility resizeFontForLabel:quoteLabel maxSize:40 minSize:8];  
     self.speaker.text = [NSString stringWithFormat:@"%@",[theQuote.speaker objectForKey:@"name"]];
@@ -63,9 +81,7 @@
         [self.imageBox setHidden:YES];
     }
     //self.time.text = theQuote.timeString;
-    
-    NSLog(@"The string is: %@", theQuote.getWitnessesAsString);
-    
+        
     if([theQuote.getWitnessesAsString isEqualToString:@""]){
          self.locationLabel.text = [NSString stringWithFormat:@"at %@, %@", theQuote.location.thoroughfare, theQuote.location.locality];
         [Utility resizeFontForLabel:locationLabel maxSize:45 minSize:8];
@@ -73,7 +89,7 @@
     
     else{
        self.locationLabel.text = [NSString stringWithFormat:@"at %@, %@ with %@", theQuote.location.thoroughfare, theQuote.location.locality, [theQuote getWitnessesAsString]];
-        [Utility resizeFontForLabel:locationLabel maxSize:24 minSize:8];
+        [Utility resizeFontForLabel:locationLabel maxSize:18 minSize:8];
     }
 }
 
