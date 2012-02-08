@@ -67,11 +67,13 @@
     NSLog(@"The string is: %@", theQuote.getWitnessesAsString);
     
     if([theQuote.getWitnessesAsString isEqualToString:@""]){
-         self.locationLabel.text = [NSString stringWithFormat:@"at %@, %@, and will receive an email notification.", theQuote.location.thoroughfare, theQuote.location.locality];
+         self.locationLabel.text = [NSString stringWithFormat:@"at %@, %@", theQuote.location.thoroughfare, theQuote.location.locality];
+        [Utility resizeFontForLabel:locationLabel maxSize:45 minSize:8];
     }
     
     else{
-       self.locationLabel.text = [NSString stringWithFormat:@"%@ were there at %@, %@, and will all receive email notifications.",[theQuote getWitnessesAsString], theQuote.location.thoroughfare, theQuote.location.locality];
+       self.locationLabel.text = [NSString stringWithFormat:@"at %@, %@ with %@", theQuote.location.thoroughfare, theQuote.location.locality, [theQuote getWitnessesAsString]];
+        [Utility resizeFontForLabel:locationLabel maxSize:24 minSize:8];
     }
 }
 
