@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Quote.h"
 #import "FBConnect.h"
+#import "Utility.h"
 
 
 
@@ -20,6 +21,7 @@
     UIButton *theNewQuoteButton;
     Quote *quote;
 }
+
 @property (strong, nonatomic) IBOutlet UILabel *quoteLabel;
 @property (nonatomic, strong) IBOutlet UIImageView *imageBox;
 @property (nonatomic, strong) IBOutlet UILabel *speaker;

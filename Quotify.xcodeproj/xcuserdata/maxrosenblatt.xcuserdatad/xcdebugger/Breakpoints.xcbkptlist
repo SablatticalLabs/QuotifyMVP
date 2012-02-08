@@ -37,12 +37,26 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Quotify/SuccessViewController.m"
-         timestampString = "350274319.290702"
+         timestampString = "350358410.560288"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "58"
-         endingLineNumber = "58"
+         startingLineNumber = "59"
+         endingLineNumber = "59"
          landmarkName = "-displayQuote:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Utility.m"
+         timestampString = "350358797.846195"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "24"
+         endingLineNumber = "24"
+         landmarkName = "+resizeFontForLabel:maxSize:minSize:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
