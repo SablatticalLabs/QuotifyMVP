@@ -58,9 +58,14 @@
     
     NSLog(@"Last witness: %@", lastWitness);
     
-    lastWitness = [lastWitness stringByAppendingFormat:@" and %@", lastWitness];
+    lastWitness = [NSString stringWithFormat:@" and %@", lastWitness];
     
-    NSLog(@"Last witness with 'and': %@", lastWitness);
+    NSLog(@"Last witness with 'and':%@", lastWitness);
+    
+    // Here we need to convert witnessPieces to an NSMutableArray
+    // Then use replaceObjectAtIndex count-1 to overwrite the last element with lastWitness
+    // After that, you can combine the NSMutableArray elements into a pretty string!    
+    
     
     NSString *prettyWitnesses = [witnessPieces componentsJoinedByString:@", "];
     
