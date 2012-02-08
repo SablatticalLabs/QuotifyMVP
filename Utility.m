@@ -10,16 +10,6 @@
 
 @implementation Utility
 
-static int number = 1;
-
-+ (int)getNumber {
-    return number;
-}
-
-+ (void) setNumber:(int)newNumber {
-    number = newNumber;
-}
-
 
 + (void)resizeFontForLabel:(UILabel*)aLabel maxSize:(int)maxSize minSize:(int)minSize {
     // use font from provided label so we don't lose color, style, etc

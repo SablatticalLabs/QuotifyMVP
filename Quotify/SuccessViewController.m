@@ -50,6 +50,7 @@
 -(void)displayQuote:(Quote *)theQuote
 {
     self.quoteLabel.text = theQuote.text;
+    [Utility resizeFontForLabel:quoteLabel maxSize:40 minSize:8];  
     self.speaker.text = [NSString stringWithFormat:@"%@",[theQuote.speaker objectForKey:@"name"]];
     //self.witnesses.text = [theQuote getWitnessesAsString];
     self.imageBox.image = theQuote.image;
@@ -88,10 +89,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    NSLog(@"number - %d", [Utility getNumber]);
-    [Utility setNumber:3];
-    NSLog(@"number - %d", [Utility getNumber]);
     
     // Do any additional setup after loading the view from its nib.
     CALayer *l = [imageBox layer];
