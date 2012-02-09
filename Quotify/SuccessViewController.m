@@ -63,13 +63,15 @@
     NSLog(@"Last witness with 'and':%@", lastWitness);
     
     // Here we need to convert witnessPieces to an NSMutableArray
+    NSMutableArray *tempWitnessPieces = [(NSArray*)witnessPieces mutableCopy];
+    
     // Then use replaceObjectAtIndex count-1 to overwrite the last element with lastWitness
+    [tempWitnessPieces replaceObjectAtIndex:[tempWitnessPieces count]-1 withObject:lastWitness];
+    
     // After that, you can combine the NSMutableArray elements into a pretty string!    
+    NSString *prettyWitnesses = [tempWitnessPieces componentsJoinedByString:@","];
     
-    
-    NSString *prettyWitnesses = [witnessPieces componentsJoinedByString:@", "];
-    
-    NSLog(@"%@", prettyWitnesses);
+    NSLog(@"The final witnesses string is:%@", prettyWitnesses);
     
     
     self.quoteLabel.text = theQuote.text;
@@ -93,7 +95,7 @@
     }
     
     else{
-       self.locationLabel.text = [NSString stringWithFormat:@"at %@, %@ with %@", theQuote.location.thoroughfare, theQuote.location.locality, [theQuote getWitnessesAsString]];
+       self.locationLabel.text = [NSString stringWithFormat:@"at %@, %@ with %@", theQuote.location.thoroughfare, theQuote.location.locality, prettyWitnesses];
         [Utility resizeFontForLabel:locationLabel maxSize:18 minSize:8];
     }
 }
