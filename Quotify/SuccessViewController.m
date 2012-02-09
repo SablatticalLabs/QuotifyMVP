@@ -53,6 +53,9 @@
     
     //Make the witnesses string pretty
     NSString *prettyWitnesses= @"";
+    
+    NSLog(@"%@", theQuote.getWitnessesAsString);
+    
     NSArray *witnessPieces = [theQuote.getWitnessesAsString componentsSeparatedByString: @","];
     
     NSString *lastWitness = [witnessPieces objectAtIndex:[witnessPieces count]-1];
