@@ -52,6 +52,7 @@
 {
     
     //Make the witnesses string pretty
+    NSString *prettyWitnesses= @"";
     NSArray *witnessPieces = [theQuote.getWitnessesAsString componentsSeparatedByString: @","];
     
     NSString *lastWitness = [witnessPieces objectAtIndex:[witnessPieces count]-1];
@@ -60,24 +61,46 @@
     
     lastWitness = [NSString stringWithFormat:@" and %@", lastWitness];
     
-    NSLog(@"Last witness with 'and':%@", lastWitness);
-    
     // Here we need to convert witnessPieces to an NSMutableArray
     NSMutableArray *tempWitnessPieces = [(NSArray*)witnessPieces mutableCopy];
     
-    // Then use replaceObjectAtIndex count-1 to overwrite the last element with lastWitness
-    [tempWitnessPieces replaceObjectAtIndex:[tempWitnessPieces count]-1 withObject:lastWitness];
     
-    // After that, you can combine the NSMutableArray elements into a pretty string!    
-    NSString *prettyWitnesses = [tempWitnessPieces componentsJoinedByString:@","];
+    // Check if there is one witness
+    if([witnessPieces count]==1){
+        // After that, you can combine the NSMutableArray elements into a pretty string!    
+        prettyWitnesses = [witnessPieces componentsJoinedByString:@""];
+    }
+    
+    else {
+		if([witnessPieces count]==2){            
+    		// Then use replaceObjectAtIndex count-1 to overwrite the last element with lastWitness
+    		[tempWitnessPieces replaceObjectAtIndex:[tempWitnessPieces count]-1 withObject:lastWitness];
+            
+            // After that, you can combine the NSMutableArray elements into a pretty string!    
+            prettyWitnesses = [tempWitnessPieces componentsJoinedByString:@""];
+		}
+        
+		else{
+            // Then use replaceObjectAtIndex count-1 to overwrite the last element with lastWitness
+    		[tempWitnessPieces replaceObjectAtIndex:[tempWitnessPieces count]-1 withObject:lastWitness];
+            
+            // After that, you can combine the NSMutableArray elements into a pretty string!    
+            prettyWitnesses = [tempWitnessPieces componentsJoinedByString:@","];
+		}
+    }
+    
     
     NSLog(@"The final witnesses string is:%@", prettyWitnesses);
     
     
+    // Display the quote
     self.quoteLabel.text = theQuote.text;
     [Utility resizeFontForLabel:quoteLabel maxSize:40 minSize:8];  
+    
+    // Display the name of the speaker
     self.speaker.text = [NSString stringWithFormat:@"%@",[theQuote.speaker objectForKey:@"name"]];
-    //self.witnesses.text = [theQuote getWitnessesAsString];
+    
+    // Show the image if there is one
     self.imageBox.image = theQuote.image;
     if(theQuote.image){
         [self.imageBoxFrame setHidden:NO];
@@ -87,8 +110,13 @@
         [self.imageBoxFrame setHidden:YES];
         [self.imageBox setHidden:YES];
     }
+    
+    // Unused timestamp element
     //self.time.text = theQuote.timeString;
         
+    
+    
+    // Format the grammar of the bottom text depending on if there were witnesses or not
     if([theQuote.getWitnessesAsString isEqualToString:@""]){
          self.locationLabel.text = [NSString stringWithFormat:@"at %@, %@", theQuote.location.thoroughfare, theQuote.location.locality];
         [Utility resizeFontForLabel:locationLabel maxSize:45 minSize:8];
