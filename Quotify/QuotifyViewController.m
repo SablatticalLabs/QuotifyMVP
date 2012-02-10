@@ -571,7 +571,8 @@
     else{
         [self.successViewController displayQuote:currentQuote];
     }
-    
+
+    successViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;    
     [self presentModalViewController:self.successViewController animated:YES];
     [self setupNewQuote];
 }

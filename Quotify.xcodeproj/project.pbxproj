@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD1F5DBE14E4A0F00005D248 /* emailfield.png in Resources */ = {isa = PBXBuildFile; fileRef = AD1F5DBB14E4A0F00005D248 /* emailfield.png */; };
+		AD1F5DBF14E4A0F00005D248 /* quotationmarkleft.png in Resources */ = {isa = PBXBuildFile; fileRef = AD1F5DBC14E4A0F00005D248 /* quotationmarkleft.png */; };
+		AD1F5DC014E4A0F00005D248 /* quotationmarkright.png in Resources */ = {isa = PBXBuildFile; fileRef = AD1F5DBD14E4A0F00005D248 /* quotationmarkright.png */; };
 		AD5EE76B141297820017937D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD5EE76A141297820017937D /* QuartzCore.framework */; };
 		AD7CECF9139A92CC003A0A37 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD7CECF8139A92CC003A0A37 /* CoreLocation.framework */; };
 		AD7CECFC139A934A003A0A37 /* CoreLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7CECFB139A934A003A0A37 /* CoreLocationController.m */; };
@@ -94,6 +97,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AD1F5DBB14E4A0F00005D248 /* emailfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emailfield.png; sourceTree = "<group>"; };
+		AD1F5DBC14E4A0F00005D248 /* quotationmarkleft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quotationmarkleft.png; sourceTree = "<group>"; };
+		AD1F5DBD14E4A0F00005D248 /* quotationmarkright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quotationmarkright.png; sourceTree = "<group>"; };
 		AD5EE76A141297820017937D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AD7CECF8139A92CC003A0A37 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AD7CECFA139A934A003A0A37 /* CoreLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreLocationController.h; path = ../CoreLocationController.h; sourceTree = "<group>"; };
@@ -317,6 +323,9 @@
 			children = (
 				ADAEF3961361E9A4002F94A1 /* MainWindow.xib */,
 				ADAEF39C1361E9A4002F94A1 /* QuotifyViewController.xib */,
+				AD1F5DBB14E4A0F00005D248 /* emailfield.png */,
+				AD1F5DBC14E4A0F00005D248 /* quotationmarkleft.png */,
+				AD1F5DBD14E4A0F00005D248 /* quotationmarkright.png */,
 				DDBD101913944B7300A40AF4 /* SuccessViewController.xib */,
 				ADF1603E14DE55AF000B5343 /* addphotodown.png */,
 				ADF1603F14DE55AF000B5343 /* addphotoup.png */,
@@ -520,6 +529,9 @@
 				ADBA6E5A14E0E17B006AF908 /* photoboxup.png in Resources */,
 				ADBA6E5C14E0E185006AF908 /* quotebubble.png in Resources */,
 				ADBA6E5E14E0E197006AF908 /* settingsup-1.png in Resources */,
+				AD1F5DBE14E4A0F00005D248 /* emailfield.png in Resources */,
+				AD1F5DBF14E4A0F00005D248 /* quotationmarkleft.png in Resources */,
+				AD1F5DC014E4A0F00005D248 /* quotationmarkright.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
