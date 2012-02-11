@@ -62,7 +62,7 @@
     
     NSLog(@"Last witness: %@", lastWitness);
     
-    lastWitness = [NSString stringWithFormat:@" and %@", lastWitness];
+    lastWitness = [NSString stringWithFormat:@" and%@", lastWitness];
     
     // Here we need to convert witnessPieces to an NSMutableArray
     NSMutableArray *tempWitnessPieces = [(NSArray*)witnessPieces mutableCopy];

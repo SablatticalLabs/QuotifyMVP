@@ -621,7 +621,7 @@ int countSwipe = 0;
 }
 
 - (void)setupNewQuote{
-    currentQuote = [[Quote alloc] init];
+    //currentQuote = [[Quote alloc] init];
     quoteText.text = @"What was said?";
     quoteText.textColor = [UIColor lightGrayColor];
     quoteTextWasEdited = NO;
