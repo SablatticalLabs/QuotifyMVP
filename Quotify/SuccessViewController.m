@@ -112,6 +112,7 @@
     else{
         [self.imageBoxFrame setHidden:YES];
         [self.imageBox setHidden:YES];
+        self.locationLabel.frame = CGRectMake(20, 185, 280, 74);
     }
     
     // Unused timestamp element
@@ -122,7 +123,7 @@
     // Format the grammar of the bottom text depending on if there were witnesses or not
     if([theQuote.getWitnessesAsString isEqualToString:@""]){
          self.locationLabel.text = [NSString stringWithFormat:@"at %@, %@", theQuote.location.thoroughfare, theQuote.location.locality];
-        [Utility resizeFontForLabel:locationLabel maxSize:45 minSize:8];
+        [Utility resizeFontForLabel:locationLabel maxSize:16 minSize:8];
     }
     
     else{

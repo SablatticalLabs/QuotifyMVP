@@ -603,7 +603,7 @@
 							<string key="NSFrame">{{147, 157}, {29, 31}}</string>
 							<reference key="NSSuperview" ref="795017958"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="696456242"/>
+							<reference key="NSNextKeyView" ref="1066448565"/>
 							<bool key="IBUIOpaque">NO</bool>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							<int key="IBUIContentHorizontalAlignment">0</int>
@@ -617,7 +617,7 @@
 							<reference key="IBUIFontDescription" ref="777995869"/>
 							<reference key="IBUIFont" ref="488448074"/>
 						</object>
-						<object class="IBUIImageView" id="696456242">
+						<object class="IBUIImageView" id="1066448565">
 							<reference key="NSNextResponder" ref="795017958"/>
 							<int key="NSvFlags">256</int>
 							<string key="NSFrame">{{15, 85}, {291, 55}}</string>
@@ -636,7 +636,7 @@
 						<object class="IBUITextField" id="809406309">
 							<reference key="NSNextResponder" ref="795017958"/>
 							<int key="NSvFlags">292</int>
-							<string key="NSFrame">{{82, 97}, {211, 31}}</string>
+							<string key="NSFrame">{{87, 97}, {206, 31}}</string>
 							<reference key="NSSuperview" ref="795017958"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="330462889"/>
@@ -1287,7 +1287,7 @@
 							<reference ref="377435320"/>
 							<reference ref="607047037"/>
 							<reference ref="809406309"/>
-							<reference ref="696456242"/>
+							<reference ref="1066448565"/>
 						</object>
 						<reference key="parent" ref="19867892"/>
 						<string key="objectName">SettingsView</string>
@@ -1474,7 +1474,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">242</int>
-						<reference key="object" ref="696456242"/>
+						<reference key="object" ref="1066448565"/>
 						<reference key="parent" ref="795017958"/>
 					</object>
 				</object>
