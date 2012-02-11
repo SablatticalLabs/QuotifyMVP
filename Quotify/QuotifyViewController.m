@@ -301,8 +301,9 @@
     
     // Show the people picker 
     [self presentModalViewController:self.picker animated:YES];
-    //[self.picker release];	
-    
+    [self.picker.topViewController.searchDisplayController setActive:YES];
+    //[self.picker.topViewController.searchDisplayController 
+        
 }  
 
 ///////// Dismisses the people picker when cancel is pressed ///////
