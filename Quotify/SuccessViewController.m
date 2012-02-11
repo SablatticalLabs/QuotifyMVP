@@ -128,7 +128,9 @@
     if(theQuote.image){
         [self.imageBoxFrame setHidden:NO];
         [self.imageBox setHidden:NO];
+        self.locationLabel.frame = CGRectMake(20, 308, 280, 74);
     }
+    
     else{
         [self.imageBoxFrame setHidden:YES];
         [self.imageBox setHidden:YES];
