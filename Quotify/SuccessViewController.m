@@ -50,6 +50,22 @@
     return self;
 }
 
+
+- (NSString *)formattedLocationString:(Quote *)theQuote{
+    
+    NSString *formattedLocation = @"";
+        
+    if ( theQuote.location.thoroughfare != nil && theQuote.location.locality != nil ){
+        formattedLocation = [NSString stringWithFormat:@"at %@, %@", theQuote.location.thoroughfare, theQuote.location.locality];
+    }
+    
+    NSLog(@"Formatted Location: %@", formattedLocation);
+    
+    return formattedLocation;
+    
+}
+
+
 - (NSString *)formattedWitnessString:(Quote *)theQuote{
     //Make the witnesses string pretty
     NSString *prettyWitnesses= @"";
@@ -99,7 +115,7 @@
 }
 
 - (void)displayQuote:(Quote *)theQuote
-{
+{    
     // Display the quote
     self.quoteLabel.text = theQuote.text;
     [Utility resizeFontForLabel:quoteLabel maxSize:40 minSize:8];  
@@ -121,12 +137,13 @@
     
     // Format the grammar of the bottom text depending on if there were witnesses or not
     if([theQuote.getWitnessesAsString isEqualToString:@""]){
-        self.locationLabel.text = [NSString stringWithFormat:@"at %@, %@", theQuote.location.thoroughfare, theQuote.location.locality];
+        self.locationLabel.text = [self formattedLocationString:theQuote];
         [Utility resizeFontForLabel:locationLabel maxSize:16 minSize:8];
     }
     
     else{
-        self.locationLabel.text = [NSString stringWithFormat:@"at %@, %@ with %@", theQuote.location.thoroughfare, theQuote.location.locality, [self formattedWitnessString:theQuote]];
+        self.locationLabel.text = [NSString stringWithFormat:@"%@ with %@", 
+            [self formattedLocationString:theQuote], [self formattedWitnessString:theQuote]];
         [Utility resizeFontForLabel:locationLabel maxSize:18 minSize:8];
     }
     
