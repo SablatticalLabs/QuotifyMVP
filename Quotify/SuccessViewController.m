@@ -20,6 +20,17 @@
 @synthesize imageBoxFrame;
 @synthesize theNewQuoteButton;
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    // Do any additional setup after loading the view from its nib.
+    CALayer *l = [imageBox layer];
+    [l setMasksToBounds:YES];
+    [l setCornerRadius:5.0];
+    [self displayQuote:self.quote];
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -39,18 +50,7 @@
     return self;
 }
 
-- (IBAction)newQuotePressed:(id)sender 
-{
-    //[(QuotifyViewController *)self.parentViewController setupNewQuote];
-    //[self.parentViewController dismissModalViewControllerAnimated:YES];
-    [self dismissModalViewControllerAnimated:YES];
-}
-
-
-
--(void)displayQuote:(Quote *)theQuote
-{
-    
+- (NSString *)formattedWitnessString:(Quote *)theQuote{
     //Make the witnesses string pretty
     NSString *prettyWitnesses= @"";
     
@@ -95,7 +95,11 @@
     
     NSLog(@"The final witnesses string is:%@", prettyWitnesses);
     
-    
+    return prettyWitnesses;
+}
+
+- (void)displayQuote:(Quote *)theQuote
+{
     // Display the quote
     self.quoteLabel.text = theQuote.text;
     [Utility resizeFontForLabel:quoteLabel maxSize:40 minSize:8];  
@@ -115,23 +119,25 @@
         self.locationLabel.frame = CGRectMake(20, 185, 280, 74);
     }
     
-    // Unused timestamp element
-    //self.time.text = theQuote.timeString;
-        
-    
-    
     // Format the grammar of the bottom text depending on if there were witnesses or not
     if([theQuote.getWitnessesAsString isEqualToString:@""]){
-         self.locationLabel.text = [NSString stringWithFormat:@"at %@, %@", theQuote.location.thoroughfare, theQuote.location.locality];
+        self.locationLabel.text = [NSString stringWithFormat:@"at %@, %@", theQuote.location.thoroughfare, theQuote.location.locality];
         [Utility resizeFontForLabel:locationLabel maxSize:16 minSize:8];
     }
     
     else{
-       self.locationLabel.text = [NSString stringWithFormat:@"at %@, %@ with %@", theQuote.location.thoroughfare, theQuote.location.locality, prettyWitnesses];
+        self.locationLabel.text = [NSString stringWithFormat:@"at %@, %@ with %@", theQuote.location.thoroughfare, theQuote.location.locality, [self formattedWitnessString:theQuote]];
         [Utility resizeFontForLabel:locationLabel maxSize:18 minSize:8];
     }
+    
+    // Unused timestamp element
+    //self.time.text = theQuote.timeString;
 }
 
+- (IBAction)newQuotePressed:(id)sender 
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -142,18 +148,6 @@
 }
 
 #pragma mark - View lifecycle
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    // Do any additional setup after loading the view from its nib.
-    CALayer *l = [imageBox layer];
-    [l setMasksToBounds:YES];
-    [l setCornerRadius:5.0];
-    [self displayQuote:self.quote];
-}
-
 - (void)viewDidUnload
 {
     [self setImageBox:nil];

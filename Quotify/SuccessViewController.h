@@ -31,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageBoxFrame;
 
 - (id)initWithQuote:(Quote *)theQuote;
+- (NSString *)formattedWitnessString:(Quote *)theQuote;
 - (void)displayQuote:(Quote *)theQuote;
 - (IBAction)newQuotePressed:(id)sender;
 
