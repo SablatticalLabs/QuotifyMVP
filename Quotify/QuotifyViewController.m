@@ -148,7 +148,7 @@
 - (void)showFirstTimeSettings{
     quotifierTF.text = [currentQuote.quotifier objectForKey:@"email"];
     [self presentModalViewController:self.settingsViewController animated:YES];
-    [self raiseFailurePopupWithTitle:@"Welcome to Quotify!" andMessage:@"Enter your email address to get started."];
+    [self raiseFailurePopupWithTitle:@"Welcome to Quotify!" andMessage:@"Enter your email address to get started"];
 }
 
 - (void)viewDidUnload{
@@ -228,7 +228,7 @@
 - (IBAction)imageBoxPressed:(id)sender {
     if ( ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]))
 	{	
-        UIActionSheet *pictureSourceActionSheet = [[UIActionSheet alloc] initWithTitle:@"Image Source" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Picture", @"Choose from Library", nil];
+        UIActionSheet *pictureSourceActionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Picture", @"Choose from Library", nil];
         pictureSourceActionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
         [pictureSourceActionSheet showFromRect:imageBox.frame inView:self.view animated:YES];
     }

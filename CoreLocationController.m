@@ -20,7 +20,7 @@
 	if(self != nil) {
 		self.locationManager = [[CLLocationManager alloc] init]; // Create new instance of locMgr
 		self.locationManager.delegate = self; // Set the delegate as self.
-        self.locationManager.purpose = @"We wanna geotag your quotes!";
+        self.locationManager.purpose = @"It's a lot more fun when you add a location to your quotes!";
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         self.locationManager.distanceFilter = 30;
 	}
