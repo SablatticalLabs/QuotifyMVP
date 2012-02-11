@@ -299,10 +299,12 @@
     
     self.picker.displayedProperties = displayedItems;
     
-    // Show the people picker 
+    // Show the people picker
     [self presentModalViewController:self.picker animated:YES];
+    
+    // Force display the search bar and make the keyboard pop up
     [self.picker.topViewController.searchDisplayController setActive:YES];
-    //[self.picker.topViewController.searchDisplayController 
+    [self.picker.topViewController.searchDisplayController.searchBar becomeFirstResponder];
         
 }  
 
