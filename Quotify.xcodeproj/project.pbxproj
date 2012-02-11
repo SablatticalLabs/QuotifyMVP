@@ -10,6 +10,7 @@
 		AD1F5DBE14E4A0F00005D248 /* emailfield.png in Resources */ = {isa = PBXBuildFile; fileRef = AD1F5DBB14E4A0F00005D248 /* emailfield.png */; };
 		AD1F5DBF14E4A0F00005D248 /* quotationmarkleft.png in Resources */ = {isa = PBXBuildFile; fileRef = AD1F5DBC14E4A0F00005D248 /* quotationmarkleft.png */; };
 		AD1F5DC014E4A0F00005D248 /* quotationmarkright.png in Resources */ = {isa = PBXBuildFile; fileRef = AD1F5DBD14E4A0F00005D248 /* quotationmarkright.png */; };
+		AD1F5DC314E6EDAE0005D248 /* blankbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = AD1F5DC214E6EDAD0005D248 /* blankbackground.png */; };
 		AD5EE76B141297820017937D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD5EE76A141297820017937D /* QuartzCore.framework */; };
 		AD7CECF9139A92CC003A0A37 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD7CECF8139A92CC003A0A37 /* CoreLocation.framework */; };
 		AD7CECFC139A934A003A0A37 /* CoreLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7CECFB139A934A003A0A37 /* CoreLocationController.m */; };
@@ -87,6 +88,7 @@
 		AD1F5DBB14E4A0F00005D248 /* emailfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emailfield.png; sourceTree = "<group>"; };
 		AD1F5DBC14E4A0F00005D248 /* quotationmarkleft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quotationmarkleft.png; sourceTree = "<group>"; };
 		AD1F5DBD14E4A0F00005D248 /* quotationmarkright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quotationmarkright.png; sourceTree = "<group>"; };
+		AD1F5DC214E6EDAD0005D248 /* blankbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blankbackground.png; sourceTree = "<group>"; };
 		AD5EE76A141297820017937D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AD7CECF8139A92CC003A0A37 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AD7CECFA139A934A003A0A37 /* CoreLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreLocationController.h; path = ../CoreLocationController.h; sourceTree = "<group>"; };
@@ -295,11 +297,12 @@
 		ADAEF3C01361EA7E002F94A1 /* View Files */ = {
 			isa = PBXGroup;
 			children = (
-				DDBD101913944B7300A40AF4 /* SuccessViewController.xib */,
 				ADAEF3961361E9A4002F94A1 /* MainWindow.xib */,
 				ADAEF39C1361E9A4002F94A1 /* QuotifyViewController.xib */,
+				DDBD101913944B7300A40AF4 /* SuccessViewController.xib */,
 				ADBA6E5114E0E143006AF908 /* background.png */,
 				ADBA6E5314E0E14A006AF908 /* backgroundconfirmation.png */,
+				AD1F5DC214E6EDAD0005D248 /* blankbackground.png */,
 				ADBA6E5514E0E158006AF908 /* confirmationbubble.png */,
 				ADC5A99D14DE594300AEE72E /* confirmationphotobox.png */,
 				ADE4271F14DF2A7E00FE6A5B /* donedown.png */,
@@ -480,6 +483,7 @@
 				AD1F5DBE14E4A0F00005D248 /* emailfield.png in Resources */,
 				AD1F5DBF14E4A0F00005D248 /* quotationmarkleft.png in Resources */,
 				AD1F5DC014E4A0F00005D248 /* quotationmarkright.png in Resources */,
+				AD1F5DC314E6EDAE0005D248 /* blankbackground.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

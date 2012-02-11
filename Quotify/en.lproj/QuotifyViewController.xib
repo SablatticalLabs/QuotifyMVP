@@ -406,7 +406,7 @@
 							<object class="IBUIButton" id="73331945">
 								<reference key="NSNextResponder" ref="89788679"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{270, 205}, {20, 24}}</string>
+								<string key="NSFrame">{{270, 205}, {19, 24}}</string>
 								<reference key="NSSuperview" ref="89788679"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="904665774"/>
@@ -456,7 +456,7 @@
 							<object class="IBUIButton" id="232334114">
 								<reference key="NSNextResponder" ref="89788679"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{270, 256}, {30, 24}}</string>
+								<string key="NSFrame">{{270, 256}, {28, 24}}</string>
 								<reference key="NSSuperview" ref="89788679"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="997499922"/>
@@ -603,7 +603,7 @@
 							<string key="NSFrame">{{147, 157}, {29, 31}}</string>
 							<reference key="NSSuperview" ref="795017958"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="1066448565"/>
+							<reference key="NSNextKeyView" ref="958527378"/>
 							<bool key="IBUIOpaque">NO</bool>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							<int key="IBUIContentHorizontalAlignment">0</int>
@@ -617,7 +617,7 @@
 							<reference key="IBUIFontDescription" ref="777995869"/>
 							<reference key="IBUIFont" ref="488448074"/>
 						</object>
-						<object class="IBUIImageView" id="1066448565">
+						<object class="IBUIImageView" id="958527378">
 							<reference key="NSNextResponder" ref="795017958"/>
 							<int key="NSvFlags">256</int>
 							<string key="NSFrame">{{15, 85}, {291, 55}}</string>
@@ -701,7 +701,7 @@
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							<object class="NSCustomResource" key="IBUIImage">
 								<string key="NSClassName">NSImage</string>
-								<string key="NSResourceName">blankbackground2.png</string>
+								<string key="NSResourceName">blankbackground.png</string>
 							</object>
 						</object>
 						<object class="IBUINavigationBar" id="754647590">
@@ -1287,7 +1287,7 @@
 							<reference ref="377435320"/>
 							<reference ref="607047037"/>
 							<reference ref="809406309"/>
-							<reference ref="1066448565"/>
+							<reference ref="958527378"/>
 						</object>
 						<reference key="parent" ref="19867892"/>
 						<string key="objectName">SettingsView</string>
@@ -1474,7 +1474,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">242</int>
-						<reference key="object" ref="1066448565"/>
+						<reference key="object" ref="958527378"/>
 						<reference key="parent" ref="795017958"/>
 					</object>
 				</object>
@@ -1573,7 +1573,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<real value="0.0"/>
+					<real value="1"/>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<real value="0.0"/>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -1987,7 +1987,7 @@
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>background.png</string>
-				<string>blankbackground2.png</string>
+				<string>blankbackground.png</string>
 				<string>emailfield.png</string>
 				<string>people.png</string>
 				<string>person.png</string>
