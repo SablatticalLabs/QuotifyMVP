@@ -626,6 +626,12 @@ int countSwipe = 0;
     quoteText.textColor = [UIColor lightGrayColor];
     quoteTextWasEdited = NO;
     speaker.text = @"";
+    
+    // Set quote, speaker, and image to nil
+    currentQuote.text = nil;
+    [currentQuote.speaker removeAllObjects];
+    currentQuote.image = nil;
+    
     imageBox.image = nil;
     [self hideKeyboard:nil];
 
