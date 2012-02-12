@@ -226,29 +226,56 @@
 
 /////// Called when the image box is pressed ///////
 - (IBAction)imageBoxPressed:(id)sender {
-    if ( ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]))
+    // Check if there is currently an image selected
+    if (imageBox.image==nil) {
+        // If the device has a camera
+        if ( ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]))
+        	{	
+                UIActionSheet *pictureSourceActionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Photo", @"Choose Existing", nil];
+                pictureSourceActionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+                [pictureSourceActionSheet showFromRect:imageBox.frame inView:self.view animated:YES];
+            }
+            else
+            {
+                imgPicker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+                [self presentModalViewController:self.imgPicker animated:YES];
+            }
+        }
+    
+    // If there is currently an image selected, and the device has a camera
+    else if ( ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]))
 	{	
-        UIActionSheet *pictureSourceActionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Picture", @"Choose from Library", nil];
+        UIActionSheet *pictureSourceActionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take New Photo", @"Choose  Existing", @"Remove Selected", nil];
         pictureSourceActionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
         [pictureSourceActionSheet showFromRect:imageBox.frame inView:self.view animated:YES];
     }
+    
+    // If there is currently an image selected, and the device has no camera
     else
     {
-        imgPicker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-        [self presentModalViewController:self.imgPicker animated:YES];
+        UIActionSheet *pictureSourceActionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Choose Different", @"Remove Selected", nil];
+        pictureSourceActionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+        [pictureSourceActionSheet showFromRect:imageBox.frame inView:self.view animated:YES];
     }
 }
 
 /////// Allows the user to select a new picture from the camera or an existing one from their library ///////
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Take Picture"]) {
+    if ([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Take Photo"]
+        ||[[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Take New Photo"]) {
         imgPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
         [self presentModalViewController:self.imgPicker animated:YES];
     }
-    else if([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Choose from Library"]){
+    else if([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Choose Existing"]
+            || [[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Choose Different"]){
         imgPicker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
         [self presentModalViewController:self.imgPicker animated:YES];
     }
+    else if([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Remove Selected"]){
+        imageBox.image = nil;
+        currentQuote.image = nil;
+    }
+    
 }
 
 /////// Triggered once the user has chosen a picture ///////
