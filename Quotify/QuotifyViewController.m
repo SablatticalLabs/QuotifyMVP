@@ -245,7 +245,7 @@
     // If there is currently an image selected, and the device has a camera
     else if ( ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]))
 	{	
-        UIActionSheet *pictureSourceActionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take New Photo", @"Choose  Existing", @"Remove Selected", nil];
+        UIActionSheet *pictureSourceActionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Remove Selected" otherButtonTitles:@"Take New Photo", @"Choose  Different", nil];
         pictureSourceActionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
         [pictureSourceActionSheet showFromRect:imageBox.frame inView:self.view animated:YES];
     }
@@ -253,7 +253,8 @@
     // If there is currently an image selected, and the device has no camera
     else
     {
-        UIActionSheet *pictureSourceActionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Choose Different", @"Remove Selected", nil];
+        UIActionSheet *pictureSourceActionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Remove Selected" otherButtonTitles:@"Choose Different", nil];
+
         pictureSourceActionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
         [pictureSourceActionSheet showFromRect:imageBox.frame inView:self.view animated:YES];
     }
