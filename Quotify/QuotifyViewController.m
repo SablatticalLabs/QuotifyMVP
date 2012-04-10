@@ -318,8 +318,8 @@
     self.picker = [[ABPeoplePickerNavigationController alloc] init];
     
     // Set the delegates
-    self.picker.delegate = self;
-    self.picker.peoplePickerDelegate = self;
+    self.picker.delegate = self;//this is why the regular NavigationController events work.
+    self.picker.peoplePickerDelegate = self;//this is why PeoplePicker events work.
     
     // Display only a person's phone, email
     NSArray *displayedItems = [NSArray arrayWithObjects:[NSNumber numberWithInt:kABPersonPhoneProperty], 
@@ -331,6 +331,7 @@
     [self presentModalViewController:self.picker animated:YES];
     
     // Force display the search bar and make the keyboard pop up
+    self.picker.topViewController.searchDisplayController.delegate = self;
     [self.picker.topViewController.searchDisplayController setActive:YES];
     [self.picker.topViewController.searchDisplayController.searchBar becomeFirstResponder];
         
@@ -442,6 +443,8 @@
     //clear the textboxes first
     addedPersonName.text = @"";
     addedPersonEmail.text = @"";
+    
+    //[self.picker pushViewController:addPersonViewController animated:YES];
     [self.picker presentModalViewController:addPersonViewController animated:YES];
     
 }
@@ -481,6 +484,11 @@
             navigationController.topViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];  
         }
     }
+#pragma mark - UISearchDisplayDelegate
+
+- (void) searchDisplayController:(UISearchDisplayController *)controller didHideSearchResultsTableView:(UITableView *)tableView{
+    //Not sure why this works, but just having this method here (and making self the delegate, and implementing searchDisplayDelegate) fixes an issue where the navigation bar isn't redraw with the custom buttons.
+}
     
 #pragma mark - ABPersonViewControllerDelegate
     
@@ -511,7 +519,7 @@
 }
 
 - (IBAction)backToMainView:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
+    [self.picker dismissModalViewControllerAnimated:YES];
 }
 
 - (IBAction)doneAddingPeople:(id)sender {
