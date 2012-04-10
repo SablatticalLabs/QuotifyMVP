@@ -468,6 +468,10 @@
     
 // Called when the navigation controller shows a new top view controller via a push, pop or setting of the view controller stack.
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
+    
+    if ([viewController isKindOfClass:[ABPersonViewController class]]) {
+        ((ABPersonViewController*)viewController).allowsEditing = YES;
+    }
         
         //set up the ABPeoplePicker controls here to get rid of the forced cancel button on the right hand side but you also then have to 
         // the other views it pushes on to ensure they have to correct buttons shown at the correct time.
@@ -491,7 +495,7 @@
 }
     
 #pragma mark - ABPersonViewControllerDelegate
-    
+
 // Called when the user selects an individual value in the Person view, identifier will be kABMultiValueInvalidIdentifier if a single value property was selected.
 // Return NO if you do not want anything to be done or if you are handling the actions yourself.
 // Return YES if you want the ABPersonViewController to perform its default action.
