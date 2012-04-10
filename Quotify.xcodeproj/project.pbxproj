@@ -136,6 +136,7 @@
 		ADDCB98814DDA37B00CE9019 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		ADDCB99014DDAE7700CE9019 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		ADDCB99414DDAE9100CE9019 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		ADE2F031151E719000B2D835 /* Quotify.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Quotify.entitlements; sourceTree = "<group>"; };
 		ADE4271F14DF2A7E00FE6A5B /* donedown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = donedown.png; sourceTree = "<group>"; };
 		ADE4272014DF2A7E00FE6A5B /* doneup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doneup.png; sourceTree = "<group>"; };
 		ADE8125614E20A4300DA78EC /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utility.h; path = ../Utility.h; sourceTree = "<group>"; };
@@ -249,6 +250,7 @@
 		ADAEF38A1361E9A4002F94A1 /* Quotify */ = {
 			isa = PBXGroup;
 			children = (
+				ADE2F031151E719000B2D835 /* Quotify.entitlements */,
 				ADAEF3931361E9A4002F94A1 /* QuotifyAppDelegate.h */,
 				ADAEF3941361E9A4002F94A1 /* QuotifyAppDelegate.m */,
 				ADAEF3991361E9A4002F94A1 /* QuotifyViewController.h */,
@@ -601,13 +603,13 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Max Rosenblatt";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Max Rosenblatt";
-				"CODE_SIGN_RESOURCE_RULES_PATH[sdk=iphoneos*]" = "";
+				"CODE_SIGN_RESOURCE_RULES_PATH[sdk=iphoneos5.0]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "C8033766-E45A-4304-9907-BF5D8BE714E7";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C8033766-E45A-4304-9907-BF5D8BE714E7";
@@ -679,7 +681,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
@@ -697,7 +699,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "C8033766-E45A-4304-9907-BF5D8BE714E7";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C8033766-E45A-4304-9907-BF5D8BE714E7";
@@ -737,8 +739,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Quotify/Quotify-Prefix.pch";

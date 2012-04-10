@@ -28,7 +28,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "491"
          endingLineNumber = "491"
-         landmarkName = "-doneAddingPeople:"
+         landmarkName = "-personViewController:shouldPerformDefaultActionForPerson:property:identifier:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -42,7 +42,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "578"
          endingLineNumber = "578"
-         landmarkName = "-showSuccessView"
+         landmarkName = "-quoteTextSent:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
