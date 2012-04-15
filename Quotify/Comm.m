@@ -11,7 +11,7 @@
 
 @implementation Comm
 
-@synthesize quoteToSend, quoteTextSentSuccessfully, delegate;
+@synthesize quoteToSend, quoteTextSentSuccessfully, delegate, request;
 
 NSString * const sendQuoteToURL = @"http://www.quotify.it/quotes.json";
 NSString * const sendImageToURL = @"http://quotify.it/quotes/<ID>/quote_images.json";
@@ -27,10 +27,10 @@ NSString * const sendImageToURL = @"http://quotify.it/quotes/<ID>/quote_images.j
 }
 
 - (void)sendHTTPrequest:(NSString*)myData{
-	NSMutableURLRequest *request = 
+	request = 
 	[NSMutableURLRequest requestWithURL:[NSURL URLWithString:sendQuoteToURL] 
                             cachePolicy:NSURLRequestReturnCacheDataElseLoad 
-                        timeoutInterval:30];
+                        timeoutInterval:15];
 	
 	[request setHTTPMethod:@"POST"];
 	[request setHTTPBody:[myData dataUsingEncoding:NSUTF8StringEncoding]];
@@ -40,6 +40,10 @@ NSString * const sendImageToURL = @"http://quotify.it/quotes/<ID>/quote_images.j
 	
 	// Make asynchronous request
 	/*NSURLConnection *urlConnection =*/ [NSURLConnection connectionWithRequest:request delegate:self];
+}
+
+-(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
+    //save the quote for later sending?
 }
 
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{

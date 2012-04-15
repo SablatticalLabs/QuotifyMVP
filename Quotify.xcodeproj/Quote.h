@@ -12,7 +12,7 @@
 #import <AddressBook/AddressBook.h>
 #import <AddressBookUI/AddressBookUI.h>
 
-@interface Quote : NSObject {
+@interface Quote : NSObject <NSCoding> {
     @private
     NSMutableDictionary *quotifier;
     NSMutableDictionary *speaker;

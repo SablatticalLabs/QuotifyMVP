@@ -16,13 +16,6 @@
 @synthesize quotifier, speaker, text, witnesses, image, timeString, postID, UrlWhereQuoteIsPosted, location, currentLocation;
 
 
-//-(void)setSpeaker:(NSMutableDictionary *)_speaker{
-//    speaker = [NSMutableDictionary dictionaryWithDictionary:_speaker];
-//}
-
-//-(NSMutableDictionary *)speaker{
-//    return speaker;
-//}
 
 -(NSString *)getLocationAsText{
     NSString *locationAsText = [NSString stringWithFormat:@"%@, %@", self.location.thoroughfare, self.location.locality];
@@ -61,11 +54,6 @@
     
     return [NSString stringWithFormat:@"%@ %@", lat, lng];
 }
-    
-//    NSString *locationAsCoordinate = [NSString stringWithFormat:@"%g, %g", self.currentLocation.coordinate.latitude, self.currentLocation.coordinate.longitude];
-//    NSLog(@"Coordinate: %@", locationAsCoordinate);
-//    return locationAsCoordinate;
-//}
 
 // This crashes if the user doesn't input anything. We should check that field aren't blank before calling this method.
 -(NSDictionary *)getQuoteAsDictionary{//Get Location happening
@@ -91,34 +79,6 @@
 	self.timeString = [formatter stringFromDate:[NSDate date]];
 }
 
-//-(void)addSpeaker:(ABRecordRef)person{
-//    NSLog(@"Email property: %@, Composite Name: %@", ABRecordCopyValue(person, kABPersonEmailProperty), ABRecordCopyCompositeName(person));
-//    if (!self.speaker) {
-//        self.speaker = [[NSMutableDictionary alloc] init];
-//    }
-//    
-//    [self.speaker removeAllObjects];
-//    [self.speaker setValue:(NSString *)ABRecordCopyValue(person, kABPersonEmailProperty) forKey:(NSString*)ABRecordCopyCompositeName(person)];
-//    
-// 
-//    // This is if we decide to send all the info...(not complete)     
-//    ABMutableMultiValueRef multi = ABMultiValueCreateMutable(kABMultiStringPropertyType);
-//    //ABRecordRef aRecord = ABPersonCreate();
-//    CFStringRef phoneNumber, phoneNumberLabel;
-//    multi = ABRecordCopyValue(person, kABPersonPhoneProperty);
-//    for (CFIndex i = 0; i < ABMultiValueGetCount(multi); i++) {
-//        phoneNumberLabel = ABMultiValueCopyLabelAtIndex(multi, i);
-//        phoneNumber      = ABMultiValueCopyValueAtIndex(multi, i);
-//        
-//        [speaker setValue:(NSString*)phoneNumber forKey:(NSString*)phoneNumberLabel];
-//        
-//        CFRelease(phoneNumberLabel);
-//        CFRelease(phoneNumber);
-//    }
-//    //CFRelease(person);
-//    CFRelease(multi);
-//
-//}
 
 -(void)addSpeaker:(ABRecordRef)person withProperty:(ABPropertyID)property andIdentifier:(ABMultiValueIdentifier)identifier{
     if (!self.speaker) {
@@ -152,13 +112,6 @@
     CFRelease(multi);
 }
 
-//-(void)addWitness:(ABRecordRef)person{
-//    //NSLog(@"Email property: %@, Composite Name: %@", ABRecordCopyValue(person, kABPersonEmailProperty), ABRecordCopyCompositeName(person));
-//    if (!self.witnesses) {
-//        self.witnesses = [[NSMutableDictionary alloc] init];
-//    }
-//    [witnesses setValue:(NSString *)ABRecordCopyValue(person, kABPersonEmailProperty) forKey:(NSString*)ABRecordCopyCompositeName(person)];
-//}
 
 -(void)addWitness:(ABRecordRef)person withProperty:(ABPropertyID)property andIdentifier:(ABMultiValueIdentifier)identifier{
     if (!self.witnesses) {
@@ -218,6 +171,36 @@
         self.witnesses = [[NSMutableArray alloc] init];
     }
     return self;
+}
+
+- (id)initWithCoder:(NSCoder *)decoder {
+    self = [super init];
+    if (self) {
+        self.quotifier = [decoder decodeObjectForKey:@"quotifier"];
+        self.speaker = [decoder decodeObjectForKey:@"quotifier"];
+        self.text = [decoder decodeObjectForKey:@"text"];
+        self.timeString = [decoder decodeObjectForKey:@"timeString"];
+        self.postID = [decoder decodeObjectForKey:@"postID"];
+        self.UrlWhereQuoteIsPosted = [decoder decodeObjectForKey:@"UrlWhereQuoteIsPosted"];
+        self.witnesses = [decoder decodeObjectForKey:@"witnesses"];
+        self.location = [decoder decodeObjectForKey:@"location"];
+        self.currentLocation = [decoder decodeObjectForKey:@"currentLocation"];
+        self.image = [UIImage imageWithData:[decoder decodeObjectForKey:@"image"]];
+    }
+    return self;    
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder {  
+    [encoder encodeObject:quotifier forKey:@"quotifier"];
+    [encoder encodeObject:speaker forKey:@"speaker"];
+    [encoder encodeObject:text forKey:@"text"];
+    [encoder encodeObject:timeString forKey:@"timeString"];
+    [encoder encodeObject:postID forKey:@"postID"];
+    [encoder encodeObject:UrlWhereQuoteIsPosted forKey:@"UrlWhereQuoteIsPosted"];
+    [encoder encodeObject:witnesses forKey:@"witnesses"];
+    [encoder encodeObject:UIImagePNGRepresentation(image) forKey:@"image"];
+    [encoder encodeObject:location forKey:@"location"];
+    [encoder encodeObject:currentLocation forKey:@"currentLocation"];
 }
 
 

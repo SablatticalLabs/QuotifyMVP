@@ -15,7 +15,7 @@
 - (void)quoteImageSent:(BOOL)success;
 @end
 
-@interface Comm : NSObject{
+@interface Comm : NSObject <NSURLConnectionDelegate>{
     
     BOOL quoteTextSentSuccessfully;
     id <CommDelegate> delegate;
@@ -27,6 +27,7 @@ extern NSString * const sendImageToURL;
 @property BOOL quoteTextSentSuccessfully;
 @property (strong) Quote* quoteToSend;
 @property (strong) id <CommDelegate> delegate;
+@property (strong) NSMutableURLRequest* request;
 
 -(void)sendQuote:(Quote*)theQuote;
 -(void)addImage:(UIImage*)theImage toQuoteWithID:(NSString*)postID;
