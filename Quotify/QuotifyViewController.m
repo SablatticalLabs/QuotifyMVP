@@ -316,6 +316,7 @@
     lastButtonClickedWasWitnesses = (((UIButton *)sender).tag == 1);
     
     self.picker = [[ABPeoplePickerNavigationController alloc] init];
+    //[self.picker setAllowsCancel:NO]; //doesn't compile
     
     // Set the delegates
     self.picker.delegate = self;//this is why the regular NavigationController events work.
@@ -330,8 +331,13 @@
     // Show the people picker
     [self presentModalViewController:self.picker animated:YES];
     
+    NSLog(@"visibleViewController:%@", self.picker.visibleViewController.description);
+    NSLog(@"searchDisplayController.delegate:%@", self.picker.topViewController.searchDisplayController.delegate.description);
+    
+    originalSearchDelegate = self.picker.topViewController.searchDisplayController.delegate;
+    //self.picker.topViewController.searchDisplayController.delegate = self; //breaks the search
+    self.picker.topViewController.searchDisplayController.searchBar.delegate = self;
     // Force display the search bar and make the keyboard pop up
-    self.picker.topViewController.searchDisplayController.delegate = self;
     [self.picker.topViewController.searchDisplayController setActive:YES];
     [self.picker.topViewController.searchDisplayController.searchBar becomeFirstResponder];
         
@@ -467,7 +473,7 @@
 #pragma mark - UINavigationControllerDelegate
     
 // Called when the navigation controller shows a new top view controller via a push, pop or setting of the view controller stack.
-- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
+- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
     
     if ([viewController isKindOfClass:[ABPersonViewController class]]) {
         ((ABPersonViewController*)viewController).allowsEditing = YES;
@@ -488,11 +494,50 @@
             navigationController.topViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];  
         }
     }
+
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
+    NSLog(@"willShowViewController:%@", viewController);
+}
+
 #pragma mark - UISearchDisplayDelegate
 
-- (void) searchDisplayController:(UISearchDisplayController *)controller didHideSearchResultsTableView:(UITableView *)tableView{
-    //Not sure why this works, but just having this method here (and making self the delegate, and implementing searchDisplayDelegate) fixes an issue where the navigation bar isn't redraw with the custom buttons.
+-(void)searchBarTextDidEndEditing:(UISearchBar *)searchBar{
+    NSLog(@"searchBarTextDidEndEditing");
+    
+    self.picker.topViewController.searchDisplayController.delegate = nil;
+    
+    UIViewController * viewController = self.picker.topViewController;
+    UINavigationController * navigationController = self.picker;
+    
+    
+    //set up the ABPeoplePicker controls here to get rid of the forced cancel button on the right hand side but you also then have to 
+    // the other views it pushes on to ensure they have to correct buttons shown at the correct time.
+    
+    if([navigationController isKindOfClass:[ABPeoplePickerNavigationController class]] 
+       && [viewController isKindOfClass:[ABPersonViewController class]]){
+        navigationController.topViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editPerson:)];
+        
+        navigationController.topViewController.navigationItem.leftBarButtonItem = nil; 
+    }
+    else if([navigationController isKindOfClass:[ABPeoplePickerNavigationController class]]){
+        navigationController.topViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addPerson:)];
+        
+        navigationController.topViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];  
+    }
+
 }
+
+-(void) searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
+    NSLog(@"searchBarTextDidBeginEditing");
+    self.picker.topViewController.searchDisplayController.delegate = originalSearchDelegate;
+}
+
+-(void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    NSLog(@"textDidChange");
+    //self.picker.topViewController.searchDisplayController.delegate = originalSearchDelegate;
+}
+
+
     
 #pragma mark - ABPersonViewControllerDelegate
 
@@ -593,7 +638,9 @@
         
     }
     else{
-        [self raiseFailurePopupWithTitle:@"Quotification Failed!" andMessage:@"Neither your quote nor photo were sent! Check your connection and try again later..."];
+        [self raiseFailurePopupWithTitle:@"Quotification Failed:(" andMessage:@"Your quote could not be sent at this time and has been saved. Check your connection and try again later..."];
+        [quotifyingActivityIndicator stopAnimating];
+        
     }
 }
 

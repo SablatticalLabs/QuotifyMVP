@@ -203,6 +203,15 @@
     [encoder encodeObject:currentLocation forKey:@"currentLocation"];
 }
 
+-(void)saveQuote{
+    //save the quote for later sending
+    NSMutableData *data = [[NSMutableData alloc] init];
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+    [self encodeWithCoder:archiver];
+    [archiver finishEncoding];
+    //[data writeToFile:savePath atomically:YES];
+}
+
 
 
 @end

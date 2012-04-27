@@ -43,7 +43,9 @@ NSString * const sendImageToURL = @"http://quotify.it/quotes/<ID>/quote_images.j
 }
 
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
-    //save the quote for later sending?
+    
+    [delegate quoteTextSent:NO];
+
 }
 
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{

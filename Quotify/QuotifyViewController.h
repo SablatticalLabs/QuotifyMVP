@@ -19,7 +19,7 @@
 
 
 
-@interface QuotifyViewController : UIViewController <UIActionSheetDelegate, CommDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIScrollViewDelegate, CoreLocationControllerDelegate,FBSessionDelegate, FBRequestDelegate, ABPeoplePickerNavigationControllerDelegate, ABNewPersonViewControllerDelegate, ABPersonViewControllerDelegate, UISearchDisplayDelegate> {
+@interface QuotifyViewController : UIViewController <UIActionSheetDelegate, CommDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIScrollViewDelegate, CoreLocationControllerDelegate,FBSessionDelegate, FBRequestDelegate, ABPeoplePickerNavigationControllerDelegate, ABNewPersonViewControllerDelegate, ABPersonViewControllerDelegate, UISearchDisplayDelegate, UISearchBarDelegate> {
     
     Quote *currentQuote;
     Comm *myComm;
@@ -59,7 +59,7 @@
     BOOL quoteTextWasEdited;
     BOOL lastButtonClickedWasWitnesses;
    
-    
+    id originalSearchDelegate;
 
  
 }
@@ -92,6 +92,7 @@
 @property(nonatomic, strong) ABPeoplePickerNavigationController *picker;
 @property (weak, nonatomic) IBOutlet UITextField *addedPersonName;
 @property (weak, nonatomic) IBOutlet UITextField *addedPersonEmail;
+
 
 
 - (IBAction)backToMainView:(id)sender;
