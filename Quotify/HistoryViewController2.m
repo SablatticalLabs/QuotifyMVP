@@ -1,0 +1,183 @@
+//
+//  HistoryViewController2.m
+//  Quotify
+//
+//  Created by Lior Sabag on 17/06/12.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//
+
+#import "HistoryViewController2.h"
+
+@implementation HistoryViewController2
+@synthesize quoteHistTableView;
+@synthesize loadingIndicator;
+@synthesize loadingView;
+//@synthesize myTableView;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)didReceiveMemoryWarning
+{
+    // Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+    
+    // Release any cached data, images, etc that aren't in use.
+}
+
+#pragma mark - View lifecycle
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.quoteHistTableView.dataSource = self;
+    self.quoteHistTableView.delegate = self;
+    
+    //init quotesArray
+    quotesArray = [[NSArray alloc] init];
+    
+    
+    myComm = [[Comm alloc] init];
+    [myComm requestQuoteListAndSendResultTo:self];
+
+}
+
+-(void)quoteListResult:(NSDictionary*)listDict{
+    NSLog(@"hist dict: %@", listDict);
+    quotesArray = [listDict objectForKey:@"quote_history"];
+    
+    [self.quoteHistTableView reloadData];
+    [self.loadingIndicator stopAnimating];
+    self.loadingView.hidden = YES;
+}
+
+
+- (void)viewDidUnload
+{
+    //[self setMyTableView:nil];
+    [self setQuoteHistTableView:nil];
+    [self setLoadingIndicator:nil];
+    [self setLoadingView:nil];
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    // Return YES for supported orientations
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (IBAction)backToQuoteEntry:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+
+    // Return the number of rows in the section.
+    return [quotesArray count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
+    
+    // Configure the cell..
+    
+    NSString * str = [[quotesArray objectAtIndex:indexPath.row] objectForKey:@"created_at"];
+    
+    NSDateFormatter* df = [[NSDateFormatter alloc]init];
+    [df setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
+    
+    NSDate* date = [df dateFromString:str];
+    [df setDateFormat:@"EEE, MMM d, yyyy"];
+    
+    cell.textLabel.text = [df stringFromDate:date];
+    cell.textLabel.font = [UIFont systemFontOfSize:14];
+    
+    [df setDateFormat:@"h:mm a"];
+    cell.detailTextLabel.text = [df stringFromDate:date];
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+    UIImage* _image = [[UIImage alloc] initWithContentsOfFile:@"/Users/liorsabag/Dropbox/Dev/QuotifyMVP/Quotify/kinder_egg.jpg"];
+    cell.imageView.image = _image;
+    
+    return cell;
+}
+
+/*
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
+
+/*
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ }   
+ else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }   
+ }
+ */
+
+/*
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ {
+ }
+ */
+
+/*
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Navigation logic may go here. Create and push another view controller.
+    /*
+     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+     // ...
+     // Pass the selected object to the new view controller.
+     [self.navigationController pushViewController:detailViewController animated:YES];
+     */
+}
+
+
+@end

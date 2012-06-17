@@ -9,10 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "Quote.h"
 #import "JSON.h"
+//#import "HistoryViewController.h"
 
 @protocol CommDelegate
+
 - (void)quoteTextSent:(BOOL)success;
 - (void)quoteImageSent:(BOOL)success;
+
 @end
 
 @interface Comm : NSObject <NSURLConnectionDelegate>{
@@ -21,6 +24,7 @@
     id <CommDelegate> delegate;
     
 }
+
 extern NSString * const sendQuoteToURL;
 extern NSString * const sendImageToURL;
 
@@ -28,10 +32,12 @@ extern NSString * const sendImageToURL;
 @property (strong) Quote* quoteToSend;
 @property (strong) id <CommDelegate> delegate;
 @property (strong) NSMutableURLRequest* request;
+@property (strong) NSMutableData* responseData;
+@property (strong) UIViewController* historyViewController;
 
+-(void)requestQuoteListAndSendResultTo:(UIViewController*)hvc;
 -(void)sendQuote:(Quote*)theQuote;
 -(void)addImage:(UIImage*)theImage toQuoteWithID:(NSString*)postID;
 -(void)sendHTTPrequest:(NSString*)myData;
-
 
 @end

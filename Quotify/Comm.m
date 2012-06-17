@@ -7,15 +7,15 @@
 //
 
 #import "Comm.h"
+#import "HistoryViewController2.h"
 
 
 @implementation Comm
 
-@synthesize quoteToSend, quoteTextSentSuccessfully, delegate, request;
+@synthesize quoteToSend, quoteTextSentSuccessfully, delegate, request, responseData, historyViewController;
 
 NSString * const sendQuoteToURL = @"http://www.quotify.it/quotes.json";
 NSString * const sendImageToURL = @"http://quotify.it/quotes/<ID>/quote_images.json";
-
 
 -(void)sendQuote:(Quote*)theQuote{
     //Send JSON data
@@ -50,12 +50,25 @@ NSString * const sendImageToURL = @"http://quotify.it/quotes/<ID>/quote_images.j
 
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
     NSLog(@"urlResponse: %@",response);
+    
+    if(!responseData)responseData = [[NSMutableData alloc] init];
+    [responseData setLength:0];
 }
 
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
-    NSString* dataAsString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    
+    [responseData appendData:data];
+    
+    //NSLog(@"urlData: %@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+    
+    }
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+
+    NSString* dataAsString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     NSLog(@"urlData: %@",dataAsString);
     NSDictionary* result = [dataAsString JSONValue];
+    NSLog(@"result Dict: %@", result);
     
     //NSNumber *n_Success = [result objectForKey:@"id"];
     if ([result objectForKey:@"created_at"] && [result objectForKey:@"quote_text"])//quoteText Sent... 
@@ -69,16 +82,21 @@ NSString * const sendImageToURL = @"http://quotify.it/quotes/<ID>/quote_images.j
     {
         [[self delegate] quoteImageSent:1];
     }
+    else if([result objectForKey:@"quote_history"])
+    {
+        [(HistoryViewController2*)historyViewController quoteListResult:result];
+    }
     else //Neither was sent
     {
         [[self delegate] quoteTextSent:0];
     }
+
 }
 
 
--(void)addImage:(UIImage*)theImage toQuoteWithID:(NSDecimalNumber*)postID{
+-(void)addImage:(UIImage*)theImage toQuoteWithID:(NSString*)postID{
     
-    NSString *s_postID = [[postID stringValue] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString *s_postID = [postID stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 	NSData *imageData = UIImageJPEGRepresentation(theImage, 0.9);
 	// setting up the URL to post to
     NSString *urlString = [sendImageToURL stringByReplacingOccurrencesOfString:@"<ID>" withString:s_postID];
@@ -122,6 +140,25 @@ NSString * const sendImageToURL = @"http://quotify.it/quotes/<ID>/quote_images.j
     
     //send the request
 	[NSURLConnection connectionWithRequest:postRequest delegate:self];
+}
+
+
+-(void)requestQuoteListAndSendResultTo:(UIViewController*)hvc{
+    historyViewController = hvc;
+    request = 
+	[NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://quotify.it/quotes/history.json?email=pmendeloff@hotmail.com"] 
+                            cachePolicy:NSURLRequestReturnCacheDataElseLoad 
+                        timeoutInterval:15];
+	
+	[request setHTTPMethod:@"GET"];
+	//[request setHTTPBody:[myData dataUsingEncoding:NSUTF8StringEncoding]];
+	[request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+	[request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+	
+	// Make asynchronous request
+	/*NSURLConnection *urlConnection =*/ [NSURLConnection connectionWithRequest:request delegate:self];
+    //curl -H "Content-Type: application/json" -H "Accept: application/json" -X GET http://quotify.it/quotes/history.json?email=pmendeloff@hotmail.com
 }
 
 @end

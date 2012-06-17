@@ -34,7 +34,8 @@
 @synthesize hideKeyboardButton;
 @synthesize timestampLabel;
 @synthesize settingsButton;
-@synthesize quotifierTF;
+@synthesize quotifierEmail;
+@synthesize quotifierName;
 @synthesize successViewController;
 @synthesize quotifyingActivityIndicator;
 @synthesize locationController;
@@ -46,6 +47,7 @@
 @synthesize picker = _picker;
 @synthesize addedPersonName;
 @synthesize addedPersonEmail;
+@synthesize showHistory;
 
 
 //////////////////////////////
@@ -70,7 +72,7 @@
     [l setMasksToBounds:YES];
     [l setCornerRadius:5.0];
     
-    [quotifierTF setDelegate:self];
+    [quotifierEmail setDelegate:self];
     
     /////// Set up a new quote and comm class ///////
     currentQuote = [[Quote alloc] init];
@@ -123,32 +125,26 @@
     //if defaults are empty or the email string is empty, prompt
     NSLog(@"defaults: %@", defaults);
     NSLog(@"defaults-quotifier: %@", [defaults objectForKey:@"quotifier"]);
-    if(![defaults objectForKey:@"quotifier"] || 
-       ([[[defaults objectForKey:@"quotifier"] objectForKey:@"email"]rangeOfString:@"@"].location == NSNotFound)){
+    NSLog(@"defaults-q_name: %@", [[defaults objectForKey:@"quotifier"] objectForKey:@"name"]);
+    //NSLog(@"defaults-q_email: %@", [[[defaults objectForKey:@"quotifier"] objectForKey:@"email"]rangeOfString:@"@"].location == NSNotFound);
+    
+    if(![defaults objectForKey:@"quotifier"] || [[[defaults objectForKey:@"quotifier"] objectForKey:@"email"] length] == 0 
+       || [[[defaults objectForKey:@"quotifier"] objectForKey:@"name"] length] == 0){
         [self showFirstTimeSettings];
     }
-    else if([[defaults objectForKey:@"quotifier"] objectForKey:@"email"]){
+    else if([[defaults objectForKey:@"quotifier"] objectForKey:@"email"] && [[defaults objectForKey:@"quotifier"] objectForKey:@"name"]){
         currentQuote.quotifier = [NSMutableDictionary dictionaryWithDictionary:[defaults objectForKey:@"quotifier"]];
-        self.quotifierTF.text = [currentQuote.quotifier objectForKey:@"email"];
+        self.quotifierEmail.text = [currentQuote.quotifier objectForKey:@"email"];
+        self.quotifierName.text = [currentQuote.quotifier objectForKey:@"name"];
     }
-//    
-//
-//
-//    [currentQuote.quotifier setValue:[[NSUserDefaults standardUserDefaults]objectForKey:@"quotifier"] forKey:@"email"];
-//    NSLog(@"NSUserDefaults: %@", [[NSUserDefaults standardUserDefaults]objectForKey:@"quotifier"] );
-//    self.quotifierTF.text = [currentQuote.quotifier objectForKey:@"email"];
-//    NSLog(@"currentQuote.quotifier: %@", self.quotifierTF.text);
-//
-//    if (self.quotifierTF.text == nil || [self.quotifierTF.text rangeOfString:@"@"].location == NSNotFound) {
-//        [self showFirstTimeSettings];
-//    }
 }
 
 
 - (void)showFirstTimeSettings{
-    quotifierTF.text = [currentQuote.quotifier objectForKey:@"email"];
+    quotifierEmail.text = [currentQuote.quotifier objectForKey:@"email"];
+    quotifierName.text = [currentQuote.quotifier objectForKey:@"name"];
     [self presentModalViewController:self.settingsViewController animated:YES];
-    [self raiseFailurePopupWithTitle:@"Welcome to Quotify!" andMessage:@"Enter your email address to get started"];
+    [self raiseFailurePopupWithTitle:@"Welcome to Quotify!" andMessage:@"Enter your name  & email address to get started"];
 }
 
 - (void)viewDidUnload{
@@ -165,7 +161,7 @@
     [self setSettingsButton:nil];
     [self setSettingsView:nil];
     [self setSettingsViewController:nil];
-    [self setQuotifierTF:nil];
+    [self setQuotifierEmail:nil];
     [self setSuccessViewController:nil];
     [self setAddPersonView:nil];
     [self setAddPersonViewController:nil];
@@ -177,6 +173,8 @@
     [self setAddedPersonName:nil];
     [self setAddedPersonEmail:nil];
     [self setDeleteWitnessButton:nil];
+    [self setQuotifierName:nil];
+    [self setShowHistory:nil];
     [super viewDidUnload];
     // Release any retained subview of the main view.
     // e.g. self.myOutlet = nil;
@@ -692,18 +690,24 @@ int countSwipe = 0;
     NSLog(@"%@", countSwipe);
 }
 
+- (IBAction)showHistory:(id)sender {
+    HistoryViewController2 *histVC = [[HistoryViewController2 alloc] init];
+    [self presentModalViewController:histVC animated:YES];
+}
+
 //Runs when the done button on the settings view is touched.
 - (IBAction)backToQuoteEntry:(id)sender {
     
-    if([quotifierTF.text rangeOfString:@"@"].location != NSNotFound){
-        [currentQuote.quotifier setValue:quotifierTF.text forKey:@"email"];
+    if([quotifierEmail.text length] > 0 && [quotifierName.text length] > 0){
+        [currentQuote.quotifier setValue:quotifierEmail.text forKey:@"email"];
+        [currentQuote.quotifier setValue:quotifierName.text forKey:@"name"];
         NSLog(@"emEE: %@", currentQuote.quotifier);
         NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
         [prefs setObject:currentQuote.quotifier forKey:@"quotifier"];
         [prefs synchronize];
         [self dismissModalViewControllerAnimated:YES];
     }else{
-        [self raiseFailurePopupWithTitle:@"Oops!" andMessage:@"Quotify.it needs a valid email address to function. No Spam - we promise."];
+        [self raiseFailurePopupWithTitle:@"Oops!" andMessage:@"Quotify.it needs a name and email address to function. No Spam - we promise."];
     }
 }
 
@@ -761,7 +765,8 @@ int countSwipe = 0;
     //This should be changed to handle all fb requests i.e. get friends list etc...
     NSLog(@"fb_email: %@", [result description]);
     NSDictionary * fbUserInfoDict = result;
-    self.quotifierTF.text = [fbUserInfoDict objectForKey:@"email"];
+    self.quotifierEmail.text = [fbUserInfoDict objectForKey:@"email"];
+    self.quotifierName.text = [fbUserInfoDict objectForKey:@"name"];
 }
 
 - (void)request:(FBRequest *)request didFailWithError:(NSError *)error{
@@ -800,7 +805,7 @@ int countSwipe = 0;
 
 // Allow user to move between text fields via "Next" button
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-	if (textField == quotifierTF) {
+	if (textField == quotifierEmail) {
         [self backToQuoteEntry:nil];
     }
     
@@ -878,5 +883,6 @@ int countSwipe = 0;
     ((UIScrollView *)self.view).contentInset = contentInsets;
     ((UIScrollView *)self.view).scrollIndicatorInsets = contentInsets;
 }
+
 
 @end

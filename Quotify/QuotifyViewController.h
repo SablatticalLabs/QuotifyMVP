@@ -12,6 +12,7 @@
 #import "Comm.h"
 #import "SuccessViewController.h"
 #import "CoreLocationController.h"
+#import "HistoryViewController2.h"
 #import "FBConnect.h"
 #import "FBLoginButton.h"
 #import <AddressBook/AddressBook.h>
@@ -30,7 +31,7 @@
     
     UITextField *speaker;
     UITextField *witnesses;
-    UITextField *quotifierTF;
+    UITextField *quotifierEmail;
     UITextView *quoteText;
     UIImageView *imageBox;
     
@@ -81,7 +82,9 @@
 @property (nonatomic, strong) IBOutlet UIButton *hideKeyboardButton;
 @property (nonatomic, strong) IBOutlet UILabel *timestampLabel;
 @property (nonatomic, strong) IBOutlet UIButton *settingsButton;
-@property (nonatomic, strong) IBOutlet UITextField *quotifierTF;
+@property (nonatomic, strong) IBOutlet UITextField *quotifierEmail;
+@property (strong, nonatomic) IBOutlet UITextField *quotifierName;
+
 @property (nonatomic, strong) IBOutlet SuccessViewController *successViewController;
 @property (nonatomic, strong) IBOutlet UIButton *addSpeakerButton;
 @property (nonatomic, strong) IBOutlet UIButton *addWitnessButton;
@@ -92,6 +95,7 @@
 @property(nonatomic, strong) ABPeoplePickerNavigationController *picker;
 @property (weak, nonatomic) IBOutlet UITextField *addedPersonName;
 @property (weak, nonatomic) IBOutlet UITextField *addedPersonEmail;
+@property (strong, nonatomic) IBOutlet UIButton *showHistory;
 
 
 
@@ -106,6 +110,7 @@
 - (IBAction)fbButtonClicked:(id)sender;
 - (IBAction)showContacts:(id)sender;
 - (IBAction)witnessesTouchedUp:(id)sender;
+- (IBAction)showHistory:(id)sender;
 
 
 - (void)registerForKeyboardNotifications;
