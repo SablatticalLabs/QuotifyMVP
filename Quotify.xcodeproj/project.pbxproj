@@ -32,6 +32,7 @@
 		ADAEF3B41361E9A5002F94A1 /* QuotifyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAEF3B31361E9A5002F94A1 /* QuotifyTests.m */; };
 		ADAEF3DB1367BAFC002F94A1 /* Quote.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAEF3DA1367BAFC002F94A1 /* Quote.m */; };
 		ADAEF6231367D38F002F94A1 /* Comm.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAEF6221367D38F002F94A1 /* Comm.m */; };
+		ADB95528158E12950081EF04 /* Q4.mov in Resources */ = {isa = PBXBuildFile; fileRef = ADB95527158E12950081EF04 /* Q4.mov */; };
 		ADBA6E4F14DFA7AA006AF908 /* stripesbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = ADBA6E4C14DFA7AA006AF908 /* stripesbackground.png */; };
 		ADBA6E5214E0E143006AF908 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = ADBA6E5114E0E143006AF908 /* background.png */; };
 		ADBA6E5414E0E14A006AF908 /* backgroundconfirmation.png in Resources */ = {isa = PBXBuildFile; fileRef = ADBA6E5314E0E14A006AF908 /* backgroundconfirmation.png */; };
@@ -45,6 +46,9 @@
 		ADC5A9A414DE597D00AEE72E /* quotifybuttonup.png in Resources */ = {isa = PBXBuildFile; fileRef = ADC5A9A314DE597D00AEE72E /* quotifybuttonup.png */; };
 		ADD5BC63145100CD009D475C /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADD5BC62145100CD009D475C /* AddressBook.framework */; };
 		ADD5BC65145100D3009D475C /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADD5BC64145100D3009D475C /* AddressBookUI.framework */; };
+		ADD667D0158DF678005A58DF /* IntroMovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADD667CE158DF678005A58DF /* IntroMovieViewController.m */; };
+		ADD667D1158DF678005A58DF /* IntroMovieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADD667CF158DF678005A58DF /* IntroMovieViewController.xib */; };
+		ADD667D4158DF863005A58DF /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADD667D3158DF863005A58DF /* MediaPlayer.framework */; };
 		ADDCB98414DDA34100CE9019 /* people.png in Resources */ = {isa = PBXBuildFile; fileRef = ADDCB97E14DDA34100CE9019 /* people.png */; };
 		ADDCB98514DDA34100CE9019 /* person.png in Resources */ = {isa = PBXBuildFile; fileRef = ADDCB97F14DDA34100CE9019 /* person.png */; };
 		ADDCB98914DDA37B00CE9019 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = ADDCB98814DDA37B00CE9019 /* icon.png */; };
@@ -135,6 +139,7 @@
 		ADAEF3DA1367BAFC002F94A1 /* Quote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Quote.m; path = Quotify.xcodeproj/Quote.m; sourceTree = SOURCE_ROOT; };
 		ADAEF6211367D38F002F94A1 /* Comm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comm.h; sourceTree = "<group>"; };
 		ADAEF6221367D38F002F94A1 /* Comm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comm.m; sourceTree = "<group>"; };
+		ADB95527158E12950081EF04 /* Q4.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = Q4.mov; sourceTree = "<group>"; };
 		ADBA6E4C14DFA7AA006AF908 /* stripesbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stripesbackground.png; sourceTree = "<group>"; };
 		ADBA6E5114E0E143006AF908 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		ADBA6E5314E0E14A006AF908 /* backgroundconfirmation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundconfirmation.png; sourceTree = "<group>"; };
@@ -148,6 +153,10 @@
 		ADC5A9A314DE597D00AEE72E /* quotifybuttonup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quotifybuttonup.png; sourceTree = "<group>"; };
 		ADD5BC62145100CD009D475C /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		ADD5BC64145100D3009D475C /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		ADD667CD158DF678005A58DF /* IntroMovieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroMovieViewController.h; sourceTree = "<group>"; };
+		ADD667CE158DF678005A58DF /* IntroMovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroMovieViewController.m; sourceTree = "<group>"; };
+		ADD667CF158DF678005A58DF /* IntroMovieViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntroMovieViewController.xib; sourceTree = "<group>"; };
+		ADD667D3158DF863005A58DF /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		ADDCB97E14DDA34100CE9019 /* people.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = people.png; sourceTree = "<group>"; };
 		ADDCB97F14DDA34100CE9019 /* person.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person.png; sourceTree = "<group>"; };
 		ADDCB98814DDA37B00CE9019 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
@@ -217,6 +226,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADD667D4158DF863005A58DF /* MediaPlayer.framework in Frameworks */,
 				ADD5BC65145100D3009D475C /* AddressBookUI.framework in Frameworks */,
 				ADD5BC63145100CD009D475C /* AddressBook.framework in Frameworks */,
 				AD5EE76B141297820017937D /* QuartzCore.framework in Frameworks */,
@@ -244,6 +254,7 @@
 		ADAEF3751361E9A4002F94A1 = {
 			isa = PBXGroup;
 			children = (
+				ADD667D3158DF863005A58DF /* MediaPlayer.framework */,
 				ADF1604414DE5632000B5343 /* icon114.png */,
 				ADF1604214DE5630000B5343 /* icon57.png */,
 				ADDCB99414DDAE9100CE9019 /* Default@2x.png */,
@@ -292,6 +303,8 @@
 				ADAEF3941361E9A4002F94A1 /* QuotifyAppDelegate.m */,
 				ADAEF3991361E9A4002F94A1 /* QuotifyViewController.h */,
 				ADAEF39A1361E9A4002F94A1 /* QuotifyViewController.m */,
+				ADD667CD158DF678005A58DF /* IntroMovieViewController.h */,
+				ADD667CE158DF678005A58DF /* IntroMovieViewController.m */,
 				DDBD101713944B7300A40AF4 /* SuccessViewController.h */,
 				DDBD101813944B7300A40AF4 /* SuccessViewController.m */,
 				AD7CECFA139A934A003A0A37 /* CoreLocationController.h */,
@@ -337,9 +350,11 @@
 		ADAEF3C01361EA7E002F94A1 /* View Files */ = {
 			isa = PBXGroup;
 			children = (
+				ADB95527158E12950081EF04 /* Q4.mov */,
 				DD2C0387158D91AB000C9CD8 /* kinder_egg.jpg */,
 				ADAEF3961361E9A4002F94A1 /* MainWindow.xib */,
 				ADAEF39C1361E9A4002F94A1 /* QuotifyViewController.xib */,
+				ADD667CF158DF678005A58DF /* IntroMovieViewController.xib */,
 				DD2C036D158D8347000C9CD8 /* LoginNormal.png */,
 				DD2C036E158D8347000C9CD8 /* LoginNormal@2x.png */,
 				DD2C036F158D8347000C9CD8 /* LoginPressed.png */,
@@ -555,6 +570,8 @@
 				DD2C0385158D8347000C9CD8 /* LogoutPressed@2x.png in Resources */,
 				DD2C0386158D8347000C9CD8 /* runaround_image.jpg in Resources */,
 				DD2C0388158D91AB000C9CD8 /* kinder_egg.jpg in Resources */,
+				ADD667D1158DF678005A58DF /* IntroMovieViewController.xib in Resources */,
+				ADB95528158E12950081EF04 /* Q4.mov in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -610,6 +627,7 @@
 				DD09DCA113A2980C007A0786 /* FBLoginButton.m in Sources */,
 				ADE8125814E20A4300DA78EC /* Utility.m in Sources */,
 				DD2C036B158D7A73000C9CD8 /* HistoryViewController2.m in Sources */,
+				ADD667D0158DF678005A58DF /* IntroMovieViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
