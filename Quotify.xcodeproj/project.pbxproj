@@ -254,7 +254,6 @@
 		ADAEF3751361E9A4002F94A1 = {
 			isa = PBXGroup;
 			children = (
-				ADD667D3158DF863005A58DF /* MediaPlayer.framework */,
 				ADF1604414DE5632000B5343 /* icon114.png */,
 				ADF1604214DE5630000B5343 /* icon57.png */,
 				ADDCB99414DDAE9100CE9019 /* Default@2x.png */,
@@ -281,6 +280,7 @@
 		ADAEF3831361E9A4002F94A1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ADD667D3158DF863005A58DF /* MediaPlayer.framework */,
 				ADD5BC64145100D3009D475C /* AddressBookUI.framework */,
 				ADD5BC62145100CD009D475C /* AddressBook.framework */,
 				AD5EE76A141297820017937D /* QuartzCore.framework */,
@@ -296,19 +296,18 @@
 		ADAEF38A1361E9A4002F94A1 /* Quotify */ = {
 			isa = PBXGroup;
 			children = (
+				AD7CECFA139A934A003A0A37 /* CoreLocationController.h */,
+				AD7CECFB139A934A003A0A37 /* CoreLocationController.m */,
 				DD2C0368158D7A72000C9CD8 /* HistoryViewController2.h */,
 				DD2C0369158D7A72000C9CD8 /* HistoryViewController2.m */,
-				DD2C036A158D7A72000C9CD8 /* HistoryViewController2.xib */,
+				ADD667CD158DF678005A58DF /* IntroMovieViewController.h */,
+				ADD667CE158DF678005A58DF /* IntroMovieViewController.m */,
 				ADAEF3931361E9A4002F94A1 /* QuotifyAppDelegate.h */,
 				ADAEF3941361E9A4002F94A1 /* QuotifyAppDelegate.m */,
 				ADAEF3991361E9A4002F94A1 /* QuotifyViewController.h */,
 				ADAEF39A1361E9A4002F94A1 /* QuotifyViewController.m */,
-				ADD667CD158DF678005A58DF /* IntroMovieViewController.h */,
-				ADD667CE158DF678005A58DF /* IntroMovieViewController.m */,
 				DDBD101713944B7300A40AF4 /* SuccessViewController.h */,
 				DDBD101813944B7300A40AF4 /* SuccessViewController.m */,
-				AD7CECFA139A934A003A0A37 /* CoreLocationController.h */,
-				AD7CECFB139A934A003A0A37 /* CoreLocationController.m */,
 				ADAEF3C11361EAB2002F94A1 /* Model */,
 				ADAEF38B1361E9A4002F94A1 /* Supporting Files */,
 			);
@@ -355,6 +354,8 @@
 				ADAEF3961361E9A4002F94A1 /* MainWindow.xib */,
 				ADAEF39C1361E9A4002F94A1 /* QuotifyViewController.xib */,
 				ADD667CF158DF678005A58DF /* IntroMovieViewController.xib */,
+				DD2C036A158D7A72000C9CD8 /* HistoryViewController2.xib */,
+				DDBD101913944B7300A40AF4 /* SuccessViewController.xib */,
 				DD2C036D158D8347000C9CD8 /* LoginNormal.png */,
 				DD2C036E158D8347000C9CD8 /* LoginNormal@2x.png */,
 				DD2C036F158D8347000C9CD8 /* LoginPressed.png */,
@@ -368,7 +369,6 @@
 				DD2C0377158D8347000C9CD8 /* LogoutPressed.png */,
 				DD2C0378158D8347000C9CD8 /* LogoutPressed@2x.png */,
 				DD2C0379158D8347000C9CD8 /* runaround_image.jpg */,
-				DDBD101913944B7300A40AF4 /* SuccessViewController.xib */,
 				ADBA6E5114E0E143006AF908 /* background.png */,
 				ADBA6E5314E0E14A006AF908 /* backgroundconfirmation.png */,
 				AD1F5DC214E6EDAD0005D248 /* blankbackground.png */,

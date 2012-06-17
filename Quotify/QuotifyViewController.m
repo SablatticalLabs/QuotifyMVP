@@ -130,6 +130,7 @@
     
     if(![defaults objectForKey:@"quotifier"] || [[[defaults objectForKey:@"quotifier"] objectForKey:@"email"] length] == 0 
        || [[[defaults objectForKey:@"quotifier"] objectForKey:@"name"] length] == 0){
+        [self showIntroMovie];
         [self showFirstTimeSettings];
     }
     else if([[defaults objectForKey:@"quotifier"] objectForKey:@"email"] && [[defaults objectForKey:@"quotifier"] objectForKey:@"name"]){
@@ -139,6 +140,16 @@
     }
 }
 
+-(void)showIntroMovie{
+    IntroMovieViewController *introMovieVC = [[IntroMovieViewController alloc] init];
+    [self presentMoviePlayerViewControllerAnimated:introMovieVC];
+    
+        
+    
+    // Play the movie!
+    [introMovieVC playIntroMovie];
+    
+}
 
 - (void)showFirstTimeSettings{
     quotifierEmail.text = [currentQuote.quotifier objectForKey:@"email"];

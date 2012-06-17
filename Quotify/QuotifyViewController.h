@@ -13,6 +13,7 @@
 #import "SuccessViewController.h"
 #import "CoreLocationController.h"
 #import "HistoryViewController2.h"
+#import "IntroMovieViewController.h"
 #import "FBConnect.h"
 #import "FBLoginButton.h"
 #import <AddressBook/AddressBook.h>
@@ -118,6 +119,7 @@
 - (void)peopleAdded:(Quote*)quote;
 - (void)raiseFailurePopupWithTitle:(NSString *) alertTitle andMessage:(NSString *) alertMessage;
 - (void)setupNewQuote;
+- (void)showIntroMovie;
 - (void)showFirstTimeSettings;
 - (void)fbLogin;
 - (void)fbLogout;

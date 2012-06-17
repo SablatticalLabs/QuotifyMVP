@@ -12,7 +12,8 @@
 
 @interface IntroMovieViewController : UIViewController
 
-@property(nonatomic, strong) MPMoviePlayerController *introMoviePlayer;
+@property(nonatomic, readonly, strong) MPMoviePlayerController *introMoviePlayer;
 
+- (void)playIntroMovie;
 
 @end
