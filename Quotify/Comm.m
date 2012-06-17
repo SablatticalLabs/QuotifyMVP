@@ -143,10 +143,10 @@ NSString * const sendImageToURL = @"http://quotify.it/quotes/<ID>/quote_images.j
 }
 
 
--(void)requestQuoteListAndSendResultTo:(UIViewController*)hvc{
+-(void)requestQuoteListforQuotifier:(NSString*)quotifierID AndSendResultTo:(UIViewController*)hvc{
     historyViewController = hvc;
     request = 
-	[NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://quotify.it/quotes/history.json?email=pmendeloff@hotmail.com"] 
+	[NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat: @"http://quotify.it/quotes/history.json?email=%@", quotifierID]] 
                             cachePolicy:NSURLRequestReturnCacheDataElseLoad 
                         timeoutInterval:15];
 	

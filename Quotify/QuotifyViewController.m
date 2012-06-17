@@ -692,6 +692,7 @@ int countSwipe = 0;
 
 - (IBAction)showHistory:(id)sender {
     HistoryViewController2 *histVC = [[HistoryViewController2 alloc] init];
+    histVC.quotifierID = [currentQuote.quotifier objectForKey:@"email"];
     [self presentModalViewController:histVC animated:YES];
 }
 

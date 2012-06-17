@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *quoteHistTableView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
 @property (weak, nonatomic) IBOutlet UIView *loadingView;
+@property (strong, nonatomic) NSString* quotifierID;
 
 - (IBAction)backToQuoteEntry:(id)sender;
 -(void)quoteListResult:(NSDictionary*)listDict;

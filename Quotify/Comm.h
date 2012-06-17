@@ -35,9 +35,9 @@ extern NSString * const sendImageToURL;
 @property (strong) NSMutableData* responseData;
 @property (strong) UIViewController* historyViewController;
 
--(void)requestQuoteListAndSendResultTo:(UIViewController*)hvc;
 -(void)sendQuote:(Quote*)theQuote;
 -(void)addImage:(UIImage*)theImage toQuoteWithID:(NSString*)postID;
 -(void)sendHTTPrequest:(NSString*)myData;
+-(void)requestQuoteListforQuotifier:(NSString*)quotifierID AndSendResultTo:(UIViewController*)hvc;
 
 @end

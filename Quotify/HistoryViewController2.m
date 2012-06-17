@@ -12,7 +12,8 @@
 @synthesize quoteHistTableView;
 @synthesize loadingIndicator;
 @synthesize loadingView;
-//@synthesize myTableView;
+@synthesize quotifierID;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,7 +46,7 @@
     
     
     myComm = [[Comm alloc] init];
-    [myComm requestQuoteListAndSendResultTo:self];
+    [myComm requestQuoteListforQuotifier:self.quotifierID AndSendResultTo:self];
 
 }
 
@@ -61,7 +62,6 @@
 
 - (void)viewDidUnload
 {
-    //[self setMyTableView:nil];
     [self setQuoteHistTableView:nil];
     [self setLoadingIndicator:nil];
     [self setLoadingView:nil];
@@ -108,11 +108,25 @@
     
     NSString * str = [[quotesArray objectAtIndex:indexPath.row] objectForKey:@"created_at"];
     
-    NSDateFormatter* df = [[NSDateFormatter alloc]init];
-    [df setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
+//    NSDateFormatter* df_utc = [[NSDateFormatter alloc] init];
+//    [df_utc setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+//    [df_utc setDateFormat:@"yyyy.MM.dd G 'at' HH:mm:ss zzz"];
+//    
+//    NSDateFormatter* df_local = [[NSDateFormatter alloc] init] ;
+//    [df_local setTimeZone:[NSTimeZone timeZoneWithName:@"EST"]];
+//    [df_local setDateFormat:@"yyyy.MM.dd G 'at' HH:mm:ss zzz"];
+//    
     
+    NSDateFormatter* df = [[NSDateFormatter alloc]init];
+    [df setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
+    [df setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    
+    str = [str stringByReplacingOccurrencesOfString:@"Z" withString:@""];    
     NSDate* date = [df dateFromString:str];
+    
+    
     [df setDateFormat:@"EEE, MMM d, yyyy"];
+    [df setTimeZone:[NSTimeZone systemTimeZone]];
     
     cell.textLabel.text = [df stringFromDate:date];
     cell.textLabel.font = [UIFont systemFontOfSize:14];
@@ -121,7 +135,10 @@
     cell.detailTextLabel.text = [df stringFromDate:date];
     
     cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-    UIImage* _image = [[UIImage alloc] initWithContentsOfFile:@"/Users/liorsabag/Dropbox/Dev/QuotifyMVP/Quotify/kinder_egg.jpg"];
+    
+    
+    
+    UIImage* _image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource: @"kinder_egg" ofType: @"jpg"]];
     cell.imageView.image = _image;
     
     return cell;
