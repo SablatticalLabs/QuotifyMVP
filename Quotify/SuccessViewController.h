@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
 #import "Quote.h"
 #import "FBConnect.h"
 #import "Utility.h"

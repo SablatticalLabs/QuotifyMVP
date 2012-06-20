@@ -13,7 +13,7 @@
 #import "SuccessViewController.h"
 #import "CoreLocationController.h"
 #import "HistoryViewController2.h"
-#import "IntroMovieViewController.h"
+
 #import "FBConnect.h"
 #import "FBLoginButton.h"
 #import <AddressBook/AddressBook.h>
