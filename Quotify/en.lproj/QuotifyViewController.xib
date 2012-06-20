@@ -105,37 +105,9 @@
 							<object class="IBUINavigationBar" id="886184659">
 								<reference key="NSNextResponder" ref="89788679"/>
 								<int key="NSvFlags">258</int>
-								<object class="NSMutableArray" key="NSSubviews">
-									<bool key="EncodedWithXMLCoder">YES</bool>
-									<object class="IBUIButton" id="1029178380">
-										<reference key="NSNextResponder" ref="886184659"/>
-										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{243, 3}, {72, 37}}</string>
-										<reference key="NSSuperview" ref="886184659"/>
-										<reference key="NSNextKeyView" ref="242252182"/>
-										<string key="NSReuseIdentifierKey">_NS:225</string>
-										<bool key="IBUIOpaque">NO</bool>
-										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-										<int key="IBUIContentHorizontalAlignment">0</int>
-										<int key="IBUIContentVerticalAlignment">0</int>
-										<int key="IBUIButtonType">1</int>
-										<string key="IBUINormalTitle">History</string>
-										<reference key="IBUIHighlightedTitleColor" ref="1004154975"/>
-										<object class="NSColor" key="IBUINormalTitleColor">
-											<int key="NSColorSpace">1</int>
-											<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
-										</object>
-										<reference key="IBUINormalTitleShadowColor" ref="439155114"/>
-										<object class="IBUIFontDescription" key="IBUIFontDescription" id="560534234">
-											<int key="type">2</int>
-											<double key="pointSize">15</double>
-										</object>
-										<reference key="IBUIFont" ref="488448074"/>
-									</object>
-								</object>
 								<string key="NSFrameSize">{320, 44}</string>
 								<reference key="NSSuperview" ref="89788679"/>
-								<reference key="NSNextKeyView" ref="1029178380"/>
+								<reference key="NSNextKeyView" ref="242252182"/>
 								<string key="NSReuseIdentifierKey">_NS:260</string>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<object class="NSColor" key="IBUITintColor">
@@ -147,11 +119,15 @@
 									<object class="IBUINavigationItem" id="199291735">
 										<reference key="IBUINavigationBar" ref="886184659"/>
 										<string key="IBUITitle">New Quote</string>
-										<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="335614530">
+										<object class="IBUIBarButtonItem" key="IBUIRightBarButtonItem" id="174510897">
+											<string key="IBUITitle">History</string>
 											<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-											<int key="IBUIStyle">2</int>
-											<reference key="IBUICustomView" ref="1029178380"/>
+											<int key="IBUIStyle">1</int>
 											<reference key="IBUINavigationItem" ref="199291735"/>
+											<object class="NSColor" key="IBUITintColor">
+												<int key="NSColorSpace">2</int>
+												<bytes key="NSRGB">MC41MjE1Njg2NTYgMC42MjM1Mjk0MzQyIDAuNjkwMTk2MDk2OQA</bytes>
+											</object>
 										</object>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 									</object>
@@ -360,6 +336,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{20, 401}, {280, 46}}</string>
 								<reference key="NSSuperview" ref="89788679"/>
+								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
 									<string key="IBUIAccessibilityLabel"/>
@@ -437,7 +414,10 @@
 									<string key="NSClassName">NSImage</string>
 									<string key="NSResourceName">person.png</string>
 								</object>
-								<reference key="IBUIFontDescription" ref="560534234"/>
+								<object class="IBUIFontDescription" key="IBUIFontDescription" id="560534234">
+									<int key="type">2</int>
+									<double key="pointSize">15</double>
+								</object>
 								<reference key="IBUIFont" ref="488448074"/>
 							</object>
 							<object class="IBUIButton" id="756011141">
@@ -564,7 +544,7 @@
 			</object>
 			<object class="IBUIViewController" id="19867892">
 				<object class="IBUIView" key="IBUIView" id="795017958">
-					<nil key="NSNextResponder"/>
+					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">292</int>
 					<object class="NSMutableArray" key="NSSubviews">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -748,6 +728,7 @@
 						</object>
 					</object>
 					<string key="NSFrame">{{0, 20}, {320, 460}}</string>
+					<reference key="NSSuperview"/>
 					<reference key="NSNextKeyView" ref="607047037"/>
 					<object class="NSColor" key="IBUIBackgroundColor">
 						<int key="NSColorSpace">3</int>
@@ -1082,14 +1063,6 @@
 					<int key="connectionID">249</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">showHistory</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="1029178380"/>
-					</object>
-					<int key="connectionID">253</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">hideKeyboard:</string>
 						<reference key="source" ref="189937787"/>
@@ -1258,11 +1231,10 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">showHistory:</string>
-						<reference key="source" ref="1029178380"/>
+						<reference key="source" ref="174510897"/>
 						<reference key="destination" ref="372490531"/>
-						<int key="IBEventType">7</int>
 					</object>
-					<int key="connectionID">254</int>
+					<int key="connectionID">266</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1522,7 +1494,7 @@
 						<reference key="object" ref="199291735"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="335614530"/>
+							<reference ref="174510897"/>
 						</object>
 						<reference key="parent" ref="886184659"/>
 					</object>
@@ -1591,18 +1563,9 @@
 						<reference key="parent" ref="795017958"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">255</int>
-						<reference key="object" ref="335614530"/>
-						<object class="NSMutableArray" key="children">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="1029178380"/>
-						</object>
+						<int key="objectID">265</int>
+						<reference key="object" ref="174510897"/>
 						<reference key="parent" ref="199291735"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">252</int>
-						<reference key="object" ref="1029178380"/>
-						<reference key="parent" ref="335614530"/>
 					</object>
 				</object>
 			</object>
@@ -1653,8 +1616,7 @@
 					<string>250.IBPluginDependency</string>
 					<string>250.IBUIButtonInspectorSelectedEdgeInsetMetadataKey</string>
 					<string>250.IBUIButtonInspectorSelectedStateConfigurationMetadataKey</string>
-					<string>252.IBPluginDependency</string>
-					<string>255.IBPluginDependency</string>
+					<string>265.IBPluginDependency</string>
 					<string>27.IBPluginDependency</string>
 					<string>27.IBUIButtonInspectorSelectedStateConfigurationMetadataKey</string>
 					<string>31.IBPluginDependency</string>
@@ -1715,7 +1677,6 @@
 					<real value="0.0"/>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<real value="1"/>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<real value="0.0"/>
@@ -1741,7 +1702,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">261</int>
+			<int key="maxID">266</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>

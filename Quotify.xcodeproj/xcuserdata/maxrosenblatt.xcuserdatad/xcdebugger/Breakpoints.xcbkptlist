@@ -23,12 +23,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Quotify/QuotifyViewController.m"
-         timestampString = "361635222.047833"
+         timestampString = "361898821.423254"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "500"
-         endingLineNumber = "500"
-         landmarkName = "-navigationController:didShowViewController:animated:"
+         startingLineNumber = "503"
+         endingLineNumber = "503"
+         landmarkName = "-addPerson:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -37,13 +37,13 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Quotify/QuotifyViewController.m"
-         timestampString = "361635222.047833"
+         timestampString = "361898821.423254"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "587"
-         endingLineNumber = "587"
-         landmarkName = "-doneAddingPeople:"
-         landmarkType = "5">
+         startingLineNumber = "590"
+         endingLineNumber = "590"
+         landmarkName = "@implementation QuotifyViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"

@@ -139,10 +139,25 @@
     
     
     UIImage* _image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource: @"kinder_egg" ofType: @"jpg"]];
-    cell.imageView.image = _image;
+    
+    //Trying to fix the annoying corner but it's not working...
+    [cell setAutoresizesSubviews:YES];
+    cell.imageView.frame = CGRectMake(3, 3, 65, 65);
+    
+    // Put the image in the cell
+    [cell.imageView setImage:_image];
+
+    
+//    UIImageView *imageView = [[UIImageView alloc] initWithImage:_image];
+//    imageView.frame = CGRectMake(6.5, 6.5, 65, 65);
+//    [cell setImage:imageView.image];
     
     return cell;
 }
+
+//UIImageView *imageView = [[UIImageView alloc] initWithImage:photo];
+//imageView.frame = CGRectMake(6.5, 6.5, 65., 65.);
+//[cell addSubview:imageView];
 
 /*
  // Override to support conditional editing of the table view.

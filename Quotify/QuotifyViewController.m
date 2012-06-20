@@ -154,12 +154,13 @@
     [player prepareToPlay];
     [player.view setFrame: self.view.bounds];  // player's frame must match parent's
     [self.view addSubview: player.view];
-    // ...
     
     
    
-    player.scalingMode = MPMovieScalingModeAspectFit;
+    player.scalingMode = MPMovieScalingModeFill;
     player.fullscreen = YES;
+    
+    player.controlStyle = MPMovieControlStyleNone;
     // Register for the playback finished notification
     [[NSNotificationCenter defaultCenter]
      addObserver: self
@@ -171,6 +172,8 @@
                                            selector: @selector(myMovieFinishedCallback:) name: MPMoviePlayerDidExitFullscreenNotification object:player];
 
     [player play];
+    
+    player.controlStyle = MPMovieControlStyleFullscreen;
     
 }
 
