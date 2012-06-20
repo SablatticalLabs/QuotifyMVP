@@ -131,7 +131,7 @@
     if(![defaults objectForKey:@"quotifier"] || [[[defaults objectForKey:@"quotifier"] objectForKey:@"email"] length] == 0 
        || [[[defaults objectForKey:@"quotifier"] objectForKey:@"name"] length] == 0){
         [self showIntroMovie];
-        [self showFirstTimeSettings];
+        //[self showFirstTimeSettings];
     }
     else if([[defaults objectForKey:@"quotifier"] objectForKey:@"email"] && [[defaults objectForKey:@"quotifier"] objectForKey:@"name"]){
         currentQuote.quotifier = [NSMutableDictionary dictionaryWithDictionary:[defaults objectForKey:@"quotifier"]];
@@ -141,15 +141,47 @@
 }
 
 -(void)showIntroMovie{
-    IntroMovieViewController *introMovieVC = [[IntroMovieViewController alloc] init];
-    [self presentMoviePlayerViewControllerAnimated:introMovieVC];
     
-        
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Q4" ofType:@"mov"];//@"/Users/liorsabag/Dropbox/Dev/QuotifyMVP/Quotify/Q4.mov";
+    NSURL* theUrl = [NSURL fileURLWithPath:path];
+
+    player =
+    [[MPMoviePlayerController alloc] initWithContentURL: theUrl];
+    [player prepareToPlay];
+    [player.view setFrame: self.view.bounds];  // player's frame must match parent's
+    [self.view addSubview: player.view];
+    // ...
     
-    // Play the movie!
-    [introMovieVC playIntroMovie];
+    
+   
+    player.scalingMode = MPMovieScalingModeAspectFit;
+    player.fullscreen = YES;
+    // Register for the playback finished notification
+    [[NSNotificationCenter defaultCenter]
+     addObserver: self
+     selector: @selector(myMovieFinishedCallback:)
+     name: MPMoviePlayerPlaybackDidFinishNotification
+     object: player];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                           selector: @selector(myMovieFinishedCallback:) name: MPMoviePlayerDidExitFullscreenNotification object:player];
+
+    [player play];
     
 }
+
+-(void) myMovieFinishedCallback: (NSNotification*) aNotification
+{
+    [[NSNotificationCenter defaultCenter]
+     removeObserver: self
+     name: MPMoviePlayerPlaybackDidFinishNotification
+     object: player];
+    
+    [player.view removeFromSuperview];
+    
+    [self showFirstTimeSettings];
+}
+
 
 - (void)showFirstTimeSettings{
     quotifierEmail.text = [currentQuote.quotifier objectForKey:@"email"];

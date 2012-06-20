@@ -29,6 +29,7 @@
     SuccessViewController *successViewController;
     FBLoginButton *fbButton;
     Facebook *facebook;
+    MPMoviePlayerController *player;
     
     UITextField *speaker;
     UITextField *witnesses;

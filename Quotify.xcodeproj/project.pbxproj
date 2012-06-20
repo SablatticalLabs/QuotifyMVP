@@ -46,8 +46,6 @@
 		ADC5A9A414DE597D00AEE72E /* quotifybuttonup.png in Resources */ = {isa = PBXBuildFile; fileRef = ADC5A9A314DE597D00AEE72E /* quotifybuttonup.png */; };
 		ADD5BC63145100CD009D475C /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADD5BC62145100CD009D475C /* AddressBook.framework */; };
 		ADD5BC65145100D3009D475C /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADD5BC64145100D3009D475C /* AddressBookUI.framework */; };
-		ADD667D0158DF678005A58DF /* IntroMovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADD667CE158DF678005A58DF /* IntroMovieViewController.m */; };
-		ADD667D1158DF678005A58DF /* IntroMovieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADD667CF158DF678005A58DF /* IntroMovieViewController.xib */; };
 		ADD667D4158DF863005A58DF /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADD667D3158DF863005A58DF /* MediaPlayer.framework */; };
 		ADDCB98414DDA34100CE9019 /* people.png in Resources */ = {isa = PBXBuildFile; fileRef = ADDCB97E14DDA34100CE9019 /* people.png */; };
 		ADDCB98514DDA34100CE9019 /* person.png in Resources */ = {isa = PBXBuildFile; fileRef = ADDCB97F14DDA34100CE9019 /* person.png */; };
@@ -153,9 +151,6 @@
 		ADC5A9A314DE597D00AEE72E /* quotifybuttonup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quotifybuttonup.png; sourceTree = "<group>"; };
 		ADD5BC62145100CD009D475C /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		ADD5BC64145100D3009D475C /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
-		ADD667CD158DF678005A58DF /* IntroMovieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroMovieViewController.h; sourceTree = "<group>"; };
-		ADD667CE158DF678005A58DF /* IntroMovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroMovieViewController.m; sourceTree = "<group>"; };
-		ADD667CF158DF678005A58DF /* IntroMovieViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IntroMovieViewController.xib; sourceTree = "<group>"; };
 		ADD667D3158DF863005A58DF /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		ADDCB97E14DDA34100CE9019 /* people.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = people.png; sourceTree = "<group>"; };
 		ADDCB97F14DDA34100CE9019 /* person.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person.png; sourceTree = "<group>"; };
@@ -300,8 +295,6 @@
 				AD7CECFB139A934A003A0A37 /* CoreLocationController.m */,
 				DD2C0368158D7A72000C9CD8 /* HistoryViewController2.h */,
 				DD2C0369158D7A72000C9CD8 /* HistoryViewController2.m */,
-				ADD667CD158DF678005A58DF /* IntroMovieViewController.h */,
-				ADD667CE158DF678005A58DF /* IntroMovieViewController.m */,
 				ADAEF3931361E9A4002F94A1 /* QuotifyAppDelegate.h */,
 				ADAEF3941361E9A4002F94A1 /* QuotifyAppDelegate.m */,
 				ADAEF3991361E9A4002F94A1 /* QuotifyViewController.h */,
@@ -353,7 +346,6 @@
 				DD2C0387158D91AB000C9CD8 /* kinder_egg.jpg */,
 				ADAEF3961361E9A4002F94A1 /* MainWindow.xib */,
 				ADAEF39C1361E9A4002F94A1 /* QuotifyViewController.xib */,
-				ADD667CF158DF678005A58DF /* IntroMovieViewController.xib */,
 				DD2C036A158D7A72000C9CD8 /* HistoryViewController2.xib */,
 				DDBD101913944B7300A40AF4 /* SuccessViewController.xib */,
 				DD2C036D158D8347000C9CD8 /* LoginNormal.png */,
@@ -570,7 +562,6 @@
 				DD2C0385158D8347000C9CD8 /* LogoutPressed@2x.png in Resources */,
 				DD2C0386158D8347000C9CD8 /* runaround_image.jpg in Resources */,
 				DD2C0388158D91AB000C9CD8 /* kinder_egg.jpg in Resources */,
-				ADD667D1158DF678005A58DF /* IntroMovieViewController.xib in Resources */,
 				ADB95528158E12950081EF04 /* Q4.mov in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -627,7 +618,6 @@
 				DD09DCA113A2980C007A0786 /* FBLoginButton.m in Sources */,
 				ADE8125814E20A4300DA78EC /* Utility.m in Sources */,
 				DD2C036B158D7A73000C9CD8 /* HistoryViewController2.m in Sources */,
-				ADD667D0158DF678005A58DF /* IntroMovieViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
