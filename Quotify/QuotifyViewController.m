@@ -8,7 +8,9 @@
 
 #import "QuotifyViewController.h"
 
-@implementation QuotifyViewController
+@implementation QuotifyViewController{
+    BOOL alreadyShowingSettings;
+};
 
 
 //////////////////////////////
@@ -142,6 +144,8 @@
 
 -(void)showIntroMovie{
     
+    alreadyShowingSettings = NO;
+    
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Q4" ofType:@"mov"];//@"/Users/liorsabag/Dropbox/Dev/QuotifyMVP/Quotify/Q4.mov";
     NSURL* theUrl = [NSURL fileURLWithPath:path];
 
@@ -172,22 +176,24 @@
 
 -(void) myMovieFinishedCallback: (NSNotification*) aNotification
 {
-    [[NSNotificationCenter defaultCenter]
-     removeObserver: self
-     name: MPMoviePlayerPlaybackDidFinishNotification
-     object: player];
-    
-    [player.view removeFromSuperview];
-    
-    [self showFirstTimeSettings];
+    if(!alreadyShowingSettings){
+        [[NSNotificationCenter defaultCenter] removeObserver: self name: MPMoviePlayerPlaybackDidFinishNotification object: player];
+        
+        [player.view removeFromSuperview];
+        [self showFirstTimeSettings];
+        alreadyShowingSettings = YES;
+    }
 }
 
 
 - (void)showFirstTimeSettings{
-    quotifierEmail.text = [currentQuote.quotifier objectForKey:@"email"];
-    quotifierName.text = [currentQuote.quotifier objectForKey:@"name"];
-    [self presentModalViewController:self.settingsViewController animated:YES];
-    [self raiseFailurePopupWithTitle:@"Welcome to Quotify!" andMessage:@"Enter your name  & email address to get started"];
+    if(!alreadyShowingSettings){
+        quotifierEmail.text = [currentQuote.quotifier objectForKey:@"email"];
+        quotifierName.text = [currentQuote.quotifier objectForKey:@"name"];
+        [self presentModalViewController:self.settingsViewController animated:YES];
+        [self raiseFailurePopupWithTitle:@"Welcome to Quotify!" andMessage:@"Enter your name  & email address to get started"];
+        alreadyShowingSettings = YES;
+    }
 }
 
 - (void)viewDidUnload{
