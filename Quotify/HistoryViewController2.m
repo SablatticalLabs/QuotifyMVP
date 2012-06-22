@@ -7,6 +7,7 @@
 //
 
 #import "HistoryViewController2.h"
+#import "QuoteWebViewController.h"
 
 @implementation HistoryViewController2
 @synthesize quoteHistTableView;
@@ -202,6 +203,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    NSString* quoteID = [[quotesArray objectAtIndex:indexPath.row] objectForKey:@"id"];
+    QuoteWebViewController *wvc = [[QuoteWebViewController alloc] init];
+    wvc.quoteURL = [NSString stringWithFormat:@"http://www.quotify.it/%@/",quoteID];
+    
+    [self presentModalViewController:wvc animated:YES];
+    
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];

@@ -224,7 +224,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "505"
          endingLineNumber = "505"
-         landmarkName = "-done:"
+         landmarkName = "-addPerson:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -252,8 +252,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "639"
          endingLineNumber = "639"
-         landmarkName = "@implementation QuotifyViewController"
-         landmarkType = "3">
+         landmarkName = "-doneAddingPeople:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -443,11 +443,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Quotify/HistoryViewController2.m"
-         timestampString = "361630437.31036"
+         timestampString = "362013670.638531"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "58"
-         endingLineNumber = "58"
+         startingLineNumber = "59"
+         endingLineNumber = "59"
          landmarkName = "-quoteListResult:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -457,11 +457,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Quotify/HistoryViewController2.m"
-         timestampString = "361632490.667847"
+         timestampString = "362013670.638531"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "142"
-         endingLineNumber = "142"
+         startingLineNumber = "143"
+         endingLineNumber = "143"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -471,11 +471,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Quotify/HistoryViewController2.m"
-         timestampString = "361630437.31036"
+         timestampString = "362013670.638531"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "93"
-         endingLineNumber = "93"
+         startingLineNumber = "94"
+         endingLineNumber = "94"
          landmarkName = "-tableView:numberOfRowsInSection:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -519,6 +519,34 @@
          startingLineNumber = "150"
          endingLineNumber = "150"
          landmarkName = "-showIntroMovie"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Quotify/HistoryViewController2.m"
+         timestampString = "362013658.685535"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "208"
+         endingLineNumber = "208"
+         landmarkName = "-tableView:didSelectRowAtIndexPath:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "QuoteWebViewController.m"
+         timestampString = "362016896.331851"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "48"
+         endingLineNumber = "48"
+         landmarkName = "-viewDidAppear:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

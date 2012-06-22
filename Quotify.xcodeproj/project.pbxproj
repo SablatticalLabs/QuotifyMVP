@@ -88,6 +88,8 @@
 		DD2C0386158D8347000C9CD8 /* runaround_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DD2C0379158D8347000C9CD8 /* runaround_image.jpg */; };
 		DD2C0388158D91AB000C9CD8 /* kinder_egg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DD2C0387158D91AB000C9CD8 /* kinder_egg.jpg */; };
 		DD560CEE139AC8640047A926 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD560CED139AC8640047A926 /* MapKit.framework */; };
+		DD88B5471593DE5300D012E4 /* QuoteWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD88B5451593DE5300D012E4 /* QuoteWebViewController.m */; };
+		DD88B5481593DE5300D012E4 /* QuoteWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD88B5461593DE5300D012E4 /* QuoteWebViewController.xib */; };
 		DD92C2761583F19700460CF8 /* LoginWithFacebookNormal_1.png in Resources */ = {isa = PBXBuildFile; fileRef = DD92C2751583F19700460CF8 /* LoginWithFacebookNormal_1.png */; };
 		DDBD101A13944B7400A40AF4 /* SuccessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBD101813944B7300A40AF4 /* SuccessViewController.m */; };
 		DDBD101B13944B7400A40AF4 /* SuccessViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDBD101913944B7300A40AF4 /* SuccessViewController.xib */; };
@@ -210,6 +212,9 @@
 		DD2C0379158D8347000C9CD8 /* runaround_image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = runaround_image.jpg; sourceTree = "<group>"; };
 		DD2C0387158D91AB000C9CD8 /* kinder_egg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kinder_egg.jpg; sourceTree = "<group>"; };
 		DD560CED139AC8640047A926 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		DD88B5441593DE5300D012E4 /* QuoteWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuoteWebViewController.h; sourceTree = "<group>"; };
+		DD88B5451593DE5300D012E4 /* QuoteWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuoteWebViewController.m; sourceTree = "<group>"; };
+		DD88B5461593DE5300D012E4 /* QuoteWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuoteWebViewController.xib; sourceTree = "<group>"; };
 		DD92C2751583F19700460CF8 /* LoginWithFacebookNormal_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LoginWithFacebookNormal_1.png; path = ../src/FBConnect.bundle/images/LoginWithFacebookNormal_1.png; sourceTree = "<group>"; };
 		DDBD101713944B7300A40AF4 /* SuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuccessViewController.h; sourceTree = "<group>"; };
 		DDBD101813944B7300A40AF4 /* SuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuccessViewController.m; sourceTree = "<group>"; };
@@ -250,10 +255,13 @@
 			isa = PBXGroup;
 			children = (
 				ADF1604414DE5632000B5343 /* icon114.png */,
-				ADF1604214DE5630000B5343 /* icon57.png */,
 				ADDCB99414DDAE9100CE9019 /* Default@2x.png */,
+				ADF1604214DE5630000B5343 /* icon57.png */,
 				ADDCB99014DDAE7700CE9019 /* Default.png */,
 				ADA2650F1396ACAD00F9155C /* Entitlements.plist */,
+				DD88B5461593DE5300D012E4 /* QuoteWebViewController.xib */,
+				DD88B5441593DE5300D012E4 /* QuoteWebViewController.h */,
+				DD88B5451593DE5300D012E4 /* QuoteWebViewController.m */,
 				ADF0F9C913A15C63000AC8FC /* src */,
 				ADAEF38A1361E9A4002F94A1 /* Quotify */,
 				ADAEF3C01361EA7E002F94A1 /* View Files */,
@@ -563,6 +571,7 @@
 				DD2C0386158D8347000C9CD8 /* runaround_image.jpg in Resources */,
 				DD2C0388158D91AB000C9CD8 /* kinder_egg.jpg in Resources */,
 				ADB95528158E12950081EF04 /* Q4.mov in Resources */,
+				DD88B5481593DE5300D012E4 /* QuoteWebViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -618,6 +627,7 @@
 				DD09DCA113A2980C007A0786 /* FBLoginButton.m in Sources */,
 				ADE8125814E20A4300DA78EC /* Utility.m in Sources */,
 				DD2C036B158D7A73000C9CD8 /* HistoryViewController2.m in Sources */,
+				DD88B5471593DE5300D012E4 /* QuoteWebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
