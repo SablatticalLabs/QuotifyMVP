@@ -55,6 +55,20 @@
     NSLog(@"hist dict: %@", listDict);
     quotesArray = [listDict objectForKey:@"quote_history"];
     
+    lockedQuotes = [[NSMutableArray alloc] init];
+    //NSMutableArray * editableQuotes = [[NSMutableArray alloc] init];
+    viewableQuotes = [[NSMutableArray alloc] init];
+    
+    for (NSDictionary* quoteDict in quotesArray) {
+        if([quoteDict objectForKey:@"messages_sent_flag"] == @"1"){
+            [viewableQuotes addObject:quoteDict];
+        }
+        else{
+            [lockedQuotes addObject:quoteDict];
+        }
+    }
+    
+    
     [self.quoteHistTableView reloadData];
     [self.loadingIndicator stopAnimating];
     self.loadingView.hidden = YES;
@@ -86,14 +100,17 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
     // Return the number of rows in the section.
-    return [quotesArray count];
+    if(section == 1)
+        return [viewableQuotes count];
+    else
+        return [lockedQuotes count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -107,16 +124,13 @@
     
     // Configure the cell..
     
-    NSString * str = [[quotesArray objectAtIndex:indexPath.row] objectForKey:@"created_at"];
+    NSString * str;
+    if(indexPath.section == 1){
+        //aadasdfaslkdfjglakr MAXXXXX sdlfkghsldkfjg
+    }
     
-//    NSDateFormatter* df_utc = [[NSDateFormatter alloc] init];
-//    [df_utc setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
-//    [df_utc setDateFormat:@"yyyy.MM.dd G 'at' HH:mm:ss zzz"];
-//    
-//    NSDateFormatter* df_local = [[NSDateFormatter alloc] init] ;
-//    [df_local setTimeZone:[NSTimeZone timeZoneWithName:@"EST"]];
-//    [df_local setDateFormat:@"yyyy.MM.dd G 'at' HH:mm:ss zzz"];
-//    
+    str = [[quotesArray objectAtIndex:indexPath.row] objectForKey:@"created_at"];
+       
     
     NSDateFormatter* df = [[NSDateFormatter alloc]init];
     [df setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
@@ -139,14 +153,14 @@
     
     
     
-    UIImage* _image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource: @"kinder_egg" ofType: @"jpg"]];
+    //UIImage* _image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource: @"kinder_egg" ofType: @"jpg"]];
     
     //Trying to fix the annoying corner but it's not working...
-    [cell setAutoresizesSubviews:YES];
-    cell.imageView.frame = CGRectMake(3, 3, 65, 65);
+    //[cell setAutoresizesSubviews:YES];
+    //cell.imageView.frame = CGRectMake(3, 3, 65, 65);
     
     // Put the image in the cell
-    [cell.imageView setImage:_image];
+    //[cell.imageView setImage:_image];
 
     
 //    UIImageView *imageView = [[UIImageView alloc] initWithImage:_image];

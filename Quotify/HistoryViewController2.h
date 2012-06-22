@@ -13,6 +13,12 @@
     Comm * myComm;
     NSDictionary *data;
     NSArray *quotesArray;
+    
+    
+    NSMutableArray * lockedQuotes;
+    NSMutableArray * editableQuotes;
+    NSMutableArray * viewableQuotes;
+
 }
 
 //@property (weak, nonatomic) IBOutlet UITableView *myTableView;
