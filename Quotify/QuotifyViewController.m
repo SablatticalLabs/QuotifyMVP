@@ -10,6 +10,7 @@
 
 @implementation QuotifyViewController{
     BOOL alreadyShowingSettings;
+    BOOL videoFinishedPlaying;
 };
 
 
@@ -130,12 +131,16 @@
     NSLog(@"defaults-q_name: %@", [[defaults objectForKey:@"quotifier"] objectForKey:@"name"]);
     //NSLog(@"defaults-q_email: %@", [[[defaults objectForKey:@"quotifier"] objectForKey:@"email"]rangeOfString:@"@"].location == NSNotFound);
     
+    //NSLog(@"videoFinishedPlaying: %@", videoFinishedPlaying);
+    
     if(![defaults objectForKey:@"quotifier"] || [[[defaults objectForKey:@"quotifier"] objectForKey:@"email"] length] == 0 
        || [[[defaults objectForKey:@"quotifier"] objectForKey:@"name"] length] == 0){
         if(!alreadyShowingSettings){
             [self showIntroMovie];
-            //[self showFirstTimeSettings];
-
+        }
+        else if(videoFinishedPlaying){
+            [self showFirstTimeSettings];
+            videoFinishedPlaying = NO;
         }
             
     }
@@ -144,6 +149,7 @@
         self.quotifierEmail.text = [currentQuote.quotifier objectForKey:@"email"];
         self.quotifierName.text = [currentQuote.quotifier objectForKey:@"name"];
     }
+    
 }
 
 -(void)showIntroMovie{
@@ -174,12 +180,14 @@
         [[NSNotificationCenter defaultCenter] removeObserver: self name: MPMoviePlayerPlaybackDidFinishNotification object: player.moviePlayer];
         [self showFirstTimeSettings];
         alreadyShowingSettings = YES;
-    }    
+    }
+    
+    videoFinishedPlaying = YES;
 }
 
 
 - (void)showFirstTimeSettings{
-    if(!alreadyShowingSettings){
+    if(alreadyShowingSettings){
         quotifierEmail.text = [currentQuote.quotifier objectForKey:@"email"];
         quotifierName.text = [currentQuote.quotifier objectForKey:@"name"];
         [self presentModalViewController:settingsViewController animated:YES];
