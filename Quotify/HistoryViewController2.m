@@ -100,18 +100,27 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 2;
+    //NSLog(@"number of sections: %@", ([viewableQuotes count]>0) + ([editableQuotes count]>0));
+    return 1;//([viewableQuotes count]>0) + ([editableQuotes count]>0);
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
     // Return the number of rows in the section.
-    if(section == 1)
-        return [viewableQuotes count];
-    else
-        return [lockedQuotes count];
+//    if(section == 1)
+//        return [viewableQuotes count];
+//    else
+//        return [lockedQuotes count];
+    return [quotesArray count];
 }
+
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+//    if(section == 1)
+//        return @"Viewable Quotes";
+//    else
+//        return @"Locked Quotes";
+//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -124,20 +133,25 @@
     
     // Configure the cell..
     
-    NSString * str;
-    if(indexPath.section == 1){
-        //aadasdfaslkdfjglakr MAXXXXX sdlfkghsldkfjg
-    }
+    NSString* dateString;
+
+    NSDictionary * quoteDict = [quotesArray objectAtIndex:indexPath.row];
+//    if(indexPath.section == 1){
+//        quoteDict = [viewableQuotes objectAtIndex:indexPath.row];
+//    }
+//    else{
+//        quoteDict = [lockedQuotes objectAtIndex:indexPath.row];
+//    }
     
-    str = [[quotesArray objectAtIndex:indexPath.row] objectForKey:@"created_at"];
+    dateString = [quoteDict objectForKey:@"created_at"];
        
     
     NSDateFormatter* df = [[NSDateFormatter alloc]init];
     [df setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
     [df setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
     
-    str = [str stringByReplacingOccurrencesOfString:@"Z" withString:@""];    
-    NSDate* date = [df dateFromString:str];
+    dateString = [dateString stringByReplacingOccurrencesOfString:@"Z" withString:@""];    
+    NSDate* date = [df dateFromString:dateString];
     
     
     [df setDateFormat:@"EEE, MMM d, yyyy"];

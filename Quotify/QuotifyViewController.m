@@ -132,8 +132,12 @@
     
     if(![defaults objectForKey:@"quotifier"] || [[[defaults objectForKey:@"quotifier"] objectForKey:@"email"] length] == 0 
        || [[[defaults objectForKey:@"quotifier"] objectForKey:@"name"] length] == 0){
-        [self showIntroMovie];
-        //[self showFirstTimeSettings];
+        if(!alreadyShowingSettings){
+            [self showIntroMovie];
+            //[self showFirstTimeSettings];
+
+        }
+            
     }
     else if([[defaults objectForKey:@"quotifier"] objectForKey:@"email"] && [[defaults objectForKey:@"quotifier"] objectForKey:@"name"]){
         currentQuote.quotifier = [NSMutableDictionary dictionaryWithDictionary:[defaults objectForKey:@"quotifier"]];
@@ -164,7 +168,7 @@
 
 -(void) myMovieFinishedCallback: (NSNotification*) aNotification
 {
-    [self dismissMoviePlayerViewControllerAnimated];
+    [player dismissMoviePlayerViewControllerAnimated];
 
     if(!alreadyShowingSettings){
         [[NSNotificationCenter defaultCenter] removeObserver: self name: MPMoviePlayerPlaybackDidFinishNotification object: player.moviePlayer];
@@ -178,8 +182,8 @@
     if(!alreadyShowingSettings){
         quotifierEmail.text = [currentQuote.quotifier objectForKey:@"email"];
         quotifierName.text = [currentQuote.quotifier objectForKey:@"name"];
-        [self presentModalViewController:self.settingsViewController animated:YES];
-        [self raiseFailurePopupWithTitle:@"Welcome to Quotify!" andMessage:@"Enter your name  & email address to get started"];
+        [self presentModalViewController:settingsViewController animated:YES];
+        //[self raiseFailurePopupWithTitle:@"Welcome to Quotify!" andMessage:@"Enter your name  & email address to get started"];
         alreadyShowingSettings = YES;
     }
 }
