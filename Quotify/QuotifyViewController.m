@@ -149,43 +149,28 @@
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Q4" ofType:@"mov"];//@"/Users/liorsabag/Dropbox/Dev/QuotifyMVP/Quotify/Q4.mov";
     NSURL* theUrl = [NSURL fileURLWithPath:path];
 
-    player =
-    [[MPMoviePlayerController alloc] initWithContentURL: theUrl];
-    [player prepareToPlay];
-    [player.view setFrame: self.view.bounds];  // player's frame must match parent's
-    [self.view addSubview: player.view];
-    
-    
-   
-    player.scalingMode = MPMovieScalingModeFill;
-    player.fullscreen = YES;
-    
-    player.controlStyle = MPMovieControlStyleNone;
-    // Register for the playback finished notification
+    player = [[MPMoviePlayerViewController alloc] initWithContentURL: theUrl];
+    [self presentMoviePlayerViewControllerAnimated:player];
+
+    // Register for the moviePlayer playback finished notification
     [[NSNotificationCenter defaultCenter]
      addObserver: self
      selector: @selector(myMovieFinishedCallback:)
      name: MPMoviePlayerPlaybackDidFinishNotification
-     object: player];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self 
-                                           selector: @selector(myMovieFinishedCallback:) name: MPMoviePlayerDidExitFullscreenNotification object:player];
-
-    [player play];
-    
-    player.controlStyle = MPMovieControlStyleFullscreen;
+     object: player.moviePlayer];    
     
 }
 
+
 -(void) myMovieFinishedCallback: (NSNotification*) aNotification
 {
+    [self dismissMoviePlayerViewControllerAnimated];
+
     if(!alreadyShowingSettings){
-        [[NSNotificationCenter defaultCenter] removeObserver: self name: MPMoviePlayerPlaybackDidFinishNotification object: player];
-        
-        [player.view removeFromSuperview];
+        [[NSNotificationCenter defaultCenter] removeObserver: self name: MPMoviePlayerPlaybackDidFinishNotification object: player.moviePlayer];
         [self showFirstTimeSettings];
         alreadyShowingSettings = YES;
-    }
+    }    
 }
 
 
