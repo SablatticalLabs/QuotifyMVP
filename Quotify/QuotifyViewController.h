@@ -57,6 +57,7 @@
     UILabel *timestampLabel;
     UILabel *locLabel;
 
+    __weak IBOutlet UISwitch *addPersonToABSwitch;
   
     UIActivityIndicatorView *quotifyingActivityIndicator;
     BOOL quoteTextWasEdited;

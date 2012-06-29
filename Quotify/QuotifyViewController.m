@@ -191,7 +191,7 @@
         quotifierEmail.text = [currentQuote.quotifier objectForKey:@"email"];
         quotifierName.text = [currentQuote.quotifier objectForKey:@"name"];
         [self presentModalViewController:settingsViewController animated:YES];
-        //[self raiseFailurePopupWithTitle:@"Welcome to Quotify!" andMessage:@"Enter your name  & email address to get started"];
+        [self raiseFailurePopupWithTitle:@"Welcome to Quotify!" andMessage:@"Enter your name  & email address to get started"];
         alreadyShowingSettings = YES;
     }
 }
@@ -224,6 +224,7 @@
     [self setDeleteWitnessButton:nil];
     [self setQuotifierName:nil];
     [self setShowHistory:nil];
+    addPersonToABSwitch = nil;
     [super viewDidUnload];
     // Release any retained subview of the main view.
     // e.g. self.myOutlet = nil;
@@ -633,6 +634,28 @@
         currentQuote.speaker = newPerson;
         speaker.text = addedPersonName.text;
     }
+    
+    
+    if (addPersonToABSwitch.on) {
+        CFErrorRef anError = NULL; 
+        ABAddressBookRef addressBook = ABAddressBookCreate();
+        ABRecordRef person = ABPersonCreate();
+        ABRecordSetValue(person, kABPersonFirstNameProperty, (__bridge CFStringRef)addedPersonName.text, &anError);
+        
+        ABMutableMultiValueRef multiEmail = ABMultiValueCreateMutable(kABMultiStringPropertyType);
+        ABMultiValueAddValueAndLabel(multiEmail, (__bridge CFStringRef)addedPersonEmail.text, kABHomeLabel, NULL);
+        ABRecordSetValue(person, kABPersonEmailProperty, multiEmail, &anError);
+        CFRelease(multiEmail);
+        
+        ABAddressBookAddRecord(addressBook, person, &anError);
+        ABAddressBookSave(addressBook, &anError);
+        CFRelease(addressBook);
+        
+        if (anError != NULL) {
+            //something terrible happened
+        }
+    }
+
     
     [self dismissModalViewControllerAnimated:YES];
 }

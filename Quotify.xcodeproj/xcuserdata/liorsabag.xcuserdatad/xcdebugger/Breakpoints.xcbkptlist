@@ -9,11 +9,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Quotify/QuotifyViewController.m"
-         timestampString = "362386232.234602"
+         timestampString = "362621580.761729"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "489"
-         endingLineNumber = "489"
+         startingLineNumber = "490"
+         endingLineNumber = "490"
          landmarkName = "-addPerson:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -37,11 +37,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Quotify/QuotifyViewController.m"
-         timestampString = "362386232.234602"
+         timestampString = "362621580.761729"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "593"
-         endingLineNumber = "593"
+         startingLineNumber = "594"
+         endingLineNumber = "594"
          landmarkName = "@implementation QuotifyViewController"
          landmarkType = "3">
       </FileBreakpoint>
@@ -93,11 +93,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Quotify/QuotifyViewController.m"
-         timestampString = "362386232.234602"
+         timestampString = "362621580.761729"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "367"
-         endingLineNumber = "367"
+         startingLineNumber = "368"
+         endingLineNumber = "368"
          landmarkName = "-showContacts:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -107,11 +107,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Quotify/QuotifyViewController.m"
-         timestampString = "362386232.234602"
+         timestampString = "362621580.761729"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "410"
-         endingLineNumber = "410"
+         startingLineNumber = "411"
+         endingLineNumber = "411"
          landmarkName = "-peoplePickerNavigationController:shouldContinueAfterSelectingPerson:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -163,13 +163,13 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Quotify/QuotifyViewController.m"
-         timestampString = "362386232.234602"
+         timestampString = "362621580.761729"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "587"
-         endingLineNumber = "587"
-         landmarkName = "-personViewController:shouldPerformDefaultActionForPerson:property:identifier:"
-         landmarkType = "5">
+         startingLineNumber = "588"
+         endingLineNumber = "588"
+         landmarkName = "@implementation QuotifyViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -191,13 +191,13 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Quotify/QuotifyViewController.m"
-         timestampString = "362386232.234602"
+         timestampString = "362621580.761729"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "496"
-         endingLineNumber = "496"
-         landmarkName = "@implementation QuotifyViewController"
-         landmarkType = "3">
+         startingLineNumber = "497"
+         endingLineNumber = "497"
+         landmarkName = "-addPerson:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -205,13 +205,13 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Quotify/QuotifyViewController.m"
-         timestampString = "362386232.234602"
+         timestampString = "362621580.761729"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "501"
-         endingLineNumber = "501"
-         landmarkName = "@implementation QuotifyViewController"
-         landmarkType = "3">
+         startingLineNumber = "502"
+         endingLineNumber = "502"
+         landmarkName = "-addPerson:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -219,13 +219,13 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Quotify/QuotifyViewController.m"
-         timestampString = "362386232.234602"
+         timestampString = "362621580.761729"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "507"
-         endingLineNumber = "507"
-         landmarkName = "@implementation QuotifyViewController"
-         landmarkType = "3">
+         startingLineNumber = "508"
+         endingLineNumber = "508"
+         landmarkName = "-done:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -233,13 +233,13 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Quotify/QuotifyViewController.m"
-         timestampString = "362386232.234602"
+         timestampString = "362621580.761729"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "608"
-         endingLineNumber = "608"
-         landmarkName = "@implementation QuotifyViewController"
-         landmarkType = "3">
+         startingLineNumber = "609"
+         endingLineNumber = "609"
+         landmarkName = "-newPersonViewController:didCompleteWithNewPerson:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -247,11 +247,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Quotify/QuotifyViewController.m"
-         timestampString = "362386232.234602"
+         timestampString = "362621815.718406"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "641"
-         endingLineNumber = "641"
+         startingLineNumber = "691"
+         endingLineNumber = "691"
          landmarkName = "-quotifyPressed:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -261,25 +261,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Quotify/QuotifyViewController.m"
-         timestampString = "362386232.234602"
+         timestampString = "362621580.761729"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "668"
-         endingLineNumber = "668"
-         landmarkName = "-quoteTextSent:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Quotify/QuotifyViewController.m"
-         timestampString = "362386232.234602"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "530"
-         endingLineNumber = "530"
+         startingLineNumber = "531"
+         endingLineNumber = "531"
          landmarkName = "-navigationController:didShowViewController:animated:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -289,12 +275,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Quotify/QuotifyViewController.m"
-         timestampString = "362386232.234602"
+         timestampString = "362621580.761729"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "537"
-         endingLineNumber = "537"
-         landmarkName = "-navigationController:willShowViewController:animated:"
+         startingLineNumber = "538"
+         endingLineNumber = "538"
+         landmarkName = "-navigationController:didShowViewController:animated:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -303,12 +289,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Quotify/QuotifyViewController.m"
-         timestampString = "362386232.234602"
+         timestampString = "362621580.761729"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "516"
-         endingLineNumber = "516"
-         landmarkName = "-navigationController:didShowViewController:animated:"
+         startingLineNumber = "517"
+         endingLineNumber = "517"
+         landmarkName = "-cancel:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -331,12 +317,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Quotify/QuotifyViewController.m"
-         timestampString = "362386232.234602"
+         timestampString = "362621815.718406"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "742"
-         endingLineNumber = "742"
-         landmarkName = "-backToQuoteEntry:"
+         startingLineNumber = "765"
+         endingLineNumber = "765"
+         landmarkName = "-showHistory:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -546,7 +532,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "171"
          endingLineNumber = "171"
-         landmarkName = "-myMovieFinishedCallback:"
+         landmarkName = "-showIntroMovie"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -560,7 +546,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "151"
          endingLineNumber = "151"
-         landmarkName = "-showIntroMovie"
+         landmarkName = "-viewDidAppear:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -574,7 +560,77 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "185"
          endingLineNumber = "185"
+         landmarkName = "-myMovieFinishedCallback:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Quotify/QuotifyViewController.m"
+         timestampString = "362607292.177491"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "190"
+         endingLineNumber = "190"
          landmarkName = "-showFirstTimeSettings"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Quotify/QuotifyViewController.m"
+         timestampString = "362607321.287618"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "177"
+         endingLineNumber = "177"
+         landmarkName = "-myMovieFinishedCallback:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Quotify/QuotifyViewController.m"
+         timestampString = "362607327.409627"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "157"
+         endingLineNumber = "157"
+         landmarkName = "-showIntroMovie"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Quotify/QuotifyViewController.m"
+         timestampString = "362621753.573297"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "618"
+         endingLineNumber = "618"
+         landmarkName = "-backToMainView:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Quotify/QuotifyViewController.m"
+         timestampString = "362621810.3006"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "639"
+         endingLineNumber = "639"
+         landmarkName = "-doneAddingPeople:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
