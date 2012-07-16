@@ -39,26 +39,34 @@
 {
     [super viewDidLoad];
     
+    // Set data source and control of the Table View
     self.quoteHistTableView.dataSource = self;
     self.quoteHistTableView.delegate = self;
     
-    //init quotesArray
+    // init array of quotes
     quotesArray = [[NSArray alloc] init];
     
-    
+    // Creat an instance to access the data in the comm class
     myComm = [[Comm alloc] init];
     [myComm requestQuoteListforQuotifier:self.quotifierID AndSendResultTo:self];
 
 }
 
+
+// Query the quote array and create a dict which will hold arrays of each quote type
 -(void)quoteListResult:(NSDictionary*)listDict{
     NSLog(@"hist dict: %@", listDict);
     quotesArray = [listDict objectForKey:@"quote_history"];
     
     lockedQuotes = [[NSMutableArray alloc] init];
-    //NSMutableArray * editableQuotes = [[NSMutableArray alloc] init];
     viewableQuotes = [[NSMutableArray alloc] init];
     
+    // Future functionality - Editable quotes
+    //NSMutableArray * editableQuotes = [[NSMutableArray alloc] init];
+    
+    
+    
+    // Check the messages_sent_flag to see if quote is locked and place in appropriate array
     for (NSDictionary* quoteDict in quotesArray) {
         if([quoteDict objectForKey:@"messages_sent_flag"] == @"1"){
             [viewableQuotes addObject:quoteDict];
@@ -74,6 +82,112 @@
     self.loadingView.hidden = YES;
 }
 
+///////////////////////
+///////////////////////
+// **THIS IS THE SECTION THAT NEEDS TO BE WORKED ON**
+///////////////////////
+///////////////////////
+
+#pragma mark - Table view data source
+
+// Set how many sections the Table View will have
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    NSLog(@"number of sections: %@", ([viewableQuotes count]>0) + ([editableQuotes count]>0));
+    return 1;//([viewableQuotes count]>0) + ([editableQuotes count]>0);
+}
+
+// Set the number of rows in each section
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    
+    // Return the number of rows in the section.
+    //    if(section == 1)
+    //        return [viewableQuotes count];
+    //    else
+    //        return [lockedQuotes count];
+    return [quotesArray count];
+}
+
+// Display section headings
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+//    if(section == 1)
+//        return @"Viewable Quotes";
+//    else
+//        return @"Locked Quotes";
+//}
+
+// This is where we configure each cell
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    
+    // Memory management - reuse cells when possible to aviod holding large arrays in memory
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle 
+                                      reuseIdentifier:CellIdentifier];
+    }
+    
+    // Configure the cell..
+    
+    
+    NSDictionary * quoteDict = [quotesArray objectAtIndex:indexPath.row];
+    //    if(indexPath.section == 1){
+    //        quoteDict = [viewableQuotes objectAtIndex:indexPath.row];
+    //    }
+    //    else{
+    //        quoteDict = [lockedQuotes objectAtIndex:indexPath.row];
+    //    }
+    
+    
+    // Grab the raw date info from the quote object
+    NSString* dateString;
+    dateString = [quoteDict objectForKey:@"created_at"];
+    
+    // Format the raw date info
+    NSDateFormatter* df = [[NSDateFormatter alloc]init];
+    [df setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
+    [df setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    
+    // Remove the letter "Z" from the date?
+    dateString = [dateString stringByReplacingOccurrencesOfString:@"Z" withString:@""];    
+    NSDate* date = [df dateFromString:dateString];
+    
+    // Set a new date format and convert from GMT to local time
+    [df setDateFormat:@"EEE, MMM d, yyyy"];
+    [df setTimeZone:[NSTimeZone systemTimeZone]];
+    
+    // Write the date/time in the cell
+    cell.textLabel.text = [df stringFromDate:date];
+    cell.textLabel.font = [UIFont systemFontOfSize:14];
+    
+    // Format the date again? Why are we doing this three times?
+    [df setDateFormat:@"h:mm a"];
+    cell.detailTextLabel.text = [df stringFromDate:date];
+    
+    // Set the cell to highlight blue when pressed
+    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+    
+    
+    return cell;
+}
+
+
+#pragma mark - Table view delegate
+
+// Action when a row is selected
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Display the selected quote in a Web View
+    NSString* quoteID = [[quotesArray objectAtIndex:indexPath.row] objectForKey:@"id"];
+    QuoteWebViewController *wvc = [[QuoteWebViewController alloc] init];
+    wvc.quoteURL = [NSString stringWithFormat:@"http://www.quotify.it/%@/",quoteID];
+    
+    [self presentModalViewController:wvc animated:YES];
+}
+
 
 - (void)viewDidUnload
 {
@@ -81,8 +195,6 @@
     [self setLoadingIndicator:nil];
     [self setLoadingView:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -95,157 +207,6 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
-    //NSLog(@"number of sections: %@", ([viewableQuotes count]>0) + ([editableQuotes count]>0));
-    return 1;//([viewableQuotes count]>0) + ([editableQuotes count]>0);
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-
-    // Return the number of rows in the section.
-//    if(section == 1)
-//        return [viewableQuotes count];
-//    else
-//        return [lockedQuotes count];
-    return [quotesArray count];
-}
-
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-//    if(section == 1)
-//        return @"Viewable Quotes";
-//    else
-//        return @"Locked Quotes";
-//}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-    }
-    
-    // Configure the cell..
-    
-    NSString* dateString;
-
-    NSDictionary * quoteDict = [quotesArray objectAtIndex:indexPath.row];
-//    if(indexPath.section == 1){
-//        quoteDict = [viewableQuotes objectAtIndex:indexPath.row];
-//    }
-//    else{
-//        quoteDict = [lockedQuotes objectAtIndex:indexPath.row];
-//    }
-    
-    dateString = [quoteDict objectForKey:@"created_at"];
-       
-    
-    NSDateFormatter* df = [[NSDateFormatter alloc]init];
-    [df setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
-    [df setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-    
-    dateString = [dateString stringByReplacingOccurrencesOfString:@"Z" withString:@""];    
-    NSDate* date = [df dateFromString:dateString];
-    
-    
-    [df setDateFormat:@"EEE, MMM d, yyyy"];
-    [df setTimeZone:[NSTimeZone systemTimeZone]];
-    
-    cell.textLabel.text = [df stringFromDate:date];
-    cell.textLabel.font = [UIFont systemFontOfSize:14];
-    
-    [df setDateFormat:@"h:mm a"];
-    cell.detailTextLabel.text = [df stringFromDate:date];
-    
-    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-    
-    
-    
-    //UIImage* _image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource: @"kinder_egg" ofType: @"jpg"]];
-    
-    //Trying to fix the annoying corner but it's not working...
-    //[cell setAutoresizesSubviews:YES];
-    //cell.imageView.frame = CGRectMake(3, 3, 65, 65);
-    
-    // Put the image in the cell
-    //[cell.imageView setImage:_image];
-
-    
-//    UIImageView *imageView = [[UIImageView alloc] initWithImage:_image];
-//    imageView.frame = CGRectMake(6.5, 6.5, 65, 65);
-//    [cell setImage:imageView.image];
-    
-    return cell;
-}
-
-//UIImageView *imageView = [[UIImageView alloc] initWithImage:photo];
-//imageView.frame = CGRectMake(6.5, 6.5, 65., 65.);
-//[cell addSubview:imageView];
-
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
- }   
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }   
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    NSString* quoteID = [[quotesArray objectAtIndex:indexPath.row] objectForKey:@"id"];
-    QuoteWebViewController *wvc = [[QuoteWebViewController alloc] init];
-    wvc.quoteURL = [NSString stringWithFormat:@"http://www.quotify.it/%@/",quoteID];
-    
-    [self presentModalViewController:wvc animated:YES];
-    
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
-}
 
 
 @end
