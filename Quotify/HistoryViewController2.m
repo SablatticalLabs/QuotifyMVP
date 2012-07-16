@@ -14,6 +14,7 @@
 @synthesize loadingIndicator;
 @synthesize loadingView;
 @synthesize quotifierID;
+@synthesize sectionedQuotesArray = _sectionedQutoesArray;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -55,19 +56,20 @@
     NSLog(@"hist dict: %@", listDict);
     quotesArray = [listDict objectForKey:@"quote_history"];
     
-    lockedQuotes = [[NSMutableArray alloc] init];
-    //NSMutableArray * editableQuotes = [[NSMutableArray alloc] init];
-    viewableQuotes = [[NSMutableArray alloc] init];
+//    lockedQuotes = [[NSMutableArray alloc] init];
+//    //NSMutableArray * editableQuotes = [[NSMutableArray alloc] init];
+//    viewableQuotes = [[NSMutableArray alloc] init];
+//    
+//    for (NSDictionary* quoteDict in quotesArray) {
+//        if([quoteDict objectForKey:@"messages_sent_flag"]){
+//            [viewableQuotes addObject:quoteDict];
+//        }
+//        else{
+//            [lockedQuotes addObject:quoteDict];
+//        }
+//    }
     
-    for (NSDictionary* quoteDict in quotesArray) {
-        if([quoteDict objectForKey:@"messages_sent_flag"] == @"1"){
-            [viewableQuotes addObject:quoteDict];
-        }
-        else{
-            [lockedQuotes addObject:quoteDict];
-        }
-    }
-    
+    [self.sectionedQuotesArray addObject:viewableQuotes];
     
     [self.quoteHistTableView reloadData];
     [self.loadingIndicator stopAnimating];
@@ -101,11 +103,12 @@
 {
     // Return the number of sections.
     //NSLog(@"number of sections: %@", ([viewableQuotes count]>0) + ([editableQuotes count]>0));
-    return 1;//([viewableQuotes count]>0) + ([editableQuotes count]>0);
+    return 1;//(int)([viewableQuotes count]>0) + (int)([editableQuotes count]>0);
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    //NSLog(@"TABLE SECTION:%@", section);
 
     // Return the number of rows in the section.
 //    if(section == 1)

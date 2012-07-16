@@ -110,7 +110,7 @@
 							<object class="IBUIActivityIndicatorView" id="431572154">
 								<reference key="NSNextResponder" ref="187000008"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{142, 233}, {37, 37}}</string>
+								<string key="NSFrame">{{142, 189}, {37, 37}}</string>
 								<reference key="NSSuperview" ref="187000008"/>
 								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:1030</string>
@@ -121,7 +121,7 @@
 								<int key="IBUIStyle">0</int>
 							</object>
 						</array>
-						<string key="NSFrameSize">{320, 460}</string>
+						<string key="NSFrame">{{0, 44}, {320, 416}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="431572154"/>
