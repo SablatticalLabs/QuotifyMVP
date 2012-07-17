@@ -54,7 +54,7 @@
 
 }
 
-
+// Here is where we sort the list
 // This gets called once Comm is done downloading the quoteList
 -(void)quoteListResult:(NSDictionary*)listDict{
     NSLog(@"hist dict: %@", listDict);
@@ -73,10 +73,9 @@
         //NSLog(@"Message flag: %@", [quoteDict objectForKey:@"messages_sent_flag"]);
         
         if([[quoteDict objectForKey:@"messages_sent_flag"] boolValue]){
-            
-            //isEqualToString:@"1"]){
             [viewableQuotes addObject:quoteDict];
         }
+        
         else{
             [lockedQuotes addObject:quoteDict];
         }
@@ -202,10 +201,7 @@
         cell.textLabel.font = [UIFont systemFontOfSize:14];
         
         // Put the date in lower half of cell
-        [df setDateFormat:@"h:mm a"];
         cell.detailTextLabel.text = [df stringFromDate:date];
-        
-    
     
     return cell;
 }
