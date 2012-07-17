@@ -69,10 +69,10 @@
     
     // Check the messages_sent_flag to see if quote is locked and place in appropriate array
     for (NSDictionary* quoteDict in quotesArray) {
+    
+        //NSLog(@"Message flag: %@", [quoteDict objectForKey:@"messages_sent_flag"]);
         
-        NSLog(@"Message flag: %@", [quoteDict objectForKey:@"messages_sent_flag"]);
-        
-        if([quoteDict objectForKey:@"messages_sent_flag"]){
+        if([[quoteDict objectForKey:@"messages_sent_flag"] boolValue]){
             
             //isEqualToString:@"1"]){
             [viewableQuotes addObject:quoteDict];
