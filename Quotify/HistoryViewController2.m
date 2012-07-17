@@ -69,7 +69,12 @@
     
     // Check the messages_sent_flag to see if quote is locked and place in appropriate array
     for (NSDictionary* quoteDict in quotesArray) {
-        if([quoteDict objectForKey:@"messages_sent_flag"] == @"1"){
+        
+        NSLog(@"Message flag: %@", [quoteDict objectForKey:@"messages_sent_flag"]);
+        
+        if([quoteDict objectForKey:@"messages_sent_flag"]){
+            
+            //isEqualToString:@"1"]){
             [viewableQuotes addObject:quoteDict];
         }
         else{
@@ -123,7 +128,7 @@
 {
     static NSString *CellIdentifier = @"Cell";
     
-    // Memory management - reuse cells when possible to aviod holding large arrays in memory
+    // Memory management - reuse cells when possible to avoid holding large arrays in memory
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle 
@@ -131,16 +136,22 @@
     }
     
     // Configure the cell..
-    
-    
     NSDictionary * quoteDict = [[self.sectionedQuotesArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    //    if(indexPath.section == 1){
+    //    if(indexPath.section == 0){
     //        quoteDict = [viewableQuotes objectAtIndex:indexPath.row];
     //    }
     //    else{
     //        quoteDict = [lockedQuotes objectAtIndex:indexPath.row];
     //    }
     
+    
+    // Grab the raw date info from the quote object
+    NSString* quoteString;
+    quoteString = [quoteDict objectForKey:@"quote_text"];
+    
+    //////////
+    // Date formatting
+    //////////
     
     // Grab the raw date info from the quote object
     NSString* dateString;
@@ -159,16 +170,41 @@
     [df setDateFormat:@"EEE, MMM d, yyyy"];
     [df setTimeZone:[NSTimeZone systemTimeZone]];
     
-    // Write the date/time in the cell
-    cell.textLabel.text = [df stringFromDate:date];
-    cell.textLabel.font = [UIFont systemFontOfSize:14];
+    //////////
+    // Cell formatting
+    //////////
     
-    // Format the date again? Why are we doing this three times?
-    [df setDateFormat:@"h:mm a"];
-    cell.detailTextLabel.text = [df stringFromDate:date];
     
-    // Set the cell to highlight blue when pressed
+    // Set the cell to highlight blue when pressed    
     cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+    
+    
+    // Set display for locked quotes
+    if(!indexPath.section == 0){
+        
+        // Disable selection of locked quotes
+        cell.userInteractionEnabled = FALSE;
+        
+        // Write the date in top half of cell
+        cell.textLabel.text = [df stringFromDate:date];
+        cell.textLabel.font = [UIFont systemFontOfSize:14];
+        cell.textLabel.textColor = [UIColor lightGrayColor];
+        
+        // Print time in lower half of cell
+        [df setDateFormat:@"h:mm a"];
+        cell.detailTextLabel.text = [df stringFromDate:date];
+    }
+    
+    // Set display for unlocked quotes
+    else
+        // Put the quote text in top half of cell
+        cell.textLabel.text = quoteString;
+        cell.textLabel.font = [UIFont systemFontOfSize:14];
+        
+        // Put the date in lower half of cell
+        [df setDateFormat:@"h:mm a"];
+        cell.detailTextLabel.text = [df stringFromDate:date];
+        
     
     
     return cell;
@@ -186,6 +222,8 @@
     wvc.quoteURL = [NSString stringWithFormat:@"http://www.quotify.it/%@/",quoteID];
     
     [self presentModalViewController:wvc animated:YES];
+
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 
