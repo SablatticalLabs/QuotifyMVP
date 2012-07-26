@@ -108,7 +108,7 @@ NSString * const sendImageToURL = @"http://quotify.it/quotes/<ID>/quote_images.j
 	//adding header information:
 	[postRequest setHTTPMethod:@"POST"];
 	
-	NSString *stringBoundary = [NSString stringWithString:@"0xKhTmLbOuNdArY"];
+	NSString *stringBoundary = @"0xKhTmLbOuNdArY";
 	NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",stringBoundary];
 	[postRequest addValue:contentType forHTTPHeaderField: @"Content-Type"];
 	
@@ -116,12 +116,12 @@ NSString * const sendImageToURL = @"http://quotify.it/quotes/<ID>/quote_images.j
 	NSMutableData *postBody = [NSMutableData data];
 	[postBody appendData:[[NSString stringWithFormat:@"--%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
 	//Image name (not really releveant)
-    [postBody appendData:[[NSString stringWithString:@"Content-Disposition: form-data; name=\"quote_image[name]\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[@"Content-Disposition: form-data; name=\"quote_image[name]\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
 	[postBody appendData:[[NSString stringWithString:s_postID] dataUsingEncoding:NSUTF8StringEncoding]];
 	[postBody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
     //image data and dummy filename (only extension is important)
-    [postBody appendData:[[NSString stringWithString:@"Content-Disposition: form-data; name=\"quote_image[image_data]\"; filename=\"dummy.jpg\"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
-    [postBody appendData:[[NSString stringWithString:@"Content-Type: image/jpeg\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[@"Content-Disposition: form-data; name=\"quote_image[image_data]\"; filename=\"dummy.jpg\"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[@"Content-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
 	[postBody appendData:imageData];	
     [postBody appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
     //Quote (post) ID
@@ -129,8 +129,8 @@ NSString * const sendImageToURL = @"http://quotify.it/quotes/<ID>/quote_images.j
 //	[postBody appendData:[[NSString stringWithString:s_postID] dataUsingEncoding:NSUTF8StringEncoding]];
 //	[postBody appendData:[[NSString stringWithFormat:@" --%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];//\r\n
     //method call??
-    [postBody appendData:[[NSString stringWithString:@"Content-Disposition: form-data; name=\"commit\"\r\n\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
-	[postBody appendData:[[NSString stringWithString:@"Create Quote image"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBody appendData:[@"Content-Disposition: form-data; name=\"commit\"\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+	[postBody appendData:[@"Create Quote image" dataUsingEncoding:NSUTF8StringEncoding]];
 	[postBody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
     
     
@@ -147,7 +147,7 @@ NSString * const sendImageToURL = @"http://quotify.it/quotes/<ID>/quote_images.j
     historyViewController = hvc;
     request = 
 	[NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat: @"http://quotify.it/quotes/history.json?email=%@", quotifierID]] 
-                            cachePolicy:NSURLRequestReturnCacheDataElseLoad 
+                            cachePolicy:NSURLRequestReloadIgnoringCacheData
                         timeoutInterval:15];
 	
 	[request setHTTPMethod:@"GET"];

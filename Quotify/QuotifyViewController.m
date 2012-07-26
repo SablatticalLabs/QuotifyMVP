@@ -759,7 +759,7 @@ int countSwipe = 0;
 
 - (IBAction)witnessesTouchedUp:(id)sender {
     countSwipe = 0;
-    NSLog(@"%@", countSwipe);
+    //NSLog(@"%@", countSwipe);
 }
 
 - (IBAction)showHistory:(id)sender {
