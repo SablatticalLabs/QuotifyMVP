@@ -99,7 +99,8 @@
         self.imgPicker.showsCameraControls = YES;
     }
     else{
-        self.imgPicker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+        // Photo Library vs. Saved Photos album adds a step but fixes sort
+        self.imgPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
     
     [self registerForKeyboardNotifications];
@@ -285,7 +286,7 @@
             }
             else
             {
-                imgPicker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+                imgPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
                 [self presentModalViewController:self.imgPicker animated:YES];
             }
         }
@@ -317,7 +318,7 @@
     }
     else if([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Choose Existing"]
             || [[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Choose Different"]){
-        imgPicker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+        imgPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         [self presentModalViewController:self.imgPicker animated:YES];
     }
     else if([[actionSheet buttonTitleAtIndex:buttonIndex] isEqualToString:@"Remove Selected"]){
