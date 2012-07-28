@@ -34,6 +34,7 @@
     UITextField *speaker;
     UITextField *witnesses;
     UITextField *quotifierEmail;
+    UITextField *quotifierName;
     UITextView *quoteText;
     UIImageView *imageBox;
     
@@ -86,7 +87,7 @@
 @property (nonatomic, strong) IBOutlet UILabel *timestampLabel;
 @property (nonatomic, strong) IBOutlet UIButton *settingsButton;
 @property (nonatomic, strong) IBOutlet UITextField *quotifierEmail;
-@property (strong, nonatomic) IBOutlet UITextField *quotifierName;
+@property (nonatomic, strong) IBOutlet UITextField *quotifierName;
 
 @property (nonatomic, strong) IBOutlet SuccessViewController *successViewController;
 @property (nonatomic, strong) IBOutlet UIButton *addSpeakerButton;

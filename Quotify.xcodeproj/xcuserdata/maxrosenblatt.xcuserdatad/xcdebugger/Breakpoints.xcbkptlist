@@ -42,8 +42,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "583"
          endingLineNumber = "583"
-         landmarkName = "-searchBar:textDidChange:"
-         landmarkType = "5">
+         landmarkName = "@implementation QuotifyViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
@@ -84,8 +84,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "125"
          endingLineNumber = "125"
-         landmarkName = "-viewDidAppear:"
-         landmarkType = "5">
+         landmarkName = "@implementation QuotifyViewController"
+         landmarkType = "3">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

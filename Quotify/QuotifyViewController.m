@@ -872,6 +872,8 @@ int countSwipe = 0;
 //////////////////////////////
 
 - (IBAction)hideKeyboard:(id)sender {
+    [quotifierName resignFirstResponder];
+    [quotifierEmail resignFirstResponder];
     [quoteText resignFirstResponder];
 	[speaker resignFirstResponder];
 	[witnesses resignFirstResponder];
