@@ -143,6 +143,12 @@
     //        quoteDict = [lockedQuotes objectAtIndex:indexPath.row];
     //    }
     
+    // Grab the speaker's name from the quote object
+    NSDictionary* speakerInfo;
+    speakerInfo = [quoteDict valueForKey:@"speaker"];
+    NSString* speakerName = [speakerInfo objectForKey:@"name"];
+
+    
     
     // Grab the raw date info from the quote object
     NSString* quoteString;
@@ -197,7 +203,7 @@
     // Set display for unlocked quotes
     else
         // Put the quote text in top half of cell
-        cell.textLabel.text = quoteString;
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", speakerName, quoteString];
         cell.textLabel.font = [UIFont systemFontOfSize:14];
         
         // Put the date in lower half of cell
