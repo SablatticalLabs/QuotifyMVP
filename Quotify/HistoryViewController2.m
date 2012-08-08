@@ -198,6 +198,8 @@
         // Print time in lower half of cell
         [df setDateFormat:@"h:mm a"];
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@",[df stringFromDate:date], [df stringFromDate:date]];
+        
+        cell.accessoryType = UITableViewCellAccessoryNone;
     }
     
     // Set display for unlocked quotes
@@ -209,8 +211,7 @@
         // Put the date in lower half of cell
         cell.detailTextLabel.text = quoteString;
     
-        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
-        //UITableViewCellAccessoryDetailDisclosureButton
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
 }
@@ -231,6 +232,9 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+// Put the accessory button action in here
+//- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
+// }
 
 - (void)viewDidUnload
 {
