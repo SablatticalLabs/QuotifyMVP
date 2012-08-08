@@ -197,17 +197,20 @@
         
         // Print time in lower half of cell
         [df setDateFormat:@"h:mm a"];
-        cell.detailTextLabel.text = [df stringFromDate:date];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@",[df stringFromDate:date], [df stringFromDate:date]];
     }
     
     // Set display for unlocked quotes
     else
         // Put the quote text in top half of cell
-        cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", speakerName, quoteString];
+        cell.textLabel.text = speakerName;
         cell.textLabel.font = [UIFont systemFontOfSize:14];
         
         // Put the date in lower half of cell
-        cell.detailTextLabel.text = [df stringFromDate:date];
+        cell.detailTextLabel.text = quoteString;
+    
+        cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+        //UITableViewCellAccessoryDetailDisclosureButton
     
     return cell;
 }
