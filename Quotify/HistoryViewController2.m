@@ -125,6 +125,8 @@
 // This is where we configure each cell
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    // Need 3 types of cell identifiers
     static NSString *CellIdentifier = @"Cell";
     
     // Memory management - reuse cells when possible to avoid holding large arrays in memory
@@ -187,6 +189,8 @@
     // Set display for locked quotes
     if(!indexPath.section == 0){
         
+        //CellIdentifier = @"LockedStyle";
+        
         // Disable selection of locked quotes
         cell.userInteractionEnabled = FALSE;
         
@@ -204,6 +208,9 @@
     
     // Set display for unlocked quotes
     else
+        
+        //CellIdentifier = @"UnlockedStyle";
+    
         // Put the quote text in top half of cell
         cell.textLabel.text = speakerName;
         cell.textLabel.font = [UIFont systemFontOfSize:14];
