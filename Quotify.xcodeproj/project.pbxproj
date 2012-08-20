@@ -11,12 +11,12 @@
 		AD1F5DBF14E4A0F00005D248 /* quotationmarkleft.png in Resources */ = {isa = PBXBuildFile; fileRef = AD1F5DBC14E4A0F00005D248 /* quotationmarkleft.png */; };
 		AD1F5DC014E4A0F00005D248 /* quotationmarkright.png in Resources */ = {isa = PBXBuildFile; fileRef = AD1F5DBD14E4A0F00005D248 /* quotationmarkright.png */; };
 		AD1F5DC314E6EDAE0005D248 /* blankbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = AD1F5DC214E6EDAD0005D248 /* blankbackground.png */; };
-		AD28E48D15E1B84100BC531C /* MPCJSONDataSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = AD28E48015E1B84100BC531C /* MPCJSONDataSerializer.m */; };
-		AD28E48E15E1B84100BC531C /* MPCJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = AD28E48215E1B84100BC531C /* MPCJSONSerializer.m */; };
-		AD28E48F15E1B84100BC531C /* MPCSerializedJSONData.m in Sources */ = {isa = PBXBuildFile; fileRef = AD28E48415E1B84100BC531C /* MPCSerializedJSONData.m */; };
-		AD28E49015E1B84100BC531C /* NSData+MPBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = AD28E48715E1B84100BC531C /* NSData+MPBase64.m */; };
-		AD28E49115E1B84100BC531C /* MixpanelAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = AD28E48915E1B84100BC531C /* MixpanelAPI.m */; };
-		AD28E49215E1B84100BC531C /* MixpanelEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = AD28E48C15E1B84100BC531C /* MixpanelEvent.m */; };
+		AD28E48D15E1B84100BC531C /* MPCJSONDataSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = AD28E48015E1B84100BC531C /* MPCJSONDataSerializer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AD28E48E15E1B84100BC531C /* MPCJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = AD28E48215E1B84100BC531C /* MPCJSONSerializer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AD28E48F15E1B84100BC531C /* MPCSerializedJSONData.m in Sources */ = {isa = PBXBuildFile; fileRef = AD28E48415E1B84100BC531C /* MPCSerializedJSONData.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AD28E49015E1B84100BC531C /* NSData+MPBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = AD28E48715E1B84100BC531C /* NSData+MPBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AD28E49115E1B84100BC531C /* MixpanelAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = AD28E48915E1B84100BC531C /* MixpanelAPI.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AD28E49215E1B84100BC531C /* MixpanelEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = AD28E48C15E1B84100BC531C /* MixpanelEvent.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AD5EE76B141297820017937D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD5EE76A141297820017937D /* QuartzCore.framework */; };
 		AD7CECF9139A92CC003A0A37 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD7CECF8139A92CC003A0A37 /* CoreLocation.framework */; };
 		AD7CECFC139A934A003A0A37 /* CoreLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7CECFB139A934A003A0A37 /* CoreLocationController.m */; };
