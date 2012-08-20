@@ -11,6 +11,12 @@
 		AD1F5DBF14E4A0F00005D248 /* quotationmarkleft.png in Resources */ = {isa = PBXBuildFile; fileRef = AD1F5DBC14E4A0F00005D248 /* quotationmarkleft.png */; };
 		AD1F5DC014E4A0F00005D248 /* quotationmarkright.png in Resources */ = {isa = PBXBuildFile; fileRef = AD1F5DBD14E4A0F00005D248 /* quotationmarkright.png */; };
 		AD1F5DC314E6EDAE0005D248 /* blankbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = AD1F5DC214E6EDAD0005D248 /* blankbackground.png */; };
+		AD28E48D15E1B84100BC531C /* MPCJSONDataSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = AD28E48015E1B84100BC531C /* MPCJSONDataSerializer.m */; };
+		AD28E48E15E1B84100BC531C /* MPCJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = AD28E48215E1B84100BC531C /* MPCJSONSerializer.m */; };
+		AD28E48F15E1B84100BC531C /* MPCSerializedJSONData.m in Sources */ = {isa = PBXBuildFile; fileRef = AD28E48415E1B84100BC531C /* MPCSerializedJSONData.m */; };
+		AD28E49015E1B84100BC531C /* NSData+MPBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = AD28E48715E1B84100BC531C /* NSData+MPBase64.m */; };
+		AD28E49115E1B84100BC531C /* MixpanelAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = AD28E48915E1B84100BC531C /* MixpanelAPI.m */; };
+		AD28E49215E1B84100BC531C /* MixpanelEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = AD28E48C15E1B84100BC531C /* MixpanelEvent.m */; };
 		AD5EE76B141297820017937D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD5EE76A141297820017937D /* QuartzCore.framework */; };
 		AD7CECF9139A92CC003A0A37 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD7CECF8139A92CC003A0A37 /* CoreLocation.framework */; };
 		AD7CECFC139A934A003A0A37 /* CoreLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7CECFB139A934A003A0A37 /* CoreLocationController.m */; };
@@ -110,6 +116,19 @@
 		AD1F5DBC14E4A0F00005D248 /* quotationmarkleft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quotationmarkleft.png; sourceTree = "<group>"; };
 		AD1F5DBD14E4A0F00005D248 /* quotationmarkright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quotationmarkright.png; sourceTree = "<group>"; };
 		AD1F5DC214E6EDAD0005D248 /* blankbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blankbackground.png; sourceTree = "<group>"; };
+		AD28E47F15E1B84100BC531C /* MPCJSONDataSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCJSONDataSerializer.h; sourceTree = "<group>"; };
+		AD28E48015E1B84100BC531C /* MPCJSONDataSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCJSONDataSerializer.m; sourceTree = "<group>"; };
+		AD28E48115E1B84100BC531C /* MPCJSONSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCJSONSerializer.h; sourceTree = "<group>"; };
+		AD28E48215E1B84100BC531C /* MPCJSONSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCJSONSerializer.m; sourceTree = "<group>"; };
+		AD28E48315E1B84100BC531C /* MPCSerializedJSONData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCSerializedJSONData.h; sourceTree = "<group>"; };
+		AD28E48415E1B84100BC531C /* MPCSerializedJSONData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCSerializedJSONData.m; sourceTree = "<group>"; };
+		AD28E48615E1B84100BC531C /* NSData+MPBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MPBase64.h"; sourceTree = "<group>"; };
+		AD28E48715E1B84100BC531C /* NSData+MPBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+MPBase64.m"; sourceTree = "<group>"; };
+		AD28E48815E1B84100BC531C /* MixpanelAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixpanelAPI.h; sourceTree = "<group>"; };
+		AD28E48915E1B84100BC531C /* MixpanelAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MixpanelAPI.m; sourceTree = "<group>"; };
+		AD28E48A15E1B84100BC531C /* MixpanelAPI_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixpanelAPI_Private.h; sourceTree = "<group>"; };
+		AD28E48B15E1B84100BC531C /* MixpanelEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixpanelEvent.h; sourceTree = "<group>"; };
+		AD28E48C15E1B84100BC531C /* MixpanelEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MixpanelEvent.m; sourceTree = "<group>"; };
 		AD5EE76A141297820017937D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AD7CECF8139A92CC003A0A37 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AD7CECFA139A934A003A0A37 /* CoreLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreLocationController.h; path = ../CoreLocationController.h; sourceTree = "<group>"; };
@@ -251,6 +270,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AD28E47C15E1B84100BC531C /* MPLib */ = {
+			isa = PBXGroup;
+			children = (
+				AD28E47D15E1B84100BC531C /* lib */,
+				AD28E48815E1B84100BC531C /* MixpanelAPI.h */,
+				AD28E48915E1B84100BC531C /* MixpanelAPI.m */,
+				AD28E48A15E1B84100BC531C /* MixpanelAPI_Private.h */,
+				AD28E48B15E1B84100BC531C /* MixpanelEvent.h */,
+				AD28E48C15E1B84100BC531C /* MixpanelEvent.m */,
+			);
+			path = MPLib;
+			sourceTree = "<group>";
+		};
+		AD28E47D15E1B84100BC531C /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				AD28E47E15E1B84100BC531C /* JSON */,
+				AD28E48515E1B84100BC531C /* NSData_Base64 */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		AD28E47E15E1B84100BC531C /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				AD28E47F15E1B84100BC531C /* MPCJSONDataSerializer.h */,
+				AD28E48015E1B84100BC531C /* MPCJSONDataSerializer.m */,
+				AD28E48115E1B84100BC531C /* MPCJSONSerializer.h */,
+				AD28E48215E1B84100BC531C /* MPCJSONSerializer.m */,
+				AD28E48315E1B84100BC531C /* MPCSerializedJSONData.h */,
+				AD28E48415E1B84100BC531C /* MPCSerializedJSONData.m */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		AD28E48515E1B84100BC531C /* NSData_Base64 */ = {
+			isa = PBXGroup;
+			children = (
+				AD28E48615E1B84100BC531C /* NSData+MPBase64.h */,
+				AD28E48715E1B84100BC531C /* NSData+MPBase64.m */,
+			);
+			path = NSData_Base64;
+			sourceTree = "<group>";
+		};
 		ADAEF3751361E9A4002F94A1 = {
 			isa = PBXGroup;
 			children = (
@@ -303,6 +366,7 @@
 				AD7CECFB139A934A003A0A37 /* CoreLocationController.m */,
 				DD2C0368158D7A72000C9CD8 /* HistoryViewController2.h */,
 				DD2C0369158D7A72000C9CD8 /* HistoryViewController2.m */,
+				AD28E47C15E1B84100BC531C /* MPLib */,
 				ADAEF3931361E9A4002F94A1 /* QuotifyAppDelegate.h */,
 				ADAEF3941361E9A4002F94A1 /* QuotifyAppDelegate.m */,
 				ADAEF3991361E9A4002F94A1 /* QuotifyViewController.h */,
@@ -628,6 +692,12 @@
 				ADE8125814E20A4300DA78EC /* Utility.m in Sources */,
 				DD2C036B158D7A73000C9CD8 /* HistoryViewController2.m in Sources */,
 				DD88B5471593DE5300D012E4 /* QuoteWebViewController.m in Sources */,
+				AD28E48D15E1B84100BC531C /* MPCJSONDataSerializer.m in Sources */,
+				AD28E48E15E1B84100BC531C /* MPCJSONSerializer.m in Sources */,
+				AD28E48F15E1B84100BC531C /* MPCSerializedJSONData.m in Sources */,
+				AD28E49015E1B84100BC531C /* NSData+MPBase64.m in Sources */,
+				AD28E49115E1B84100BC531C /* MixpanelAPI.m in Sources */,
+				AD28E49215E1B84100BC531C /* MixpanelEvent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
