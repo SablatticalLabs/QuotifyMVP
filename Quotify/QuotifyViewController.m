@@ -7,6 +7,7 @@
 //
 
 #import "QuotifyViewController.h"
+#import "MixpanelAPI.h"
 
 @implementation QuotifyViewController{
     BOOL alreadyShowingSettings;
@@ -673,6 +674,11 @@
 - (IBAction)quotifyPressed:(id)sender {
     [locationController.locationManager stopUpdatingLocation];
     NSLog(@"Stopped updating location");
+    
+    // Track quotify pressed in Mixpanel
+    MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
+    [mixpanel setSendDeviceModel:YES];
+    [mixpanel track:@"Quotify button pressed"];
     
   /////// Check if quoteText was edited ///////
     if(([quoteText.text rangeOfString:@"What was said?"].location == NSNotFound)

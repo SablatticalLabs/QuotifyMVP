@@ -9,7 +9,7 @@
 #import "QuotifyAppDelegate.h"
 #import "QuotifyViewController.h"
 #import "MixpanelAPI.h"
-#define MIXPANEL_TOKEN @"YOUR TOKEN HERE"
+#define MIXPANEL_TOKEN @"10db5716f34ad4fa4aead789301c232b"
 
 @implementation QuotifyAppDelegate
 
