@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "FBConnect.h"
+#import "MixpanelAPI.h"
 
 @class QuotifyViewController;
+@class MixpanelAPI;
 
 @interface QuotifyAppDelegate : NSObject <UIApplicationDelegate, FBSessionDelegate> {
+    MixpanelAPI *mixpanel;
 }
 
 @property (nonatomic, strong) IBOutlet UIWindow *window;

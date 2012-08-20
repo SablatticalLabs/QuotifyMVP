@@ -8,6 +8,8 @@
 
 #import "QuotifyAppDelegate.h"
 #import "QuotifyViewController.h"
+#import "MixpanelAPI.h"
+#define MIXPANEL_TOKEN @"YOUR TOKEN HERE"
 
 @implementation QuotifyAppDelegate
 
@@ -22,6 +24,20 @@
      
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
+    
+    // Override point for customization after application launch.
+    //Initialize the MixpanelAPI object
+    mixpanel = [MixpanelAPI sharedAPIWithToken:MIXPANEL_TOKEN];
+    
+    // Set the upload interval to 5 seconds for testing
+    // If not set, it defaults to 30 seconds
+    [mixpanel setUploadInterval:5];
+    
+    
+    // Add the view controller's view to the window and display.
+    [_window addSubview:_viewController.view];
+    [_window makeKeyAndVisible];
+    return YES;
     
         return YES;
 }
