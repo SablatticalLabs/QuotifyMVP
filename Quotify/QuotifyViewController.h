@@ -115,6 +115,7 @@
 - (IBAction)showContacts:(id)sender;
 - (IBAction)witnessesTouchedUp:(id)sender;
 - (IBAction)showHistory:(id)sender;
+- (IBAction)playVideoPressed:(id)sender;
 
 
 - (void)registerForKeyboardNotifications;

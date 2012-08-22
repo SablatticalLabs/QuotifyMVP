@@ -575,7 +575,7 @@
 							<string key="NSFrameSize">{320, 480}</string>
 							<reference key="NSSuperview" ref="795017958"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="377435320"/>
+							<reference key="NSNextKeyView" ref="198028747"/>
 							<bool key="IBUIOpaque">NO</bool>
 							<bool key="IBUIClipsSubviews">YES</bool>
 							<bool key="IBUIMultipleTouchEnabled">YES</bool>
@@ -591,6 +591,7 @@
 							<string key="NSFrameSize">{320, 460}</string>
 							<reference key="NSSuperview" ref="795017958"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="377435320"/>
 							<bool key="IBUIOpaque">NO</bool>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							<int key="IBUIContentHorizontalAlignment">0</int>
@@ -774,6 +775,27 @@
 								<double key="NSSize">14</double>
 								<int key="NSfFlags">16</int>
 							</object>
+						</object>
+						<object class="IBUIButton" id="179563295">
+							<reference key="NSNextResponder" ref="795017958"/>
+							<int key="NSvFlags">292</int>
+							<string key="NSFrame">{{81, 296}, {72, 37}}</string>
+							<reference key="NSSuperview" ref="795017958"/>
+							<reference key="NSWindow"/>
+							<string key="NSReuseIdentifierKey">_NS:9</string>
+							<bool key="IBUIOpaque">NO</bool>
+							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+							<int key="IBUIContentHorizontalAlignment">0</int>
+							<int key="IBUIContentVerticalAlignment">0</int>
+							<int key="IBUIButtonType">1</int>
+							<reference key="IBUIHighlightedTitleColor" ref="1004154975"/>
+							<object class="NSColor" key="IBUINormalTitleColor">
+								<int key="NSColorSpace">1</int>
+								<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+							</object>
+							<reference key="IBUINormalTitleShadowColor" ref="439155114"/>
+							<reference key="IBUIFontDescription" ref="560534234"/>
+							<reference key="IBUIFont" ref="488448074"/>
 						</object>
 					</object>
 					<string key="NSFrame">{{0, 20}, {320, 460}}</string>
@@ -1335,6 +1357,15 @@
 					</object>
 					<int key="connectionID">271</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">playVideoPressed:</string>
+						<reference key="source" ref="179563295"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">274</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -1457,6 +1488,7 @@
 							<reference ref="789095929"/>
 							<reference ref="330462889"/>
 							<reference ref="198028747"/>
+							<reference ref="179563295"/>
 						</object>
 						<reference key="parent" ref="19867892"/>
 						<string key="objectName">SettingsView</string>
@@ -1685,6 +1717,11 @@
 						<reference key="parent" ref="795017958"/>
 						<string key="objectName">Button to Hide Keyboard</string>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">273</int>
+						<reference key="object" ref="179563295"/>
+						<reference key="parent" ref="795017958"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -1741,6 +1778,7 @@
 					<string>27.IBUIButtonInspectorSelectedStateConfigurationMetadataKey</string>
 					<string>270.IBPluginDependency</string>
 					<string>270.IBUIButtonInspectorSelectedStateConfigurationMetadataKey</string>
+					<string>273.IBPluginDependency</string>
 					<string>31.IBPluginDependency</string>
 					<string>31.IBUIButtonInspectorSelectedStateConfigurationMetadataKey</string>
 					<string>36.IBPluginDependency</string>
@@ -1805,6 +1843,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<real value="0.0"/>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<real value="0.0"/>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>UIScrollView</string>
@@ -1828,7 +1867,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">272</int>
+			<int key="maxID">274</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1858,6 +1897,7 @@
 							<string>fbButtonClicked:</string>
 							<string>hideKeyboard:</string>
 							<string>imageBoxPressed:</string>
+							<string>playVideoPressed:</string>
 							<string>quotifyPressed:</string>
 							<string>settingsPressed:</string>
 							<string>showContacts:</string>
@@ -1867,6 +1907,7 @@
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -1899,6 +1940,7 @@
 							<string>fbButtonClicked:</string>
 							<string>hideKeyboard:</string>
 							<string>imageBoxPressed:</string>
+							<string>playVideoPressed:</string>
 							<string>quotifyPressed:</string>
 							<string>settingsPressed:</string>
 							<string>showContacts:</string>
@@ -1946,6 +1988,10 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">imageBoxPressed:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">playVideoPressed:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">

@@ -163,6 +163,7 @@
 
     player = [[MPMoviePlayerViewController alloc] initWithContentURL: theUrl];
     [self presentMoviePlayerViewControllerAnimated:player];
+    //[self.view bringSubviewToFront:player.view];
 
     // Register for the moviePlayer playback finished notification
     [[NSNotificationCenter defaultCenter]
@@ -773,6 +774,14 @@ int countSwipe = 0;
     HistoryViewController2 *histVC = [[HistoryViewController2 alloc] init];
     histVC.quotifierID = [currentQuote.quotifier objectForKey:@"email"];
     [self presentModalViewController:histVC animated:YES];
+}
+
+- (IBAction)playVideoPressed:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
+    [self showIntroMovie];
+    //[self.view sendSubviewToBack:settingsViewController.view];
+    [self.view bringSubviewToFront:player.view];
+    
 }
 
 //Runs when the done button on the settings view is touched.
