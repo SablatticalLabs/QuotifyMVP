@@ -10,7 +10,7 @@
 #import "MixpanelAPI.h"
 
 @implementation QuotifyViewController{
-    BOOL alreadyShowingSettings;
+    BOOL isNewUser;
     BOOL videoFinishedPlaying;
 };
 
@@ -125,9 +125,11 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated{
-    //get the email from the user defaults dictionary
+    
+    // Get the email from the user defaults dictionary
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    //if defaults are empty or the email string is empty, prompt
+    
+    // If defaults are empty or the email string is empty, prompt
     NSLog(@"defaults: %@", defaults);
     NSLog(@"defaults-quotifier: %@", [defaults objectForKey:@"quotifier"]);
     NSLog(@"defaults-q_name: %@", [[defaults objectForKey:@"quotifier"] objectForKey:@"name"]);
@@ -135,15 +137,25 @@
     
     //NSLog(@"videoFinishedPlaying: %@", videoFinishedPlaying);
     
-    if(![defaults objectForKey:@"quotifier"] || [[[defaults objectForKey:@"quotifier"] objectForKey:@"email"] length] == 0 
-       || [[[defaults objectForKey:@"quotifier"] objectForKey:@"name"] length] == 0){
-        if(!alreadyShowingSettings){
-            [self showIntroMovie];
-        }
-        else if(videoFinishedPlaying){
-            [self showFirstTimeSettings];
-            videoFinishedPlaying = NO;
-        }
+    if(![defaults objectForKey:@"quotifier"]
+       || [[[defaults objectForKey:@"quotifier"] objectForKey:@"email"] length] == 0
+       || [[[defaults objectForKey:@"quotifier"] objectForKey:@"name"] length] == 0
+    )
+    {
+        // If they have no email or name mark them as a new user
+        isNewUser = YES;
+        
+        [self showIntroMovie];
+        
+//        if(!isNewUser){
+//            //[self presentModalViewController:settingsViewController animated:NO];
+//            [self showIntroMovie];
+//            //[self showFirstTimeSettings];
+//        }
+//        else if(videoFinishedPlaying){
+//            [self showFirstTimeSettings];
+//            videoFinishedPlaying = NO;
+//        }
             
     }
     else if([[defaults objectForKey:@"quotifier"] objectForKey:@"email"] && [[defaults objectForKey:@"quotifier"] objectForKey:@"name"]){
@@ -156,14 +168,22 @@
 
 -(void)showIntroMovie{
     
-    alreadyShowingSettings = NO;
-    
+    // Select the movie file to be played
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Q4" ofType:@"mov"];//@"/Users/liorsabag/Dropbox/Dev/QuotifyMVP/Quotify/Q4.mov";
     NSURL* theUrl = [NSURL fileURLWithPath:path];
 
+    // Create an instance of moviePlayerVC
     player = [[MPMoviePlayerViewController alloc] initWithContentURL: theUrl];
-    [self presentMoviePlayerViewControllerAnimated:player];
-    //[self.view bringSubviewToFront:player.view];
+    
+    if ((isNewUser && self.presentedViewController != settingsViewController)) {
+        [self presentMoviePlayerViewControllerAnimated:player];
+        isNewUser = NO;
+    }
+
+    else
+    // Makes the moviePlayer a subview of whatever view it is called from within
+    [self.presentedViewController presentMoviePlayerViewControllerAnimated:player];
+    
 
     // Register for the moviePlayer playback finished notification
     [[NSNotificationCenter defaultCenter]
@@ -179,10 +199,10 @@
 {
     [player dismissMoviePlayerViewControllerAnimated];
 
-    if(!alreadyShowingSettings){
+    if(isNewUser){
         [[NSNotificationCenter defaultCenter] removeObserver: self name: MPMoviePlayerPlaybackDidFinishNotification object: player.moviePlayer];
         [self showFirstTimeSettings];
-        alreadyShowingSettings = YES;
+        //isNewUser = YES;
     }
     
     videoFinishedPlaying = YES;
@@ -190,13 +210,14 @@
 
 
 - (void)showFirstTimeSettings{
-    if(alreadyShowingSettings){
+    //if(isNewUser){
+    isNewUser = NO;
         quotifierEmail.text = [currentQuote.quotifier objectForKey:@"email"];
         quotifierName.text = [currentQuote.quotifier objectForKey:@"name"];
         [self presentModalViewController:settingsViewController animated:YES];
-        [self raiseFailurePopupWithTitle:@"Welcome to Quotify!" andMessage:@"Enter your name  & email address to get started"];
-        alreadyShowingSettings = YES;
-    }
+        [self raiseFailurePopupWithTitle:@"Welcome to Quotify!" andMessage:@"Enter your name & email address to get started"];
+        //isNewUser = YES;
+    //}
 }
 
 - (void)viewDidUnload{
@@ -777,10 +798,12 @@ int countSwipe = 0;
 }
 
 - (IBAction)playVideoPressed:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
+    //[self dismissModalViewControllerAnimated:YES];
     [self showIntroMovie];
+    //[self.presentedViewController becomeFirstResponder];
+    
     //[self.view sendSubviewToBack:settingsViewController.view];
-    [self.view bringSubviewToFront:player.view];
+    //[self.view bringSubviewToFront:player.view];
     
 }
 
