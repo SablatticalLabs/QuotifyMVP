@@ -195,7 +195,11 @@
 
 
 - (void)showFirstTimeSettings{
+    
+    // This line ISNT WORKING! Ain't nobody got time for that
+    // I think viewdidappear is the wrong place to be doing all of these things
     [self presentModalViewController:settingsViewController animated:YES];
+    
     //[settingsViewController.view becomeFirstResponder];
     [self raiseFailurePopupWithTitle:@"Welcome to Quotify.it!" andMessage:@"Enter your name & email address to get started"];
     
@@ -209,7 +213,6 @@
     
     // Throw in a placeholder to break the loop in viewdidappear
     [defaults setObject:currentQuote.quotifier forKey:@"quotifier"];
-
 }
 
 - (void)viewDidUnload{
