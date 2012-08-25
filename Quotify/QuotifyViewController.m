@@ -137,9 +137,9 @@
     //NSLog(@"defaults-q_email: %@", [[[defaults objectForKey:@"quotifier"] objectForKey:@"email"]rangeOfString:@"@"].location == NSNotFound);
     //NSLog(@"videoFinishedPlaying: %@", videoFinishedPlaying);
     
-    if(![defaults objectForKey:@"quotifier"]
-       || [[[defaults objectForKey:@"quotifier"] objectForKey:@"email"] length] == 0
-       || [[[defaults objectForKey:@"quotifier"] objectForKey:@"name"] length] == 0)
+    if(    ![defaults objectForKey:@"quotifier"]
+       && [[[defaults objectForKey:@"quotifier"] objectForKey:@"email"] length] == 0
+       && [[[defaults objectForKey:@"quotifier"] objectForKey:@"name"] length] == 0)
        
     {
         // If they have no email or name mark them as a new user
@@ -196,10 +196,20 @@
 
 - (void)showFirstTimeSettings{
     isNewUser = NO;
+    
     quotifierEmail.text = [currentQuote.quotifier objectForKey:@"email"];
     quotifierName.text = [currentQuote.quotifier objectForKey:@"name"];
-    [self presentModalViewController:settingsViewController animated:YES];
+    
+    [self presentModalViewController:settingsViewController animated:NO];
+    //[settingsViewController.view becomeFirstResponder];
     [self raiseFailurePopupWithTitle:@"Welcome to Quotify!" andMessage:@"Enter your name & email address to get started"];
+    
+    // Get the email from the user defaults dictionary
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    // Throw in a placeholder to break the loop in viewdidappear
+    [defaults setObject:currentQuote.quotifier forKey:@"quotifier"];
+
 }
 
 - (void)viewDidUnload{
