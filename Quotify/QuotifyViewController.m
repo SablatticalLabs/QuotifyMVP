@@ -195,14 +195,14 @@
 
 
 - (void)showFirstTimeSettings{
+    [self presentModalViewController:settingsViewController animated:YES];
+    //[settingsViewController.view becomeFirstResponder];
+    [self raiseFailurePopupWithTitle:@"Welcome to Quotify.it!" andMessage:@"Enter your name & email address to get started"];
+    
     isNewUser = NO;
     
     quotifierEmail.text = [currentQuote.quotifier objectForKey:@"email"];
     quotifierName.text = [currentQuote.quotifier objectForKey:@"name"];
-    
-    [self presentModalViewController:settingsViewController animated:NO];
-    //[settingsViewController.view becomeFirstResponder];
-    [self raiseFailurePopupWithTitle:@"Welcome to Quotify!" andMessage:@"Enter your name & email address to get started"];
     
     // Get the email from the user defaults dictionary
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
