@@ -140,15 +140,17 @@
     //NSLog(@"defaults-q_email: %@", [[[defaults objectForKey:@"quotifier"] objectForKey:@"email"]rangeOfString:@"@"].location == NSNotFound);
     //NSLog(@"videoFinishedPlaying: %@", videoFinishedPlaying);
     
+    
+    // Check if the user fields are blank
     if(    ![defaults objectForKey:@"quotifier"]
        && [[[defaults objectForKey:@"quotifier"] objectForKey:@"email"] length] == 0
        && [[[defaults objectForKey:@"quotifier"] objectForKey:@"name"] length] == 0)
-       
     {
         // If they have no email or name mark them as a new user
         isNewUser = YES;
     }
     
+    // If they're new, show them the movie!
     if (isNewUser) {
         NSLog(@"Settings view is first responder: %c", [settingsViewController isFirstResponder]);
         [self showIntroMovie];
@@ -188,20 +190,22 @@
 {
     [player dismissMoviePlayerViewControllerAnimated];
 
+    videoFinishedPlaying = YES;
+    
     if(isNewUser){
         [self showFirstTimeSettings];
         [[NSNotificationCenter defaultCenter] removeObserver: self name: MPMoviePlayerPlaybackDidFinishNotification object: player.moviePlayer];
     }
+
     
-    videoFinishedPlaying = YES;
 }
 
 
 - (void)showFirstTimeSettings{
     
     // This line ISNT WORKING! Ain't nobody got time for that
-    // I think viewdidappear is the wrong place to be doing all of these things
-    [self presentModalViewController:settingsViewController animated:YES];
+    // It says I'm trying to do this before viewDidDisappear
+    [self.presentedViewController presentModalViewController:settingsViewController animated:YES];
     
     //[settingsViewController.view becomeFirstResponder];
     [self raiseFailurePopupWithTitle:@"Welcome to Quotify.it!" andMessage:@"Enter your name & email address to get started"];
