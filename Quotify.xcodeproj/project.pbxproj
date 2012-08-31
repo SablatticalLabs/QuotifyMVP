@@ -20,6 +20,7 @@
 		AD5EE76B141297820017937D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD5EE76A141297820017937D /* QuartzCore.framework */; };
 		AD7CECF9139A92CC003A0A37 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD7CECF8139A92CC003A0A37 /* CoreLocation.framework */; };
 		AD7CECFC139A934A003A0A37 /* CoreLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7CECFB139A934A003A0A37 /* CoreLocationController.m */; };
+		AD9F5A8915F058370024A55F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD9F5A8815F058370024A55F /* MessageUI.framework */; };
 		ADA265101396ACAD00F9155C /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADA2650F1396ACAD00F9155C /* Entitlements.plist */; };
 		ADAEF3851361E9A4002F94A1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAEF3841361E9A4002F94A1 /* UIKit.framework */; };
 		ADAEF3871361E9A4002F94A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAEF3861361E9A4002F94A1 /* Foundation.framework */; };
@@ -83,7 +84,6 @@
 		DD2C037B158D8347000C9CD8 /* LoginNormal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD2C036E158D8347000C9CD8 /* LoginNormal@2x.png */; };
 		DD2C037C158D8347000C9CD8 /* LoginPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = DD2C036F158D8347000C9CD8 /* LoginPressed.png */; };
 		DD2C037D158D8347000C9CD8 /* LoginPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD2C0370158D8347000C9CD8 /* LoginPressed@2x.png */; };
-		DD2C037E158D8347000C9CD8 /* LoginWithFacebookNormal_1.png in Resources */ = {isa = PBXBuildFile; fileRef = DD2C0371158D8347000C9CD8 /* LoginWithFacebookNormal_1.png */; };
 		DD2C037F158D8347000C9CD8 /* LoginWithFacebookNormal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD2C0372158D8347000C9CD8 /* LoginWithFacebookNormal@2x.png */; };
 		DD2C0380158D8347000C9CD8 /* LoginWithFacebookPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = DD2C0373158D8347000C9CD8 /* LoginWithFacebookPressed.png */; };
 		DD2C0381158D8347000C9CD8 /* LoginWithFacebookPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD2C0374158D8347000C9CD8 /* LoginWithFacebookPressed@2x.png */; };
@@ -133,6 +133,7 @@
 		AD7CECF8139A92CC003A0A37 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AD7CECFA139A934A003A0A37 /* CoreLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreLocationController.h; path = ../CoreLocationController.h; sourceTree = "<group>"; };
 		AD7CECFB139A934A003A0A37 /* CoreLocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreLocationController.m; path = ../CoreLocationController.m; sourceTree = "<group>"; };
+		AD9F5A8815F058370024A55F /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		ADA2650F1396ACAD00F9155C /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		ADAEF3801361E9A4002F94A1 /* Quotify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quotify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADAEF3841361E9A4002F94A1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -220,7 +221,6 @@
 		DD2C036E158D8347000C9CD8 /* LoginNormal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginNormal@2x.png"; sourceTree = "<group>"; };
 		DD2C036F158D8347000C9CD8 /* LoginPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginPressed.png; sourceTree = "<group>"; };
 		DD2C0370158D8347000C9CD8 /* LoginPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginPressed@2x.png"; sourceTree = "<group>"; };
-		DD2C0371158D8347000C9CD8 /* LoginWithFacebookNormal_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginWithFacebookNormal_1.png; sourceTree = "<group>"; };
 		DD2C0372158D8347000C9CD8 /* LoginWithFacebookNormal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginWithFacebookNormal@2x.png"; sourceTree = "<group>"; };
 		DD2C0373158D8347000C9CD8 /* LoginWithFacebookPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginWithFacebookPressed.png; sourceTree = "<group>"; };
 		DD2C0374158D8347000C9CD8 /* LoginWithFacebookPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginWithFacebookPressed@2x.png"; sourceTree = "<group>"; };
@@ -231,9 +231,9 @@
 		DD2C0379158D8347000C9CD8 /* runaround_image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = runaround_image.jpg; sourceTree = "<group>"; };
 		DD2C0387158D91AB000C9CD8 /* kinder_egg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = kinder_egg.jpg; sourceTree = "<group>"; };
 		DD560CED139AC8640047A926 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		DD88B5441593DE5300D012E4 /* QuoteWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuoteWebViewController.h; sourceTree = "<group>"; };
-		DD88B5451593DE5300D012E4 /* QuoteWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuoteWebViewController.m; sourceTree = "<group>"; };
-		DD88B5461593DE5300D012E4 /* QuoteWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuoteWebViewController.xib; sourceTree = "<group>"; };
+		DD88B5441593DE5300D012E4 /* QuoteWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuoteWebViewController.h; path = ../QuoteWebViewController.h; sourceTree = "<group>"; };
+		DD88B5451593DE5300D012E4 /* QuoteWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuoteWebViewController.m; path = ../QuoteWebViewController.m; sourceTree = "<group>"; };
+		DD88B5461593DE5300D012E4 /* QuoteWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = QuoteWebViewController.xib; path = ../QuoteWebViewController.xib; sourceTree = "<group>"; };
 		DD92C2751583F19700460CF8 /* LoginWithFacebookNormal_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LoginWithFacebookNormal_1.png; path = ../src/FBConnect.bundle/images/LoginWithFacebookNormal_1.png; sourceTree = "<group>"; };
 		DDBD101713944B7300A40AF4 /* SuccessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuccessViewController.h; sourceTree = "<group>"; };
 		DDBD101813944B7300A40AF4 /* SuccessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuccessViewController.m; sourceTree = "<group>"; };
@@ -245,6 +245,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD9F5A8915F058370024A55F /* MessageUI.framework in Frameworks */,
 				ADD667D4158DF863005A58DF /* MediaPlayer.framework in Frameworks */,
 				ADD5BC65145100D3009D475C /* AddressBookUI.framework in Frameworks */,
 				ADD5BC63145100CD009D475C /* AddressBook.framework in Frameworks */,
@@ -322,9 +323,6 @@
 				ADF1604214DE5630000B5343 /* icon57.png */,
 				ADDCB99014DDAE7700CE9019 /* Default.png */,
 				ADA2650F1396ACAD00F9155C /* Entitlements.plist */,
-				DD88B5461593DE5300D012E4 /* QuoteWebViewController.xib */,
-				DD88B5441593DE5300D012E4 /* QuoteWebViewController.h */,
-				DD88B5451593DE5300D012E4 /* QuoteWebViewController.m */,
 				ADF0F9C913A15C63000AC8FC /* src */,
 				ADAEF38A1361E9A4002F94A1 /* Quotify */,
 				ADAEF3C01361EA7E002F94A1 /* View Files */,
@@ -346,6 +344,7 @@
 		ADAEF3831361E9A4002F94A1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AD9F5A8815F058370024A55F /* MessageUI.framework */,
 				ADD667D3158DF863005A58DF /* MediaPlayer.framework */,
 				ADD5BC64145100D3009D475C /* AddressBookUI.framework */,
 				ADD5BC62145100CD009D475C /* AddressBook.framework */,
@@ -362,11 +361,10 @@
 		ADAEF38A1361E9A4002F94A1 /* Quotify */ = {
 			isa = PBXGroup;
 			children = (
-				AD7CECFA139A934A003A0A37 /* CoreLocationController.h */,
-				AD7CECFB139A934A003A0A37 /* CoreLocationController.m */,
+				DD88B5441593DE5300D012E4 /* QuoteWebViewController.h */,
+				DD88B5451593DE5300D012E4 /* QuoteWebViewController.m */,
 				DD2C0368158D7A72000C9CD8 /* HistoryViewController2.h */,
 				DD2C0369158D7A72000C9CD8 /* HistoryViewController2.m */,
-				AD28E47C15E1B84100BC531C /* MPLib */,
 				ADAEF3931361E9A4002F94A1 /* QuotifyAppDelegate.h */,
 				ADAEF3941361E9A4002F94A1 /* QuotifyAppDelegate.m */,
 				ADAEF3991361E9A4002F94A1 /* QuotifyViewController.h */,
@@ -374,6 +372,7 @@
 				DDBD101713944B7300A40AF4 /* SuccessViewController.h */,
 				DDBD101813944B7300A40AF4 /* SuccessViewController.m */,
 				ADAEF3C11361EAB2002F94A1 /* Model */,
+				AD28E47C15E1B84100BC531C /* MPLib */,
 				ADAEF38B1361E9A4002F94A1 /* Supporting Files */,
 			);
 			path = Quotify;
@@ -414,25 +413,14 @@
 		ADAEF3C01361EA7E002F94A1 /* View Files */ = {
 			isa = PBXGroup;
 			children = (
-				ADB95527158E12950081EF04 /* Q4.mov */,
-				DD2C0387158D91AB000C9CD8 /* kinder_egg.jpg */,
-				ADAEF3961361E9A4002F94A1 /* MainWindow.xib */,
-				ADAEF39C1361E9A4002F94A1 /* QuotifyViewController.xib */,
+				DD88B5461593DE5300D012E4 /* QuoteWebViewController.xib */,
 				DD2C036A158D7A72000C9CD8 /* HistoryViewController2.xib */,
 				DDBD101913944B7300A40AF4 /* SuccessViewController.xib */,
-				DD2C036D158D8347000C9CD8 /* LoginNormal.png */,
-				DD2C036E158D8347000C9CD8 /* LoginNormal@2x.png */,
-				DD2C036F158D8347000C9CD8 /* LoginPressed.png */,
-				DD2C0370158D8347000C9CD8 /* LoginPressed@2x.png */,
-				DD2C0371158D8347000C9CD8 /* LoginWithFacebookNormal_1.png */,
-				DD2C0372158D8347000C9CD8 /* LoginWithFacebookNormal@2x.png */,
-				DD2C0373158D8347000C9CD8 /* LoginWithFacebookPressed.png */,
-				DD2C0374158D8347000C9CD8 /* LoginWithFacebookPressed@2x.png */,
-				DD2C0375158D8347000C9CD8 /* LogoutNormal.png */,
-				DD2C0376158D8347000C9CD8 /* LogoutNormal@2x.png */,
-				DD2C0377158D8347000C9CD8 /* LogoutPressed.png */,
-				DD2C0378158D8347000C9CD8 /* LogoutPressed@2x.png */,
+				ADAEF3961361E9A4002F94A1 /* MainWindow.xib */,
+				ADAEF39C1361E9A4002F94A1 /* QuotifyViewController.xib */,
+				DD2C0387158D91AB000C9CD8 /* kinder_egg.jpg */,
 				DD2C0379158D8347000C9CD8 /* runaround_image.jpg */,
+				ADB95527158E12950081EF04 /* Q4.mov */,
 				ADBA6E5114E0E143006AF908 /* background.png */,
 				ADBA6E5314E0E14A006AF908 /* backgroundconfirmation.png */,
 				AD1F5DC214E6EDAD0005D248 /* blankbackground.png */,
@@ -442,7 +430,18 @@
 				ADE4272014DF2A7E00FE6A5B /* doneup.png */,
 				AD1F5DBB14E4A0F00005D248 /* emailfield.png */,
 				ADDCB98814DDA37B00CE9019 /* icon.png */,
+				DD2C036D158D8347000C9CD8 /* LoginNormal.png */,
+				DD2C036E158D8347000C9CD8 /* LoginNormal@2x.png */,
+				DD2C036F158D8347000C9CD8 /* LoginPressed.png */,
+				DD2C0370158D8347000C9CD8 /* LoginPressed@2x.png */,
+				DD2C0372158D8347000C9CD8 /* LoginWithFacebookNormal@2x.png */,
 				DD92C2751583F19700460CF8 /* LoginWithFacebookNormal_1.png */,
+				DD2C0373158D8347000C9CD8 /* LoginWithFacebookPressed.png */,
+				DD2C0374158D8347000C9CD8 /* LoginWithFacebookPressed@2x.png */,
+				DD2C0375158D8347000C9CD8 /* LogoutNormal.png */,
+				DD2C0376158D8347000C9CD8 /* LogoutNormal@2x.png */,
+				DD2C0377158D8347000C9CD8 /* LogoutPressed.png */,
+				DD2C0378158D8347000C9CD8 /* LogoutPressed@2x.png */,
 				ADDCB97E14DDA34100CE9019 /* people.png */,
 				ADDCB97F14DDA34100CE9019 /* person.png */,
 				ADBA6E5714E0E17B006AF908 /* photoboxdown.png */,
@@ -463,10 +462,12 @@
 		ADAEF3C11361EAB2002F94A1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				ADAEF3D91367BAFC002F94A1 /* Quote.h */,
-				ADAEF3DA1367BAFC002F94A1 /* Quote.m */,
 				ADAEF6211367D38F002F94A1 /* Comm.h */,
 				ADAEF6221367D38F002F94A1 /* Comm.m */,
+				AD7CECFA139A934A003A0A37 /* CoreLocationController.h */,
+				AD7CECFB139A934A003A0A37 /* CoreLocationController.m */,
+				ADAEF3D91367BAFC002F94A1 /* Quote.h */,
+				ADAEF3DA1367BAFC002F94A1 /* Quote.m */,
 				ADE8125614E20A4300DA78EC /* Utility.h */,
 				ADE8125714E20A4300DA78EC /* Utility.m */,
 			);
@@ -624,7 +625,6 @@
 				DD2C037B158D8347000C9CD8 /* LoginNormal@2x.png in Resources */,
 				DD2C037C158D8347000C9CD8 /* LoginPressed.png in Resources */,
 				DD2C037D158D8347000C9CD8 /* LoginPressed@2x.png in Resources */,
-				DD2C037E158D8347000C9CD8 /* LoginWithFacebookNormal_1.png in Resources */,
 				DD2C037F158D8347000C9CD8 /* LoginWithFacebookNormal@2x.png in Resources */,
 				DD2C0380158D8347000C9CD8 /* LoginWithFacebookPressed.png in Resources */,
 				DD2C0381158D8347000C9CD8 /* LoginWithFacebookPressed@2x.png in Resources */,

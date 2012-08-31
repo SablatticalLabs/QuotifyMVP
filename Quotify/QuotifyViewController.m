@@ -10,7 +10,7 @@
 #import "MixpanelAPI.h"
 
 @implementation QuotifyViewController{
-    BOOL alreadyShowingSettings;
+    BOOL isNewUser;
     BOOL videoFinishedPlaying;
 };
 
@@ -47,6 +47,9 @@
 @synthesize addWitnessButton;
 @synthesize deleteWitnessButton;
 @synthesize facebook;
+
+// Feedback email
+@synthesize message;
 
 @synthesize picker = _picker;
 @synthesize addedPersonName;
@@ -125,45 +128,53 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated{
-    //get the email from the user defaults dictionary
+    
+    // Get the email from the user defaults dictionary
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    //if defaults are empty or the email string is empty, prompt
+    
+    // If defaults are empty or the email string is empty, prompt
     NSLog(@"defaults: %@", defaults);
     NSLog(@"defaults-quotifier: %@", [defaults objectForKey:@"quotifier"]);
     NSLog(@"defaults-q_name: %@", [[defaults objectForKey:@"quotifier"] objectForKey:@"name"]);
-    //NSLog(@"defaults-q_email: %@", [[[defaults objectForKey:@"quotifier"] objectForKey:@"email"]rangeOfString:@"@"].location == NSNotFound);
     
+    //NSLog(@"defaults-q_email: %@", [[[defaults objectForKey:@"quotifier"] objectForKey:@"email"]rangeOfString:@"@"].location == NSNotFound);
     //NSLog(@"videoFinishedPlaying: %@", videoFinishedPlaying);
     
-    if(![defaults objectForKey:@"quotifier"] || [[[defaults objectForKey:@"quotifier"] objectForKey:@"email"] length] == 0 
-       || [[[defaults objectForKey:@"quotifier"] objectForKey:@"name"] length] == 0){
-        if(!alreadyShowingSettings){
-            [self showIntroMovie];
-        }
-        else if(videoFinishedPlaying){
-            [self showFirstTimeSettings];
-            videoFinishedPlaying = NO;
-        }
-            
+    
+    // Check if the user fields are blank
+    if(    ![defaults objectForKey:@"quotifier"]
+       && [[[defaults objectForKey:@"quotifier"] objectForKey:@"email"] length] == 0
+       && [[[defaults objectForKey:@"quotifier"] objectForKey:@"name"] length] == 0)
+    {
+        // If they have no email or name mark them as a new user
+        isNewUser = YES;
     }
-    else if([[defaults objectForKey:@"quotifier"] objectForKey:@"email"] && [[defaults objectForKey:@"quotifier"] objectForKey:@"name"]){
-        currentQuote.quotifier = [NSMutableDictionary dictionaryWithDictionary:[defaults objectForKey:@"quotifier"]];
-        self.quotifierEmail.text = [currentQuote.quotifier objectForKey:@"email"];
-        self.quotifierName.text = [currentQuote.quotifier objectForKey:@"name"];
+    
+    // If they're new, show them the movie!
+    if (isNewUser) {
+        NSLog(@"Settings view is first responder: %c", [settingsViewController isFirstResponder]);
+        [self showIntroMovie];
     }
     
 }
 
 -(void)showIntroMovie{
     
-    alreadyShowingSettings = NO;
-    
+    // Select the movie file to be played
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Q4" ofType:@"mov"];//@"/Users/liorsabag/Dropbox/Dev/QuotifyMVP/Quotify/Q4.mov";
     NSURL* theUrl = [NSURL fileURLWithPath:path];
 
+    // Create an instance of moviePlayerVC
     player = [[MPMoviePlayerViewController alloc] initWithContentURL: theUrl];
-    [self presentMoviePlayerViewControllerAnimated:player];
-    //[self.view bringSubviewToFront:player.view];
+    
+    if (isNewUser) {
+        [self presentMoviePlayerViewControllerAnimated:player];
+    }
+
+    else
+    // Makes the moviePlayer a subview of whatever view it is called from within
+    [self.presentedViewController presentMoviePlayerViewControllerAnimated:player];
+    
 
     // Register for the moviePlayer playback finished notification
     [[NSNotificationCenter defaultCenter]
@@ -179,24 +190,36 @@
 {
     [player dismissMoviePlayerViewControllerAnimated];
 
-    if(!alreadyShowingSettings){
-        [[NSNotificationCenter defaultCenter] removeObserver: self name: MPMoviePlayerPlaybackDidFinishNotification object: player.moviePlayer];
-        [self showFirstTimeSettings];
-        alreadyShowingSettings = YES;
-    }
-    
     videoFinishedPlaying = YES;
+    
+    if(isNewUser){
+        [self showFirstTimeSettings];
+        [[NSNotificationCenter defaultCenter] removeObserver: self name: MPMoviePlayerPlaybackDidFinishNotification object: player.moviePlayer];
+    }
+
+    
 }
 
 
 - (void)showFirstTimeSettings{
-    if(alreadyShowingSettings){
-        quotifierEmail.text = [currentQuote.quotifier objectForKey:@"email"];
-        quotifierName.text = [currentQuote.quotifier objectForKey:@"name"];
-        [self presentModalViewController:settingsViewController animated:YES];
-        [self raiseFailurePopupWithTitle:@"Welcome to Quotify!" andMessage:@"Enter your name  & email address to get started"];
-        alreadyShowingSettings = YES;
-    }
+    
+    // This line ISNT WORKING! Ain't nobody got time for that
+    // It says I'm trying to do this before viewDidDisappear
+    [self.presentedViewController presentModalViewController:settingsViewController animated:YES];
+    
+    //[settingsViewController.view becomeFirstResponder];
+    [self raiseFailurePopupWithTitle:@"Welcome to Quotify.it!" andMessage:@"Enter your name & email address to get started"];
+    
+    isNewUser = NO;
+    
+    quotifierEmail.text = [currentQuote.quotifier objectForKey:@"email"];
+    quotifierName.text = [currentQuote.quotifier objectForKey:@"name"];
+    
+    // Get the email from the user defaults dictionary
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    // Throw in a placeholder to break the loop in viewdidappear
+    [defaults setObject:currentQuote.quotifier forKey:@"quotifier"];
 }
 
 - (void)viewDidUnload{
@@ -777,10 +800,12 @@ int countSwipe = 0;
 }
 
 - (IBAction)playVideoPressed:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
+    //[self dismissModalViewControllerAnimated:YES];
     [self showIntroMovie];
+    //[self.presentedViewController becomeFirstResponder];
+    
     //[self.view sendSubviewToBack:settingsViewController.view];
-    [self.view bringSubviewToFront:player.view];
+    //[self.view bringSubviewToFront:player.view];
     
 }
 
@@ -820,6 +845,101 @@ int countSwipe = 0;
 - (void)raiseFailurePopupWithTitle:(NSString *) alertTitle andMessage:(NSString *) alertMessage{
     UIAlertView *failureAlert = [[UIAlertView alloc] initWithTitle:alertTitle message:alertMessage delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
     [failureAlert show];
+}
+
+
+//////////////////////////////
+//////////
+// #pragma mark -
+// #pragma mark Compose Mail
+//////////
+//////////////////////////////
+
+
+-(IBAction)showEmailPicker:(id)sender
+{
+	// Check that the device can use the MFMailComposeVC, if not then launch the Mail application
+	
+	Class mailClass = (NSClassFromString(@"MFMailComposeViewController"));
+	if (mailClass != nil)
+	{
+		// We must always check whether the current device is configured for sending emails
+		if ([mailClass canSendMail])
+		{
+			[self displayComposerSheet];
+		}
+		else
+		{
+			[self launchMailAppOnDevice];
+		}
+	}
+	else
+	{
+		[self launchMailAppOnDevice];
+	}
+}
+
+// Displays an email composition interface inside the application. Populates mail fields
+-(void)displayComposerSheet
+{
+	MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
+	picker.mailComposeDelegate = self;
+	
+	[picker setSubject:@"Quotify.it user feedback!"];
+	
+	// Set up recipients
+	NSArray *toRecipients = [NSArray arrayWithObject:@"help@quotify.it"];
+		
+	[picker setToRecipients:toRecipients];
+	
+	// Fill out the email body text
+	NSString *emailBody = @"Hi Quotify.it team, \n\nYour app is so amazing, and I thought you should know ...";
+	[picker setMessageBody:emailBody isHTML:NO];
+	
+	[self.presentedViewController presentModalViewController:picker animated:YES];
+}
+
+
+// Dismisses the email composition interface when users tap Cancel or Send. Proceeds to update the message field with the result of the operation.
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{
+	message.hidden = NO;
+	// Notifies users about errors associated with the interface
+	switch (result)
+	{
+		case MFMailComposeResultCancelled:
+			message.text = @"Result: canceled";
+			break;
+		case MFMailComposeResultSaved:
+			message.text = @"Result: saved";
+			break;
+		case MFMailComposeResultSent:
+			message.text = @"Result: sent";
+			break;
+		case MFMailComposeResultFailed:
+			message.text = @"Result: failed";
+			break;
+		default:
+			message.text = @"Result: not sent";
+			break;
+	}
+	[self.presentedViewController dismissModalViewControllerAnimated:YES];
+}
+
+
+#pragma mark -
+#pragma mark Workaround
+
+// Launches the Mail application on the device.
+-(void)launchMailAppOnDevice
+{
+	NSString *recipients = @"mailto:first@example.com?cc=second@example.com,third@example.com&subject=Hello from California!";
+	NSString *body = @"&body=It is raining in sunny California!";
+	
+	NSString *email = [NSString stringWithFormat:@"%@%@", recipients, body];
+	email = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+	
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:email]];
 }
 
 
