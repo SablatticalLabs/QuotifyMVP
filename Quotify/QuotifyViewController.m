@@ -48,6 +48,9 @@
 @synthesize deleteWitnessButton;
 @synthesize facebook;
 
+// Feedback email
+@synthesize message;
+
 @synthesize picker = _picker;
 @synthesize addedPersonName;
 @synthesize addedPersonEmail;
@@ -838,6 +841,101 @@ int countSwipe = 0;
 - (void)raiseFailurePopupWithTitle:(NSString *) alertTitle andMessage:(NSString *) alertMessage{
     UIAlertView *failureAlert = [[UIAlertView alloc] initWithTitle:alertTitle message:alertMessage delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
     [failureAlert show];
+}
+
+
+//////////////////////////////
+//////////
+// #pragma mark -
+// #pragma mark Compose Mail
+//////////
+//////////////////////////////
+
+
+-(IBAction)showEmailPicker:(id)sender
+{
+	// Check that the device can use the MFMailComposeVC, if not then launch the Mail application
+	
+	Class mailClass = (NSClassFromString(@"MFMailComposeViewController"));
+	if (mailClass != nil)
+	{
+		// We must always check whether the current device is configured for sending emails
+		if ([mailClass canSendMail])
+		{
+			[self displayComposerSheet];
+		}
+		else
+		{
+			[self launchMailAppOnDevice];
+		}
+	}
+	else
+	{
+		[self launchMailAppOnDevice];
+	}
+}
+
+// Displays an email composition interface inside the application. Populates mail fields
+-(void)displayComposerSheet
+{
+	MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
+	picker.mailComposeDelegate = self;
+	
+	[picker setSubject:@"Quotify.it user feedback!"];
+	
+	// Set up recipients
+	NSArray *toRecipients = [NSArray arrayWithObject:@"help@quotify.it"];
+		
+	[picker setToRecipients:toRecipients];
+	
+	// Fill out the email body text
+	NSString *emailBody = @"Hi Quotify.it team, \n\nYour app is so amazing, and I thought you should know ...";
+	[picker setMessageBody:emailBody isHTML:NO];
+	
+	[self.presentedViewController presentModalViewController:picker animated:YES];
+}
+
+
+// Dismisses the email composition interface when users tap Cancel or Send. Proceeds to update the message field with the result of the operation.
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{
+	message.hidden = NO;
+	// Notifies users about errors associated with the interface
+	switch (result)
+	{
+		case MFMailComposeResultCancelled:
+			message.text = @"Result: canceled";
+			break;
+		case MFMailComposeResultSaved:
+			message.text = @"Result: saved";
+			break;
+		case MFMailComposeResultSent:
+			message.text = @"Result: sent";
+			break;
+		case MFMailComposeResultFailed:
+			message.text = @"Result: failed";
+			break;
+		default:
+			message.text = @"Result: not sent";
+			break;
+	}
+	[self.presentedViewController dismissModalViewControllerAnimated:YES];
+}
+
+
+#pragma mark -
+#pragma mark Workaround
+
+// Launches the Mail application on the device.
+-(void)launchMailAppOnDevice
+{
+	NSString *recipients = @"mailto:first@example.com?cc=second@example.com,third@example.com&subject=Hello from California!";
+	NSString *body = @"&body=It is raining in sunny California!";
+	
+	NSString *email = [NSString stringWithFormat:@"%@%@", recipients, body];
+	email = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+	
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:email]];
 }
 
 

@@ -19,9 +19,12 @@
 #import <AddressBook/AddressBook.h>
 #import <AddressBookUI/AddressBookUI.h>
 
+#import <MessageUI/MessageUI.h>
+#import <MessageUI/MFMailComposeViewController.h>
 
 
-@interface QuotifyViewController : UIViewController <UIActionSheetDelegate, CommDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIScrollViewDelegate, CoreLocationControllerDelegate,FBSessionDelegate, FBRequestDelegate, ABPeoplePickerNavigationControllerDelegate, ABNewPersonViewControllerDelegate, ABPersonViewControllerDelegate, UISearchDisplayDelegate, UISearchBarDelegate> {
+
+@interface QuotifyViewController : UIViewController <UIActionSheetDelegate, CommDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIScrollViewDelegate, CoreLocationControllerDelegate,FBSessionDelegate, FBRequestDelegate, ABPeoplePickerNavigationControllerDelegate, ABNewPersonViewControllerDelegate, ABPersonViewControllerDelegate, UISearchDisplayDelegate, UISearchBarDelegate, MFMailComposeViewControllerDelegate> {
     
     Quote *currentQuote;
     Comm *myComm;
@@ -101,8 +104,11 @@
 @property (weak, nonatomic) IBOutlet UITextField *addedPersonEmail;
 @property (strong, nonatomic) IBOutlet UIButton *showHistory;
 
+//email success message
+@property (nonatomic, strong) IBOutlet UILabel *message;
 
 
+- (IBAction)showEmailPicker:(id)sender;
 - (IBAction)backToMainView:(id)sender;
 - (IBAction)doneAddingPeople:(id)sender;
 - (IBAction)quotifyPressed:(id)sender;
@@ -132,7 +138,8 @@
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier;
 - (void)addWitnessToBox:(NSString*)name;
 
-
+-(void)displayComposerSheet;
+-(void)launchMailAppOnDevice;
 
 
 @end
