@@ -14,7 +14,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "490"
          endingLineNumber = "490"
-         landmarkName = "-addPerson:"
+         landmarkName = "-peoplePickerNavigationController:shouldContinueAfterSelectingPerson:property:identifier:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -42,8 +42,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "594"
          endingLineNumber = "594"
-         landmarkName = "@implementation QuotifyViewController"
-         landmarkType = "3">
+         landmarkName = "-searchBarTextDidEndEditing:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -98,7 +98,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "368"
          endingLineNumber = "368"
-         landmarkName = "-showContacts:"
+         landmarkName = "-imagePickerController:didFinishPickingMediaWithInfo:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -112,7 +112,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "411"
          endingLineNumber = "411"
-         landmarkName = "-peoplePickerNavigationController:shouldContinueAfterSelectingPerson:"
+         landmarkName = "-showContacts:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -154,7 +154,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "588"
          endingLineNumber = "588"
-         landmarkName = "-searchBar:textDidChange:"
+         landmarkName = "-searchBarTextDidEndEditing:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -182,8 +182,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "497"
          endingLineNumber = "497"
-         landmarkName = "-addPerson:"
-         landmarkType = "5">
+         landmarkName = "@implementation QuotifyViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -196,7 +196,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "502"
          endingLineNumber = "502"
-         landmarkName = "-addPerson:"
+         landmarkName = "-addWitnessToBox:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -224,7 +224,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "609"
          endingLineNumber = "609"
-         landmarkName = "-newPersonViewController:didCompleteWithNewPerson:"
+         landmarkName = "-searchBar:textDidChange:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -238,8 +238,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "691"
          endingLineNumber = "691"
-         landmarkName = "-quotifyPressed:"
-         landmarkType = "5">
+         landmarkName = "@implementation QuotifyViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -252,8 +252,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "531"
          endingLineNumber = "531"
-         landmarkName = "-navigationController:didShowViewController:animated:"
-         landmarkType = "5">
+         landmarkName = "@implementation QuotifyViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -266,7 +266,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "538"
          endingLineNumber = "538"
-         landmarkName = "-navigationController:didShowViewController:animated:"
+         landmarkName = "-editPerson:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -280,7 +280,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "517"
          endingLineNumber = "517"
-         landmarkName = "-editPerson:"
+         landmarkName = "-addPerson:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -294,8 +294,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "126"
          endingLineNumber = "126"
-         landmarkName = "@implementation QuotifyViewController"
-         landmarkType = "3">
+         landmarkName = "-viewDidLoad"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -308,7 +308,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "765"
          endingLineNumber = "765"
-         landmarkName = "-witnessesSwiped:"
+         landmarkName = "-showSuccessView"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -462,7 +462,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "185"
          endingLineNumber = "185"
-         landmarkName = "-myMovieFinishedCallback:"
+         landmarkName = "-showIntroMovie"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -476,11 +476,11 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "190"
          endingLineNumber = "190"
-         landmarkName = "@implementation QuotifyViewController"
-         landmarkType = "3">
+         landmarkName = "-myMovieFinishedCallback:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
@@ -490,11 +490,11 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "177"
          endingLineNumber = "177"
-         landmarkName = "@implementation QuotifyViewController"
-         landmarkType = "3">
+         landmarkName = "-showIntroMovie"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
@@ -504,7 +504,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "157"
          endingLineNumber = "157"
-         landmarkName = "-showIntroMovie"
+         landmarkName = "-viewDidAppear:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -518,8 +518,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "618"
          endingLineNumber = "618"
-         landmarkName = "-peopleAdded:"
-         landmarkType = "5">
+         landmarkName = "@implementation QuotifyViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -532,7 +532,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "639"
          endingLineNumber = "639"
-         landmarkName = "-doneAddingPeople:"
+         landmarkName = "-peopleAdded:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -578,7 +578,7 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
@@ -592,7 +592,7 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
@@ -606,7 +606,7 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
