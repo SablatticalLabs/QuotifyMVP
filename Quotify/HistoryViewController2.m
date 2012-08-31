@@ -14,7 +14,10 @@
 @synthesize loadingIndicator;
 @synthesize loadingView;
 @synthesize quotifierID;
-@synthesize sectionedQuotesArray = _sectionedQutoesArray;
+@synthesize sectionedQuotesArray = _sectionedQuotesArray;
+@synthesize deletableQuotes = _deletableQuotes;
+@synthesize viewableQuotes = _viewableQuotes;
+@synthesize lockedQuotes = _lockedQuotes;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -60,30 +63,31 @@
     NSLog(@"hist dict: %@", listDict);
     quotesArray = [listDict objectForKey:@"quote_history"];
     
-    lockedQuotes = [[NSMutableArray alloc] init];
-    viewableQuotes = [[NSMutableArray alloc] init];
-    
-    // Future functionality - Editable quotes
-    //NSMutableArray * editableQuotes = [[NSMutableArray alloc] init];
+    self.deletableQuotes = [[NSMutableArray alloc] init];
+    self.lockedQuotes = [[NSMutableArray alloc] init];
+    self.viewableQuotes = [[NSMutableArray alloc] init];
     
     
     // Check the messages_sent_flag to see if quote is locked and place in appropriate array
     for (NSDictionary* quoteDict in quotesArray) {
-    
-        //NSLog(@"Message flag: %@", [quoteDict objectForKey:@"messages_sent_flag"]);
         
-        if([[quoteDict objectForKey:@"messages_sent_flag"] boolValue]){
-            [viewableQuotes addObject:quoteDict];
+        if([[quoteDict objectForKey:@"is_deletable?"] boolValue]){
+            [self.deletableQuotes addObject:quoteDict];
+        }
+        
+        else if([[quoteDict objectForKey:@"messages_sent_flag"] boolValue]){
+            [self.viewableQuotes addObject:quoteDict];
         }
         
         else{
-            [lockedQuotes addObject:quoteDict];
+            [self.lockedQuotes addObject:quoteDict];
         }
     }
 
-    
-    [self.sectionedQuotesArray addObject:viewableQuotes];
-    [self.sectionedQuotesArray addObject:lockedQuotes];
+    //Order arrays appear in sectionedQuotesArray is the order in which they'll be displayed!!!
+    [self.sectionedQuotesArray addObject:self.deletableQuotes];
+    [self.sectionedQuotesArray addObject:self.viewableQuotes];
+    [self.sectionedQuotesArray addObject:self.lockedQuotes];
     
     [self.quoteHistTableView reloadData];
     [self.loadingIndicator stopAnimating];
@@ -102,48 +106,63 @@
 // Set how many sections the Table View will have
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    int numberOfSections = self.sectionedQuotesArray.count;
+    //int numberOfSections = self.sectionedQuotesArray.count;
     // Return the number of sections.
-    return numberOfSections;
+    return 1;//numberOfSections;
 }
 
 // Set the number of rows in each section
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    int rowsInSection = [[self.sectionedQuotesArray objectAtIndex:section] count];
-    return rowsInSection;
+    //int rowsInSection = [[self.sectionedQuotesArray objectAtIndex:section] count];
+    return [quotesArray count];//rowsInSection;
 }
 
-// Display section headings
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if(section == 0)
-        return @"Viewable Quotes";
-    else
-        return @"Locked Quotes";
-}
+//// Display section headings
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+//    if(section == 0)
+//        return @"Viewable Quotes";
+//    else
+//        return @"Locked Quotes";
+//}
+
+
 
 // This is where we configure each cell
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+{    
+    NSDictionary * quoteDict;
+    static NSString* ident;
     
-    // Need 3 types of cell identifiers
-    static NSString *CellIdentifier = @"Cell";
+    int length0 = [[self.sectionedQuotesArray objectAtIndex:0] count];
+    int length1 = [[self.sectionedQuotesArray objectAtIndex:1] count];
+    int section;
     
-    // Memory management - reuse cells when possible to avoid holding large arrays in memory
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle 
-                                      reuseIdentifier:CellIdentifier];
+    if(indexPath.row < length0){
+        quoteDict = [[self.sectionedQuotesArray objectAtIndex:0] objectAtIndex:indexPath.row];
+        section = 0;
+        ident = @"deletable";
+    }
+    else if(indexPath.row < length0 + length1){
+        quoteDict = [[self.sectionedQuotesArray objectAtIndex:1] objectAtIndex:indexPath.row - length0];
+        section = 1;
+        ident = @"viewable";
+    }
+    else{
+        quoteDict = [[self.sectionedQuotesArray objectAtIndex:2] objectAtIndex:indexPath.row - (length0 + length1)];
+        section = 2;
+        ident = @"locked";
     }
     
-    // Configure the cell..
-    NSDictionary * quoteDict = [[self.sectionedQuotesArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    //    if(indexPath.section == 0){
-    //        quoteDict = [viewableQuotes objectAtIndex:indexPath.row];
-    //    }
-    //    else{
-    //        quoteDict = [lockedQuotes objectAtIndex:indexPath.row];
-    //    }
+    // Need 3 types of cell identifiers
+    //static NSString *CellIdentifier = @"Cell";
+    
+    // Memory management - reuse cells when possible to avoid holding large arrays in memory
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ident];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle 
+                                      reuseIdentifier:ident];
+    }
     
     // Grab the speaker's name from the quote object
     NSDictionary* speakerInfo;
@@ -181,15 +200,27 @@
     // Cell formatting
     //////////
     
-    
-    // Set the cell to highlight blue when pressed    
-    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-    
-    
-    // Set display for locked quotes
-    if(!indexPath.section == 0){
+    //3 way IF to configure different types of cells.
+    if([ident isEqualToString:@"deletable"]){
         
-        //CellIdentifier = @"LockedStyle";
+        cell.textLabel.text = @"deletable";
+        [cell setEditing:YES];
+    }
+    else if([ident isEqualToString:@"viewable"]){
+        // Set display for unlocked quotes
+            
+            
+        // Put the quote text in top half of cell
+        cell.textLabel.text = speakerName;
+        cell.textLabel.font = [UIFont systemFontOfSize:14];
+        
+        // Put the date in lower half of cell
+        cell.detailTextLabel.text = quoteString;
+        
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
+    }
+    else{//@"locked"
         
         // Disable selection of locked quotes
         cell.userInteractionEnabled = FALSE;
@@ -204,23 +235,15 @@
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@",[df stringFromDate:date], [df stringFromDate:date]];
         
         cell.accessoryType = UITableViewCellAccessoryNone;
+
     }
+
     
-    // Set display for unlocked quotes
-    else
-        
-        //CellIdentifier = @"UnlockedStyle";
+    // Set the cell to highlight blue when pressed    
+    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     
-        // Put the quote text in top half of cell
-        cell.textLabel.text = speakerName;
-        cell.textLabel.font = [UIFont systemFontOfSize:14];
-        
-        // Put the date in lower half of cell
-        cell.detailTextLabel.text = quoteString;
     
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    
-        return cell;
+    return cell;
 }
 
 
@@ -229,19 +252,75 @@
 // Action when a row is selected
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Display the selected quote in a Web View
-    NSString* quoteID = [[quotesArray objectAtIndex:indexPath.row] objectForKey:@"id"];
-    QuoteWebViewController *wvc = [[QuoteWebViewController alloc] init];
-    wvc.quoteURL = [NSString stringWithFormat:@"http://www.quotify.it/%@/",quoteID];
+    if([[tableView cellForRowAtIndexPath:indexPath].reuseIdentifier isEqualToString:@"viewable"]){
+        // Display the selected quote in a Web View
+        NSString* quoteID = [[self.viewableQuotes objectAtIndex:(indexPath.row - [self.deletableQuotes count])] objectForKey:@"id"];
+        QuoteWebViewController *wvc = [[QuoteWebViewController alloc] init];
+        wvc.quoteURL = [NSString stringWithFormat:@"http://www.quotify.it/%@/",quoteID];
     
-    [self presentModalViewController:wvc animated:YES];
+        [self presentModalViewController:wvc animated:YES];
+    }
 
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+// Override to support conditional editing of the table view.
+// This only needs to be implemented if you are going to be returning NO
+// for some items. By default, all items are editable.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return YES if you want the specified item to be editable.
+    if([[tableView cellForRowAtIndexPath:indexPath].reuseIdentifier isEqualToString:@"deletable"]){
+        return YES;
+    }
+    else return NO;
+}
+
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSMutableArray * array;//not used right not
+        int quoteIndex = [self getQuoteIndexInArray:array forIndexPath:indexPath];
+         //call comm method to delete quote from server.
+        [myComm deleteQuoteWithID:[[self.deletableQuotes objectAtIndex:quoteIndex] objectForKey:@"id"]];
+        [self.deletableQuotes removeObjectAtIndex:quoteIndex];//for now, definitely in deletable quotes
+        //NSLog(@"%@",[array count]);
+        //call comm me     [tableView reloadData];
+    }    
 }
 
 // Put the accessory button action in here
 //- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
 // }
+
+//helper method. IMPORTANT: array is "output". the method will set that pointer to the correct array (deletable, viewable, or locked)
+//doesn't work right now (*array points to null)
+- (int)getQuoteIndexInArray:(NSMutableArray *)array forIndexPath:(NSIndexPath *)indexPath {
+    
+    int quoteIndex;
+    //static NSString* ident;
+    
+    int length0 = [[self.sectionedQuotesArray objectAtIndex:0] count];
+    int length1 = [[self.sectionedQuotesArray objectAtIndex:1] count];
+    
+    if(indexPath.row < length0){
+        array = [self.sectionedQuotesArray objectAtIndex:0];
+        quoteIndex = indexPath.row;
+        //ident = @"deletable";
+    }
+    else if(indexPath.row < length0 + length1){
+        array = [self.sectionedQuotesArray objectAtIndex:1];
+        quoteIndex = indexPath.row - length0;
+        //ident = @"viewable";
+    }
+    else{
+        array = [self.sectionedQuotesArray objectAtIndex:2];
+        quoteIndex = indexPath.row - (length0 + length1);
+        //ident = @"locked";
+    }
+    return quoteIndex;
+}
+
+
 
 - (void)viewDidUnload
 {

@@ -39,5 +39,6 @@ extern NSString * const sendImageToURL;
 -(void)addImage:(UIImage*)theImage toQuoteWithID:(NSString*)postID;
 -(void)sendHTTPrequest:(NSString*)myData;
 -(void)requestQuoteListforQuotifier:(NSString*)quotifierID AndSendResultTo:(UIViewController*)hvc;
+-(void)deleteQuoteWithID:(NSString *)quoteID;
 
 @end
