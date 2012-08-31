@@ -84,7 +84,6 @@
 		DD2C037B158D8347000C9CD8 /* LoginNormal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD2C036E158D8347000C9CD8 /* LoginNormal@2x.png */; };
 		DD2C037C158D8347000C9CD8 /* LoginPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = DD2C036F158D8347000C9CD8 /* LoginPressed.png */; };
 		DD2C037D158D8347000C9CD8 /* LoginPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD2C0370158D8347000C9CD8 /* LoginPressed@2x.png */; };
-		DD2C037E158D8347000C9CD8 /* LoginWithFacebookNormal_1.png in Resources */ = {isa = PBXBuildFile; fileRef = DD2C0371158D8347000C9CD8 /* LoginWithFacebookNormal_1.png */; };
 		DD2C037F158D8347000C9CD8 /* LoginWithFacebookNormal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD2C0372158D8347000C9CD8 /* LoginWithFacebookNormal@2x.png */; };
 		DD2C0380158D8347000C9CD8 /* LoginWithFacebookPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = DD2C0373158D8347000C9CD8 /* LoginWithFacebookPressed.png */; };
 		DD2C0381158D8347000C9CD8 /* LoginWithFacebookPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD2C0374158D8347000C9CD8 /* LoginWithFacebookPressed@2x.png */; };
@@ -222,7 +221,6 @@
 		DD2C036E158D8347000C9CD8 /* LoginNormal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginNormal@2x.png"; sourceTree = "<group>"; };
 		DD2C036F158D8347000C9CD8 /* LoginPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginPressed.png; sourceTree = "<group>"; };
 		DD2C0370158D8347000C9CD8 /* LoginPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginPressed@2x.png"; sourceTree = "<group>"; };
-		DD2C0371158D8347000C9CD8 /* LoginWithFacebookNormal_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginWithFacebookNormal_1.png; sourceTree = "<group>"; };
 		DD2C0372158D8347000C9CD8 /* LoginWithFacebookNormal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginWithFacebookNormal@2x.png"; sourceTree = "<group>"; };
 		DD2C0373158D8347000C9CD8 /* LoginWithFacebookPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginWithFacebookPressed.png; sourceTree = "<group>"; };
 		DD2C0374158D8347000C9CD8 /* LoginWithFacebookPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginWithFacebookPressed@2x.png"; sourceTree = "<group>"; };
@@ -320,7 +318,6 @@
 		ADAEF3751361E9A4002F94A1 = {
 			isa = PBXGroup;
 			children = (
-				AD9F5A8815F058370024A55F /* MessageUI.framework */,
 				ADF1604414DE5632000B5343 /* icon114.png */,
 				ADDCB99414DDAE9100CE9019 /* Default@2x.png */,
 				ADF1604214DE5630000B5343 /* icon57.png */,
@@ -350,6 +347,7 @@
 		ADAEF3831361E9A4002F94A1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AD9F5A8815F058370024A55F /* MessageUI.framework */,
 				ADD667D3158DF863005A58DF /* MediaPlayer.framework */,
 				ADD5BC64145100D3009D475C /* AddressBookUI.framework */,
 				ADD5BC62145100CD009D475C /* AddressBook.framework */,
@@ -418,25 +416,9 @@
 		ADAEF3C01361EA7E002F94A1 /* View Files */ = {
 			isa = PBXGroup;
 			children = (
-				ADB95527158E12950081EF04 /* Q4.mov */,
 				DD2C0387158D91AB000C9CD8 /* kinder_egg.jpg */,
-				ADAEF3961361E9A4002F94A1 /* MainWindow.xib */,
-				ADAEF39C1361E9A4002F94A1 /* QuotifyViewController.xib */,
-				DD2C036A158D7A72000C9CD8 /* HistoryViewController2.xib */,
-				DDBD101913944B7300A40AF4 /* SuccessViewController.xib */,
-				DD2C036D158D8347000C9CD8 /* LoginNormal.png */,
-				DD2C036E158D8347000C9CD8 /* LoginNormal@2x.png */,
-				DD2C036F158D8347000C9CD8 /* LoginPressed.png */,
-				DD2C0370158D8347000C9CD8 /* LoginPressed@2x.png */,
-				DD2C0371158D8347000C9CD8 /* LoginWithFacebookNormal_1.png */,
-				DD2C0372158D8347000C9CD8 /* LoginWithFacebookNormal@2x.png */,
-				DD2C0373158D8347000C9CD8 /* LoginWithFacebookPressed.png */,
-				DD2C0374158D8347000C9CD8 /* LoginWithFacebookPressed@2x.png */,
-				DD2C0375158D8347000C9CD8 /* LogoutNormal.png */,
-				DD2C0376158D8347000C9CD8 /* LogoutNormal@2x.png */,
-				DD2C0377158D8347000C9CD8 /* LogoutPressed.png */,
-				DD2C0378158D8347000C9CD8 /* LogoutPressed@2x.png */,
 				DD2C0379158D8347000C9CD8 /* runaround_image.jpg */,
+				ADB95527158E12950081EF04 /* Q4.mov */,
 				ADBA6E5114E0E143006AF908 /* background.png */,
 				ADBA6E5314E0E14A006AF908 /* backgroundconfirmation.png */,
 				AD1F5DC214E6EDAD0005D248 /* blankbackground.png */,
@@ -446,7 +428,18 @@
 				ADE4272014DF2A7E00FE6A5B /* doneup.png */,
 				AD1F5DBB14E4A0F00005D248 /* emailfield.png */,
 				ADDCB98814DDA37B00CE9019 /* icon.png */,
+				DD2C036D158D8347000C9CD8 /* LoginNormal.png */,
+				DD2C036E158D8347000C9CD8 /* LoginNormal@2x.png */,
+				DD2C036F158D8347000C9CD8 /* LoginPressed.png */,
+				DD2C0370158D8347000C9CD8 /* LoginPressed@2x.png */,
+				DD2C0372158D8347000C9CD8 /* LoginWithFacebookNormal@2x.png */,
 				DD92C2751583F19700460CF8 /* LoginWithFacebookNormal_1.png */,
+				DD2C0373158D8347000C9CD8 /* LoginWithFacebookPressed.png */,
+				DD2C0374158D8347000C9CD8 /* LoginWithFacebookPressed@2x.png */,
+				DD2C0375158D8347000C9CD8 /* LogoutNormal.png */,
+				DD2C0376158D8347000C9CD8 /* LogoutNormal@2x.png */,
+				DD2C0377158D8347000C9CD8 /* LogoutPressed.png */,
+				DD2C0378158D8347000C9CD8 /* LogoutPressed@2x.png */,
 				ADDCB97E14DDA34100CE9019 /* people.png */,
 				ADDCB97F14DDA34100CE9019 /* person.png */,
 				ADBA6E5714E0E17B006AF908 /* photoboxdown.png */,
@@ -459,6 +452,10 @@
 				ADF1604614DE5656000B5343 /* settingsdown.png */,
 				ADBA6E5D14E0E197006AF908 /* settingsup-1.png */,
 				ADBA6E4C14DFA7AA006AF908 /* stripesbackground.png */,
+				DD2C036A158D7A72000C9CD8 /* HistoryViewController2.xib */,
+				DDBD101913944B7300A40AF4 /* SuccessViewController.xib */,
+				ADAEF3961361E9A4002F94A1 /* MainWindow.xib */,
+				ADAEF39C1361E9A4002F94A1 /* QuotifyViewController.xib */,
 			);
 			name = "View Files";
 			path = Quotify;
@@ -628,7 +625,6 @@
 				DD2C037B158D8347000C9CD8 /* LoginNormal@2x.png in Resources */,
 				DD2C037C158D8347000C9CD8 /* LoginPressed.png in Resources */,
 				DD2C037D158D8347000C9CD8 /* LoginPressed@2x.png in Resources */,
-				DD2C037E158D8347000C9CD8 /* LoginWithFacebookNormal_1.png in Resources */,
 				DD2C037F158D8347000C9CD8 /* LoginWithFacebookNormal@2x.png in Resources */,
 				DD2C0380158D8347000C9CD8 /* LoginWithFacebookPressed.png in Resources */,
 				DD2C0381158D8347000C9CD8 /* LoginWithFacebookPressed@2x.png in Resources */,
