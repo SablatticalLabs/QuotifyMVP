@@ -903,10 +903,22 @@ int countSwipe = 0;
         [prefs setObject:currentQuote.quotifier forKey:@"quotifier"];
         [prefs synchronize];
         [self dismissModalViewControllerAnimated:YES];
-    }else{
-        [self raiseFailurePopupWithTitle:@"Oops!" andMessage:@"Quotify.it needs a name and email address to function. No Spam - we promise."];
+        
+        // Track user passes name and email validation on settings page in Mixpanel
+        MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
+        [mixpanel setSendDeviceModel:YES];
+        [mixpanel track:@"User passes settings page validation"];
+        
     }
-}
+    
+    else {
+        [self raiseFailurePopupWithTitle:@"Oops!" andMessage:@"Quotify.it needs a name and email address to function. No Spam - we promise."];
+        
+        // Track user fails name and email validation on settings page in Mixpanel
+        MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
+        [mixpanel setSendDeviceModel:YES];
+        [mixpanel track:@"User fails settings page validation"];    }
+    }
 
 - (void)setupNewQuote{
     //currentQuote = [[Quote alloc] init];
