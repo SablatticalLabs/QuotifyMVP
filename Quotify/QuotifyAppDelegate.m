@@ -34,8 +34,8 @@
     [mixpanel setUploadInterval:5];
     
     // Identify the user by their email address
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [mixpanel identifyUser:[[defaults objectForKey:@"quotifier"] objectForKey:@"email"]];
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//    [mixpanel identifyUser:[[defaults objectForKey:@"quotifier"] objectForKey:@"email"]];
     
     
     // Add the view controller's view to the window and display.

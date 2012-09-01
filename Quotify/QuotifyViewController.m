@@ -217,7 +217,7 @@
     
     // This line ISNT WORKING! Ain't nobody got time for that
     // It says I'm trying to do this before viewDidDisappear
-    [self.presentedViewController presentModalViewController:settingsViewController animated:YES];
+    //[self.presentedViewController presentModalViewController:settingsViewController animated:YES];
     
     //[settingsViewController.view becomeFirstResponder];
     [self raiseFailurePopupWithTitle:@"Welcome to Quotify.it!" andMessage:@"Enter your name & email address to get started"];
