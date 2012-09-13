@@ -14,9 +14,9 @@
     NSDictionary *data;
     NSArray *quotesArray;
     
-    __strong NSMutableArray * lockedQuotes;
-    __strong NSMutableArray * editableQuotes;
-    __strong NSMutableArray * viewableQuotes;
+//    __strong NSMutableArray * lockedQuotes;
+//    __strong NSMutableArray * deletableQuotes;
+//    __strong NSMutableArray * viewableQuotes;
 
 }
 
@@ -25,10 +25,16 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
 @property (weak, nonatomic) IBOutlet UIView *loadingView;
 @property (strong, nonatomic) NSString* quotifierID;
+
 @property (strong, nonatomic) NSMutableArray * sectionedQuotesArray;
 
+@property (strong, nonatomic) NSMutableArray * lockedQuotes;
+@property (strong, nonatomic) NSMutableArray * deletableQuotes;
+@property (strong, nonatomic) NSMutableArray * viewableQuotes;
+
 - (IBAction)backToQuoteEntry:(id)sender;
--(void)quoteListResult:(NSDictionary*)listDict;
+- (void)quoteListResult:(NSDictionary*)listDict;
+- (int)getQuoteIndexInArray:(NSArray *)array forIndexPath:(NSIndexPath *)indexPath;
 
 
 @end

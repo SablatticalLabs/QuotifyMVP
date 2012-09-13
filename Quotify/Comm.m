@@ -161,4 +161,21 @@ NSString * const sendImageToURL = @"http://quotify.it/quotes/<ID>/quote_images.j
     //curl -H "Content-Type: application/json" -H "Accept: application/json" -X GET http://quotify.it/quotes/history.json?email=pmendeloff@hotmail.com
 }
 
+-(void)deleteQuoteWithID:(NSString *)quoteID{
+    //something like...
+    request = 
+	[NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat: @"http://quotify.it/quotes/%@", quoteID]] 
+                            cachePolicy:NSURLRequestReloadIgnoringCacheData 
+                        timeoutInterval:15];
+	
+	[request setHTTPMethod:@"DELETE"];
+	//[request setHTTPBody:[myData dataUsingEncoding:NSUTF8StringEncoding]];
+	[request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+	[request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+	
+	// Make asynchronous request
+	[NSURLConnection connectionWithRequest:request delegate:self];
+}
+
 @end
