@@ -18,7 +18,8 @@
 @synthesize viewController=_viewController;
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+//- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+-(void)awakeFromNib
 {
     // Override point for customization after application launch.
      
@@ -41,9 +42,8 @@
     // Add the view controller's view to the window and display.
     [_window addSubview:_viewController.view];
     [_window makeKeyAndVisible];
-    return YES;
-    
-        return YES;
+//    return YES;
+
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {

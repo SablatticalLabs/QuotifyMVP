@@ -23,11 +23,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Quotify/QuotifyViewController.m"
-         timestampString = "368159992.905024"
+         timestampString = "369290181.792712"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "564"
-         endingLineNumber = "564"
+         startingLineNumber = "571"
+         endingLineNumber = "571"
          landmarkName = "-addPerson:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -37,11 +37,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Quotify/QuotifyViewController.m"
-         timestampString = "368159992.905024"
+         timestampString = "369290181.792712"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "651"
-         endingLineNumber = "651"
+         startingLineNumber = "658"
+         endingLineNumber = "658"
          landmarkName = "-searchBarTextDidBeginEditing:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -60,16 +60,55 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Quotify/QuotifyViewController.m"
+         timestampString = "369290181.792712"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "618"
+         endingLineNumber = "618"
+         landmarkName = "-navigationController:didShowViewController:animated:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Quotify/QuotifyViewController.m"
-         timestampString = "368159987.225498"
+         timestampString = "369290181.792712"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "611"
-         endingLineNumber = "611"
-         landmarkName = "-navigationController:didShowViewController:animated:"
+         startingLineNumber = "212"
+         endingLineNumber = "212"
+         landmarkName = "-myMovieFinishedCallback:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Quotify/QuotifyViewController.m"
+         timestampString = "369290181.792712"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "170"
+         endingLineNumber = "170"
+         landmarkName = "-showIntroMovie"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Quotify/QuotifyViewController.m"
+         timestampString = "369289059.465513"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "152"
+         endingLineNumber = "152"
+         landmarkName = "-awakeFromNib"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

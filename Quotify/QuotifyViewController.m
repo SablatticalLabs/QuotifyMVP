@@ -126,8 +126,10 @@
     }
     NSLog(@"Finished Loading QVC");
 }
+//
+-(void)awakeFromNib {
 
-- (void)viewDidAppear:(BOOL)animated{
+//- (void)viewDidAppear:(BOOL)animated{
     
     // Get the email from the user defaults dictionary
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -147,15 +149,19 @@
        && [[[defaults objectForKey:@"quotifier"] objectForKey:@"name"] length] == 0)
     {
         // If they have no email or name mark them as a new user
+        [self presentModalViewController:settingsViewController animated:NO];
         isNewUser = YES;
-    }
-    
-    // If they're new, show them the movie!
-    if (isNewUser) {
+        
+        // If they're new, show them the movie!
         NSLog(@"Settings view is first responder: %c", [settingsViewController isFirstResponder]);
         [self showIntroMovie];
     }
-    
+    else
+    {
+        currentQuote.quotifier = [defaults objectForKey:@"quotifier"];
+        quotifierEmail.text = [currentQuote.quotifier valueForKey:@"email"];
+        quotifierName.text = [currentQuote.quotifier valueForKey:@"name"];
+    }
 }
 
 -(void)showIntroMovie{
@@ -163,12 +169,19 @@
     // Select the movie file to be played
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Q4" ofType:@"mov"];//@"/Users/liorsabag/Dropbox/Dev/QuotifyMVP/Quotify/Q4.mov";
     NSURL* theUrl = [NSURL fileURLWithPath:path];
-
+    
     // Create an instance of moviePlayerVC
     player = [[MPMoviePlayerViewController alloc] initWithContentURL: theUrl];
     
+    // Register for the moviePlayer playback finished notification
+    [[NSNotificationCenter defaultCenter]
+     addObserver: self
+     selector: @selector(myMovieFinishedCallback:)
+     name: MPMoviePlayerPlaybackDidFinishNotification
+     object: player.moviePlayer];
+    
     if (isNewUser) {
-        [self presentMoviePlayerViewControllerAnimated:player];
+        [self.presentedViewController presentMoviePlayerViewControllerAnimated:player];
         
         // Track first time video played in Mixpanel
         MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
@@ -187,20 +200,14 @@
         [mixpanel track:@"Video replayed"];
     }
     
-
-    // Register for the moviePlayer playback finished notification
-    [[NSNotificationCenter defaultCenter]
-     addObserver: self
-     selector: @selector(myMovieFinishedCallback:)
-     name: MPMoviePlayerPlaybackDidFinishNotification
-     object: player.moviePlayer];    
+ 
     
 }
 
 
 -(void) myMovieFinishedCallback: (NSNotification*) aNotification
 {
-    [player dismissMoviePlayerViewControllerAnimated];
+//    [player dismissMoviePlayerViewControllerAnimated];
 
     videoFinishedPlaying = YES;
     
@@ -217,7 +224,7 @@
     
     // This line ISNT WORKING! Ain't nobody got time for that
     // It says I'm trying to do this before viewDidDisappear
-    //[self.presentedViewController presentModalViewController:settingsViewController animated:YES];
+//    [self.presentedViewController presentModalViewController:settingsViewController animated:YES];
     
     //[settingsViewController.view becomeFirstResponder];
     [self raiseFailurePopupWithTitle:@"Welcome to Quotify.it!" andMessage:@"Enter your name & email address to get started"];
