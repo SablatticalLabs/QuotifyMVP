@@ -208,14 +208,14 @@
     }
     else if([ident isEqualToString:@"viewable"]){
         // Set display for unlocked quotes
-            
+        [df setDateFormat:@"M/d/yy"];
             
         // Put the quote text in top half of cell
-        cell.textLabel.text = speakerName;
+        cell.textLabel.text = quoteString;
         cell.textLabel.font = [UIFont systemFontOfSize:14];
         
         // Put the date in lower half of cell
-        cell.detailTextLabel.text = quoteString;
+        cell.detailTextLabel.text = [speakerName stringByAppendingFormat:@" on %@", [df stringFromDate:date]];
         
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
