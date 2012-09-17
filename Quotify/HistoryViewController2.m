@@ -278,7 +278,7 @@
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSMutableArray * array;//not used right not
+        NSMutableArray * array;//not used right now
         int quoteIndex = [self getQuoteIndexInArray:array forIndexPath:indexPath];
          //call comm method to delete quote from server.
         [myComm deleteQuoteWithID:[[self.deletableQuotes objectAtIndex:quoteIndex] objectForKey:@"id"]];

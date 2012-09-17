@@ -162,7 +162,7 @@ NSString * const sendImageToURL = @"http://quotify.it/quotes/<ID>/quote_images.j
 }
 
 -(void)deleteQuoteWithID:(NSString *)quoteID{
-    //something like...
+    NSLog(@"deleting quote: %@", quoteID);
     request = 
 	[NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat: @"http://quotify.it/quotes/%@", quoteID]] 
                             cachePolicy:NSURLRequestReloadIgnoringCacheData 
