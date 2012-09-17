@@ -203,7 +203,19 @@
     //3 way IF to configure different types of cells.
     if([ident isEqualToString:@"deletable"]){
         
-        cell.textLabel.text = @"deletable";
+        // Set display for unlocked quotes
+        [df setDateFormat:@"M/d/yy"];
+        
+        // Put the quote text in top half of cell
+        cell.textLabel.text = quoteString;
+        cell.textLabel.font = [UIFont italicSystemFontOfSize:16];
+        
+        // Put the date in lower half of cell
+        cell.detailTextLabel.text = [speakerName stringByAppendingFormat:@" on %@", [df stringFromDate:date]];
+        cell.detailTextLabel.font = [UIFont italicSystemFontOfSize:14];
+        
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+
         [cell setEditing:YES];
     }
     else if([ident isEqualToString:@"viewable"]){
@@ -216,6 +228,7 @@
         
         // Put the date in lower half of cell
         cell.detailTextLabel.text = [speakerName stringByAppendingFormat:@" on %@", [df stringFromDate:date]];
+        cell.detailTextLabel.font = [UIFont systemFontOfSize:14];
         
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
