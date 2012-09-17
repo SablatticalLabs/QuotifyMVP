@@ -45,7 +45,6 @@
     
     ABPeoplePickerNavigationController *_picker;
 
-    
     UIButton *settingsButton;  
     UIButton *quotifyButton; 
     UIButton *hideKeyboardButton;
@@ -107,6 +106,8 @@
 //email success message
 @property (nonatomic, strong) IBOutlet UILabel *message;
 
+
+@property (nonatomic, retain) MPMoviePlayerViewController *player;
 
 - (IBAction)showEmailPicker:(id)sender;
 - (IBAction)backToMainView:(id)sender;

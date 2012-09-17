@@ -126,8 +126,10 @@
     }
     NSLog(@"Finished Loading QVC");
 }
+//
+-(void)awakeFromNib {
 
-- (void)viewDidAppear:(BOOL)animated{
+//- (void)viewDidAppear:(BOOL)animated{
     
     // Get the email from the user defaults dictionary
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -147,15 +149,19 @@
        && [[[defaults objectForKey:@"quotifier"] objectForKey:@"name"] length] == 0)
     {
         // If they have no email or name mark them as a new user
+        [self presentModalViewController:settingsViewController animated:NO];
         isNewUser = YES;
-    }
-    
-    // If they're new, show them the movie!
-    if (isNewUser) {
+        
+        // If they're new, show them the movie!
         NSLog(@"Settings view is first responder: %c", [settingsViewController isFirstResponder]);
         [self showIntroMovie];
     }
-    
+    else
+    {
+        currentQuote.quotifier = [defaults objectForKey:@"quotifier"];
+        quotifierEmail.text = [currentQuote.quotifier valueForKey:@"email"];
+        quotifierName.text = [currentQuote.quotifier valueForKey:@"name"];
+    }
 }
 
 -(void)showIntroMovie{
@@ -163,32 +169,45 @@
     // Select the movie file to be played
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Q4" ofType:@"mov"];//@"/Users/liorsabag/Dropbox/Dev/QuotifyMVP/Quotify/Q4.mov";
     NSURL* theUrl = [NSURL fileURLWithPath:path];
-
+    
     // Create an instance of moviePlayerVC
     player = [[MPMoviePlayerViewController alloc] initWithContentURL: theUrl];
     
-    if (isNewUser) {
-        [self presentMoviePlayerViewControllerAnimated:player];
-    }
-
-    else
-    // Makes the moviePlayer a subview of whatever view it is called from within
-    [self.presentedViewController presentMoviePlayerViewControllerAnimated:player];
-    
-
     // Register for the moviePlayer playback finished notification
     [[NSNotificationCenter defaultCenter]
      addObserver: self
      selector: @selector(myMovieFinishedCallback:)
      name: MPMoviePlayerPlaybackDidFinishNotification
-     object: player.moviePlayer];    
+     object: player.moviePlayer];
+    
+    if (isNewUser) {
+        [self.presentedViewController presentMoviePlayerViewControllerAnimated:player];
+        
+        // Track first time video played in Mixpanel
+        MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
+        [mixpanel setSendDeviceModel:YES];
+        [mixpanel track:@"First time video played"];
+
+    }
+
+    else {
+        // Makes the moviePlayer a subview of whatever view it is called from within
+        [self.presentedViewController presentMoviePlayerViewControllerAnimated:player];
+    
+        // Track video replayed in Mixpanel
+        MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
+        [mixpanel setSendDeviceModel:YES];
+        [mixpanel track:@"Video replayed"];
+    }
+    
+ 
     
 }
 
 
 -(void) myMovieFinishedCallback: (NSNotification*) aNotification
 {
-    [player dismissMoviePlayerViewControllerAnimated];
+//    [player dismissMoviePlayerViewControllerAnimated];
 
     videoFinishedPlaying = YES;
     
@@ -205,7 +224,7 @@
     
     // This line ISNT WORKING! Ain't nobody got time for that
     // It says I'm trying to do this before viewDidDisappear
-    [self.presentedViewController presentModalViewController:settingsViewController animated:YES];
+//    [self.presentedViewController presentModalViewController:settingsViewController animated:YES];
     
     //[settingsViewController.view becomeFirstResponder];
     [self raiseFailurePopupWithTitle:@"Welcome to Quotify.it!" andMessage:@"Enter your name & email address to get started"];
@@ -290,6 +309,12 @@
 /////// Display error if location cannot be retrieved ///////
 - (void)locationError:(NSError *)error {
 	locLabel.text = @"Could Not Determine Location";//[error description];
+    
+    // Track location error received in Mixpanel
+    MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
+    [mixpanel setSendDeviceModel:YES];
+    [mixpanel track:@"Location error received"];
+
 }
 
 //////////////////////////////
@@ -300,6 +325,13 @@
 
 /////// Called when the image box is pressed ///////
 - (IBAction)imageBoxPressed:(id)sender {
+    
+    // Track image button pressed in Mixpanel
+    MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
+    [mixpanel setSendDeviceModel:YES];
+    [mixpanel track:@"Image button pressed"];
+
+    
     // Check if there is currently an image selected
     if (imageBox.image==nil) {
         // If the device has a camera
@@ -356,6 +388,11 @@
 /////// Triggered once the user has chosen a picture ///////
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
+    // Track image chosen in Mixpanel
+    MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
+    [mixpanel setSendDeviceModel:YES];
+    [mixpanel track:@"Image chosen"];
+
     
     //[[picker parentViewController] dismissModalViewControllerAnimated:YES];
     [picker dismissModalViewControllerAnimated:YES];
@@ -421,6 +458,12 @@
 
 - (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker{
     //    [peoplePicker dismissModalViewControllerAnimated:YES];
+    
+    // Track picker exited by cancel in Mixpanel
+    MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
+    [mixpanel setSendDeviceModel:YES];
+    [mixpanel track:@"People picker exited by cancel"];
+
 }
 
 
@@ -430,6 +473,11 @@
 // Return YES if you want the person to be displayed.
 // Return NO  to do nothing (the delegate is responsible for dismissing the peoplePicker).
 - (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person{
+    
+    // Track picker exited by selection in Mixpanel
+    MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
+    [mixpanel setSendDeviceModel:YES];
+    [mixpanel track:@"People picker exited by person selection"];
     
     //If the record has only one email or no emails and one phone number no need to show details
     int numOfEmails = ABMultiValueGetCount(ABRecordCopyValue(person, kABPersonEmailProperty));
@@ -508,6 +556,11 @@
 //called when then "+" button is pressed to create new contact
 -(IBAction)addPerson:(id)sender{
 
+    // Track add person button pressed in Mixpanel
+    MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
+    [mixpanel setSendDeviceModel:YES];
+    [mixpanel track:@"Add person button pressed"];
+    
     NSLog(@"sender: %@", NSStringFromClass([sender class]));
     
     //This is the old implementation - bring up a "new contact" address book form.
@@ -721,6 +774,12 @@
     }
     
     else {
+        
+        // Track user attempts to send imcomplete quote in Mixpanel
+        MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
+        [mixpanel setSendDeviceModel:YES];
+        [mixpanel track:@"User attempts to send incomplete quote"];
+        
         //Popup saying to fill in the fields
         [self raiseFailurePopupWithTitle:@"Oops!" andMessage:@"We need at least a quote and a speaker for it to be awesome..."];
     }
@@ -729,7 +788,18 @@
 
 - (void) quoteTextSent:(BOOL)success {
     if (success){
+        
+        // Track quote send success in Mixpanel
+        MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
+        [mixpanel setSendDeviceModel:YES];
+        [mixpanel track:@"Quote send success"];
+        
         if(currentQuote.image != nil){
+            // Track image send attempt in Mixpanel
+            MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
+            [mixpanel setSendDeviceModel:YES];
+            [mixpanel track:@"Image send attempt"];
+            
             [myComm addImage:imageBox.image toQuoteWithID:currentQuote.postID];
         }
         else{
@@ -739,6 +809,11 @@
         
     }
     else{
+        // Track quote send failure in Mixpanel
+        MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
+        [mixpanel setSendDeviceModel:YES];
+        [mixpanel track:@"Quote send failure"];
+        
         [self raiseFailurePopupWithTitle:@"Quotification Failed:(" andMessage:@"Your quote could not be sent at this time and has been saved. Check your connection and try again later..."];
         [quotifyingActivityIndicator stopAnimating];
         
@@ -749,9 +824,19 @@
     [quotifyingActivityIndicator stopAnimating];
     if (success) {
         [self showSuccessView];
+        
+        // Track image send success in Mixpanel
+        MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
+        [mixpanel setSendDeviceModel:YES];
+        [mixpanel track:@"Image send success"];
     }
     else{
         [self raiseFailurePopupWithTitle:@"Quotification Failed!" andMessage:@"Your quote was sent successfully but the picture was not included."];
+        
+        // Track image send failure in Mixpanel
+        MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
+        [mixpanel setSendDeviceModel:YES];
+        [mixpanel track:@"Image send failure"];
     }
 }
 
@@ -771,6 +856,11 @@
 - (IBAction)settingsPressed:(id)sender {
     //quotifierTF.text = [currentQuote.quotifier objectForKey:@"email"];
     [self presentModalViewController:self.settingsViewController animated:YES];
+    
+    // Track user views settings view in Mixpanel
+    MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
+    [mixpanel setSendDeviceModel:YES];
+    [mixpanel track:@"User views settings view"];
 }
 
 int countSwipe = 0;
@@ -794,19 +884,19 @@ int countSwipe = 0;
 }
 
 - (IBAction)showHistory:(id)sender {
+    
+    // Track user views history in Mixpanel
+    MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
+    [mixpanel setSendDeviceModel:YES];
+    [mixpanel track:@"User views history"];
+    
     HistoryViewController2 *histVC = [[HistoryViewController2 alloc] init];
     histVC.quotifierID = [currentQuote.quotifier objectForKey:@"email"];
     [self presentModalViewController:histVC animated:YES];
 }
 
 - (IBAction)playVideoPressed:(id)sender {
-    //[self dismissModalViewControllerAnimated:YES];
-    [self showIntroMovie];
-    //[self.presentedViewController becomeFirstResponder];
-    
-    //[self.view sendSubviewToBack:settingsViewController.view];
-    //[self.view bringSubviewToFront:player.view];
-    
+    [self showIntroMovie];    
 }
 
 //Runs when the done button on the settings view is touched.
@@ -820,10 +910,22 @@ int countSwipe = 0;
         [prefs setObject:currentQuote.quotifier forKey:@"quotifier"];
         [prefs synchronize];
         [self dismissModalViewControllerAnimated:YES];
-    }else{
-        [self raiseFailurePopupWithTitle:@"Oops!" andMessage:@"Quotify.it needs a name and email address to function. No Spam - we promise."];
+        
+        // Track user passes name and email validation on settings page in Mixpanel
+        MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
+        [mixpanel setSendDeviceModel:YES];
+        [mixpanel track:@"User passes settings page validation"];
+        
     }
-}
+    
+    else {
+        [self raiseFailurePopupWithTitle:@"Oops!" andMessage:@"Quotify.it needs a name and email address to function. No Spam - we promise."];
+        
+        // Track user fails name and email validation on settings page in Mixpanel
+        MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
+        [mixpanel setSendDeviceModel:YES];
+        [mixpanel track:@"User fails settings page validation"];    }
+    }
 
 - (void)setupNewQuote{
     //currentQuote = [[Quote alloc] init];
@@ -858,6 +960,11 @@ int countSwipe = 0;
 
 -(IBAction)showEmailPicker:(id)sender
 {
+    // Track user pressed feedback email button in Mixpanel
+    MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
+    [mixpanel setSendDeviceModel:YES];
+    [mixpanel track:@"User presses feedback email button"];
+    
 	// Check that the device can use the MFMailComposeVC, if not then launch the Mail application
 	
 	Class mailClass = (NSClassFromString(@"MFMailComposeViewController"));
@@ -952,6 +1059,12 @@ int countSwipe = 0;
 
 /////// These are all of the default, required Facebook Connect methods ///////
 - (IBAction)fbButtonClicked:(id)sender {
+    
+    // Track user logs in with Facebook in Mixpanel
+    MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
+    [mixpanel setSendDeviceModel:YES];
+    [mixpanel track:@"User logs in with Facebook"];
+    
     if (fbButton.isLoggedIn) {
         [self fbLogout];
     } else {
