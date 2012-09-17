@@ -750,6 +750,7 @@
 /////// Called when Quotify button is pressed ///////
 - (IBAction)quotifyPressed:(id)sender {
     [locationController.locationManager stopUpdatingLocation];
+    quotifyButton.enabled = NO;
     NSLog(@"Stopped updating location");
     
     // Track quotify pressed in Mixpanel
@@ -783,7 +784,6 @@
         //Popup saying to fill in the fields
         [self raiseFailurePopupWithTitle:@"Oops!" andMessage:@"We need at least a quote and a speaker for it to be awesome..."];
     }
-    
 }
 
 - (void) quoteTextSent:(BOOL)success {
@@ -818,6 +818,8 @@
         [quotifyingActivityIndicator stopAnimating];
         
     }
+    
+    quotifyButton.enabled = YES;
 }
 
 - (void) quoteImageSent:(BOOL)success {
