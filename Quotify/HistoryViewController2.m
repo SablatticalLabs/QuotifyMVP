@@ -212,7 +212,7 @@
             
         // Put the quote text in top half of cell
         cell.textLabel.text = quoteString;
-        cell.textLabel.font = [UIFont systemFontOfSize:14];
+        cell.textLabel.font = [UIFont systemFontOfSize:16];
         
         // Put the date in lower half of cell
         cell.detailTextLabel.text = [speakerName stringByAppendingFormat:@" on %@", [df stringFromDate:date]];
@@ -226,13 +226,15 @@
         cell.userInteractionEnabled = FALSE;
         
         // Write the date in top half of cell
-        cell.textLabel.text = [df stringFromDate:date];
-        cell.textLabel.font = [UIFont systemFontOfSize:14];
+        [df setDateFormat:@"M/d/yy h:mm a"];
+        
+        cell.textLabel.text = [speakerName stringByAppendingFormat:@" on %@", [df stringFromDate:date]];
+        cell.textLabel.font = [UIFont systemFontOfSize:16];
         cell.textLabel.textColor = [UIColor lightGrayColor];
         
         // Print time in lower half of cell
-        [df setDateFormat:@"h:mm a"];
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@",[df stringFromDate:date], [df stringFromDate:date]];
+//        [df setDateFormat:@"h:mm a"];
+//        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@",[df stringFromDate:date], [df stringFromDate:date]];
         
         cell.accessoryType = UITableViewCellAccessoryNone;
 
