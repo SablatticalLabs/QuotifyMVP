@@ -254,9 +254,9 @@
 {
     if([[tableView cellForRowAtIndexPath:indexPath].reuseIdentifier isEqualToString:@"viewable"]){
         // Display the selected quote in a Web View
-        NSString* quoteID = [[self.viewableQuotes objectAtIndex:(indexPath.row - [self.deletableQuotes count])] objectForKey:@"id"];
+        NSString* personalQuoteID = [[self.viewableQuotes objectAtIndex:(indexPath.row - [self.deletableQuotes count])] objectForKey:@"personalized_quote_id"];
         QuoteWebViewController *wvc = [[QuoteWebViewController alloc] init];
-        wvc.quoteURL = [NSString stringWithFormat:@"http://www.quotify.it/%@/",quoteID];
+        wvc.quoteURL = [NSString stringWithFormat:@"http://www.quotify.it/%@/",personalQuoteID];
     
         [self presentModalViewController:wvc animated:YES];
     }
