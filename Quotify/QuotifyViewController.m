@@ -915,6 +915,7 @@ int countSwipe = 0;
         
         // Track user passes name and email validation on settings page in Mixpanel
         MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
+        [mixpanel identifyUser:quotifierEmail.text];
         [mixpanel setSendDeviceModel:YES];
         [mixpanel track:@"User passes settings page validation"];
         

@@ -37,7 +37,7 @@ NSString * const sendImageToURL = @"http://quotify.it/quotes/<ID>/quote_images.j
 	[request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
 	[request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
 
-	
+    
 	// Make asynchronous request
 	/*NSURLConnection *urlConnection =*/ [NSURLConnection connectionWithRequest:request delegate:self];
 }

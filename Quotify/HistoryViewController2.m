@@ -86,8 +86,9 @@
 
     //Order arrays appear in sectionedQuotesArray is the order in which they'll be displayed!!!
     [self.sectionedQuotesArray addObject:self.deletableQuotes];
-    [self.sectionedQuotesArray addObject:self.viewableQuotes];
     [self.sectionedQuotesArray addObject:self.lockedQuotes];
+    [self.sectionedQuotesArray addObject:self.viewableQuotes];
+    
     
     [self.quoteHistTableView reloadData];
     [self.loadingIndicator stopAnimating];
@@ -146,16 +147,13 @@
     else if(indexPath.row < length0 + length1){
         quoteDict = [[self.sectionedQuotesArray objectAtIndex:1] objectAtIndex:indexPath.row - length0];
         section = 1;
-        ident = @"viewable";
+        ident = @"locked";
     }
     else{
         quoteDict = [[self.sectionedQuotesArray objectAtIndex:2] objectAtIndex:indexPath.row - (length0 + length1)];
         section = 2;
-        ident = @"locked";
+        ident = @"viewable";
     }
-    
-    // Need 3 types of cell identifiers
-    //static NSString *CellIdentifier = @"Cell";
     
     // Memory management - reuse cells when possible to avoid holding large arrays in memory
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ident];
@@ -269,7 +267,7 @@
 {
     if([[tableView cellForRowAtIndexPath:indexPath].reuseIdentifier isEqualToString:@"viewable"]){
         // Display the selected quote in a Web View
-        NSString* personalQuoteID = [[self.viewableQuotes objectAtIndex:(indexPath.row - [self.deletableQuotes count])] objectForKey:@"personalized_quote_id"];
+        NSString* personalQuoteID = [[self.viewableQuotes objectAtIndex:(indexPath.row - [self.deletableQuotes count] - [self.lockedQuotes count])] objectForKey:@"personalized_quote_id"];
         QuoteWebViewController *wvc = [[QuoteWebViewController alloc] init];
         wvc.quoteURL = [NSString stringWithFormat:@"http://www.quotify.it/%@/",personalQuoteID];
     

@@ -34,10 +34,20 @@
     // If not set, it defaults to 30 seconds
     [mixpanel setUploadInterval:5];
     
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString* user_email;
+    if(    ![defaults objectForKey:@"quotifier"]
+       && [[[defaults objectForKey:@"quotifier"] objectForKey:@"email"] length] == 0
+       && [[[defaults objectForKey:@"quotifier"] objectForKey:@"name"] length] == 0)
+    {
+        user_email = @"NEW_USER";
+    }
+    else{
+        user_email = [defaults objectForKey:@"quotifier"];
+    }
+   
     // Identify the user by their email address
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    [mixpanel identifyUser:[[defaults objectForKey:@"quotifier"] objectForKey:@"email"]];
-    
+    [mixpanel identifyUser:user_email];
     
     // Add the view controller's view to the window and display.
     [_window addSubview:_viewController.view];
