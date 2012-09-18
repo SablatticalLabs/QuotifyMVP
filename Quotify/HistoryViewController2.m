@@ -116,7 +116,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     //int rowsInSection = [[self.sectionedQuotesArray objectAtIndex:section] count];
-    return [quotesArray count];//rowsInSection;
+    return [self.deletableQuotes count] + [self.lockedQuotes count] + [self.viewableQuotes count];//rowsInSection;
 }
 
 //// Display section headings
@@ -267,9 +267,9 @@
 {
     if([[tableView cellForRowAtIndexPath:indexPath].reuseIdentifier isEqualToString:@"viewable"]){
         // Display the selected quote in a Web View
-        NSString* personalQuoteID = [[self.viewableQuotes objectAtIndex:(indexPath.row - [self.deletableQuotes count] - [self.lockedQuotes count])] objectForKey:@"personalized_quote_id"];
+        NSString* personalizedQuoteID = [[self.viewableQuotes objectAtIndex:(indexPath.row - [self.deletableQuotes count] - [self.lockedQuotes count])] objectForKey:@"personalized_quote_id"];
         QuoteWebViewController *wvc = [[QuoteWebViewController alloc] init];
-        wvc.quoteURL = [NSString stringWithFormat:@"http://www.quotify.it/%@/",personalQuoteID];
+        wvc.quoteURL = [NSString stringWithFormat:@"http://www.quotify.it/%@/",personalizedQuoteID];
     
         [self presentModalViewController:wvc animated:YES];
     }
@@ -296,8 +296,10 @@
          //call comm method to delete quote from server.
         [myComm deleteQuoteWithID:[[self.deletableQuotes objectAtIndex:quoteIndex] objectForKey:@"id"]];
         [self.deletableQuotes removeObjectAtIndex:quoteIndex];//for now, definitely in deletable quotes
-        //NSLog(@"%@",[array count]);
-        //call comm me     [tableView reloadData];
+        
+        
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationTop];
+        [tableView endUpdates];
     }    
 }
 
