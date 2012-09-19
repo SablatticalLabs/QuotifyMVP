@@ -294,7 +294,7 @@
         NSMutableArray * array;//not used right now
         int quoteIndex = [self getQuoteIndexInArray:array forIndexPath:indexPath];
          //call comm method to delete quote from server.
-        [myComm deleteQuoteWithID:[[self.deletableQuotes objectAtIndex:quoteIndex] objectForKey:@"id"]];
+        [myComm deleteQuoteWithID:[[self.deletableQuotes objectAtIndex:quoteIndex] objectForKey:@"personalized_quote_id"]];
         [self.deletableQuotes removeObjectAtIndex:quoteIndex];//for now, definitely in deletable quotes
         
         
