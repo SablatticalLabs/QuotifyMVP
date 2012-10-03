@@ -17,6 +17,14 @@
 		AD28E49015E1B84100BC531C /* NSData+MPBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = AD28E48715E1B84100BC531C /* NSData+MPBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AD28E49115E1B84100BC531C /* MixpanelAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = AD28E48915E1B84100BC531C /* MixpanelAPI.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AD28E49215E1B84100BC531C /* MixpanelEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = AD28E48C15E1B84100BC531C /* MixpanelEvent.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AD2C771D161C032700401A5F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2C771C161C032700401A5F /* Default-568h@2x.png */; };
+		AD2C7725161C03CB00401A5F /* facebook-down.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2C771E161C03CB00401A5F /* facebook-down.png */; };
+		AD2C7726161C03CB00401A5F /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2C771F161C03CB00401A5F /* facebook.png */; };
+		AD2C7727161C03CB00401A5F /* feedback-down.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2C7720161C03CB00401A5F /* feedback-down.png */; };
+		AD2C7728161C03CB00401A5F /* feedback.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2C7721161C03CB00401A5F /* feedback.png */; };
+		AD2C7729161C03CB00401A5F /* quotifyTopbar.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2C7722161C03CB00401A5F /* quotifyTopbar.png */; };
+		AD2C772A161C03CB00401A5F /* video-down.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2C7723161C03CB00401A5F /* video-down.png */; };
+		AD2C772B161C03CB00401A5F /* video.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2C7724161C03CB00401A5F /* video.png */; };
 		AD5EE76B141297820017937D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD5EE76A141297820017937D /* QuartzCore.framework */; };
 		AD7CECF9139A92CC003A0A37 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD7CECF8139A92CC003A0A37 /* CoreLocation.framework */; };
 		AD7CECFC139A934A003A0A37 /* CoreLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7CECFB139A934A003A0A37 /* CoreLocationController.m */; };
@@ -129,6 +137,14 @@
 		AD28E48A15E1B84100BC531C /* MixpanelAPI_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixpanelAPI_Private.h; sourceTree = "<group>"; };
 		AD28E48B15E1B84100BC531C /* MixpanelEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixpanelEvent.h; sourceTree = "<group>"; };
 		AD28E48C15E1B84100BC531C /* MixpanelEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MixpanelEvent.m; sourceTree = "<group>"; };
+		AD2C771C161C032700401A5F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		AD2C771E161C03CB00401A5F /* facebook-down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook-down.png"; sourceTree = "<group>"; };
+		AD2C771F161C03CB00401A5F /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
+		AD2C7720161C03CB00401A5F /* feedback-down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feedback-down.png"; sourceTree = "<group>"; };
+		AD2C7721161C03CB00401A5F /* feedback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = feedback.png; sourceTree = "<group>"; };
+		AD2C7722161C03CB00401A5F /* quotifyTopbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quotifyTopbar.png; sourceTree = "<group>"; };
+		AD2C7723161C03CB00401A5F /* video-down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "video-down.png"; sourceTree = "<group>"; };
+		AD2C7724161C03CB00401A5F /* video.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = video.png; sourceTree = "<group>"; };
 		AD5EE76A141297820017937D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AD7CECF8139A92CC003A0A37 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AD7CECFA139A934A003A0A37 /* CoreLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreLocationController.h; path = ../CoreLocationController.h; sourceTree = "<group>"; };
@@ -318,6 +334,7 @@
 		ADAEF3751361E9A4002F94A1 = {
 			isa = PBXGroup;
 			children = (
+				AD2C771C161C032700401A5F /* Default-568h@2x.png */,
 				ADF1604414DE5632000B5343 /* icon114.png */,
 				ADDCB99414DDAE9100CE9019 /* Default@2x.png */,
 				ADF1604214DE5630000B5343 /* icon57.png */,
@@ -429,6 +446,13 @@
 				ADE4271F14DF2A7E00FE6A5B /* donedown.png */,
 				ADE4272014DF2A7E00FE6A5B /* doneup.png */,
 				AD1F5DBB14E4A0F00005D248 /* emailfield.png */,
+				AD2C771E161C03CB00401A5F /* facebook-down.png */,
+				AD2C771F161C03CB00401A5F /* facebook.png */,
+				AD2C7720161C03CB00401A5F /* feedback-down.png */,
+				AD2C7721161C03CB00401A5F /* feedback.png */,
+				AD2C7722161C03CB00401A5F /* quotifyTopbar.png */,
+				AD2C7723161C03CB00401A5F /* video-down.png */,
+				AD2C7724161C03CB00401A5F /* video.png */,
 				ADDCB98814DDA37B00CE9019 /* icon.png */,
 				DD2C036D158D8347000C9CD8 /* LoginNormal.png */,
 				DD2C036E158D8347000C9CD8 /* LoginNormal@2x.png */,
@@ -561,7 +585,7 @@
 		ADAEF3771361E9A4002F94A1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0440;
+				LastUpgradeCheck = 0450;
 			};
 			buildConfigurationList = ADAEF37A1361E9A4002F94A1 /* Build configuration list for PBXProject "Quotify" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -636,6 +660,14 @@
 				DD2C0388158D91AB000C9CD8 /* kinder_egg.jpg in Resources */,
 				ADB95528158E12950081EF04 /* Q4.mov in Resources */,
 				DD88B5481593DE5300D012E4 /* QuoteWebViewController.xib in Resources */,
+				AD2C771D161C032700401A5F /* Default-568h@2x.png in Resources */,
+				AD2C7725161C03CB00401A5F /* facebook-down.png in Resources */,
+				AD2C7726161C03CB00401A5F /* facebook.png in Resources */,
+				AD2C7727161C03CB00401A5F /* feedback-down.png in Resources */,
+				AD2C7728161C03CB00401A5F /* feedback.png in Resources */,
+				AD2C7729161C03CB00401A5F /* quotifyTopbar.png in Resources */,
+				AD2C772A161C03CB00401A5F /* video-down.png in Resources */,
+				AD2C772B161C03CB00401A5F /* video.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
