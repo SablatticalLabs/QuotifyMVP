@@ -17,7 +17,6 @@
 		AD28E49015E1B84100BC531C /* NSData+MPBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = AD28E48715E1B84100BC531C /* NSData+MPBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AD28E49115E1B84100BC531C /* MixpanelAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = AD28E48915E1B84100BC531C /* MixpanelAPI.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AD28E49215E1B84100BC531C /* MixpanelEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = AD28E48C15E1B84100BC531C /* MixpanelEvent.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		AD2C771D161C032700401A5F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2C771C161C032700401A5F /* Default-568h@2x.png */; };
 		AD2C7725161C03CB00401A5F /* facebook-down.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2C771E161C03CB00401A5F /* facebook-down.png */; };
 		AD2C7726161C03CB00401A5F /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2C771F161C03CB00401A5F /* facebook.png */; };
 		AD2C7727161C03CB00401A5F /* feedback-down.png in Resources */ = {isa = PBXBuildFile; fileRef = AD2C7720161C03CB00401A5F /* feedback-down.png */; };
@@ -660,7 +659,6 @@
 				DD2C0388158D91AB000C9CD8 /* kinder_egg.jpg in Resources */,
 				ADB95528158E12950081EF04 /* Q4.mov in Resources */,
 				DD88B5481593DE5300D012E4 /* QuoteWebViewController.xib in Resources */,
-				AD2C771D161C032700401A5F /* Default-568h@2x.png in Resources */,
 				AD2C7725161C03CB00401A5F /* facebook-down.png in Resources */,
 				AD2C7726161C03CB00401A5F /* facebook.png in Resources */,
 				AD2C7727161C03CB00401A5F /* feedback-down.png in Resources */,
