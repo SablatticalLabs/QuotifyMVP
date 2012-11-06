@@ -109,51 +109,74 @@
 {
     //int numberOfSections = self.sectionedQuotesArray.count;
     // Return the number of sections.
-    return 1;//numberOfSections;
+    return 3;//numberOfSections;
 }
 
 // Set the number of rows in each section
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    //int rowsInSection = [[self.sectionedQuotesArray objectAtIndex:section] count];
-    return [self.deletableQuotes count] + [self.lockedQuotes count] + [self.viewableQuotes count];//rowsInSection;
+    int rowsInSection = 0;
+    if([self.sectionedQuotesArray count]>0){
+        rowsInSection = [[self.sectionedQuotesArray objectAtIndex:section] count];
+    }
+    return /*[self.deletableQuotes count] + [self.lockedQuotes count] + [self.viewableQuotes count];*/ rowsInSection;
 }
 
 //// Display section headings
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-//    if(section == 0)
-//        return @"Viewable Quotes";
-//    else
-//        return @"Locked Quotes";
-//}
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if(section == 0)
+        return @"Deletable Quotes";
+    else if (section == 1)
+        return @"Locked Quotes";
+    else
+        return @"Viewable Quotes";
+}
 
 
 
 // This is where we configure each cell
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{    
+{
     NSDictionary * quoteDict;
     static NSString* ident;
     
-    int length0 = [[self.sectionedQuotesArray objectAtIndex:0] count];
-    int length1 = [[self.sectionedQuotesArray objectAtIndex:1] count];
-    int section;
+    //Non- sectioned implementation
+//    
+//    int length0 = [[self.sectionedQuotesArray objectAtIndex:0] count];
+//    int length1 = [[self.sectionedQuotesArray objectAtIndex:1] count];
+//    //int length2 = [[self.sectionedQuotesArray objectAtIndex:2] count];
+//    int section;
+//    
+//    if(indexPath.row < length0){
+//        quoteDict = [[self.sectionedQuotesArray objectAtIndex:0] objectAtIndex:indexPath.row];
+//        section = 0;
+//        ident = @"deletable";
+//    }
+//    else if(indexPath.row < length0 + length1){
+//        quoteDict = [[self.sectionedQuotesArray objectAtIndex:1] objectAtIndex:indexPath.row - length0];
+//        section = 1;
+//        ident = @"locked";
+//    }
+//    else{
+//        quoteDict = [[self.sectionedQuotesArray objectAtIndex:2] objectAtIndex:indexPath.row - (length0 + length1)];
+//        section = 2;
+//        ident = @"viewable";
+//    }
     
-    if(indexPath.row < length0){
-        quoteDict = [[self.sectionedQuotesArray objectAtIndex:0] objectAtIndex:indexPath.row];
-        section = 0;
-        ident = @"deletable";
+   
+    quoteDict = [[self.sectionedQuotesArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    switch (indexPath.section) {
+        case 0:
+            ident = @"deletable";
+            break;
+        case 1:
+            ident = @"locked";
+        default:
+            ident = @"viewable";
+            break;
     }
-    else if(indexPath.row < length0 + length1){
-        quoteDict = [[self.sectionedQuotesArray objectAtIndex:1] objectAtIndex:indexPath.row - length0];
-        section = 1;
-        ident = @"locked";
-    }
-    else{
-        quoteDict = [[self.sectionedQuotesArray objectAtIndex:2] objectAtIndex:indexPath.row - (length0 + length1)];
-        section = 2;
-        ident = @"viewable";
-    }
+    
+    
     
     // Memory management - reuse cells when possible to avoid holding large arrays in memory
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ident];
@@ -265,14 +288,26 @@
 // Action when a row is selected
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSString* personalizedQuoteID = @"";
+    
     if([[tableView cellForRowAtIndexPath:indexPath].reuseIdentifier isEqualToString:@"viewable"]){
-        // Display the selected quote in a Web View
-        NSString* personalizedQuoteID = [[self.viewableQuotes objectAtIndex:(indexPath.row - [self.deletableQuotes count] - [self.lockedQuotes count])] objectForKey:@"personalized_quote_id"];
+        personalizedQuoteID = [[self.viewableQuotes objectAtIndex:indexPath.row] objectForKey:@"personalized_quote_id"];
         QuoteWebViewController *wvc = [[QuoteWebViewController alloc] init];
         wvc.quoteURL = [NSString stringWithFormat:@"http://www.quotify.it/%@/",personalizedQuoteID];
-    
+   
         [self presentModalViewController:wvc animated:YES];
+
     }
+    
+    //non sectioned implementation
+//    if([[tableView cellForRowAtIndexPath:indexPath].reuseIdentifier isEqualToString:@"viewable"]){
+//        // Display the selected quote in a Web View
+//        NSString* personalizedQuoteID = [[self.viewableQuotes objectAtIndex:(indexPath.row - [self.deletableQuotes count] - [self.lockedQuotes count])] objectForKey:@"personalized_quote_id"];
+//        QuoteWebViewController *wvc = [[QuoteWebViewController alloc] init];
+//        wvc.quoteURL = [NSString stringWithFormat:@"http://www.quotify.it/%@/",personalizedQuoteID];
+//    
+//        [self presentModalViewController:wvc animated:YES];
+//    }
 
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
