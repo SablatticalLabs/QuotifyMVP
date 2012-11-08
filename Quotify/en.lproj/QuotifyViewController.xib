@@ -337,6 +337,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{20, 401}, {280, 46}}</string>
 								<reference key="NSSuperview" ref="89788679"/>
+								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
 									<string key="IBUIAccessibilityLabel"/>
@@ -773,6 +774,7 @@
 							<int key="NSvFlags">292</int>
 							<string key="NSFrame">{{97, 411}, {126, 29}}</string>
 							<reference key="NSSuperview" ref="795017958"/>
+							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="IBUIOpaque">NO</bool>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -969,6 +971,7 @@
 							<int key="NSvFlags">292</int>
 							<string key="NSFrame">{{206, 216}, {94, 27}}</string>
 							<reference key="NSSuperview" ref="983552417"/>
+							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:606</string>
 							<bool key="IBUIOpaque">NO</bool>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
