@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		AD1F5DBE14E4A0F00005D248 /* emailfield.png in Resources */ = {isa = PBXBuildFile; fileRef = AD1F5DBB14E4A0F00005D248 /* emailfield.png */; };
-		AD1F5DBF14E4A0F00005D248 /* quotationmarkleft.png in Resources */ = {isa = PBXBuildFile; fileRef = AD1F5DBC14E4A0F00005D248 /* quotationmarkleft.png */; };
-		AD1F5DC014E4A0F00005D248 /* quotationmarkright.png in Resources */ = {isa = PBXBuildFile; fileRef = AD1F5DBD14E4A0F00005D248 /* quotationmarkright.png */; };
 		AD1F5DC314E6EDAE0005D248 /* blankbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = AD1F5DC214E6EDAD0005D248 /* blankbackground.png */; };
 		AD28E48D15E1B84100BC531C /* MPCJSONDataSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = AD28E48015E1B84100BC531C /* MPCJSONDataSerializer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AD28E48E15E1B84100BC531C /* MPCJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = AD28E48215E1B84100BC531C /* MPCJSONSerializer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -141,8 +139,6 @@
 
 /* Begin PBXFileReference section */
 		AD1F5DBB14E4A0F00005D248 /* emailfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emailfield.png; sourceTree = "<group>"; };
-		AD1F5DBC14E4A0F00005D248 /* quotationmarkleft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quotationmarkleft.png; sourceTree = "<group>"; };
-		AD1F5DBD14E4A0F00005D248 /* quotationmarkright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quotationmarkright.png; sourceTree = "<group>"; };
 		AD1F5DC214E6EDAD0005D248 /* blankbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blankbackground.png; sourceTree = "<group>"; };
 		AD28E47F15E1B84100BC531C /* MPCJSONDataSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCJSONDataSerializer.h; sourceTree = "<group>"; };
 		AD28E48015E1B84100BC531C /* MPCJSONDataSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCJSONDataSerializer.m; sourceTree = "<group>"; };
@@ -157,7 +153,6 @@
 		AD28E48A15E1B84100BC531C /* MixpanelAPI_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixpanelAPI_Private.h; sourceTree = "<group>"; };
 		AD28E48B15E1B84100BC531C /* MixpanelEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixpanelEvent.h; sourceTree = "<group>"; };
 		AD28E48C15E1B84100BC531C /* MixpanelEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MixpanelEvent.m; sourceTree = "<group>"; };
-		AD2C771C161C032700401A5F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		AD2C771E161C03CB00401A5F /* facebook-down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook-down.png"; sourceTree = "<group>"; };
 		AD2C771F161C03CB00401A5F /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
 		AD2C7720161C03CB00401A5F /* feedback-down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feedback-down.png"; sourceTree = "<group>"; };
@@ -375,7 +370,6 @@
 		ADAEF3751361E9A4002F94A1 = {
 			isa = PBXGroup;
 			children = (
-				AD2C771C161C032700401A5F /* Default-568h@2x.png */,
 				AD7B2D8916422C1100510DCA /* Default@2x.png */,
 				ADF1604414DE5632000B5343 /* icon114.png */,
 				ADF1604214DE5630000B5343 /* icon57.png */,
@@ -525,8 +519,6 @@
 				ADBA6E5714E0E17B006AF908 /* photodown.png */,
 				ADBA6E5814E0E17B006AF908 /* photo.png */,
 				AD7B2D8716422C1100510DCA /* photodown@2x.png */,
-				AD1F5DBC14E4A0F00005D248 /* quotationmarkleft.png */,
-				AD1F5DBD14E4A0F00005D248 /* quotationmarkright.png */,
 				ADBA6E5B14E0E185006AF908 /* quotebubble.png */,
 				AD7B2D8816422C1100510DCA /* quotebubble@2x.png */,
 				ADC5A9A114DE597600AEE72E /* quotifybuttondown.png */,
@@ -700,8 +692,6 @@
 				ADBA6E5C14E0E185006AF908 /* quotebubble.png in Resources */,
 				ADBA6E5E14E0E197006AF908 /* settingsup-1.png in Resources */,
 				AD1F5DBE14E4A0F00005D248 /* emailfield.png in Resources */,
-				AD1F5DBF14E4A0F00005D248 /* quotationmarkleft.png in Resources */,
-				AD1F5DC014E4A0F00005D248 /* quotationmarkright.png in Resources */,
 				AD1F5DC314E6EDAE0005D248 /* blankbackground.png in Resources */,
 				DD92C2761583F19700460CF8 /* LoginWithFacebookNormal_1.png in Resources */,
 				DD2C036C158D7A73000C9CD8 /* HistoryViewController2.xib in Resources */,
