@@ -116,11 +116,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Quotify/HistoryViewController2.m"
-         timestampString = "375814842.002098"
+         timestampString = "375759912.122347"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "233"
-         endingLineNumber = "233"
+         startingLineNumber = "226"
+         endingLineNumber = "226"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
