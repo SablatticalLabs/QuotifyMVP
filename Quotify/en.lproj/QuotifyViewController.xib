@@ -123,7 +123,7 @@
 									<object class="IBUINavigationItem" id="199291735">
 										<reference key="IBUINavigationBar" ref="886184659"/>
 										<string key="IBUITitle"/>
-										<object class="IBUIBarButtonItem" key="IBUILeftBarButtonItem" id="552951877">
+										<object class="IBUIBarButtonItem" key="IBUILeftBarButtonItem" id="196110479">
 											<string key="IBUITitle">Settings</string>
 											<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 											<int key="IBUIStyle">1</int>
@@ -651,7 +651,7 @@
 						<object class="IBUIButton" id="330462889">
 							<reference key="NSNextResponder" ref="795017958"/>
 							<int key="NSvFlags">292</int>
-							<string key="NSFrame">{{80, 218}, {160, 29}}</string>
+							<string key="NSFrame">{{56, 211}, {209, 38}}</string>
 							<reference key="NSSuperview" ref="795017958"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="179563295"/>
@@ -1494,7 +1494,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">settingsPressed:</string>
-						<reference key="source" ref="552951877"/>
+						<reference key="source" ref="196110479"/>
 						<reference key="destination" ref="372490531"/>
 					</object>
 					<int key="connectionID">287</int>
@@ -1615,7 +1615,6 @@
 							<reference ref="377435320"/>
 							<reference ref="607047037"/>
 							<reference ref="501764605"/>
-							<reference ref="330462889"/>
 							<reference ref="5592757"/>
 							<reference ref="958527378"/>
 							<reference ref="198028747"/>
@@ -1624,6 +1623,7 @@
 							<reference ref="405498882"/>
 							<reference ref="809406309"/>
 							<reference ref="111824470"/>
+							<reference ref="330462889"/>
 						</object>
 						<reference key="parent" ref="19867892"/>
 						<string key="objectName">SettingsView</string>
@@ -1768,7 +1768,7 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="174510897"/>
-							<reference ref="552951877"/>
+							<reference ref="196110479"/>
 						</object>
 						<reference key="parent" ref="886184659"/>
 					</object>
@@ -1893,7 +1893,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">286</int>
-						<reference key="object" ref="552951877"/>
+						<reference key="object" ref="196110479"/>
 						<reference key="parent" ref="199291735"/>
 					</object>
 				</object>
