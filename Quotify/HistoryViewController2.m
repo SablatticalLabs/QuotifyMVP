@@ -132,6 +132,13 @@
         return @"Viewable Quotes";
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
+    if(section == 0)
+        return @"Swipe to delete";
+    else
+        return nil;
+}
+
 
 
 // This is where we configure each cell
