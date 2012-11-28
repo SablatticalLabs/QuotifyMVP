@@ -171,6 +171,7 @@
             break;
         case 1:
             ident = @"locked";
+            break;
         default:
             ident = @"viewable";
             break;
@@ -239,7 +240,28 @@
 
         [cell setEditing:YES];
     }
-    else if([ident isEqualToString:@"viewable"]){
+    
+    else if ([ident isEqualToString:@"locked"]) {//@"locked"
+        
+        // Disable selection of locked quotes
+        cell.userInteractionEnabled = FALSE;
+        
+        // Write the date in top half of cell
+        [df setDateFormat:@"M/d/yy h:mm a"];
+        
+        cell.textLabel.text = [speakerName stringByAppendingFormat:@" on %@", [df stringFromDate:date]];
+        cell.textLabel.font = [UIFont systemFontOfSize:16];
+        cell.textLabel.textColor = [UIColor lightGrayColor];
+        
+        // Print time in lower half of cell
+        //        [df setDateFormat:@"h:mm a"];
+        //        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@",[df stringFromDate:date], [df stringFromDate:date]];
+        
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        
+    }
+    
+    else {//([ident isEqualToString:@"viewable"]){
         // Set display for unlocked quotes
         [df setDateFormat:@"M/d/yy"];
             
@@ -254,25 +276,7 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
     }
-    else{//@"locked"
-        
-        // Disable selection of locked quotes
-        cell.userInteractionEnabled = FALSE;
-        
-        // Write the date in top half of cell
-        [df setDateFormat:@"M/d/yy h:mm a"];
-        
-        cell.textLabel.text = [speakerName stringByAppendingFormat:@" on %@", [df stringFromDate:date]];
-        cell.textLabel.font = [UIFont systemFontOfSize:16];
-        cell.textLabel.textColor = [UIColor lightGrayColor];
-        
-        // Print time in lower half of cell
-//        [df setDateFormat:@"h:mm a"];
-//        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@",[df stringFromDate:date], [df stringFromDate:date]];
-        
-        cell.accessoryType = UITableViewCellAccessoryNone;
 
-    }
 
     
     // Set the cell to highlight blue when pressed    
