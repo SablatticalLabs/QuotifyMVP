@@ -13,6 +13,7 @@
 #import "SuccessViewController.h"
 #import "CoreLocationController.h"
 #import "HistoryViewController2.h"
+#import "QuoteWebViewController.h"
 
 #import "FBConnect.h"
 #import "FBLoginButton.h"
@@ -126,7 +127,7 @@
 
 
 - (void)registerForKeyboardNotifications;
-- (void)showSuccessView;
+- (void)showSuccessView:(BOOL)showWebView;
 - (void)peopleAdded:(Quote*)quote;
 - (void)raiseFailurePopupWithTitle:(NSString *) alertTitle andMessage:(NSString *) alertMessage;
 - (void)setupNewQuote;

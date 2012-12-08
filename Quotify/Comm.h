@@ -13,8 +13,8 @@
 
 @protocol CommDelegate
 
-- (void)quoteTextSent:(BOOL)success;
-- (void)quoteImageSent:(BOOL)success;
+- (void)quoteTextSent:(BOOL)success showSuccessWebView:(BOOL)showSuccessWebView;
+- (void)quoteImageSent:(BOOL)success showSuccessWebView:(BOOL)showSuccessWebView;
 
 @end
 

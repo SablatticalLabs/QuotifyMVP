@@ -124,17 +124,18 @@
 
 //// Display section headings
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if(section == 0 && [tableView numberOfRowsInSection:0]!=0 )
-            return @"Deletable Quotes";
+    if(section == 0 && self.deletableQuotes.count>0 )
+        return @"Deletable Quotes";
             
-    else if (section == 1)
+    else if (section == 1 && self.lockedQuotes.count>0)
         return @"Locked Quotes";
-    else
+    else if(section == 2 && self.viewableQuotes.count>0)
         return @"Viewable Quotes";
+    else return nil;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-    if(section == 0)
+    if(section == 0 && self.deletableQuotes.count>0)
         return @"Swipe to delete";
     else
         return nil;
@@ -242,7 +243,8 @@
         cell.detailTextLabel.text = [speakerName stringByAppendingFormat:@" on %@", [df stringFromDate:date]];
         cell.detailTextLabel.font = [UIFont italicSystemFontOfSize:14];
         
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
         [cell setEditing:YES];
     }

@@ -44,7 +44,7 @@ NSString * const sendImageToURL = @"http://quotify.it/quotes/<ID>/quote_images.j
 
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error{
     
-    [delegate quoteTextSent:NO];
+    [delegate quoteTextSent:NO showSuccessWebView:NO];
 
 }
 
@@ -69,18 +69,20 @@ NSString * const sendImageToURL = @"http://quotify.it/quotes/<ID>/quote_images.j
     NSLog(@"urlData: %@",dataAsString);
     NSDictionary* result = [dataAsString JSONValue];
     NSLog(@"result Dict: %@", result);
+    BOOL showSuccessWebView = NO;
     
-    //NSNumber *n_Success = [result objectForKey:@"id"];
+
     if ([result objectForKey:@"created_at"] && [result objectForKey:@"quote_text"])//quoteText Sent... 
     {
         self.quoteToSend.UrlWhereQuoteIsPosted = nil;//not using this for now
         self.quoteToSend.postID = [result objectForKey:@"id"];
+        showSuccessWebView   = [[result objectForKey:@"show_web_success"] boolValue];
         self.quoteTextSentSuccessfully = YES;
-        [[self delegate] quoteTextSent:self.quoteTextSentSuccessfully];
+        [[self delegate] quoteTextSent:self.quoteTextSentSuccessfully showSuccessWebView:showSuccessWebView];
     }
     else if([result objectForKey:@"created_at"] && [result objectForKey:@"file_name"])//quoteImage Sent...
     {
-        [[self delegate] quoteImageSent:1];
+        [[self delegate] quoteImageSent:1 showSuccessWebView:showSuccessWebView];
     }
     else if([result objectForKey:@"quote_history"])
     {
@@ -88,7 +90,7 @@ NSString * const sendImageToURL = @"http://quotify.it/quotes/<ID>/quote_images.j
     }
     else //Neither was sent
     {
-        [[self delegate] quoteTextSent:0];
+        [[self delegate] quoteTextSent:0 showSuccessWebView:NO];
     }
 
 }
@@ -141,7 +143,6 @@ NSString * const sendImageToURL = @"http://quotify.it/quotes/<ID>/quote_images.j
     //send the request
 	[NSURLConnection connectionWithRequest:postRequest delegate:self];
 }
-
 
 -(void)requestQuoteListforQuotifier:(NSString*)quotifierID AndSendResultTo:(UIViewController*)hvc{
     historyViewController = hvc;

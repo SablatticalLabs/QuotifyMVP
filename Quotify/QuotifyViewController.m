@@ -787,7 +787,7 @@
     }
 }
 
-- (void) quoteTextSent:(BOOL)success {
+- (void) quoteTextSent:(BOOL)success showSuccessWebView:(BOOL)showSuccessWebView {
     if (success){
         
         // Track quote send success in Mixpanel
@@ -805,7 +805,7 @@
         }
         else{
             [quotifyingActivityIndicator stopAnimating];
-            [self showSuccessView];
+            [self showSuccessView:showSuccessWebView];
         }
         
     }
@@ -823,10 +823,10 @@
     quotifyButton.enabled = YES;
 }
 
-- (void) quoteImageSent:(BOOL)success {
+- (void) quoteImageSent:(BOOL)success showSuccessWebView:(BOOL)showSuccessWebView {
     [quotifyingActivityIndicator stopAnimating];
     if (success) {
-        [self showSuccessView];
+        [self showSuccessView:showSuccessWebView];
         
         // Track image send success in Mixpanel
         MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
@@ -843,16 +843,24 @@
     }
 }
 
-- (void) showSuccessView{//and setup new quote...
-    if (!self.successViewController) {
-        self.successViewController = [[SuccessViewController alloc] initWithQuote:currentQuote];
-    }
-    else{
-        [self.successViewController displayQuote:currentQuote];
-    }
+- (void) showSuccessView:(BOOL)showWebView {//and setup new quote...
+    if(!showWebView){
+        if (!self.successViewController) {
+            self.successViewController = [[SuccessViewController alloc] initWithQuote:currentQuote];
+        }
+        else{
+            [self.successViewController displayQuote:currentQuote];
+        }
 
-    successViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;    
-    [self presentModalViewController:self.successViewController animated:YES];
+        successViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        [self presentModalViewController:self.successViewController animated:YES];
+    }
+    else{//show web success view
+        QuoteWebViewController *successWebView = [[QuoteWebViewController alloc] init];
+        successWebView.quoteURL = [NSString stringWithFormat:@"http://www.quotify.it/%@/", currentQuote.postID];
+        [self presentModalViewController:successWebView animated:YES];
+        
+    }
     [self setupNewQuote];
 }
 
