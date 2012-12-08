@@ -124,8 +124,9 @@
 
 //// Display section headings
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if(section == 0)
-        return @"Deletable Quotes";
+    if(section == 0 && [tableView numberOfRowsInSection:0]!=0 )
+            return @"Deletable Quotes";
+            
     else if (section == 1)
         return @"Locked Quotes";
     else
