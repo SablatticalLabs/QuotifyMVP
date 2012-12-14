@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD0A803E167B7CEF00054B8D /* successnophoto@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AD0A803D167B7CEF00054B8D /* successnophoto@2x.png */; };
 		AD1F5DBE14E4A0F00005D248 /* emailfield.png in Resources */ = {isa = PBXBuildFile; fileRef = AD1F5DBB14E4A0F00005D248 /* emailfield.png */; };
 		AD1F5DC314E6EDAE0005D248 /* blankbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = AD1F5DC214E6EDAD0005D248 /* blankbackground.png */; };
 		AD28E48D15E1B84100BC531C /* MPCJSONDataSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = AD28E48015E1B84100BC531C /* MPCJSONDataSerializer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -144,6 +145,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AD0A803D167B7CEF00054B8D /* successnophoto@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "successnophoto@2x.png"; sourceTree = "<group>"; };
 		AD1F5DBB14E4A0F00005D248 /* emailfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emailfield.png; sourceTree = "<group>"; };
 		AD1F5DC214E6EDAD0005D248 /* blankbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blankbackground.png; sourceTree = "<group>"; };
 		AD28E47F15E1B84100BC531C /* MPCJSONDataSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCJSONDataSerializer.h; sourceTree = "<group>"; };
@@ -477,6 +479,7 @@
 		ADAEF3C01361EA7E002F94A1 /* View Files */ = {
 			isa = PBXGroup;
 			children = (
+				AD0A803D167B7CEF00054B8D /* successnophoto@2x.png */,
 				DD2C0387158D91AB000C9CD8 /* kinder_egg.jpg */,
 				DD2C0379158D8347000C9CD8 /* runaround_image.jpg */,
 				ADB95527158E12950081EF04 /* Q4.mov */,
@@ -764,6 +767,7 @@
 				ADC8D1B71673A8580097E7E7 /* videodown@2x.png in Resources */,
 				ADC8D1B91673A9D20097E7E7 /* background@2x.png in Resources */,
 				ADC8D1BB1673A9F80097E7E7 /* Default@2x.png in Resources */,
+				AD0A803E167B7CEF00054B8D /* successnophoto@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,6 +17,8 @@
 @interface SuccessViewController : UIViewController {
     
     UIImageView *imageBox;
+    UIImageView *backgroundNoImage;
+    UIImageView *backgroundWithImage;
     UILabel *speaker;
     UILabel *locationLabel;
     UIButton *theNewQuoteButton;
@@ -25,6 +27,8 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *quoteLabel;
 @property (nonatomic, strong) IBOutlet UIImageView *imageBox;
+@property (nonatomic, strong) IBOutlet UIImageView *backgroundNoImage;
+@property (nonatomic, strong) IBOutlet UIImageView *backgroundWithImage;
 @property (nonatomic, strong) IBOutlet UILabel *speaker;
 @property (nonatomic, strong) IBOutlet UILabel *locationLabel;
 @property (nonatomic, strong) IBOutlet UIButton *theNewQuoteButton;

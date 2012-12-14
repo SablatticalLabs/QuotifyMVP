@@ -14,6 +14,8 @@
 
 @synthesize quoteLabel;
 @synthesize imageBox;
+@synthesize backgroundNoImage;
+@synthesize backgroundWithImage;
 @synthesize speaker;
 @synthesize locationLabel;
 @synthesize quote;
@@ -128,13 +130,21 @@
     if(theQuote.image){
         [self.imageBoxFrame setHidden:NO];
         [self.imageBox setHidden:NO];
+        [self.backgroundNoImage setHidden:YES];
+        [self.backgroundWithImage setHidden:NO];
+        self.speaker.frame = CGRectMake(27, 135, 266, 24);
+        self.quoteLabel.frame = CGRectMake(60, 69, 200, 58);
         self.locationLabel.frame = CGRectMake(20, 308, 280, 74);
     }
     
     else{
         [self.imageBoxFrame setHidden:YES];
         [self.imageBox setHidden:YES];
-        self.locationLabel.frame = CGRectMake(20, 185, 280, 74);
+        [self.backgroundNoImage setHidden:NO];
+        [self.backgroundWithImage setHidden:YES];
+        self.speaker.frame = CGRectMake(27, 215, 266, 24);
+        self.quoteLabel.frame = CGRectMake(60, 125, 200, 58);
+        self.locationLabel.frame = CGRectMake(20, 275, 280, 74);
     }
     
     // Format the grammar of the bottom text depending on if there were witnesses or not
