@@ -35,6 +35,16 @@
 		AD5EE76B141297820017937D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD5EE76A141297820017937D /* QuartzCore.framework */; };
 		AD7CECF9139A92CC003A0A37 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD7CECF8139A92CC003A0A37 /* CoreLocation.framework */; };
 		AD7CECFC139A934A003A0A37 /* CoreLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7CECFB139A934A003A0A37 /* CoreLocationController.m */; };
+		AD7FCD7A16A10BC100396C72 /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7FCD7316A10BC100396C72 /* DataSource.m */; };
+		AD7FCD7B16A10BC100396C72 /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7FCD7316A10BC100396C72 /* DataSource.m */; };
+		AD7FCD7C16A10BC100396C72 /* PagingScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7FCD7516A10BC100396C72 /* PagingScrollViewController.m */; };
+		AD7FCD7D16A10BC100396C72 /* PagingScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7FCD7516A10BC100396C72 /* PagingScrollViewController.m */; };
+		AD7FCD7E16A10BC100396C72 /* PageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7FCD7716A10BC100396C72 /* PageViewController.m */; };
+		AD7FCD7F16A10BC100396C72 /* PageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7FCD7716A10BC100396C72 /* PageViewController.m */; };
+		AD7FCD8716A10E7600396C72 /* PagingScrollViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD7FCD8616A10E7600396C72 /* PagingScrollViewController.xib */; };
+		AD7FCD8816A10E7600396C72 /* PagingScrollViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD7FCD8616A10E7600396C72 /* PagingScrollViewController.xib */; };
+		AD7FCD8A16A10ECF00396C72 /* PageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD7FCD8916A10ECF00396C72 /* PageView.xib */; };
+		AD7FCD8B16A10ECF00396C72 /* PageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD7FCD8916A10ECF00396C72 /* PageView.xib */; };
 		AD9F5A8915F058370024A55F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD9F5A8815F058370024A55F /* MessageUI.framework */; };
 		ADA265101396ACAD00F9155C /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADA2650F1396ACAD00F9155C /* Entitlements.plist */; };
 		ADAEF3851361E9A4002F94A1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADAEF3841361E9A4002F94A1 /* UIKit.framework */; };
@@ -181,6 +191,16 @@
 		AD7CECF8139A92CC003A0A37 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AD7CECFA139A934A003A0A37 /* CoreLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreLocationController.h; path = ../CoreLocationController.h; sourceTree = "<group>"; };
 		AD7CECFB139A934A003A0A37 /* CoreLocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreLocationController.m; path = ../CoreLocationController.m; sourceTree = "<group>"; };
+		AD7FCD7216A10BC100396C72 /* DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSource.h; sourceTree = "<group>"; };
+		AD7FCD7316A10BC100396C72 /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSource.m; sourceTree = "<group>"; };
+		AD7FCD7416A10BC100396C72 /* PagingScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagingScrollViewController.h; sourceTree = "<group>"; };
+		AD7FCD7516A10BC100396C72 /* PagingScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagingScrollViewController.m; sourceTree = "<group>"; };
+		AD7FCD7616A10BC100396C72 /* PageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageViewController.h; sourceTree = "<group>"; };
+		AD7FCD7716A10BC100396C72 /* PageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageViewController.m; sourceTree = "<group>"; };
+		AD7FCD8016A10BCD00396C72 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
+		AD7FCD8116A10BCD00396C72 /* PagingScrollView_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagingScrollView_Prefix.pch; sourceTree = "<group>"; };
+		AD7FCD8616A10E7600396C72 /* PagingScrollViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PagingScrollViewController.xib; sourceTree = "<group>"; };
+		AD7FCD8916A10ECF00396C72 /* PageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PageView.xib; sourceTree = "<group>"; };
 		AD9F5A8815F058370024A55F /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		ADA2650F1396ACAD00F9155C /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		ADAEF3801361E9A4002F94A1 /* Quotify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quotify.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -381,6 +401,37 @@
 			path = NSData_Base64;
 			sourceTree = "<group>";
 		};
+		AD39030416A106E0004949AD /* Paging */ = {
+			isa = PBXGroup;
+			children = (
+				AD7FCD7216A10BC100396C72 /* DataSource.h */,
+				AD7FCD7316A10BC100396C72 /* DataSource.m */,
+				AD7FCD7416A10BC100396C72 /* PagingScrollViewController.h */,
+				AD7FCD7516A10BC100396C72 /* PagingScrollViewController.m */,
+				AD7FCD7616A10BC100396C72 /* PageViewController.h */,
+				AD7FCD7716A10BC100396C72 /* PageViewController.m */,
+				AD7FCD8016A10BCD00396C72 /* SynthesizeSingleton.h */,
+				AD7FCD8116A10BCD00396C72 /* PagingScrollView_Prefix.pch */,
+			);
+			name = Paging;
+			path = src;
+			sourceTree = "<group>";
+		};
+		AD7FCD8516A10D0600396C72 /* XIB Files */ = {
+			isa = PBXGroup;
+			children = (
+				DD2C036A158D7A72000C9CD8 /* HistoryViewController2.xib */,
+				DD88B5461593DE5300D012E4 /* QuoteWebViewController.xib */,
+				DDBD101913944B7300A40AF4 /* SuccessViewController.xib */,
+				AD7FCD8916A10ECF00396C72 /* PageView.xib */,
+				AD7FCD8616A10E7600396C72 /* PagingScrollViewController.xib */,
+				ADAEF3961361E9A4002F94A1 /* MainWindow.xib */,
+				ADAEF39C1361E9A4002F94A1 /* QuotifyViewController.xib */,
+			);
+			name = "XIB Files";
+			path = Quotify;
+			sourceTree = "<group>";
+		};
 		ADAEF3751361E9A4002F94A1 = {
 			isa = PBXGroup;
 			children = (
@@ -389,8 +440,10 @@
 				ADF1604214DE5630000B5343 /* icon57.png */,
 				ADDCB99014DDAE7700CE9019 /* Default.png */,
 				ADA2650F1396ACAD00F9155C /* Entitlements.plist */,
+				AD39030416A106E0004949AD /* Paging */,
 				ADF0F9C913A15C63000AC8FC /* src */,
 				ADAEF38A1361E9A4002F94A1 /* Quotify */,
+				AD7FCD8516A10D0600396C72 /* XIB Files */,
 				ADAEF3C01361EA7E002F94A1 /* View Files */,
 				ADAEF3AA1361E9A5002F94A1 /* QuotifyTests */,
 				ADAEF3831361E9A4002F94A1 /* Frameworks */,
@@ -548,11 +601,6 @@
 				AD2C7724161C03CB00401A5F /* video.png */,
 				ADC8D1B01673A8580097E7E7 /* video@2x.png */,
 				ADC8D1B11673A8580097E7E7 /* videodown@2x.png */,
-				DD2C036A158D7A72000C9CD8 /* HistoryViewController2.xib */,
-				DD88B5461593DE5300D012E4 /* QuoteWebViewController.xib */,
-				DDBD101913944B7300A40AF4 /* SuccessViewController.xib */,
-				ADAEF3961361E9A4002F94A1 /* MainWindow.xib */,
-				ADAEF39C1361E9A4002F94A1 /* QuotifyViewController.xib */,
 			);
 			name = "View Files";
 			path = Quotify;
@@ -768,6 +816,8 @@
 				ADC8D1B91673A9D20097E7E7 /* background@2x.png in Resources */,
 				ADC8D1BB1673A9F80097E7E7 /* Default@2x.png in Resources */,
 				AD0A803E167B7CEF00054B8D /* successnophoto@2x.png in Resources */,
+				AD7FCD8716A10E7600396C72 /* PagingScrollViewController.xib in Resources */,
+				AD7FCD8A16A10ECF00396C72 /* PageView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -777,6 +827,8 @@
 			files = (
 				ADAEF3AF1361E9A5002F94A1 /* InfoPlist.strings in Resources */,
 				ADAEF3B21361E9A5002F94A1 /* QuotifyTests.h in Resources */,
+				AD7FCD8816A10E7600396C72 /* PagingScrollViewController.xib in Resources */,
+				AD7FCD8B16A10ECF00396C72 /* PageView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -830,6 +882,9 @@
 				AD28E49015E1B84100BC531C /* NSData+MPBase64.m in Sources */,
 				AD28E49115E1B84100BC531C /* MixpanelAPI.m in Sources */,
 				AD28E49215E1B84100BC531C /* MixpanelEvent.m in Sources */,
+				AD7FCD7A16A10BC100396C72 /* DataSource.m in Sources */,
+				AD7FCD7C16A10BC100396C72 /* PagingScrollViewController.m in Sources */,
+				AD7FCD7E16A10BC100396C72 /* PageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -838,6 +893,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADAEF3B41361E9A5002F94A1 /* QuotifyTests.m in Sources */,
+				AD7FCD7B16A10BC100396C72 /* DataSource.m in Sources */,
+				AD7FCD7D16A10BC100396C72 /* PagingScrollViewController.m in Sources */,
+				AD7FCD7F16A10BC100396C72 /* PageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

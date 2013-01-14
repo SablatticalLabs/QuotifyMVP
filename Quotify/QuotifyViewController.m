@@ -47,6 +47,8 @@
 @synthesize addWitnessButton;
 @synthesize deleteWitnessButton;
 @synthesize facebook;
+@synthesize player;
+@synthesize pagingScrollViewController;
 
 // Feedback email
 @synthesize message;
@@ -154,7 +156,8 @@
         
         // If they're new, show them the movie!
         NSLog(@"Settings view is first responder: %c", [settingsViewController isFirstResponder]);
-        [self showIntroMovie];
+        //[self showIntroMovie];
+        [self showPagingView];
     }
     else
     {
@@ -864,6 +867,18 @@
     [self setupNewQuote];
 }
 
+- (void)showPagingView {
+
+    self.pagingScrollViewController = [[PagingScrollViewController alloc] init];
+    
+    pagingScrollViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self presentModalViewController:self.pagingScrollViewController animated:YES];
+
+//    PagingScrollViewController *pagingVC = [[PagingScrollViewController alloc] init];
+//    [self presentModalViewController:pagingVC animated:YES];
+
+}
+
 - (IBAction)settingsPressed:(id)sender {
     //quotifierTF.text = [currentQuote.quotifier objectForKey:@"email"];
     [self presentModalViewController:self.settingsViewController animated:YES];
@@ -907,7 +922,8 @@ int countSwipe = 0;
 }
 
 - (IBAction)playVideoPressed:(id)sender {
-    [self showIntroMovie];    
+    [self dismissModalViewControllerAnimated:NO];
+    [self showPagingView];
 }
 
 //Runs when the done button on the settings view is touched.

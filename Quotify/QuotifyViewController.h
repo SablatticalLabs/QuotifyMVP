@@ -14,6 +14,7 @@
 #import "CoreLocationController.h"
 #import "HistoryViewController2.h"
 #import "QuoteWebViewController.h"
+#import "PagingScrollViewController.h"
 
 #import "FBConnect.h"
 #import "FBLoginButton.h"
@@ -31,6 +32,7 @@
     Comm *myComm;
     CoreLocationController *locationController;
     SuccessViewController *successViewController;
+    PagingScrollViewController *pagingScrollViewController;
     FBLoginButton *fbButton;
     Facebook *facebook;
     MPMoviePlayerViewController *player;
@@ -54,6 +56,7 @@
     UIView *activeField;
     UIView *settingsView;
     UIView *addPersonView;
+    UIView *pagingScrollViewView;
     UIView *firstView;
     
     UIViewController *settingsViewController;
@@ -85,6 +88,7 @@
 @property (nonatomic, strong) UIImagePickerController *imgPicker;
 @property (nonatomic, strong) IBOutlet UIViewController *settingsViewController;
 @property (nonatomic, strong) IBOutlet UIViewController *addPersonViewController;
+@property (nonatomic, strong) IBOutlet UIViewController *pagingScrollViewController;
 @property (nonatomic, strong) IBOutlet UIView *firstView;
 @property (nonatomic, strong) IBOutlet UIButton *hideKeyboardButton;
 @property (nonatomic, strong) IBOutlet UILabel *timestampLabel;
@@ -132,6 +136,7 @@
 - (void)raiseFailurePopupWithTitle:(NSString *) alertTitle andMessage:(NSString *) alertMessage;
 - (void)setupNewQuote;
 - (void)showIntroMovie;
+- (void)showPagingView;
 - (void)showFirstTimeSettings;
 - (void)fbLogin;
 - (void)fbLogout;

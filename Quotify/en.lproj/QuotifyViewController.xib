@@ -149,7 +149,7 @@
 								<string key="NSFrame">{{142, 5}, {36, 34}}</string>
 								<reference key="NSSuperview" ref="89788679"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
+								<reference key="NSNextKeyView" ref="47852701"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -334,7 +334,6 @@
 								<string key="NSFrame">{{20, 405}, {280, 46}}</string>
 								<reference key="NSSuperview" ref="89788679"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
 									<string key="IBUIAccessibilityLabel"/>
@@ -797,7 +796,6 @@
 							<string key="NSFrame">{{97, 329}, {126, 29}}</string>
 							<reference key="NSSuperview" ref="795017958"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="IBUIOpaque">NO</bool>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -1086,7 +1084,6 @@
 							<string key="NSFrame">{{206, 216}, {94, 27}}</string>
 							<reference key="NSSuperview" ref="983552417"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:606</string>
 							<bool key="IBUIOpaque">NO</bool>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -2053,7 +2050,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">287</int>
+			<int key="maxID">299</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2231,6 +2228,7 @@
 							<string>imageBox</string>
 							<string>locLabel</string>
 							<string>message</string>
+							<string>pagingScrollViewController</string>
 							<string>quoteText</string>
 							<string>quotifierEmail</string>
 							<string>quotifierName</string>
@@ -2261,6 +2259,7 @@
 							<string>UIImageView</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
+							<string>UIViewController</string>
 							<string>UITextView</string>
 							<string>UITextField</string>
 							<string>UITextField</string>
@@ -2294,6 +2293,7 @@
 							<string>imageBox</string>
 							<string>locLabel</string>
 							<string>message</string>
+							<string>pagingScrollViewController</string>
 							<string>quoteText</string>
 							<string>quotifierEmail</string>
 							<string>quotifierName</string>
@@ -2365,6 +2365,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">message</string>
 								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">pagingScrollViewController</string>
+								<string key="candidateClassName">UIViewController</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">quoteText</string>
@@ -2443,6 +2447,8 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>backgroundNoImage</string>
+							<string>backgroundWithImage</string>
 							<string>imageBox</string>
 							<string>imageBoxFrame</string>
 							<string>locationLabel</string>
@@ -2452,6 +2458,8 @@
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>UIImageView</string>
+							<string>UIImageView</string>
 							<string>UIImageView</string>
 							<string>UIImageView</string>
 							<string>UILabel</string>
@@ -2464,6 +2472,8 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>backgroundNoImage</string>
+							<string>backgroundWithImage</string>
 							<string>imageBox</string>
 							<string>imageBoxFrame</string>
 							<string>locationLabel</string>
@@ -2473,6 +2483,14 @@
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">backgroundNoImage</string>
+								<string key="candidateClassName">UIImageView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">backgroundWithImage</string>
+								<string key="candidateClassName">UIImageView</string>
+							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">imageBox</string>
 								<string key="candidateClassName">UIImageView</string>
