@@ -20,6 +20,7 @@
 			<string>IBUILabel</string>
 			<string>IBUINavigationBar</string>
 			<string>IBUINavigationItem</string>
+			<string>IBUISegmentedControl</string>
 			<string>IBUISwitch</string>
 			<string>IBUITextField</string>
 			<string>IBUITextView</string>
@@ -292,7 +293,7 @@
 							<object class="IBUIButton" id="991126898">
 								<reference key="NSNextResponder" ref="89788679"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{124, 294}, {73, 73}}</string>
+								<string key="NSFrame">{{216, 294}, {73, 73}}</string>
 								<reference key="NSSuperview" ref="89788679"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="806558314"/>
@@ -320,7 +321,7 @@
 							<object class="IBUIImageView" id="806558314">
 								<reference key="NSNextResponder" ref="89788679"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{126, 296}, {69, 69}}</string>
+								<string key="NSFrame">{{218, 296}, {69, 69}}</string>
 								<reference key="NSSuperview" ref="89788679"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="810476446"/>
@@ -334,6 +335,7 @@
 								<string key="NSFrame">{{20, 405}, {280, 46}}</string>
 								<reference key="NSSuperview" ref="89788679"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
 									<string key="IBUIAccessibilityLabel"/>
@@ -450,7 +452,7 @@
 								<string key="NSFrame">{{266, 256}, {27, 24}}</string>
 								<reference key="NSSuperview" ref="89788679"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="997499922"/>
+								<reference key="NSNextKeyView" ref="379351814"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<int key="IBUITag">1</int>
 								<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
@@ -528,6 +530,49 @@
 								<object class="NSColor" key="IBUIColor">
 									<int key="NSColorSpace">2</int>
 									<bytes key="NSRGB">MC40MDAwMDAwMzU4IDAuNTI1NDkwMjI0NCAwLjYxMTc2NDcyOQA</bytes>
+								</object>
+							</object>
+							<object class="IBUISegmentedControl" id="379351814">
+								<reference key="NSNextResponder" ref="89788679"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{20, 309}, {159, 44}}</string>
+								<reference key="NSSuperview" ref="89788679"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="997499922"/>
+								<string key="NSReuseIdentifierKey">_NS:9</string>
+								<bool key="IBUIOpaque">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<int key="IBNumberOfSegments">3</int>
+								<int key="IBSelectedSegmentIndex">0</int>
+								<object class="NSArray" key="IBSegmentTitles">
+									<bool key="EncodedWithXMLCoder">YES</bool>
+									<string>N</string>
+									<string>MA</string>
+									<string>Q</string>
+								</object>
+								<object class="NSMutableArray" key="IBSegmentWidths">
+									<bool key="EncodedWithXMLCoder">YES</bool>
+									<real value="0.0"/>
+									<real value="0.0"/>
+									<real value="0.0"/>
+								</object>
+								<object class="NSMutableArray" key="IBSegmentEnabledStates">
+									<bool key="EncodedWithXMLCoder">YES</bool>
+									<boolean value="YES"/>
+									<boolean value="YES"/>
+									<boolean value="YES"/>
+								</object>
+								<object class="NSMutableArray" key="IBSegmentContentOffsets">
+									<bool key="EncodedWithXMLCoder">YES</bool>
+									<string>{0, 0}</string>
+									<string>{0, 0}</string>
+									<string>{0, 0}</string>
+								</object>
+								<object class="NSMutableArray" key="IBSegmentImages">
+									<bool key="EncodedWithXMLCoder">YES</bool>
+									<object class="NSNull" id="4"/>
+									<reference ref="4"/>
+									<reference ref="4"/>
 								</object>
 							</object>
 						</object>
@@ -796,6 +841,7 @@
 							<string key="NSFrame">{{97, 329}, {126, 29}}</string>
 							<reference key="NSSuperview" ref="795017958"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="IBUIOpaque">NO</bool>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -1084,6 +1130,7 @@
 							<string key="NSFrame">{{206, 216}, {94, 27}}</string>
 							<reference key="NSSuperview" ref="983552417"/>
 							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:606</string>
 							<bool key="IBUIOpaque">NO</bool>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -1297,6 +1344,14 @@
 					<int key="connectionID">272</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">modeSwitch</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="379351814"/>
+					</object>
+					<int key="connectionID">301</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">hideKeyboard:</string>
 						<reference key="source" ref="189937787"/>
@@ -1496,6 +1551,15 @@
 					</object>
 					<int key="connectionID">287</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">changeMode:</string>
+						<reference key="source" ref="379351814"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">13</int>
+					</object>
+					<int key="connectionID">302</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -1552,6 +1616,7 @@
 							<reference ref="232334114"/>
 							<reference ref="73331945"/>
 							<reference ref="1069357832"/>
+							<reference ref="379351814"/>
 						</object>
 						<reference key="parent" ref="774585933"/>
 						<string key="objectName">View</string>
@@ -1893,6 +1958,11 @@
 						<reference key="object" ref="196110479"/>
 						<reference key="parent" ref="199291735"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">300</int>
+						<reference key="object" ref="379351814"/>
+						<reference key="parent" ref="89788679"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -1958,6 +2028,8 @@
 					<string>284.IBPluginDependency</string>
 					<string>285.IBPluginDependency</string>
 					<string>286.IBPluginDependency</string>
+					<string>300.IBPluginDependency</string>
+					<string>300.IUISegmentedControlInspectorSelectedSegmentMetadataKey</string>
 					<string>31.IBPluginDependency</string>
 					<string>31.IBUIButtonInspectorSelectedStateConfigurationMetadataKey</string>
 					<string>36.IBPluginDependency</string>
@@ -2029,6 +2101,8 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<integer value="0"/>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<real value="0.0"/>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>UIScrollView</string>
@@ -2050,7 +2124,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">299</int>
+			<int key="maxID">302</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2074,6 +2148,7 @@
 							<string>backToMainView:</string>
 							<string>backToQuoteEntry:</string>
 							<string>cancel:</string>
+							<string>changeMode:</string>
 							<string>done:</string>
 							<string>doneAddingPeople:</string>
 							<string>editPerson:</string>
@@ -2109,6 +2184,7 @@
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
+							<string>id</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="actionInfosByName">
@@ -2119,6 +2195,7 @@
 							<string>backToMainView:</string>
 							<string>backToQuoteEntry:</string>
 							<string>cancel:</string>
+							<string>changeMode:</string>
 							<string>done:</string>
 							<string>doneAddingPeople:</string>
 							<string>editPerson:</string>
@@ -2150,6 +2227,10 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">cancel:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">changeMode:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
@@ -2228,6 +2309,7 @@
 							<string>imageBox</string>
 							<string>locLabel</string>
 							<string>message</string>
+							<string>modeSwitch</string>
 							<string>pagingScrollViewController</string>
 							<string>quoteText</string>
 							<string>quotifierEmail</string>
@@ -2259,6 +2341,7 @@
 							<string>UIImageView</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
+							<string>UISegmentedControl</string>
 							<string>UIViewController</string>
 							<string>UITextView</string>
 							<string>UITextField</string>
@@ -2293,6 +2376,7 @@
 							<string>imageBox</string>
 							<string>locLabel</string>
 							<string>message</string>
+							<string>modeSwitch</string>
 							<string>pagingScrollViewController</string>
 							<string>quoteText</string>
 							<string>quotifierEmail</string>
@@ -2365,6 +2449,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">message</string>
 								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">modeSwitch</string>
+								<string key="candidateClassName">UISegmentedControl</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">pagingScrollViewController</string>

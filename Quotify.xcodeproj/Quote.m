@@ -13,7 +13,7 @@
 
 @implementation Quote
 
-@synthesize quotifier, speaker, text, witnesses, image, timeString, postID, UrlWhereQuoteIsPosted, location, currentLocation;
+@synthesize quotifier, speaker, text, witnesses, image, timeString, postID, UrlWhereQuoteIsPosted, location, currentLocation, mode;
 
 
 
@@ -57,8 +57,8 @@
 
 // This crashes if the user doesn't input anything. We should check that field aren't blank before calling this method.
 -(NSDictionary *)getQuoteAsDictionary{//Get Location happening
-    NSArray *keys = [NSArray arrayWithObjects:@"quotifier", @"quote_text", @"speaker", @"witnesses", @"time", @"location", /*@"coordinate",*/ nil];
-    NSArray *objects = [NSArray arrayWithObjects: self.quotifier, self.text, self.speaker, self.witnesses, self.timeString, self.getLocationAsText, /*self.getLocationAsCoordinate,*/ nil];
+    NSArray *keys = [NSArray arrayWithObjects:@"quotifier", @"quote_text", @"speaker", @"witnesses", @"time", @"location", @"mode", nil];
+    NSArray *objects = [NSArray arrayWithObjects: self.quotifier, self.text, self.speaker, self.witnesses, self.timeString, self.getLocationAsText, self.mode, nil];
     return [NSDictionary dictionaryWithObjects:objects forKeys:keys];
    
 }
@@ -66,7 +66,7 @@
 -(NSString *)getQuoteAsJSONString{
     
     NSString * jSonSon = [NSString stringWithString:[[NSDictionary dictionaryWithObjects:
-                                                      [NSArray arrayWithObject:[self getQuoteAsDictionary]] 
+                                                      [NSArray arrayWithObject:[self getQuoteAsDictionary]]
                                                                                  forKeys:[NSArray arrayWithObject:@"quote"]] JSONRepresentation]];
     NSLog(@"%@", jSonSon);
     return jSonSon;
@@ -186,6 +186,7 @@
         self.location = [decoder decodeObjectForKey:@"location"];
         self.currentLocation = [decoder decodeObjectForKey:@"currentLocation"];
         self.image = [UIImage imageWithData:[decoder decodeObjectForKey:@"image"]];
+        self.mode = [decoder decodeObjectForKey:@"mode"];
     }
     return self;    
 }
@@ -201,6 +202,7 @@
     [encoder encodeObject:UIImagePNGRepresentation(image) forKey:@"image"];
     [encoder encodeObject:location forKey:@"location"];
     [encoder encodeObject:currentLocation forKey:@"currentLocation"];
+    [encoder encodeObject:mode forKey:@"mode"];
 }
 
 -(void)saveQuote{

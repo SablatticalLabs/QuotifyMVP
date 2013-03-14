@@ -30,6 +30,7 @@
 @synthesize speaker;
 @synthesize witnesses;
 @synthesize imageBox;
+@synthesize modeSwitch;
 @synthesize quotifyButton;
 @synthesize imgPicker;
 @synthesize settingsViewController;
@@ -88,6 +89,9 @@
     myComm = [[Comm alloc] init];
     myComm.delegate = self;
     
+    // Set default mode to nostalgia
+    modeSwitch.selectedSegmentIndex = 0;
+    currentQuote.mode = @"nostalgia";
     
     /////// Request location info from location controller ///////
     locationController = [[CoreLocationController alloc] init];
@@ -413,7 +417,26 @@
     
 }
 
+//////////////////////////////
+//////////
+#pragma mark Mode Select
+//////////
+//////////////////////////////
 
+
+
+-(IBAction)changeMode:(id)sender{
+	if(modeSwitch.selectedSegmentIndex == 0){
+        currentQuote.mode = @"nostalgia";
+	}
+	if(modeSwitch.selectedSegmentIndex == 1){
+        currentQuote.mode = @"morning_after";
+    }
+    if(modeSwitch.selectedSegmentIndex == 2){
+        currentQuote.mode = @"quiet";
+    }
+	
+}
 //////////////////////////////
 //////////
 #pragma mark Add Person View
@@ -755,6 +778,8 @@
     [locationController.locationManager stopUpdatingLocation];
     quotifyButton.enabled = NO;
     NSLog(@"Stopped updating location");
+    NSLog(@"%@", currentQuote.mode);
+
     
     // Track quotify pressed in Mixpanel
     MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];

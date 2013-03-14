@@ -23,11 +23,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Quotify/QuotifyViewController.m"
-         timestampString = "379654398.002929"
+         timestampString = "384967183.730209"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "574"
-         endingLineNumber = "574"
+         startingLineNumber = "597"
+         endingLineNumber = "597"
          landmarkName = "-addPerson:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -37,11 +37,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Quotify/QuotifyViewController.m"
-         timestampString = "379654398.002929"
+         timestampString = "384967183.730209"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "661"
-         endingLineNumber = "661"
+         startingLineNumber = "684"
+         endingLineNumber = "684"
          landmarkName = "-searchBarTextDidBeginEditing:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -64,11 +64,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Quotify/QuotifyViewController.m"
-         timestampString = "379654398.002929"
+         timestampString = "384967183.730209"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "621"
-         endingLineNumber = "621"
+         startingLineNumber = "644"
+         endingLineNumber = "644"
          landmarkName = "-navigationController:didShowViewController:animated:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -77,11 +77,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Quotify/QuotifyViewController.m"
-         timestampString = "379654398.002929"
+         timestampString = "384967183.730209"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "215"
-         endingLineNumber = "215"
+         startingLineNumber = "219"
+         endingLineNumber = "219"
          landmarkName = "-myMovieFinishedCallback:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -90,24 +90,24 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Quotify/QuotifyViewController.m"
-         timestampString = "379654398.002929"
+         timestampString = "384967183.730209"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "173"
-         endingLineNumber = "173"
+         startingLineNumber = "177"
+         endingLineNumber = "177"
          landmarkName = "-showIntroMovie"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Quotify/QuotifyViewController.m"
-         timestampString = "379654398.002929"
+         timestampString = "384967183.730209"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "154"
-         endingLineNumber = "154"
+         startingLineNumber = "158"
+         endingLineNumber = "158"
          landmarkName = "-awakeFromNib"
          landmarkType = "5">
       </FileBreakpoint>
@@ -129,11 +129,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Quotify/QuotifyViewController.m"
-         timestampString = "379846034.468301"
+         timestampString = "384967183.730209"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "926"
-         endingLineNumber = "926"
+         startingLineNumber = "951"
+         endingLineNumber = "951"
          landmarkName = "-playVideoPressed:"
          landmarkType = "5">
       </FileBreakpoint>

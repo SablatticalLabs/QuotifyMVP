@@ -43,6 +43,7 @@
     UITextField *quotifierName;
     UITextView *quoteText;
     UIImageView *imageBox;
+//    UISegmentedControl *modeSwitch;
     
     UIImagePickerController *imgPicker;
     
@@ -86,6 +87,8 @@
 @property (nonatomic, strong) IBOutlet UIImageView *imageBox;
 @property (nonatomic, strong) IBOutlet UIButton *quotifyButton;
 @property (nonatomic, strong) UIImagePickerController *imgPicker;
+@property (nonatomic, strong) IBOutlet UISegmentedControl *modeSwitch;
+
 @property (nonatomic, strong) IBOutlet UIViewController *settingsViewController;
 @property (nonatomic, strong) IBOutlet UIViewController *addPersonViewController;
 @property (nonatomic, strong) IBOutlet UIViewController *pagingScrollViewController;
@@ -128,6 +131,8 @@
 - (IBAction)witnessesTouchedUp:(id)sender;
 - (IBAction)showHistory:(id)sender;
 - (IBAction)playVideoPressed:(id)sender;
+- (IBAction)changeMode:(id)sender;
+
 
 
 - (void)registerForKeyboardNotifications;

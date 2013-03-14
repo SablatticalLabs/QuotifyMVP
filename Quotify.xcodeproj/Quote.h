@@ -18,6 +18,7 @@
     NSMutableDictionary *speaker;
     NSString *text;
     NSString *timeString;
+    NSString *mode;
     NSString *postID;
     NSString *UrlWhereQuoteIsPosted;
     NSMutableArray *witnesses;//an array of dictionaries.
@@ -26,7 +27,7 @@
     CLLocation *currentLocation;
 }
 
-@property (strong) NSString *text, *timeString, *postID, *UrlWhereQuoteIsPosted;
+@property (strong) NSString *text, *timeString, *mode, *postID, *UrlWhereQuoteIsPosted;
 @property (strong) NSMutableDictionary *speaker, *quotifier;
 @property (strong) NSMutableArray *witnesses;
 @property (strong) UIImage *image;
