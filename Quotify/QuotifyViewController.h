@@ -64,6 +64,7 @@
     UIViewController *addPersonViewController;
     UILabel *timestampLabel;
     UILabel *locLabel;
+    UILabel *modeLabel;
 
     __weak IBOutlet UISwitch *addPersonToABSwitch;
   
@@ -88,6 +89,7 @@
 @property (nonatomic, strong) IBOutlet UIButton *quotifyButton;
 @property (nonatomic, strong) UIImagePickerController *imgPicker;
 @property (nonatomic, strong) IBOutlet UISegmentedControl *modeSwitch;
+@property (nonatomic, strong) IBOutlet UILabel *modeLabel;
 
 @property (nonatomic, strong) IBOutlet UIViewController *settingsViewController;
 @property (nonatomic, strong) IBOutlet UIViewController *addPersonViewController;

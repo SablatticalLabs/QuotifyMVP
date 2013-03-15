@@ -31,6 +31,7 @@
 @synthesize witnesses;
 @synthesize imageBox;
 @synthesize modeSwitch;
+@synthesize modeLabel;
 @synthesize quotifyButton;
 @synthesize imgPicker;
 @synthesize settingsViewController;
@@ -92,6 +93,7 @@
     // Set default mode to nostalgia
     modeSwitch.selectedSegmentIndex = 0;
     currentQuote.mode = @"nostalgia";
+    modeLabel.text = @"Nostalgia";
     
     /////// Request location info from location controller ///////
     locationController = [[CoreLocationController alloc] init];
@@ -428,12 +430,15 @@
 -(IBAction)changeMode:(id)sender{
 	if(modeSwitch.selectedSegmentIndex == 0){
         currentQuote.mode = @"nostalgia";
+        modeLabel.text = @"Nostalgia";
 	}
 	if(modeSwitch.selectedSegmentIndex == 1){
         currentQuote.mode = @"morning_after";
+        modeLabel.text = @"Morning After";
     }
     if(modeSwitch.selectedSegmentIndex == 2){
         currentQuote.mode = @"quiet";
+        modeLabel.text = @"Quiet";
     }
 	
 }
