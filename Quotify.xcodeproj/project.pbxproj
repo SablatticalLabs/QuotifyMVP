@@ -32,6 +32,9 @@
 		AD544C9B164C17DE00329E44 /* quotifybuttonup.png in Resources */ = {isa = PBXBuildFile; fileRef = AD544C99164C17DE00329E44 /* quotifybuttonup.png */; };
 		AD544C9C164C17DE00329E44 /* quotifybuttondown.png in Resources */ = {isa = PBXBuildFile; fileRef = AD544C9A164C17DE00329E44 /* quotifybuttondown.png */; };
 		AD544C9E164C17F200329E44 /* settingsbackground.png in Resources */ = {isa = PBXBuildFile; fileRef = AD544C9D164C17F200329E44 /* settingsbackground.png */; };
+		AD54FFEB16FD8C02007D8493 /* morning after mode.png in Resources */ = {isa = PBXBuildFile; fileRef = AD54FFE816FD8BE9007D8493 /* morning after mode.png */; };
+		AD54FFEC16FD8C02007D8493 /* nostalga mode.png in Resources */ = {isa = PBXBuildFile; fileRef = AD54FFE916FD8BEB007D8493 /* nostalga mode.png */; };
+		AD54FFED16FD8C02007D8493 /* silentmode.png in Resources */ = {isa = PBXBuildFile; fileRef = AD54FFEA16FD8BF3007D8493 /* silentmode.png */; };
 		AD5EE76B141297820017937D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD5EE76A141297820017937D /* QuartzCore.framework */; };
 		AD7CECF9139A92CC003A0A37 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD7CECF8139A92CC003A0A37 /* CoreLocation.framework */; };
 		AD7CECFC139A934A003A0A37 /* CoreLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7CECFB139A934A003A0A37 /* CoreLocationController.m */; };
@@ -187,6 +190,9 @@
 		AD544C99164C17DE00329E44 /* quotifybuttonup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quotifybuttonup.png; sourceTree = "<group>"; };
 		AD544C9A164C17DE00329E44 /* quotifybuttondown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quotifybuttondown.png; sourceTree = "<group>"; };
 		AD544C9D164C17F200329E44 /* settingsbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingsbackground.png; sourceTree = "<group>"; };
+		AD54FFE816FD8BE9007D8493 /* morning after mode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "morning after mode.png"; path = "../morning after mode.png"; sourceTree = "<group>"; };
+		AD54FFE916FD8BEB007D8493 /* nostalga mode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "nostalga mode.png"; path = "../nostalga mode.png"; sourceTree = "<group>"; };
+		AD54FFEA16FD8BF3007D8493 /* silentmode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = silentmode.png; path = ../silentmode.png; sourceTree = "<group>"; };
 		AD5EE76A141297820017937D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AD7CECF8139A92CC003A0A37 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AD7CECFA139A934A003A0A37 /* CoreLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreLocationController.h; path = ../CoreLocationController.h; sourceTree = "<group>"; };
@@ -420,13 +426,13 @@
 		AD7FCD8516A10D0600396C72 /* XIB Files */ = {
 			isa = PBXGroup;
 			children = (
+				ADAEF39C1361E9A4002F94A1 /* QuotifyViewController.xib */,
 				DD2C036A158D7A72000C9CD8 /* HistoryViewController2.xib */,
 				DD88B5461593DE5300D012E4 /* QuoteWebViewController.xib */,
 				DDBD101913944B7300A40AF4 /* SuccessViewController.xib */,
 				AD7FCD8916A10ECF00396C72 /* PageView.xib */,
 				AD7FCD8616A10E7600396C72 /* PagingScrollViewController.xib */,
 				ADAEF3961361E9A4002F94A1 /* MainWindow.xib */,
-				ADAEF39C1361E9A4002F94A1 /* QuotifyViewController.xib */,
 			);
 			name = "XIB Files";
 			path = Quotify;
@@ -532,6 +538,9 @@
 		ADAEF3C01361EA7E002F94A1 /* View Files */ = {
 			isa = PBXGroup;
 			children = (
+				AD54FFE816FD8BE9007D8493 /* morning after mode.png */,
+				AD54FFE916FD8BEB007D8493 /* nostalga mode.png */,
+				AD54FFEA16FD8BF3007D8493 /* silentmode.png */,
 				AD0A803D167B7CEF00054B8D /* successnophoto@2x.png */,
 				DD2C0387158D91AB000C9CD8 /* kinder_egg.jpg */,
 				DD2C0379158D8347000C9CD8 /* runaround_image.jpg */,
@@ -818,6 +827,9 @@
 				AD0A803E167B7CEF00054B8D /* successnophoto@2x.png in Resources */,
 				AD7FCD8716A10E7600396C72 /* PagingScrollViewController.xib in Resources */,
 				AD7FCD8A16A10ECF00396C72 /* PageView.xib in Resources */,
+				AD54FFEB16FD8C02007D8493 /* morning after mode.png in Resources */,
+				AD54FFEC16FD8C02007D8493 /* nostalga mode.png in Resources */,
+				AD54FFED16FD8C02007D8493 /* silentmode.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

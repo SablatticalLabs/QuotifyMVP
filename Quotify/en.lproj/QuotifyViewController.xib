@@ -451,7 +451,7 @@
 								<string key="NSFrame">{{266, 256}, {27, 24}}</string>
 								<reference key="NSSuperview" ref="89788679"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="379351814"/>
+								<reference key="NSNextKeyView" ref="499991061"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<int key="IBUITag">1</int>
 								<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
@@ -545,9 +545,9 @@
 								<int key="IBSelectedSegmentIndex">0</int>
 								<object class="NSArray" key="IBSegmentTitles">
 									<bool key="EncodedWithXMLCoder">YES</bool>
-									<string>N</string>
-									<string>MA</string>
-									<string>Q</string>
+									<string/>
+									<string/>
+									<string/>
 								</object>
 								<object class="NSMutableArray" key="IBSegmentWidths">
 									<bool key="EncodedWithXMLCoder">YES</bool>
@@ -564,14 +564,23 @@
 								<object class="NSMutableArray" key="IBSegmentContentOffsets">
 									<bool key="EncodedWithXMLCoder">YES</bool>
 									<string>{0, 0}</string>
-									<string>{0, 0}</string>
-									<string>{0, 0}</string>
+									<string>{0, -1}</string>
+									<string>{-2, -2}</string>
 								</object>
 								<object class="NSMutableArray" key="IBSegmentImages">
 									<bool key="EncodedWithXMLCoder">YES</bool>
-									<object class="NSNull" id="4"/>
-									<reference ref="4"/>
-									<reference ref="4"/>
+									<object class="NSCustomResource">
+										<string key="NSClassName">NSImage</string>
+										<string key="NSResourceName">nostalga mode.png</string>
+									</object>
+									<object class="NSCustomResource">
+										<string key="NSClassName">NSImage</string>
+										<string key="NSResourceName">morning after mode.png</string>
+									</object>
+									<object class="NSCustomResource">
+										<string key="NSClassName">NSImage</string>
+										<string key="NSResourceName">silentmode.png</string>
+									</object>
 								</object>
 							</object>
 							<object class="IBUILabel" id="499991061">
@@ -580,6 +589,7 @@
 								<string key="NSFrame">{{20, 296}, {159, 21}}</string>
 								<reference key="NSSuperview" ref="89788679"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="379351814"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -2141,7 +2151,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<integer value="0"/>
+					<integer value="2"/>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<real value="0.0"/>
@@ -2185,14 +2195,10 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>addPerson:</string>
 							<string>backToMainView:</string>
 							<string>backToQuoteEntry:</string>
-							<string>cancel:</string>
 							<string>changeMode:</string>
-							<string>done:</string>
 							<string>doneAddingPeople:</string>
-							<string>editPerson:</string>
 							<string>fbButtonClicked:</string>
 							<string>hideKeyboard:</string>
 							<string>imageBoxPressed:</string>
@@ -2207,10 +2213,6 @@
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -2232,14 +2234,10 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>addPerson:</string>
 							<string>backToMainView:</string>
 							<string>backToQuoteEntry:</string>
-							<string>cancel:</string>
 							<string>changeMode:</string>
-							<string>done:</string>
 							<string>doneAddingPeople:</string>
-							<string>editPerson:</string>
 							<string>fbButtonClicked:</string>
 							<string>hideKeyboard:</string>
 							<string>imageBoxPressed:</string>
@@ -2255,10 +2253,6 @@
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBActionInfo">
-								<string key="name">addPerson:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
 								<string key="name">backToMainView:</string>
 								<string key="candidateClassName">id</string>
 							</object>
@@ -2267,23 +2261,11 @@
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
-								<string key="name">cancel:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
 								<string key="name">changeMode:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
-								<string key="name">done:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
 								<string key="name">doneAddingPeople:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">editPerson:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
@@ -2680,6 +2662,8 @@
 				<string>facebooklogin@2x.png</string>
 				<string>feedback@2x.png</string>
 				<string>feedbackdown@2x.png</string>
+				<string>morning after mode.png</string>
+				<string>nostalga mode.png</string>
 				<string>people@2x.png</string>
 				<string>person@2x.png</string>
 				<string>photo@2x.png</string>
@@ -2689,6 +2673,7 @@
 				<string>quotifybuttondown.png</string>
 				<string>quotifybuttonup.png</string>
 				<string>settingsbackground.png</string>
+				<string>silentmode.png</string>
 				<string>video@2x.png</string>
 				<string>videodown@2x.png</string>
 			</object>
@@ -2702,6 +2687,8 @@
 				<string>{319, 58}</string>
 				<string>{251, 58}</string>
 				<string>{251, 58}</string>
+				<string>{37, 37}</string>
+				<string>{37, 37}</string>
 				<string>{54, 42}</string>
 				<string>{38, 41}</string>
 				<string>{144, 144}</string>
@@ -2711,6 +2698,7 @@
 				<string>{556, 90}</string>
 				<string>{556, 90}</string>
 				<string>{640, 875}</string>
+				<string>{31, 31}</string>
 				<string>{251, 59}</string>
 				<string>{251, 59}</string>
 			</object>
