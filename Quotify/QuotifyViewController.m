@@ -134,6 +134,17 @@
     }
     NSLog(@"Finished Loading QVC");
 }
+
+
+- (void)viewDidAppear:(BOOL)animated{
+    
+    if(![quotifyButton isHidden]){
+       NSLog(@"We're at quote entry screen!");
+        [locationController.locationManager startUpdatingLocation];
+    }
+
+}
+
 //
 -(void)awakeFromNib {
 
@@ -1225,7 +1236,7 @@ int countSwipe = 0;
 
 // Called when the UIKeyboardDidShowNotification is sent.
 - (void)keyboardWasShown:(NSNotification*)aNotification{
-    [locationController.locationManager startUpdatingLocation];
+    
     NSLog(@"Started updating location");
     
     if(((UIView*)self.quoteText).isFirstResponder){
