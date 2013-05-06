@@ -14,7 +14,7 @@
 
 @synthesize quoteToSend, quoteTextSentSuccessfully, delegate, request, responseData, historyViewController;
 
-NSString * const sendQuoteToURL = @"http://www.quotify.it/quotes.json";
+NSString * const sendQuoteToURL = @"http://quotify.it/quotes.json";
 NSString * const sendImageToURL = @"http://quotify.it/quotes/<ID>/quote_images.json";
 
 -(void)sendQuote:(Quote*)theQuote{
@@ -147,7 +147,7 @@ NSString * const sendImageToURL = @"http://quotify.it/quotes/<ID>/quote_images.j
 -(void)requestQuoteListforQuotifier:(NSString*)quotifierID AndSendResultTo:(UIViewController*)hvc{
     historyViewController = hvc;
     request = 
-	[NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat: @"http://quotify.it/quotes/history.json?email=%@", quotifierID]] 
+	[NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat: @"http://quotify.it/quotes/history.json?email=%@", quotifierID]]
                             cachePolicy:NSURLRequestReloadIgnoringCacheData
                         timeoutInterval:15];
 	
@@ -155,17 +155,14 @@ NSString * const sendImageToURL = @"http://quotify.it/quotes/<ID>/quote_images.j
 	//[request setHTTPBody:[myData dataUsingEncoding:NSUTF8StringEncoding]];
 	[request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
 	[request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    
 	
-	// Make asynchronous request
-	/*NSURLConnection *urlConnection =*/ [NSURLConnection connectionWithRequest:request delegate:self];
-    //curl -H "Content-Type: application/json" -H "Accept: application/json" -X GET http://quotify.it/quotes/history.json?email=pmendeloff@hotmail.com
+	[NSURLConnection connectionWithRequest:request delegate:self];
 }
 
 -(void)deleteQuoteWithID:(NSString *)quoteID{
     NSLog(@"deleting quote: %@", quoteID);
     request = 
-	[NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat: @"http://quotify.it/quotes/%@", quoteID]] 
+	[NSMutableURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat: @"http://quotify.it/quotes/%@", quoteID]]
                             cachePolicy:NSURLRequestReloadIgnoringCacheData 
                         timeoutInterval:15];
 	

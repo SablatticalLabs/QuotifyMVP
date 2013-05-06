@@ -901,7 +901,7 @@
     }
     else{//show web success view
         QuoteWebViewController *successWebView = [[QuoteWebViewController alloc] init];
-        successWebView.quoteURL = [NSString stringWithFormat:@"http://www.quotify.it/%@/", currentQuote.postID];
+        successWebView.quoteURL = [NSString stringWithFormat:@"http://quotify.it/%@/", currentQuote.postID];
         [self presentModalViewController:successWebView animated:YES];
         
     }
